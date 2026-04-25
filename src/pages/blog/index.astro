@@ -9,13 +9,13 @@ const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Apartment Renovation Blog',
-    description: 'Insights on apartment renovation in Houston. Cost guides, industry trends, renovation tips, and market news for multifamily owners and operators.',
-    url: 'https://saadiconstructiongroup.com/blog',
+    name: 'Custom Home Builder Blog',
+    description: 'Insights on custom home building in Houston — design-build, plans, permits, engineering, and the construction process.',
+    url: 'https://www.saadiconstructiongroup.com/blog',
     publisher: {
       '@type': 'Organization',
       name: 'Saadi Construction Group',
-      url: 'https://saadiconstructiongroup.com',
+      url: 'https://www.saadiconstructiongroup.com',
     },
     mainEntity: {
       '@type': 'ItemList',
@@ -23,7 +23,7 @@ const jsonLd = [
         '@type': 'ListItem',
         position: i + 1,
         name: post.title,
-        url: `https://saadiconstructiongroup.com/blog/${post.slug}`,
+        url: `https://www.saadiconstructiongroup.com/blog/${post.slug}`,
       })),
     },
   },
@@ -31,18 +31,18 @@ const jsonLd = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://saadiconstructiongroup.com' },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://saadiconstructiongroup.com/blog' },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.saadiconstructiongroup.com' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.saadiconstructiongroup.com/blog' },
     ],
   },
 ];
 ---
 
 <Layout
-  title="Apartment Renovation Blog | Saadi Construction Group | Houston, TX"
-  description="Insights on apartment renovation in Houston. Cost guides, industry trends, renovation tips, and market news for multifamily owners and operators."
-  keywords="apartment renovation blog Houston, multifamily renovation insights, Houston apartment rehab cost guide"
-  canonicalUrl="https://saadiconstructiongroup.com/blog"
+  title="Custom Home Builder Blog | Saadi Construction Group | Houston, TX"
+  description="Insights on custom home building in Houston — design-build, plans, permits, engineering, and the construction process for homeowners across the Greater Houston metro."
+  keywords="custom home builder blog Houston, custom home construction insights Houston, design-build guide Houston"
+  canonicalUrl="https://www.saadiconstructiongroup.com/blog"
   jsonLd={jsonLd}
 >
   <!-- Hero -->
@@ -50,13 +50,13 @@ const jsonLd = [
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.08),transparent_60%)]"></div>
     <div class="relative z-10 container-main px-4 py-20 md:py-28 text-center">
       <span class="animate-fade-in-up inline-block mb-4 px-4 py-1.5 text-sm font-semibold tracking-wide uppercase rounded-full bg-gold/15 text-gold border border-gold/30">
-        Renovation Insights
+        Custom Home Insights
       </span>
       <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
-        Apartment Renovation Insights — Houston, TX
+        Custom Home Builder Insights — Houston, TX
       </h1>
       <p class="animate-fade-in-up-delay mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
-        Cost guides, renovation tips, and market insights for multifamily owners and operators across the Greater Houston metro.
+        Cost guides, design-build explainers, and permitting insights for homeowners building across the Greater Houston metro.
       </p>
     </div>
   </section>
@@ -68,16 +68,6 @@ const jsonLd = [
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {published.map((post) => (
             <article class="animate-on-scroll group flex flex-col rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200">
-              {post.heroImage && (
-                <a href={`/blog/${post.slug}`} class="block overflow-hidden">
-                  <img
-                    src={post.heroImage}
-                    alt={post.heroImageAlt}
-                    class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </a>
-              )}
               <div class="flex flex-col flex-1 p-6">
                 <div class="flex items-center gap-3 mb-3">
                   <span class="text-xs font-semibold uppercase tracking-widest text-gold">{post.category}</span>
@@ -102,9 +92,9 @@ const jsonLd = [
       ) : (
         <div class="text-center py-16">
           <p class="text-gold font-semibold uppercase tracking-widest text-sm mb-4">Coming Soon</p>
-          <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-6">Articles & Renovation Insights</h2>
-          <p class="text-lg text-gray-600 max-w-xl mx-auto mb-10">We're publishing guides on multifamily renovation, cost planning, and Houston market insights. Check back soon.</p>
-          <a href="/contact" class="btn-primary text-lg px-8 py-4">Request a Bid</a>
+          <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-6">Articles & Custom Home Insights</h2>
+          <p class="text-lg text-gray-600 max-w-xl mx-auto mb-10">We're publishing guides on custom home design-build, plans and permits, engineering, and Houston market insights. Check back soon.</p>
+          <a href="/contact" class="btn-primary text-lg px-8 py-4">Request a Quote</a>
         </div>
       )}
     </div>
@@ -113,9 +103,9 @@ const jsonLd = [
   <!-- CTA -->
   <section class="section-padding bg-light-gray border-t border-gray-200">
     <div class="container-main px-4 text-center max-w-2xl mx-auto">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-4">Ready to Plan Your Renovation?</h2>
-      <p class="text-lg text-gray-600 mb-8">Get a detailed, line-item bid within 5 business days. We scope every project on-site before we price it.</p>
-      <a href="/contact" class="btn-primary text-lg px-8 py-4">Request a Bid</a>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-4">Ready to Build Your Custom Home?</h2>
+      <p class="text-lg text-gray-600 mb-8">Plans, permits, engineering, and construction — all under one contract. Detailed quote within 5 business days.</p>
+      <a href="/contact" class="btn-primary text-lg px-8 py-4">Request a Quote</a>
     </div>
   </section>
 </Layout>

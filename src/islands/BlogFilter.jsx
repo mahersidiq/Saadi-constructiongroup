@@ -66,7 +66,7 @@ export default function BlogFilter({ posts = [] }) {
           <p className="text-gray-500 max-w-md mx-auto">
             {activeCategory !== 'All'
               ? `No articles in "${activeCategory}" yet. Check back soon or browse all categories.`
-              : 'We are working on new content. Check back soon for apartment renovation insights and updates.'}
+              : 'We are working on new content. Check back soon for custom home builder insights and updates.'}
           </p>
         </div>
       )}
