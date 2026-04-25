@@ -1,8 +1,26 @@
 import { useState } from 'react';
 
-const propertyTypeOptions = ['Garden-Style Apartment', 'Mid-Rise', 'High-Rise', 'Mixed-Use', 'Other'];
-const unitCountOptions = ['1-50 units', '51-150 units', '151-300 units', '300+ units'];
-const scopeOptions = ['Full Gut Rehab', 'Unit Interior Renovation', 'Common Area & Amenity', 'Exterior & Curb Appeal', 'Value-Add Program', 'Construction Management', 'Not Sure Yet'];
+const projectTypeOptions = [
+  'Custom Home (New Construction)',
+  'Home Addition or Expansion',
+  'Design-Build (Plans + Construction)',
+  'Lot Evaluation',
+  'Not Sure Yet',
+];
+const squareFootageOptions = [
+  'Under 1,500 sq ft',
+  '1,500–2,500 sq ft',
+  '2,500–4,000 sq ft',
+  '4,000+ sq ft',
+];
+const servicesNeededOptions = [
+  'Full Design-Build (Plans + Permits + Construction)',
+  'Plans & Permits Only',
+  'Construction Only',
+  'Home Addition',
+  'Construction Management',
+  'Not Sure Yet',
+];
 const timelineOptions = ['Immediately', '1-3 months', '3-6 months', '6+ months'];
 
 const inputClasses = 'w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-charcoal placeholder:text-gray-400 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-colors';
@@ -60,7 +78,7 @@ export default function ContactForm() {
         <svg className="mx-auto h-16 w-16 text-green-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <h2 className="font-heading text-2xl font-bold text-charcoal mb-2">Bid Request Received</h2>
+        <h2 className="font-heading text-2xl font-bold text-charcoal mb-2">Quote Request Received</h2>
         <p className="text-gray-600 mb-6">Thank you for reaching out. We will review your project details and respond within 24 hours.</p>
         <button type="button" onClick={() => setSubmitted(false)} className="btn-primary px-6 py-3">Submit Another Request</button>
       </div>
@@ -86,24 +104,24 @@ export default function ContactForm() {
           {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
         </div>
         <div>
-          <label htmlFor="company" className={labelClasses}>Property Type</label>
+          <label htmlFor="company" className={labelClasses}>Project Type</label>
           <select id="company" name="company" value={form.company} onChange={handleChange} className={inputClasses}>
-            <option value="">Select property type</option>
-            {propertyTypeOptions.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
+            <option value="">Select project type</option>
+            {projectTypeOptions.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
           </select>
         </div>
         <div>
-          <label htmlFor="unitCount" className={labelClasses}>Number of Units</label>
+          <label htmlFor="unitCount" className={labelClasses}>Approximate Square Footage</label>
           <select id="unitCount" name="unitCount" value={form.unitCount} onChange={handleChange} className={inputClasses}>
             <option value="">Select range</option>
-            {unitCountOptions.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
+            {squareFootageOptions.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
           </select>
         </div>
         <div>
-          <label htmlFor="projectType" className={labelClasses}>Scope of Work</label>
+          <label htmlFor="projectType" className={labelClasses}>Services Needed</label>
           <select id="projectType" name="projectType" value={form.projectType} onChange={handleChange} className={inputClasses}>
-            <option value="">Select scope</option>
-            {scopeOptions.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
+            <option value="">Select services</option>
+            {servicesNeededOptions.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
           </select>
         </div>
         <div className="sm:col-span-2">
@@ -115,7 +133,7 @@ export default function ContactForm() {
         </div>
         <div className="sm:col-span-2">
           <label htmlFor="message" className={labelClasses}>Project Details</label>
-          <textarea id="message" name="message" rows={5} value={form.message} onChange={handleChange} placeholder="Tell us about your property, scope of work, or any specific requirements..." className={inputClasses} />
+          <textarea id="message" name="message" rows={5} value={form.message} onChange={handleChange} placeholder="Tell us about your project, lot, scope of work, or any specific requirements..." className={inputClasses} />
         </div>
       </div>
       <div className="pt-2">
@@ -125,7 +143,7 @@ export default function ContactForm() {
               <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
               Submitting...
             </span>
-          ) : 'Submit Bid Request'}
+          ) : 'Submit Quote Request'}
         </button>
       </div>
     </form>

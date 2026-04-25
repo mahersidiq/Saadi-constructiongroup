@@ -123,11 +123,11 @@ export const blogPosts = [
       },
     ],
     relatedLinks: [
-      { href: '/services/full-gut-rehab', anchor: 'Full Gut Rehab Service' },
-      { href: '/services/unit-interior-renovation', anchor: 'Unit Interior Renovation' },
-      { href: '/services/kitchen-renovation', anchor: 'Apartment Kitchen Renovation' },
-      { href: '/services/bathroom-remodel', anchor: 'Apartment Bathroom Remodel' },
-      { href: '/service-areas/houston', anchor: 'Houston Apartment Renovation' },
+      { href: '/services/custom-home-design-build', anchor: 'Custom Home Design-Build' },
+      { href: '/services/new-home-construction', anchor: 'New Home Construction' },
+      { href: '/services/plans-permits-engineering', anchor: 'Plans, Permits & Engineering' },
+      { href: '/services/construction-management', anchor: 'Construction Management' },
+      { href: '/service-areas/houston', anchor: 'Houston Custom Home Builder' },
     ],
   },
 ];

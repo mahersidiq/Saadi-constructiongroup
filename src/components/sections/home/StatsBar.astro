@@ -1,0 +1,22 @@
+---
+const stats = [
+  '50+ Homes Built',
+  '5-Day Quote Turnaround',
+  'Greater Houston Coverage',
+  'Owner-Led & Insured',
+];
+---
+
+<section class="bg-navy py-12 px-4">
+  <div class="container-main">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {stats.map((stat) => (
+        <div>
+          <span class="text-gold font-heading text-2xl md:text-3xl font-extrabold leading-tight block">
+            {stat}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

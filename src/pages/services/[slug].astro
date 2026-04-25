@@ -5,7 +5,7 @@ import ServiceHero from '@/components/sections/services/ServiceHero.astro';
 import ServiceIncludes from '@/components/sections/services/ServiceIncludes.astro';
 import RelatedServices from '@/components/sections/services/RelatedServices.astro';
 import CTABanner from '@/components/sections/home/CTABanner.astro';
-import { serviceCategories, allServices } from '@/data/services';
+import { allServices } from '@/data/services';
 import { serviceDetails } from '@/data/serviceDetails';
 
 export function getStaticPaths() {
@@ -20,38 +20,36 @@ if (!service) return Astro.redirect('/404');
 
 const detail = serviceDetails[slug] || {};
 
-// Find related services
-let relatedServices = [];
-for (const category of serviceCategories) {
-  const inCategory = category.services.find((s) => s.slug === slug);
-  if (inCategory) {
-    relatedServices = category.services.filter((s) => s.slug !== slug).slice(0, 3);
-    break;
-  }
-}
-if (relatedServices.length < 3) {
-  const remaining = allServices
-    .filter((s) => s.slug !== slug && !relatedServices.find((r) => r.slug === s.slug))
-    .slice(0, 3 - relatedServices.length);
-  relatedServices = [...relatedServices, ...remaining];
-}
+const relatedSlugs = detail.relatedSlugs || [];
+const relatedServices = relatedSlugs
+  .map((rSlug) => allServices.find((s) => s.slug === rSlug))
+  .filter(Boolean);
 
 const faqs = detail.faqs || [];
+const canonical = `https://www.saadiconstructiongroup.com/services/${slug}`;
 
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: detail.title || service.name,
-  description: detail.metaDescription || `${service.name} services for apartments in Houston, TX.`,
+  description: detail.metaDescription || `${service.name} services in Houston, TX.`,
   provider: {
     '@type': 'GeneralContractor',
     name: 'Saadi Construction Group',
-    url: 'https://saadiconstructiongroup.com',
+    url: 'https://www.saadiconstructiongroup.com',
     telephone: '(832) 360-3804',
-    address: { '@type': 'PostalAddress', streetAddress: '801 Travis St Suite 2101', addressLocality: 'Houston', addressRegion: 'TX', postalCode: '77002', addressCountry: 'US' },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '801 Travis St Suite 2101',
+      addressLocality: 'Houston',
+      addressRegion: 'TX',
+      postalCode: '77002',
+      addressCountry: 'US',
+    },
   },
-  areaServed: { '@type': 'City', name: 'Houston', containedInPlace: { '@type': 'State', name: 'Texas' } },
+  areaServed: 'Greater Houston Metropolitan Area',
   serviceType: detail.title || service.name,
+  url: canonical,
 };
 
 const faqSchema = faqs.length > 0 ? {
@@ -71,9 +69,9 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://saadiconstructiongroup.com' },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://saadiconstructiongroup.com/services' },
-    { '@type': 'ListItem', position: 3, name: detail.title || service.name, item: `https://saadiconstructiongroup.com/services/${slug}` },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.saadiconstructiongroup.com' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.saadiconstructiongroup.com/services' },
+    { '@type': 'ListItem', position: 3, name: detail.title || service.name, item: canonical },
   ],
 };
 
@@ -85,7 +83,7 @@ const speakableSchema = {
     '@type': 'SpeakableSpecification',
     cssSelector: ['h1', 'h2', '.what-is-it p', 'details summary', 'details p'],
   },
-  url: `https://saadiconstructiongroup.com/services/${slug}`,
+  url: canonical,
 };
 
 const jsonLd = faqSchema
@@ -94,10 +92,10 @@ const jsonLd = faqSchema
 ---
 
 <Layout
-  title={detail.metaTitle || `${service.name} | Houston TX | Saadi Construction Group`}
-  description={detail.metaDescription || `Professional ${service.name.toLowerCase()} services for multifamily apartment properties in Houston, TX.`}
-  keywords={detail.keywords || `${service.name} Houston, apartment ${service.name.toLowerCase()}, multifamily ${service.name.toLowerCase()} Houston TX`}
-  canonicalUrl={`https://saadiconstructiongroup.com/services/${slug}`}
+  title={detail.metaTitle || `${service.name} Houston TX | Saadi Construction Group`}
+  description={detail.metaDescription || `Custom ${service.name.toLowerCase()} in Houston, TX from Saadi Construction Group.`}
+  keywords={detail.keywords || `${service.name} Houston TX, custom home builder Houston`}
+  canonicalUrl={canonical}
   jsonLd={jsonLd}
 >
   <ServiceHero title={detail.title || service.name} subheadline={detail.subheadline} category={detail.category} />
@@ -111,7 +109,7 @@ const jsonLd = faqSchema
         </div>
         <div class="divide-y divide-gray-200">
           {faqs.map((faq) => (
-            <details class="animate-on-scroll group py-6 cursor-pointer" open={false}>
+            <details class="animate-on-scroll group py-6 cursor-pointer">
               <summary class="flex items-center justify-between gap-4 list-none font-heading font-semibold text-lg text-charcoal">
                 {faq.question}
                 <svg class="h-5 w-5 flex-shrink-0 text-gold transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -120,21 +118,6 @@ const jsonLd = faqSchema
               </summary>
               <p class="mt-4 text-gray-700 leading-relaxed">{faq.answer}</p>
             </details>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-
-  {detail.internalLinks && detail.internalLinks.length > 0 && (
-    <section class="py-10 bg-light-gray border-t border-gray-200">
-      <div class="container-main px-4 max-w-3xl">
-        <p class="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-4">Related Services</p>
-        <div class="flex flex-wrap gap-3">
-          {detail.internalLinks.map((link) => (
-            <a href={link.href} class="inline-block px-4 py-2 rounded-full bg-white border border-gray-300 text-sm font-medium text-charcoal hover:border-gold hover:text-gold transition-colors duration-200">
-              {link.anchor}
-            </a>
           ))}
         </div>
       </div>

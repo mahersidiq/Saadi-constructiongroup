@@ -26,15 +26,24 @@ if (area.nearbyAreas && area.nearbyAreas.length > 0) {
   nearbyAreas = serviceAreas.filter((a) => a.slug !== slug).slice(0, 5);
 }
 
+const canonical = `https://www.saadiconstructiongroup.com/service-areas/${area.slug}`;
+
 const localBusinessSchema = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  '@type': 'GeneralContractor',
   name: 'Saadi Construction Group',
-  description: area.metaDescription || `Apartment renovation services in ${area.name}, TX.`,
-  url: `https://saadiconstructiongroup.com/service-areas/${area.slug}`,
+  description: area.metaDescription || `Custom home builder serving ${area.name}, TX.`,
+  url: canonical,
   telephone: '(832) 360-3804',
   email: 'info@saadi-construction.com',
-  address: { '@type': 'PostalAddress', streetAddress: '801 Travis St Suite 2101', addressLocality: 'Houston', addressRegion: 'TX', postalCode: '77002', addressCountry: 'US' },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '801 Travis St Suite 2101',
+    addressLocality: 'Houston',
+    addressRegion: 'TX',
+    postalCode: '77002',
+    addressCountry: 'US',
+  },
   areaServed: { '@type': 'City', name: area.name, containedInPlace: { '@type': 'State', name: 'Texas' } },
 };
 
@@ -42,9 +51,9 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://saadiconstructiongroup.com' },
-    { '@type': 'ListItem', position: 2, name: 'Service Areas', item: 'https://saadiconstructiongroup.com/service-areas' },
-    { '@type': 'ListItem', position: 3, name: area.name, item: `https://saadiconstructiongroup.com/service-areas/${area.slug}` },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.saadiconstructiongroup.com' },
+    { '@type': 'ListItem', position: 2, name: 'Service Areas', item: 'https://www.saadiconstructiongroup.com/service-areas' },
+    { '@type': 'ListItem', position: 3, name: area.name, item: canonical },
   ],
 };
 
@@ -52,16 +61,16 @@ const jsonLd = [localBusinessSchema, breadcrumbSchema];
 ---
 
 <Layout
-  title={area.metaTitle || `Apartment Renovation in ${area.name}, TX | Saadi Construction Group`}
-  description={area.metaDescription || `Professional apartment renovation services in ${area.name}, Texas. Unit rehabs, kitchen and bathroom remodels, and property-wide renovations.`}
-  keywords={`apartment renovation ${area.name}, multifamily renovation ${area.name} TX, apartment rehab ${area.name}`}
-  canonicalUrl={`https://saadiconstructiongroup.com/service-areas/${area.slug}`}
+  title={area.metaTitle || `Custom Home Builder ${area.name} TX | Saadi Construction Group`}
+  description={area.metaDescription || `Custom home builder serving ${area.name}, Texas. Plans, engineering, permits, and full custom home construction under one contract.`}
+  keywords={`custom home builder ${area.name}, ${area.name} TX home construction, design-build ${area.name}`}
+  canonicalUrl={canonical}
   jsonLd={jsonLd}
 >
-  <AreaHero name={area.name} county={area.county} headline={`Apartment Renovation in ${area.name}`} />
+  <AreaHero name={area.name} county={area.county} headline={`Custom Home Builder in ${area.name} TX`} />
   {area.localContent && (
     <section class="bg-white py-12">
-      <div class="container-main px-4">
+      <div class="container-main px-4 max-w-3xl">
         <p class="text-lg text-gray-700 leading-relaxed">{area.localContent}</p>
       </div>
     </section>
