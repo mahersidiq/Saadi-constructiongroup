@@ -1,31 +1,31 @@
 ---
 export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import crewImage from '@/assets/images/saadi-construction-crew-houston-1.jpg';
-import framingImage from '@/assets/images/saadi-multifamily-framing-houston-1.jpg';
 
 const values = [
-  { title: 'Transparency', description: 'We provide clear, detailed scopes, honest timelines, and open-book communication from bid to punch list. You always know where your project stands.' },
-  { title: 'Competence', description: 'Our team brings institutional-grade construction experience to every engagement — proper planning, disciplined scheduling, and quality execution across every trade.' },
-  { title: 'Adaptability', description: 'Every property is different. We tailor our approach to your asset, your residents, and your investment goals — whether it is a 20-unit rehab or a 300-unit repositioning.' },
+  {
+    title: 'Transparency',
+    description: 'Detailed scopes, fixed-price contracts, and weekly project updates. You always know exactly where your project stands and what it will cost.',
+  },
+  {
+    title: 'Accountability',
+    description: 'One contract covers everything — plans, permits, and construction. If something needs to be resolved, you call one number. There is no gap between the design team and the build team because they are the same team.',
+  },
+  {
+    title: 'Built for Houston',
+    description: "We work exclusively in the Greater Houston metro and understand its permitting processes, soil conditions, flood zone requirements, and climate demands better than out-of-market contractors.",
+  },
 ];
 
 const jsonLd = [
   {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@type': 'GeneralContractor',
     name: 'Saadi Construction Group',
-    url: 'https://saadiconstructiongroup.com',
-    logo: 'https://saadiconstructiongroup.com/og-image.jpg',
+    url: 'https://www.saadiconstructiongroup.com',
     telephone: '(832) 360-3804',
     email: 'info@saadi-construction.com',
-    description: 'Houston-based multifamily renovation firm delivering institutional-grade apartment renovation programs across 1,000+ units.',
-    founder: {
-      '@type': 'Person',
-      jobTitle: 'Owner & General Contractor',
-      description: 'Founder of Saadi Construction Group with hands-on experience across 1,000+ multifamily units in the Houston metro.',
-    },
+    description: 'Houston-based custom home builder handling plans, engineering, permits, and construction under one contract.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '801 Travis St Suite 2101',
@@ -40,61 +40,68 @@ const jsonLd = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://saadiconstructiongroup.com' },
-      { '@type': 'ListItem', position: 2, name: 'About', item: 'https://saadiconstructiongroup.com/about' },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.saadiconstructiongroup.com' },
+      { '@type': 'ListItem', position: 2, name: 'About', item: 'https://www.saadiconstructiongroup.com/about' },
     ],
   },
 ];
 ---
 
 <Layout
-  title="About Saadi Construction Group | Houston Apartment Renovation Contractor"
-  description="Houston-based multifamily renovation firm delivering institutional-grade apartment renovation programs across 1,000+ units. Licensed general contractor serving Houston and surrounding areas."
-  keywords="about Saadi Construction Group, Houston apartment renovation contractor, multifamily renovation firm Houston"
-  canonicalUrl="https://saadiconstructiongroup.com/about"
+  title="About Saadi Construction Group | Houston Custom Home Builder"
+  description="Saadi Construction Group is a Houston-based custom home builder handling plans, engineering, permits, and construction under one contract. Owner-led on every project."
+  keywords="about Saadi Construction Group, Houston custom home builder, design-build contractor Houston"
+  canonicalUrl="https://www.saadiconstructiongroup.com/about"
   jsonLd={jsonLd}
 >
   <!-- Hero -->
   <section class="relative min-h-[50vh] flex items-center bg-gradient-to-br from-navy via-[#14304d] to-charcoal overflow-hidden">
-    <Image src={crewImage} alt="Saadi Construction crew" class="absolute inset-0 w-full h-full object-cover opacity-30" widths={[640, 960, 1280, 1920]} sizes="100vw" format="webp" quality={75} loading="eager" decoding="async" />
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.08),transparent_60%)]"></div>
     <div class="relative z-10 container-main px-4 py-20 md:py-28 text-center">
       <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
-        Multifamily Expertise. Owner Accountability.
+        One-Stop Custom Home Builder. Owner on Every Project.
       </h1>
       <p class="animate-fade-in-up-delay mt-6 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-        A Houston-based renovation firm built for apartment owners and operators who demand results.
+        A Houston-based general contracting firm that handles everything — from blank lot to move-in ready.
       </p>
     </div>
   </section>
 
-  <!-- Who We Are + Owner -->
+  <!-- Who We Are -->
   <section class="section-padding bg-white">
-    <div class="container-main px-4">
-      <div class="animate-on-scroll grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <Image src={framingImage} alt="Saadi Construction multifamily framing Houston" class="w-full h-auto rounded-2xl object-cover" widths={[480, 640, 960]} sizes="(max-width: 768px) 100vw, 50vw" format="webp" quality={80} loading="lazy" decoding="async" />
-        </div>
-        <div>
-          <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-4">Owner &amp; General Contractor</h2>
-          <p class="text-lg text-gray-700 leading-relaxed mb-6">
-            I founded Saadi Construction Group to bring institutional-grade construction management to apartment owners who deserve better execution. With hands-on experience across 1,000+ multifamily units in the Houston metro — from ground-up garden-style communities to full gut rehab programs — I built this company around one principle: the owner is on every project, from bid to punchlist.
-          </p>
-          <p class="text-lg text-gray-700 leading-relaxed">
-            Saadi is focused exclusively on apartment communities. We partner with property owners, operators, and investment groups to deliver renovation programs that protect asset value, accelerate rent premiums, and drive returns — with no handoffs and no surprises.
-          </p>
-        </div>
+    <div class="container-main px-4 max-w-4xl">
+      <div class="animate-on-scroll">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-6">Who We Are</h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          Saadi Construction Group is a licensed Houston general contracting firm built around a simple idea: homeowners should not have to manage an architect, a structural engineer, a permit runner, and a general contractor separately. We handle all of it. Architectural plans, structural engineering, city permitting, and full construction are managed under one contract by one accountable team — with the owner on every project from the first call to the final walkthrough.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- Multifamily-Only Focus -->
-  <section class="section-padding bg-white">
+  <!-- What Makes Us Different -->
+  <section class="section-padding bg-light-gray">
     <div class="container-main px-4 max-w-4xl">
       <div class="animate-on-scroll">
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-6">Multifamily-Only Focus</h2>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-6">What Makes Us Different</h2>
         <p class="text-lg text-gray-700 leading-relaxed">
-          We do not renovate single-family homes, offices, or retail spaces. Every dollar we invest in systems, training, and trade relationships is directed at one thing: making apartment renovations run better. That singular focus means tighter scopes, faster turns, and fewer surprises on your project.
+          Most general contractors build to a set of plans someone else produced. We produce the plans. Our process starts with your vision, moves through design and engineering we coordinate directly, runs through city permit submission we manage, and ends with a finished home built by our licensed team and Houston subcontractor network. You never chase a separate vendor or wonder where your project stands.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Approach -->
+  <section class="section-padding bg-white">
+    <div class="container-main px-4 max-w-5xl">
+      <h2 class="animate-on-scroll font-heading text-3xl md:text-4xl font-bold text-charcoal mb-12 text-center">Our Approach</h2>
+      <div class="grid gap-8 md:grid-cols-3">
+        {values.map((value) => (
+          <div class="animate-on-scroll rounded-xl bg-light-gray p-8 border border-gray-200">
+            <h3 class="font-heading text-xl font-bold text-navy mb-3">{value.title}</h3>
+            <p class="text-gray-700 leading-relaxed">{value.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -105,23 +112,8 @@ const jsonLd = [
       <div class="animate-on-scroll">
         <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-6">Service Area</h2>
         <p class="text-lg text-gray-700 leading-relaxed">
-          We serve the Greater Houston metropolitan area including Katy, Sugar Land, Pearland, Pasadena, The Woodlands, Spring, Cypress, League City, Missouri City, Conroe, Baytown, Richmond, Friendswood, and Humble. If your property is within the Houston metro, we can get a team on site.
+          We serve the Greater Houston metropolitan area including Katy, Sugar Land, Pearland, Pasadena, The Woodlands, Spring, Cypress, League City, Missouri City, Conroe, Baytown, Richmond, Friendswood, and Humble across Harris, Fort Bend, Montgomery, Brazoria, and Galveston Counties.
         </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Values -->
-  <section class="section-padding bg-white">
-    <div class="container-main px-4 max-w-4xl">
-      <h2 class="animate-on-scroll font-heading text-3xl md:text-4xl font-bold text-charcoal mb-12 text-center">Our Values</h2>
-      <div class="grid gap-8 md:grid-cols-3">
-        {values.map((value) => (
-          <div class="animate-on-scroll rounded-xl bg-light-gray p-8 border border-gray-200">
-            <h3 class="font-heading text-xl font-bold text-navy mb-3">{value.title}</h3>
-            <p class="text-gray-700 leading-relaxed">{value.description}</p>
-          </div>
-        ))}
       </div>
     </div>
   </section>
