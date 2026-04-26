@@ -48,13 +48,14 @@ const description = 'Browse our portfolio of luxury custom homes built across Ho
     <div class="container-main">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
         {projects.map((project) => (
-          <div class="group rounded-2xl overflow-hidden border border-gray-200 hover:border-gold hover:shadow-xl transition-all duration-300">
+          <div class="group rounded-2xl overflow-hidden border border-gray-200 hover:border-gold hover:shadow-xl transition-all duration-300" data-project-card>
             <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
               <img
                 src={project.coverImage}
                 alt={project.coverAlt}
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
+                data-cover
               />
               <span class="absolute top-4 left-4 px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full bg-navy/80 text-gold border border-gold/30 backdrop-blur-sm">
                 {project.style}
@@ -77,22 +78,51 @@ const description = 'Browse our portfolio of luxury custom homes built across Ho
                 ))}
               </div>
 
-              <div class="mt-4 grid grid-cols-4 gap-1.5">
-                {project.images.slice(0, 4).map((img) => (
-                  <div class="aspect-square rounded overflow-hidden bg-gray-100">
+              <div class={`mt-4 grid gap-1.5 ${project.images.length >= 5 ? 'grid-cols-5' : 'grid-cols-4'}`}>
+                {project.images.map((img, i) => (
+                  <button
+                    type="button"
+                    class={`aspect-square rounded overflow-hidden bg-gray-100 cursor-pointer transition-all ring-offset-1 ${i === 0 ? 'ring-2 ring-gold' : 'ring-0 ring-transparent hover:ring-2 hover:ring-gold/40'}`}
+                    data-thumb
+                    data-src={img.src}
+                    data-alt={img.alt}
+                    aria-label={`Show ${img.alt}`}
+                  >
                     <img
                       src={img.src}
                       alt={img.alt}
-                      class="w-full h-full object-cover hover:opacity-80 transition-opacity cursor-pointer"
+                      class="w-full h-full object-cover hover:opacity-80 transition-opacity"
                       loading="lazy"
                     />
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
           </div>
         ))}
       </div>
+
+      <script>
+        document.querySelectorAll('[data-project-card]').forEach((card) => {
+          const cover = card.querySelector('[data-cover]') as HTMLImageElement | null;
+          const thumbs = card.querySelectorAll<HTMLButtonElement>('[data-thumb]');
+          if (!cover) return;
+          thumbs.forEach((thumb) => {
+            thumb.addEventListener('click', () => {
+              const src = thumb.dataset.src;
+              const alt = thumb.dataset.alt;
+              if (src) cover.src = src;
+              if (alt) cover.alt = alt;
+              thumbs.forEach((t) => {
+                t.classList.remove('ring-2', 'ring-gold');
+                t.classList.add('ring-0', 'ring-transparent', 'hover:ring-2', 'hover:ring-gold/40');
+              });
+              thumb.classList.remove('ring-0', 'ring-transparent', 'hover:ring-2', 'hover:ring-gold/40');
+              thumb.classList.add('ring-2', 'ring-gold');
+            });
+          });
+        });
+      </script>
     </div>
   </section>
 
