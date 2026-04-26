@@ -27,7 +27,7 @@ const icons: Record<string, string> = {
           class="animate-on-scroll group flex flex-col rounded-2xl border border-gray-200 p-7 hover:border-gold hover:shadow-lg transition-all duration-200"
         >
           <span class="inline-block self-start mb-4 px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full bg-gold/10 text-gold border border-gold/20">
-            {service.category}
+            {service.slug === 'construction-management' ? 'Management' : service.category}
           </span>
           <svg class="w-6 h-6 text-gold mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" set:html={icons[service.slug]} />
           <h3 class="font-heading text-lg font-bold text-charcoal group-hover:text-navy transition-colors mb-3">
