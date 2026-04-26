@@ -1,94 +1,113 @@
 ---
 export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
-import ProjectsFilter from '@/islands/ProjectsFilter.jsx';
+import { projects } from '@/data/projects';
 
-const projects = [
-  {
-    slug: 'custom-home-katy-1',
-    title: 'Custom Home Build',
-    location: 'Katy, TX',
-    size: '3,200 sq ft',
-    scope_type: 'Custom Home',
-    description: 'Ground-up custom home on a one-acre lot. Full design-build scope including architectural plans, structural engineering, Fort Bend County permits, and complete construction.',
-  },
-  {
-    slug: 'design-build-sugar-land-1',
-    title: 'Design-Build Custom Home',
-    location: 'Sugar Land, TX',
-    size: '4,100 sq ft',
-    scope_type: 'Design-Build',
-    description: 'Full design-build engagement — architectural plans, structural engineering, city permits, and high-specification construction delivered under one fixed-price contract.',
-  },
-  {
-    slug: 'home-addition-the-woodlands-1',
-    title: 'Two-Story Home Addition',
-    location: 'The Woodlands, TX',
-    size: '900 sq ft',
-    scope_type: 'Addition',
-    description: 'Second-story addition over an existing single-story home. Structural engineering for tie-in to existing foundation and framing, Montgomery County permits, and full construction.',
-  },
-  {
-    slug: 'luxury-home-missouri-city-1',
-    title: 'Luxury Custom Home',
-    location: 'Missouri City, TX',
-    size: '5,400 sq ft',
-    scope_type: 'Luxury',
-    description: 'High-specification luxury home with custom millwork, designer finishes, and engineered foundation for Fort Bend soil conditions. Full plan-to-finish under one contract.',
-  },
-  {
-    slug: 'new-home-cypress-1',
-    title: 'New Home Construction',
-    location: 'Cypress, TX',
-    size: '2,800 sq ft',
-    scope_type: 'New Construction',
-    description: 'Ground-up new home build on a Harris County lot. Site evaluation, plans, permits, foundation, framing, MEP, and finishes managed under one contract.',
-  },
-  {
-    slug: 'plans-permits-pearland-1',
-    title: 'Plans, Permits & Engineering',
-    location: 'Pearland, TX',
-    size: '2,400 sq ft',
-    scope_type: 'Plans & Permits',
-    description: 'Standalone plans, permits, and engineering engagement. Architectural drawings, structural engineering, soil report review, and Brazoria County permit submission.',
-  },
-];
+const title = 'Custom Home Portfolio | Saadi Construction Group Houston';
+const description = 'Browse our portfolio of luxury custom homes built across Houston, Katy, Sugar Land, The Woodlands, and surrounding areas. Every home designed and built under one contract.';
 ---
 
 <Layout
-  title="Custom Home Projects | Saadi Construction Group | Houston, TX"
-  description="Recent custom home builds, additions, and design-build projects from Saadi Construction Group across the Greater Houston metro."
+  title={title}
+  description={description}
   keywords="custom home projects Houston, custom home builder portfolio Houston TX, design-build projects Houston"
   canonicalUrl="https://www.saadiconstructiongroup.com/projects"
 >
-  <!-- Hero -->
-  <section class="relative min-h-[50vh] flex items-center bg-gradient-to-br from-navy via-[#14304d] to-charcoal overflow-hidden">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.08),transparent_60%)]"></div>
-    <div class="relative z-10 container-main px-4 py-20 md:py-28 text-center">
-      <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
-        Custom Home Projects — Houston and Surrounding Areas
+  <!-- Page Header -->
+  <section class="bg-navy pt-32 pb-16 px-4">
+    <div class="container-main text-center">
+      <h1 class="font-heading text-4xl md:text-5xl font-bold text-white">
+        Our Work
       </h1>
-      <p class="animate-fade-in-up-delay mt-6 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-        A look at the kinds of custom homes, additions, and design-build projects we deliver across the Greater Houston metro.
+      <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
+        Every home is built under one contract — plans, permits, engineering, and full construction. Here's what that looks like.
       </p>
     </div>
   </section>
 
-  <!-- Filter + Grid -->
-  <section class="section-padding bg-white">
+  <!-- Stats Bar -->
+  <div class="bg-charcoal border-b border-white/10 px-4 py-4">
+    <div class="container-main flex flex-wrap items-center justify-center gap-x-10 gap-y-2 text-sm text-gray-300">
+      <span class="flex items-center gap-2">
+        <svg class="w-4 h-4 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        8 Completed Projects Shown
+      </span>
+      <span class="flex items-center gap-2">
+        <svg class="w-4 h-4 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Greater Houston Area
+      </span>
+      <span class="flex items-center gap-2">
+        <svg class="w-4 h-4 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Design-Build | One Contract
+      </span>
+    </div>
+  </div>
+
+  <!-- Projects Grid -->
+  <section class="section-padding bg-white px-4">
     <div class="container-main">
-      <ProjectsFilter client:load projects={projects} />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        {projects.map((project) => (
+          <div class="group rounded-2xl overflow-hidden border border-gray-200 hover:border-gold hover:shadow-xl transition-all duration-300">
+            <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+              <img
+                src={project.coverImage}
+                alt={project.coverAlt}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <span class="absolute top-4 left-4 px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full bg-navy/80 text-gold border border-gold/30 backdrop-blur-sm">
+                {project.style}
+              </span>
+            </div>
+
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h2 class="font-heading text-xl font-bold text-charcoal">{project.title}</h2>
+                  <p class="text-sm text-gray-500 mt-1">{project.location} · {project.sqft}</p>
+                </div>
+              </div>
+
+              <div class="mt-3 flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span class="px-2 py-0.5 text-xs font-medium rounded bg-gold/10 text-gold border border-gold/20">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div class="mt-4 grid grid-cols-4 gap-1.5">
+                {project.images.slice(0, 4).map((img) => (
+                  <div class="aspect-square rounded overflow-hidden bg-gray-100">
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      class="w-full h-full object-cover hover:opacity-80 transition-opacity cursor-pointer"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="relative bg-navy overflow-hidden">
     <div class="absolute top-0 left-0 right-0 h-1 bg-gold"></div>
-    <div class="section-padding">
+    <div class="section-padding px-4">
       <div class="container-main text-center">
-        <h2 class="animate-on-scroll font-heading text-3xl md:text-4xl font-bold text-white">Planning a Similar Build?</h2>
-        <p class="animate-on-scroll mt-4 text-lg text-gray-300 max-w-xl mx-auto">Tell us about your lot or project and we'll provide a detailed fixed-price quote within 5 business days.</p>
-        <div class="animate-on-scroll mt-8">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">
+          Ready to Start Your Custom Home?
+        </h2>
+        <p class="mt-4 text-lg text-gray-300 max-w-xl mx-auto">
+          Plans, permits, engineering, and construction — all under one contract. Detailed quote within 5 business days.
+        </p>
+        <div class="mt-8">
           <a href="/contact" class="btn-primary text-lg px-8 py-4">Request a Quote</a>
         </div>
       </div>

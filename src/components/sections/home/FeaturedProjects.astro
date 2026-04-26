@@ -1,0 +1,51 @@
+---
+import { projects } from '@/data/projects';
+
+const featuredProjects = [projects[7], projects[2], projects[1]];
+---
+
+<section class="section-padding bg-white">
+  <div class="container-main px-4">
+    <div class="flex items-end justify-between mb-10">
+      <div>
+        <h2 class="animate-on-scroll font-heading text-3xl md:text-4xl font-bold text-charcoal">
+          Featured Projects
+        </h2>
+        <p class="animate-on-scroll mt-2 text-gray-600 max-w-xl">
+          Every home designed and built under one contract — plans through construction.
+        </p>
+      </div>
+      <a href="/projects" class="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-gold hover:underline flex-shrink-0">
+        View All Projects →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {featuredProjects.map((project) => (
+        <a href="/projects" class="animate-on-scroll group rounded-2xl overflow-hidden border border-gray-200 hover:border-gold hover:shadow-xl transition-all duration-300 block">
+          <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+            <img
+              src={project.coverImage}
+              alt={project.coverAlt}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+            <span class="absolute top-3 left-3 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide rounded-full bg-navy/80 text-gold border border-gold/30 backdrop-blur-sm">
+              {project.style}
+            </span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-heading text-lg font-bold text-charcoal group-hover:text-navy transition-colors">
+              {project.title}
+            </h3>
+            <p class="text-sm text-gray-500 mt-1">{project.location} · {project.sqft}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-8 text-center md:hidden">
+      <a href="/projects" class="btn-outline px-6 py-3">View All Projects</a>
+    </div>
+  </div>
+</section>
