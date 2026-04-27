@@ -100,7 +100,7 @@ export default function ContactForm() {
         </div>
         <div>
           <label htmlFor="phone" className={labelClasses}>Phone Number <span className="text-red-500">*</span></label>
-          <input id="phone" name="phone" type="tel" required value={form.phone} onChange={handleChange} placeholder="(832) 360-3804" className={`${inputClasses} ${errors.phone ? 'border-red-400 focus:border-red-400 focus:ring-red-400' : ''}`} />
+          <input id="phone" name="phone" type="tel" required value={form.phone} onChange={handleChange} placeholder="(832) 205-8178" className={`${inputClasses} ${errors.phone ? 'border-red-400 focus:border-red-400 focus:ring-red-400' : ''}`} />
           {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
         </div>
         <div>
