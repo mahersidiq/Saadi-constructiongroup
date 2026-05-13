@@ -69,3 +69,70 @@
 ::-webkit-scrollbar-track { background: var(--ivory); }
 ::-webkit-scrollbar-thumb { background: rgba(184,138,74,.65); }
 ::selection { background: rgba(184,138,74,.24); }
+
+@layer components {
+  .saadi-logo-crop {
+    position: relative;
+    display: block;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: transparent;
+    isolation: isolate;
+  }
+
+  .saadi-logo-crop img {
+    position: absolute;
+    height: auto;
+    max-width: none;
+    mix-blend-mode: screen;
+  }
+
+  .saadi-logo-crop--header {
+    width: 150px;
+    height: 38px;
+  }
+
+  .saadi-logo-crop--header img {
+    width: 199px;
+    left: -25px;
+    top: -103px;
+  }
+
+  @media (min-width: 640px) {
+    .saadi-logo-crop--header {
+      width: 170px;
+      height: 43px;
+    }
+
+    .saadi-logo-crop--header img {
+      width: 225px;
+      left: -28px;
+      top: -117px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .saadi-logo-crop--header {
+      width: 190px;
+      height: 48px;
+    }
+
+    .saadi-logo-crop--header img {
+      width: 252px;
+      left: -31px;
+      top: -131px;
+    }
+  }
+
+  .saadi-logo-crop--footer {
+    width: 224px;
+    height: 148px;
+    max-width: 100%;
+  }
+
+  .saadi-logo-crop--footer img {
+    width: 297px;
+    left: -37px;
+    top: -62px;
+  }
+}

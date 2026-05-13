@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 208 277" role="img" aria-labelledby="title desc">
+  <title id="title">Saadi Construction Group Emblem</title>
+  <desc id="desc">Gold interlocking Saadi Construction Group emblem.</desc>
+  <defs>
+    <linearGradient id="saadiGold" x1="34" y1="28" x2="174" y2="249" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f9d58d"/>
+      <stop offset="0.38" stop-color="#f0b95f"/>
+      <stop offset="0.66" stop-color="#b98232"/>
+      <stop offset="1" stop-color="#f6c777"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#saadiGold)" stroke-width="10" stroke-linecap="butt" stroke-linejoin="round">
+    <path d="M144 79V58c0-32-20-50-51-50S42 30 42 62c0 24 12 40 38 54l58 31c27 14 42 34 42 60 0 36-28 62-70 62-44 0-72-27-72-67v-22"/>
+    <path d="M42 72C19 78 7 98 7 124c0 29 17 48 51 66l77 41c17 9 34 12 51 6"/>
+    <path d="M144 76l34 18c16 8 23 20 23 37v37"/>
+    <path d="M38 180v35c0 16 8 27 23 35l44 22"/>
+    <path d="M56 71c12-13 32-19 56-14 12 2 23 7 32 12"/>
+    <path d="M38 98c0 23 13 39 42 54l54 28c27 14 42 35 42 64"/>
+  </g>
+</svg>
