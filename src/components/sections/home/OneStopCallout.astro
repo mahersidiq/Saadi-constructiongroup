@@ -1,65 +1,14 @@
----
-const items = [
-  {
-    label: 'Plans & Design',
-    text: 'Architectural drawings coordinated and delivered — no separate architect to hire or manage.',
-  },
-  {
-    label: 'Engineering & Permits',
-    text: 'Structural engineering and permit submission handled in-house. We run the process.',
-  },
-  {
-    label: 'Full Construction',
-    text: 'Ground-up build executed by our licensed team and vetted Houston subcontractor network.',
-  },
-];
----
-
-<section class="relative grain overflow-hidden" style="background:#050505;">
-  <!-- Diagonal top -->
-  <div class="pointer-events-none" style="height:60px; overflow:hidden; margin-bottom:-1px;">
-    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="0,0 1440,60 1440,0" fill="#111111"/>
-    </svg>
-  </div>
-
-  <div class="container-main px-6 pb-28 pt-12">
-
-    <!-- Section header -->
-    <div class="max-w-3xl mx-auto text-center mb-16">
-      <div class="animate-on-scroll mb-4">
-        <span class="font-body font-semibold uppercase" style="font-size:9px; letter-spacing:0.25em; color:#C89B5A;">The Saadi Difference</span>
+<section class="bg-[#142232] text-[#fff8ed]">
+  <div class="container-main section-padding">
+    <div class="grid gap-12 lg:grid-cols-[1.15fr_.85fr] lg:items-center">
+      <div class="image-zoom animate-on-scroll aspect-[4/3] lg:aspect-[5/4]">
+        <img src="/images/p2-exterior-aerial.png" alt="Luxury home living room opening to the outdoor pool terrace" class="h-full w-full object-cover" loading="lazy" />
       </div>
-      <h2 class="animate-on-scroll font-display uppercase" style="font-size:clamp(2.6rem,5vw,4.5rem); color:#F5F5F5; line-height:1.05;">
-        One Contract.<br/>
-        <span style="color:#C89B5A;">Everything Included.</span>
-      </h2>
-      <div class="mx-auto my-6" style="width:40px; height:1px; background:#C89B5A; opacity:0.7;"></div>
-      <p class="animate-on-scroll font-body font-light leading-relaxed" style="color:#B8B8B8; font-size:0.9rem; max-width:600px; margin:0 auto;">
-        Most contractors hand you a blueprint and tell you to figure out permits yourself. We don't. Saadi Construction Group manages your architectural plans, structural engineering, city permits, and full construction under a single contract — so you deal with one phone number, one schedule, and one point of accountability from start to finish.
-      </p>
+      <div class="animate-on-scroll">
+        <p class="eyebrow">From plans to handoff</p>
+        <h2 class="display-heading mt-4 text-4xl text-[#fff8ed] md:text-6xl">Built around your vision, governed by real construction discipline.</h2>
+        <p class="mt-7 leading-8 text-[#fff8ed]/78">Most custom-home stress starts when design intent, permit requirements, and field execution are separated. Saadi keeps those responsibilities connected—plans, engineering, permits, scope, construction, and final walkthrough under one contract.</p>
+      </div>
     </div>
-
-    <!-- Cards -->
-    <div class="grid md:grid-cols-3 gap-5">
-      {items.map((item, i) => (
-        <div class="animate-on-scroll luxe-card p-8 md:p-10 group" style={`transition-delay:${i * 0.12}s;`}>
-          <div class="mb-5" style="width:24px; height:1px; background:#C89B5A; opacity:0.6;"></div>
-          <h3 class="font-body font-bold mb-4" style="font-size:1.25rem; color:#C89B5A; letter-spacing:0.02em;">
-            {item.label}
-          </h3>
-          <p class="font-body font-light leading-relaxed" style="color:#B8B8B8; font-size:0.85rem;">
-            {item.text}
-          </p>
-        </div>
-      ))}
-    </div>
-  </div>
-
-  <!-- Diagonal bottom -->
-  <div class="pointer-events-none" style="height:60px; overflow:hidden; margin-top:-1px;">
-    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="0,60 1440,0 1440,60" fill="#111111"/>
-    </svg>
   </div>
 </section>

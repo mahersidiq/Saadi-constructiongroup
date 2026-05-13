@@ -1,25 +1,11 @@
 ---
 const { title, subheadline, category } = Astro.props;
+const heroImage = title?.includes('Luxury') ? '/images/p2-interior-bath.png' : '/images/p1-interior-bath.png';
 ---
-
-<section class="relative min-h-[60vh] flex items-center bg-gradient-to-br from-navy via-[#14304d] to-charcoal overflow-hidden">
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.1),transparent_60%)]"></div>
-  <div class="relative z-10 container-main px-4 py-20 md:py-28">
-    {category && (
-      <span class="animate-fade-in-up inline-block mb-4 px-4 py-1.5 text-sm font-semibold tracking-wide uppercase rounded-full bg-gold/15 text-gold border border-gold/30">
-        {category}
-      </span>
-    )}
-    <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight max-w-3xl">
-      {title}
-    </h1>
-    {subheadline && (
-      <p class="animate-fade-in-up-delay mt-6 text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
-        {subheadline}
-      </p>
-    )}
-    <div class="animate-fade-in-up-delay-2 mt-10">
-      <a href="/contact" class="btn-primary inline-block text-lg px-8 py-4">Request a Quote</a>
-    </div>
+<section class="relative min-h-[68vh] overflow-hidden bg-[#142232] text-[#fff8ed]">
+  <img src={heroImage} alt="Houston luxury custom home exterior at dusk" class="absolute inset-0 h-full w-full object-cover" />
+  <div class="absolute inset-0 bg-gradient-to-r from-[#111d2a]/88 via-[#111d2a]/56 to-transparent"></div>
+  <div class="relative container-main flex min-h-[68vh] items-end pb-16 pt-36">
+    <div class="max-w-4xl"><p class="eyebrow">{category || 'Custom Home Service'}</p><h1 class="display-heading mt-4 text-5xl text-[#fff8ed] md:text-7xl">{title}</h1>{subheadline && <p class="mt-6 max-w-2xl text-lg leading-8 text-[#fff8ed]/80">{subheadline}</p>}</div>
   </div>
 </section>

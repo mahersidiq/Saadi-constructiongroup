@@ -1,25 +1,4 @@
 ---
 const { relatedServices = [] } = Astro.props;
-if (!relatedServices || relatedServices.length === 0) return;
 ---
-
-<section class="py-16 md:py-24 bg-white">
-  <div class="container-main px-4">
-    <h2 class="animate-on-scroll font-heading text-3xl md:text-4xl font-bold text-charcoal mb-10 text-center">
-      Related Services
-    </h2>
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
-      {relatedServices.slice(0, 3).map((service) => (
-        <div class="animate-on-scroll">
-          <a href={`/services/${service.slug}`} class="block h-full rounded-xl bg-light-gray p-6 md:p-8 border border-gray-200 hover:border-gold/50 hover:shadow-lg transition-all duration-300 group">
-            <h3 class="font-heading text-xl font-bold text-charcoal group-hover:text-navy transition-colors">{service.name || service.title}</h3>
-            <span class="inline-flex items-center mt-4 text-sm font-semibold text-gold group-hover:gap-2 transition-all">
-              Learn More
-              <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-            </span>
-          </a>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+{relatedServices.length > 0 && <section class="bg-[#fbf6ed] py-20"><div class="container-main"><p class="eyebrow text-center">Related Services</p><div class="mt-8 grid gap-4 md:grid-cols-3">{relatedServices.map((service) => <a href={`/services/${service.slug}`} class="border border-[rgba(71,57,40,.14)] bg-white/70 p-7 hover:bg-[#142232] group"><h2 class="font-heading text-3xl text-[#17202a] group-hover:text-[#fff8ed]">{service.name}</h2><span class="mt-5 inline-flex text-[11px] font-semibold uppercase tracking-[0.18em] text-[#b88a4a]">Learn more →</span></a>)}</div></div></section>}
