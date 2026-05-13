@@ -48,11 +48,9 @@ export default function Navbar({ pathname = '/' }) {
         <div className="container-main">
           <div className="flex h-24 md:h-28 items-center justify-between gap-5">
             <a href="/" className="flex min-w-0 items-center" aria-label="Saadi Construction Group home">
-              <img
-                src="/images/saadi-logo-horizontal.svg"
-                alt="Saadi Construction Group"
-                className="h-auto w-[150px] shrink-0 object-contain sm:w-[170px] md:w-[190px]"
-              />
+              <span className="saadi-logo-crop saadi-logo-crop--header">
+                <img src="/images/logo.png" alt="Saadi Construction Group" />
+              </span>
             </a>
 
             <nav className="hidden lg:flex items-center gap-8" aria-label="Primary navigation">
