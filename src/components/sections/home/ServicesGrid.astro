@@ -2,38 +2,46 @@
 import { allServices } from '@/data/services';
 ---
 
-<section class="bg-cream-dark py-24 md:py-36 px-6">
-  <div class="container-main">
+<section class="grain relative" style="background:#111111; padding:6rem 0 7rem;">
+  <div class="container-main px-6">
 
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
-      <h2 class="animate-on-scroll font-heading font-light text-warm-black leading-tight" style="font-size: clamp(2.5rem, 5vw, 4.5rem);">
-        What We Build
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+      <h2 class="animate-on-scroll font-heading font-light" style="font-size:clamp(2.4rem,4.5vw,4rem); color:#F5F5F5; line-height:1.1;">
+        Custom Home Builder Services
       </h2>
-      <p class="animate-on-scroll font-body text-sm text-warm-mid font-light max-w-sm leading-relaxed">
-        Every service includes plan coordination, permitting, and construction under one contract.
+      <p class="animate-on-scroll font-body font-light" style="color:#B8B8B8; font-size:0.85rem; max-width:280px; line-height:1.7;">
+        Every service includes plan coordination, permitting, and construction — handled by one team.
       </p>
     </div>
 
-    <!-- Service list — editorial, not cards -->
-    <div class="border-t border-stone">
-      {allServices.map((service) => (
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {allServices.map((service, i) => (
         <a
           href={`/services/${service.slug}`}
-          class="animate-on-scroll group flex items-center justify-between py-7 border-b border-stone hover:border-gold/40 transition-colors duration-300"
+          class="animate-on-scroll luxe-card group flex flex-col p-8 relative overflow-hidden"
+          style={`transition-delay:${(i % 3) * 0.08}s;`}
         >
-          <div class="flex items-baseline gap-6 md:gap-10">
-            <span class="font-body text-xs text-warm-light font-light tracking-[0.15em] uppercase hidden md:block w-24 flex-shrink-0">
-              {service.slug === 'construction-management' ? 'Management' : service.category}
-            </span>
-            <h3 class="font-heading text-xl md:text-2xl font-light text-warm-dark group-hover:text-warm-black transition-colors duration-300" style="letter-spacing: 0.01em;">
-              {service.name}
-            </h3>
-          </div>
-          <div class="flex items-center gap-3 text-warm-light group-hover:text-gold transition-colors duration-300 flex-shrink-0">
-            <span class="font-body text-xs tracking-[0.15em] uppercase hidden sm:block">Explore</span>
-            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+          <!-- Top gold accent line — reveals on hover -->
+          <div class="absolute top-0 left-0 right-0 h-px transition-all duration-500"
+            style="background: linear-gradient(90deg, transparent, rgba(200,155,90,0.6), transparent); opacity:0;"
+            data-hover-show></div>
+
+          <span class="font-body uppercase mb-5 inline-block" style="font-size:9px; letter-spacing:0.22em; color:rgba(200,155,90,0.5);">
+            {service.slug === 'construction-management' ? 'Management' : service.category}
+          </span>
+
+          <h3 class="font-heading font-light mb-4 leading-snug transition-colors duration-300 group-hover:text-[#C89B5A]"
+            style="font-size:1.4rem; color:#F5F5F5; letter-spacing:0.01em;">
+            {service.name}
+          </h3>
+
+          <p class="font-body font-light leading-relaxed flex-1" style="font-size:0.82rem; color:#666666; line-height:1.75;">
+            {service.description}
+          </p>
+
+          <div class="flex items-center gap-2 mt-6 transition-all duration-300 group-hover:gap-3" style="color:rgba(200,155,90,0.4);">
+            <div style="width:20px; height:1px; background:currentColor; transition:width 0.3s;"></div>
+            <span class="font-body uppercase" style="font-size:9px; letter-spacing:0.18em;">Learn more</span>
           </div>
         </a>
       ))}

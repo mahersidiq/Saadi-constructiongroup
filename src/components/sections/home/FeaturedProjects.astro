@@ -1,72 +1,70 @@
 ---
 import { projects } from '@/data/projects';
-const featuredProjects = [projects[7], projects[2], projects[1]];
+const featured = [projects[7], projects[2], projects[1]];
 ---
 
-<section class="bg-warm-black py-24 md:py-36 px-6">
-  <div class="container-main">
+<section class="grain relative" style="background:#0A0A0A; padding:7rem 0;">
+  <div class="gold-divider"></div>
+  <div class="container-main px-6 pt-16">
 
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
-      <h2 class="animate-on-scroll font-heading font-light text-white leading-tight" style="font-size: clamp(2.5rem, 5vw, 4.5rem);">
+      <h2 class="animate-on-scroll font-heading font-light" style="font-size:clamp(2.4rem,4.5vw,4rem); color:#F5F5F5; line-height:1.1;">
         Featured Projects
       </h2>
-      <a href="/projects" class="animate-on-scroll group inline-flex items-center gap-3 font-body text-xs tracking-[0.15em] uppercase text-white/40 hover:text-gold transition-colors duration-300">
-        View All Work
+      <p class="animate-on-scroll font-body font-light" style="color:#B8B8B8; font-size:0.85rem; max-width:300px; line-height:1.7;">
+        Every home designed and built under one contract — plans through construction.
+      </p>
+      <a href="/projects" class="hidden md:flex items-center gap-3 font-body uppercase group transition-colors duration-300"
+        style="font-size:10px; letter-spacing:0.18em; color:rgba(200,155,90,0.5);" onmouseover="this.style.color='#C89B5A'" onmouseout="this.style.color='rgba(200,155,90,0.5)'">
+        View All Projects
         <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
         </svg>
       </a>
     </div>
 
-    <!-- Asymmetric editorial grid -->
+    <!-- Asymmetric grid -->
     <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
 
-      <!-- Large hero project -->
-      <a href="/projects" class="animate-on-scroll md:col-span-7 group block overflow-hidden">
-        <div class="relative overflow-hidden" style="aspect-ratio: 4/3;">
-          <img
-            src={featuredProjects[0].coverImage}
-            alt={featuredProjects[0].coverAlt}
-            class="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700 ease-out"
-            loading="lazy"
-            style="transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-8">
-            <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/60 mb-2">{featuredProjects[0].style}</p>
-            <h3 class="font-heading text-2xl md:text-3xl font-light text-white">{featuredProjects[0].title}</h3>
-            <p class="font-body text-xs text-white/50 mt-1 tracking-wide">{featuredProjects[0].location} &nbsp;·&nbsp; {featuredProjects[0].sqft}</p>
-          </div>
+      <!-- Hero project — large -->
+      <a href="/projects" class="animate-on-scroll md:col-span-7 group block overflow-hidden relative">
+        <div class="overflow-hidden" style="aspect-ratio:4/3;">
+          <img src={featured[0].coverImage} alt={featured[0].coverAlt}
+            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]" loading="lazy"/>
+          <div class="absolute inset-0 transition-opacity duration-500" style="background:linear-gradient(to top, rgba(5,5,5,0.8) 0%, rgba(5,5,5,0.2) 50%, transparent 100%);"></div>
+          <!-- Gold glow on hover -->
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="box-shadow:inset 0 0 0 1px rgba(200,155,90,0.4);"></div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-8">
+          <span class="font-body uppercase" style="font-size:9px; letter-spacing:0.2em; color:#C89B5A;">{featured[0].style}</span>
+          <h3 class="font-heading font-light mt-1" style="font-size:1.6rem; color:#F5F5F5;">{featured[0].title}</h3>
+          <p class="font-body mt-1" style="font-size:11px; letter-spacing:0.06em; color:#B8B8B8;">{featured[0].location} &nbsp;·&nbsp; {featured[0].sqft}</p>
         </div>
       </a>
 
-      <!-- Two stacked smaller projects -->
+      <!-- Two stacked projects -->
       <div class="md:col-span-5 flex flex-col gap-3">
-        {featuredProjects.slice(1).map((project) => (
-          <a href="/projects" class="animate-on-scroll group block overflow-hidden flex-1">
-            <div class="relative overflow-hidden h-full" style="min-height: 220px;">
-              <img
-                src={project.coverImage}
-                alt={project.coverAlt}
-                class="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700 ease-out"
-                loading="lazy"
-                style="transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              <div class="absolute bottom-0 left-0 right-0 p-6">
-                <p class="font-body text-[9px] tracking-[0.2em] uppercase text-white/60 mb-1">{project.style}</p>
-                <h3 class="font-heading text-xl font-light text-white">{project.title}</h3>
-                <p class="font-body text-xs text-white/50 mt-1 tracking-wide">{project.location} &nbsp;·&nbsp; {project.sqft}</p>
-              </div>
+        {featured.slice(1).map((project) => (
+          <a href="/projects" class="animate-on-scroll group block overflow-hidden relative flex-1">
+            <div class="overflow-hidden h-full" style="min-height:220px;">
+              <img src={project.coverImage} alt={project.coverAlt}
+                class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]" loading="lazy"/>
+              <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(5,5,5,0.75) 0%, rgba(5,5,5,0.15) 60%, transparent 100%);"></div>
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="box-shadow:inset 0 0 0 1px rgba(200,155,90,0.4);"></div>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <span class="font-body uppercase" style="font-size:9px; letter-spacing:0.2em; color:#C89B5A;">{project.style}</span>
+              <h3 class="font-heading font-light mt-1" style="font-size:1.25rem; color:#F5F5F5;">{project.title}</h3>
+              <p class="font-body mt-0.5" style="font-size:11px; letter-spacing:0.06em; color:#B8B8B8;">{project.location} &nbsp;·&nbsp; {project.sqft}</p>
             </div>
           </a>
         ))}
       </div>
     </div>
 
-    <!-- Mobile CTA -->
-    <div class="animate-on-scroll mt-10 md:hidden text-center">
-      <a href="/projects" class="btn-outline-light">View All Projects</a>
+    <div class="mt-10 md:hidden text-center">
+      <a href="/projects" class="btn-luxe">View All Projects</a>
     </div>
   </div>
+  <div class="gold-divider mt-16"></div>
 </section>

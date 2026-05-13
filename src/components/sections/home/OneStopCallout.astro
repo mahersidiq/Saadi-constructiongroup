@@ -1,49 +1,62 @@
 ---
+const items = [
+  {
+    label: 'Plans & Design',
+    text: 'Architectural drawings coordinated and delivered — no separate architect to hire or manage.',
+  },
+  {
+    label: 'Engineering & Permits',
+    text: 'Structural engineering and permit submission handled in-house. We run the process.',
+  },
+  {
+    label: 'Full Construction',
+    text: 'Ground-up build executed by our licensed team and vetted Houston subcontractor network.',
+  },
+];
 ---
 
-<section class="bg-cream py-24 md:py-36 px-6">
-  <div class="container-main">
-    <div class="grid lg:grid-cols-2 gap-16 lg:gap-32 items-center">
+<section class="relative grain overflow-hidden" style="background:#050505;">
+  <!-- Diagonal top -->
+  <div class="pointer-events-none" style="height:60px; overflow:hidden; margin-bottom:-1px;">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,0 1440,60 1440,0" fill="#111111"/>
+    </svg>
+  </div>
 
-      <!-- Left: Big statement -->
-      <div>
-        <h2 class="animate-on-scroll font-heading font-light text-warm-black leading-[1.1]" style="font-size: clamp(2.8rem, 6vw, 5rem);">
-          One Contract.<br/>
-          <em class="text-gold not-italic">Everything</em><br/>
-          Included.
-        </h2>
-      </div>
+  <div class="container-main px-6 pb-28 pt-12">
 
-      <!-- Right: Editorial explanation -->
-      <div class="animate-on-scroll">
-        <div class="w-8 h-px bg-gold mb-8"></div>
-        <p class="font-body text-base text-warm-mid leading-relaxed font-light mb-8">
-          Most contractors hand you a blueprint and tell you to figure out permits yourself. We don't.
-          Saadi Construction Group manages your architectural plans, structural engineering, city permits,
-          and full construction under a single contract.
-        </p>
-        <p class="font-body text-base text-warm-mid leading-relaxed font-light mb-12">
-          One phone number. One schedule. One point of accountability — from your first call to the day you get your keys.
-        </p>
-
-        <div class="space-y-5">
-          {[
-            'Architectural plans coordinated and delivered',
-            'Structural engineering and city permit submission',
-            'Full construction by our licensed team',
-          ].map((item) => (
-            <div class="flex items-start gap-4">
-              <span class="w-5 h-px bg-gold mt-3 flex-shrink-0"></span>
-              <span class="font-body text-sm text-warm-dark font-light tracking-wide">{item}</span>
-            </div>
-          ))}
-        </div>
-
-        <div class="mt-12">
-          <a href="/contact" class="btn-primary">Schedule a Free Consultation</a>
-        </div>
-      </div>
-
+    <!-- Section header -->
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <h2 class="animate-on-scroll font-heading font-light" style="font-size:clamp(2.6rem,5vw,4.5rem); color:#F5F5F5; letter-spacing:-0.01em; line-height:1.1;">
+        One Contract.<br/>
+        <em style="color:#C89B5A;">Everything Included.</em>
+      </h2>
+      <div class="mx-auto my-6" style="width:40px; height:1px; background:#C89B5A; opacity:0.7;"></div>
+      <p class="animate-on-scroll font-body font-light leading-relaxed" style="color:#B8B8B8; font-size:0.9rem; max-width:600px; margin:0 auto;">
+        Most contractors hand you a blueprint and tell you to figure out permits yourself. We don't. Saadi Construction Group manages your architectural plans, structural engineering, city permits, and full construction under a single contract — so you deal with one phone number, one schedule, and one point of accountability from start to finish.
+      </p>
     </div>
+
+    <!-- Cards -->
+    <div class="grid md:grid-cols-3 gap-5">
+      {items.map((item, i) => (
+        <div class="animate-on-scroll luxe-card p-8 md:p-10 group" style={`transition-delay:${i * 0.12}s;`}>
+          <div class="mb-5" style="width:24px; height:1px; background:#C89B5A; opacity:0.6;"></div>
+          <h3 class="font-heading font-light mb-4" style="font-size:1.5rem; color:#C89B5A; letter-spacing:0.02em;">
+            {item.label}
+          </h3>
+          <p class="font-body font-light leading-relaxed" style="color:#B8B8B8; font-size:0.85rem;">
+            {item.text}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Diagonal bottom -->
+  <div class="pointer-events-none" style="height:60px; overflow:hidden; margin-top:-1px;">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,60 1440,0 1440,60" fill="#111111"/>
+    </svg>
   </div>
 </section>
