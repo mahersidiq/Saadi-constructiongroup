@@ -52,7 +52,7 @@ export default function Navbar({ pathname = '/' }) {
               <img
                 src="/images/logo.png"
                 alt="Saadi Construction Group"
-                className="h-14 w-auto transition-opacity duration-300 group-hover:opacity-75"
+                className="h-20 w-auto transition-opacity duration-300 group-hover:opacity-75"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   e.currentTarget.nextElementSibling.style.display = 'block';
@@ -146,7 +146,7 @@ export default function Navbar({ pathname = '/' }) {
             className="fixed top-0 right-0 bottom-0 w-80 max-w-[90vw] z-50 lg:hidden overflow-y-auto">
             <div className="p-8">
               <div className="flex justify-between items-center mb-10">
-                <img src="/images/logo.png" alt="Saadi Construction Group" className="h-10 w-auto"
+                <img src="/images/logo.png" alt="Saadi Construction Group" className="h-14 w-auto"
                   onError={(e) => { e.currentTarget.style.display='none'; }} />
                 <button onClick={() => setMobileOpen(false)} className="text-[#666666] hover:text-[#F5F5F5] p-1 transition-colors">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
