@@ -1,73 +1,112 @@
 ---
-const steps = [
+const phases = [
   {
+    number: 'Phase 1',
     title: 'Consultation & Quote',
-    text: 'Site visit, design discussion, and a detailed fixed-price quote within 5 business days.',
+    text: 'Site visit, design discussion, and a detailed fixed-price quote delivered within 5 business days.',
+    deliverables: ['Site evaluation', 'Design consultation', 'Detailed scope', 'Fixed-price quote'],
+    photo: '/images/p1-exterior-front.png',
+    photoAlt: 'Saadi Construction Group — completed custom home exterior phase 1',
+    bg: '#050505',
   },
   {
+    number: 'Phase 2',
     title: 'Plans, Engineering & Permits',
-    text: 'Our team produces architectural drawings, coordinates structural engineering, and submits for city permits — all included.',
+    text: 'Architectural drawings, structural engineering, and city permit submission — all coordinated and included.',
+    deliverables: ['Architectural drawings', 'Structural engineering', 'Permit submission', 'HOA coordination'],
+    photo: '/images/p2-exterior-front.png',
+    photoAlt: 'Saadi Construction Group — completed custom home exterior phase 2',
+    bg: '#0A0A0A',
   },
   {
+    number: 'Phase 3',
     title: 'Construction',
     text: 'Weekly owner updates, milestone-based billing, and full trade management from groundbreak to close-in.',
+    deliverables: ['Foundation & framing', 'Mechanical / electrical / plumbing', 'Exterior finishes', 'Interior finishes'],
+    photo: '/images/p3-exterior-front.png',
+    photoAlt: 'Saadi Construction Group — completed custom home exterior phase 3',
+    bg: '#050505',
   },
   {
+    number: 'Phase 4',
     title: 'Final Walkthrough & Handoff',
-    text: 'Full punch walkthrough with owner, photo documentation of every system, and warranty packet at handoff.',
+    text: 'Full punch walkthrough, photo documentation of every system, and your complete warranty packet at handoff.',
+    deliverables: ['Punch list walkthrough', 'System documentation', 'Warranty packet', 'Move-in ready handoff'],
+    photo: '/images/p4-exterior-front.png',
+    photoAlt: 'Saadi Construction Group — completed custom home exterior phase 4',
+    bg: '#0A0A0A',
   },
 ];
 ---
 
-<section class="grain relative" style="background:#111111; padding:7rem 0;">
-  <div class="container-main px-6">
+<div class="relative">
+  {phases.map((phase, i) => (
+    <section class="grain relative overflow-hidden" style={`background:${phase.bg};`}>
 
-    <div class="max-w-xl mb-16">
-      <h2 class="animate-on-scroll font-heading font-light" style="font-size:clamp(2.4rem,4.5vw,4rem); color:#F5F5F5; line-height:1.1;">
-        How We Build Your Home
-      </h2>
-      <div class="mt-6" style="width:40px; height:1px; background:#C89B5A; opacity:0.7;"></div>
-    </div>
+      <!-- Desktop: side-by-side; Mobile: stacked -->
+      <div class="flex flex-col md:flex-row min-h-[500px]">
 
-    <!-- Desktop timeline -->
-    <div class="hidden md:grid grid-cols-4 gap-8 relative">
-      <!-- Connecting line -->
-      <div class="absolute top-8 left-[12.5%] right-[12.5%]" style="height:1px; background:linear-gradient(90deg, transparent, rgba(200,155,90,0.3), transparent);"></div>
+        <!-- Left: dark content panel -->
+        <div class="relative z-10 flex flex-col justify-center px-8 py-16 md:py-20 md:px-14 lg:px-20"
+          style="flex: 0 0 60%; background: inherit;">
 
-      {steps.map((step, i) => (
-        <div class="animate-on-scroll flex flex-col items-center text-center group" style={`transition-delay:${i * 0.1}s;`}>
-          <!-- Number ring -->
-          <div class="relative z-10 flex items-center justify-center mb-8 transition-all duration-400 group-hover:scale-110"
-            style="width:64px; height:64px; border-radius:50%; border:1px solid rgba(200,155,90,0.35); background:#111111; box-shadow: group-hover ? '0 0 30px rgba(200,155,90,0.15)' : 'none';">
-            <span class="font-body font-semibold" style="font-size:1.2rem; color:#C89B5A;">{i + 1}</span>
+          <!-- Phase label + gold rule -->
+          <div class="animate-on-scroll mb-6">
+            <span class="font-body font-semibold uppercase" style="font-size:9px; letter-spacing:0.28em; color:#C89B5A;">{phase.number}</span>
+            <div class="mt-2" style="width:36px; height:1px; background:#C89B5A;"></div>
           </div>
-          <div class="mb-4" style="width:20px; height:1px; background:rgba(200,155,90,0.4);"></div>
-          <h3 class="font-heading font-light mb-3 transition-colors duration-300 group-hover:text-[#C89B5A]"
-            style="font-size:1.1rem; color:#F5F5F5; letter-spacing:0.01em;">
-            {step.title}
-          </h3>
-          <p class="font-body font-light leading-relaxed" style="font-size:0.82rem; color:#666666; line-height:1.7;">
-            {step.text}
+
+          <!-- Bold headline -->
+          <h2 class="animate-on-scroll font-body font-extrabold uppercase mb-5"
+            style="font-size:clamp(2rem,4vw,3.2rem); color:#F5F5F5; line-height:1.0; letter-spacing:-0.01em;">
+            {phase.title}
+          </h2>
+
+          <!-- Body text -->
+          <p class="animate-on-scroll font-body font-light leading-relaxed mb-8"
+            style="font-size:0.9rem; color:#B8B8B8; max-width:420px; line-height:1.75;">
+            {phase.text}
           </p>
-        </div>
-      ))}
-    </div>
 
-    <!-- Mobile timeline -->
-    <div class="md:hidden space-y-0" style="border-top:1px solid rgba(200,155,90,0.15);">
-      {steps.map((step, i) => (
-        <div class="animate-on-scroll flex gap-7 py-8" style="border-bottom:1px solid rgba(200,155,90,0.1);">
-          <div class="flex-shrink-0 flex items-center justify-center"
-            style="width:48px; height:48px; border-radius:50%; border:1px solid rgba(200,155,90,0.35); background:#0D0D0D; min-width:48px;">
-            <span class="font-heading font-light" style="font-size:1.2rem; color:#C89B5A;">{i + 1}</span>
+          <!-- Deliverables list -->
+          <ul class="animate-on-scroll space-y-2">
+            {phase.deliverables.map((d) => (
+              <li class="flex items-start gap-3 font-body" style="font-size:0.82rem; color:#B8B8B8;">
+                <span style="color:#C89B5A; font-weight:700; flex-shrink:0; margin-top:0.05em;">&mdash;</span>
+                <span>{d}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Right: photo with diagonal clip edge -->
+        <div class="relative flex-1 overflow-hidden" style="min-height:280px;">
+          <!-- Diagonal left edge on desktop -->
+          <div class="absolute top-0 bottom-0 left-0 z-10 hidden md:block" style="width:80px;">
+            <svg viewBox="0 0 80 600" preserveAspectRatio="none" style="width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg">
+              <polygon points={`0,0 80,0 0,600`} fill={phase.bg}/>
+            </svg>
           </div>
-          <div class="pt-1">
-            <h3 class="font-heading font-light mb-2" style="font-size:1.2rem; color:#F5F5F5;">{step.title}</h3>
-            <p class="font-body font-light leading-relaxed" style="font-size:0.85rem; color:#666666; line-height:1.7;">{step.text}</p>
+          <img
+            src={phase.photo}
+            alt={phase.photoAlt}
+            class="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(5,5,5,0.3) 0%, transparent 50%);"></div>
+          <!-- Phase number watermark -->
+          <div class="absolute top-8 right-8 font-body font-extrabold uppercase hidden md:block"
+            style="font-size:clamp(5rem,9vw,8rem); color:rgba(200,155,90,0.08); line-height:1; pointer-events:none; user-select:none;">
+            {phase.number.split(' ')[1]}
           </div>
         </div>
-      ))}
-    </div>
 
-  </div>
-</section>
+      </div>
+
+      <!-- Divider line between phases -->
+      {i < phases.length - 1 && (
+        <div style="height:1px; background: linear-gradient(90deg, transparent, rgba(200,155,90,0.2), transparent);"></div>
+      )}
+    </section>
+  ))}
+</div>

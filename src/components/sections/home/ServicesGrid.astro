@@ -6,9 +6,14 @@ import { allServices } from '@/data/services';
   <div class="container-main px-6">
 
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
-      <h2 class="animate-on-scroll font-heading font-light" style="font-size:clamp(2.4rem,4.5vw,4rem); color:#F5F5F5; line-height:1.1;">
-        Custom Home Builder Services
-      </h2>
+      <div>
+        <div class="animate-on-scroll mb-3">
+          <span class="font-body font-semibold uppercase" style="font-size:9px; letter-spacing:0.25em; color:#C89B5A;">Our Services</span>
+        </div>
+        <h2 class="animate-on-scroll font-body font-extrabold uppercase" style="font-size:clamp(2.4rem,4.5vw,4rem); color:#F5F5F5; line-height:1.0;">
+          Custom Home Builder Services
+        </h2>
+      </div>
       <p class="animate-on-scroll font-body font-light" style="color:#B8B8B8; font-size:0.85rem; max-width:280px; line-height:1.7;">
         Every service includes plan coordination, permitting, and construction — handled by one team.
       </p>
@@ -30,8 +35,8 @@ import { allServices } from '@/data/services';
             {service.slug === 'construction-management' ? 'Management' : service.category}
           </span>
 
-          <h3 class="font-heading font-light mb-4 leading-snug transition-colors duration-300 group-hover:text-[#C89B5A]"
-            style="font-size:1.4rem; color:#F5F5F5; letter-spacing:0.01em;">
+          <h3 class="font-body font-bold mb-4 leading-snug transition-colors duration-300 group-hover:text-[#C89B5A]"
+            style="font-size:1.2rem; color:#F5F5F5; letter-spacing:0.01em;">
             {service.name}
           </h3>
 
