@@ -1,22 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 170" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 661 152" role="img" aria-labelledby="title desc">
   <title id="title">Saadi Construction Group</title>
-  <desc id="desc">Horizontal transparent Saadi Construction Group logo with gold monogram and luxury serif wordmark.</desc>
+  <desc id="desc">Horizontal transparent logo assembled from the existing Saadi Construction Group source artwork.</desc>
   <defs>
-    <linearGradient id="saadiGold" x1="16" y1="18" x2="132" y2="134" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#f8d79a"/>
-      <stop offset="0.48" stop-color="#c89345"/>
-      <stop offset="1" stop-color="#f1bd72"/>
-    </linearGradient>
+    <clipPath id="markClip"><rect width="208" height="277"/></clipPath>
+    <clipPath id="wordmarkClip"><rect width="772" height="192"/></clipPath>
+    <mask id="markMask" maskUnits="userSpaceOnUse" x="0" y="0" width="208" height="277" style="mask-type:luminance">
+      <image href="logo.png" x="-408" y="-205" width="1024" height="1024"/>
+    </mask>
+    <mask id="wordmarkMask" maskUnits="userSpaceOnUse" x="0" y="0" width="772" height="192" style="mask-type:luminance">
+      <image href="logo.png" x="-126" y="-532" width="1024" height="1024"/>
+    </mask>
   </defs>
-  <g transform="translate(20 12) scale(.9)" fill="none" stroke="url(#saadiGold)" stroke-width="7.5" stroke-linecap="butt" stroke-linejoin="round">
-    <path d="M117 51v-14c0-18-15-32-37-32S43 19 43 40c0 17 9 27 27 36l35 17c17 8 26 20 26 36 0 18-15 31-37 31-23 0-38-14-38-33v-14"/>
-    <path d="M43 47c-19 4-31 18-31 37 0 16 9 27 27 36l50 25c8 4 17 6 26 3 10-3 17-9 22-18"/>
-    <path d="M117 47c-10-5-22-10-37-10-22 0-37 13-37 31 0 15 9 25 27 34l38 19c14 7 22 18 22 33"/>
-    <path d="M43 113v34c0 5-4 9-9 9H18c-5 0-9-4-9-9v-27"/>
-    <path d="M117 51l28 14c5 3 8 7 8 13v31"/>
+  <g transform="translate(0 10) scale(0.4765)" clip-path="url(#markClip)" mask="url(#markMask)">
+    <image href="logo.png" x="-408" y="-205" width="1024" height="1024"/>
   </g>
-  <g fill="#17202a">
-    <text x="184" y="95" font-family="Cormorant Garamond, Didot, Bodoni 72, Georgia, serif" font-size="70" font-weight="500" letter-spacing="30">SAADI</text>
-    <text x="188" y="134" font-family="Inter, Montserrat, Arial, sans-serif" font-size="18" font-weight="500" letter-spacing="14">CONSTRUCTION GROUP</text>
+  <g transform="translate(141 15) scale(0.6736)" clip-path="url(#wordmarkClip)" mask="url(#wordmarkMask)">
+    <image href="logo.png" x="-126" y="-532" width="1024" height="1024"/>
   </g>
 </svg>
