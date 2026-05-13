@@ -47,9 +47,15 @@ export default function Navbar({ pathname = '/' }) {
       >
         <div className="container-main">
           <div className="flex h-24 md:h-28 items-center justify-between gap-5">
-            <a href="/" className="flex min-w-0 items-center" aria-label="Saadi Construction Group home">
-              <span className="saadi-logo-crop saadi-logo-crop--header">
-                <img src="/images/logo.png" alt="Saadi Construction Group" />
+            <a href="/" className="flex min-w-0 items-center gap-3" aria-label="Saadi Construction Group home">
+              <img
+                src="/images/saadi-emblem.svg"
+                alt="Saadi Construction Group Emblem"
+                className="h-10 w-auto shrink-0 object-contain md:h-12"
+              />
+              <span className="flex flex-col leading-none text-[#fff8ed]">
+                <span className="font-heading text-2xl font-medium uppercase tracking-[0.22em] md:text-3xl">Saadi</span>
+                <span className="mt-1 font-body text-[8px] font-semibold uppercase tracking-[0.28em] md:text-[9px]">Construction Group</span>
               </span>
             </a>
 
