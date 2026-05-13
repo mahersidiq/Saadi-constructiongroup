@@ -1,66 +1,67 @@
 ---
 ---
 
-<section class="relative min-h-screen flex items-end overflow-hidden">
-  <!-- Background Image -->
+<section class="relative h-screen min-h-[700px] flex overflow-hidden" style="background:#050505;">
+
+  <!-- Full-bleed cinematic image -->
   <img
     src="/images/p8-exterior-front.png"
     alt="Houston custom home builder — Saadi Construction Group luxury modern home"
-    class="absolute inset-0 w-full h-full object-cover"
+    class="absolute inset-0 w-full h-full object-cover animate-fade-in"
+    style="transform-origin:center; animation-duration:1.4s;"
     loading="eager"
     fetchpriority="high"
   />
 
-  <!-- Warm dark overlay — heavier at bottom where text lives -->
-  <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20"></div>
-  <!-- Warm left-side gradient so text pops -->
-  <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent"></div>
+  <!-- Layered dark overlays — heavier on left for text legibility, diagonal edge on right -->
+  <div class="absolute inset-0" style="background: linear-gradient(105deg, rgba(5,5,5,0.92) 0%, rgba(5,5,5,0.82) 42%, rgba(5,5,5,0.45) 65%, rgba(5,5,5,0.15) 100%);"></div>
+  <!-- Bottom fade -->
+  <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(5,5,5,0.8) 0%, transparent 40%);"></div>
+  <!-- Subtle gold glow accent top-left -->
+  <div class="absolute top-0 left-0 w-64 h-64 pointer-events-none" style="background: radial-gradient(ellipse at top left, rgba(200,155,90,0.04), transparent 70%);"></div>
 
-  <!-- Content — sits at the bottom of the viewport -->
-  <div class="relative z-10 w-full container-main px-6 lg:px-8 pb-24 md:pb-32">
-    <div class="max-w-3xl">
+  <!-- ─── Left content panel ─── -->
+  <div class="relative z-10 flex flex-col justify-end w-full container-main px-6 lg:px-8 pb-20 md:pb-28">
+    <div class="max-w-2xl">
 
-      <!-- Thin gold rule -->
-      <div class="w-10 h-px bg-gold mb-10 animate-fade-in"></div>
+      <!-- Gold rule -->
+      <div class="animate-fade-in w-10 h-px mb-10" style="background:#C89B5A;"></div>
 
-      <!-- Main Headline -->
-      <h1 class="animate-fade-in font-heading font-light text-white leading-[1.08]">
-        <span class="block text-5xl md:text-6xl lg:text-[5.5rem] xl:text-[6.5rem]">Ready to Build</span>
-        <span class="block text-5xl md:text-6xl lg:text-[5.5rem] xl:text-[6.5rem] text-gold italic">Something</span>
-        <span class="block text-5xl md:text-6xl lg:text-[5.5rem] xl:text-[6.5rem]">Extraordinary?</span>
+      <!-- Headline — keep existing wording -->
+      <h1 class="animate-fade-in font-heading font-light leading-[1.05]" style="font-size: clamp(3rem, 7vw, 6.5rem); color:#F5F5F5; letter-spacing:-0.01em;">
+        Houston's One-Stop<br/>
+        <em style="color:#C89B5A; font-style:italic;">Custom Home Builder</em>
       </h1>
 
-      <!-- Body -->
-      <p class="animate-fade-in-up-delay mt-8 text-base md:text-lg text-white/55 max-w-lg font-body font-light leading-relaxed">
-        If you're ready to bring your vision to life, we're here to help.
-        Plans. Engineering. Permits. Construction — one contract, one team.
+      <!-- Sub-headline — original text -->
+      <p class="animate-fade-in-up-delay mt-6 font-body font-light leading-relaxed" style="font-size:1rem; color:#B8B8B8; max-width:480px; letter-spacing:0.01em;">
+        Plans. Engineering. Permits. Construction. One contract, one team — we handle everything from blank lot to move-in ready.
       </p>
 
       <!-- CTAs -->
       <div class="animate-fade-in-up-delay-2 mt-10 flex flex-wrap items-center gap-4">
-        <a href="/contact" class="inline-flex items-center px-8 py-4 bg-gold text-white font-body text-xs tracking-[0.2em] uppercase font-semibold hover:bg-gold-light hover:text-charcoal transition-all duration-300">
-          Schedule Free Consultation
-        </a>
-        <a href="/projects" class="inline-flex items-center px-8 py-4 border border-white/30 text-white font-body text-xs tracking-[0.2em] uppercase font-semibold hover:border-white hover:bg-white/5 transition-all duration-300">
-          View Our Work
-        </a>
+        <a href="/contact" class="btn-luxe-fill">Request a Quote</a>
+        <a href="/services" class="btn-ghost">Our Services</a>
       </div>
 
       <!-- Phone -->
-      <p class="animate-fade-in-up-delay-2 mt-8 font-body text-xs text-white/35 tracking-[0.12em]">
-        CALL / TEXT &nbsp;
-        <a href="tel:8322058178" class="text-gold hover:text-gold-light transition-colors font-medium">
-          (832) 205-8178
-        </a>
-        <span class="text-white/20 mx-3">|</span>
-        <span>Houston, TX &amp; Surrounding Areas</span>
+      <p class="animate-fade-in-up-delay-2 mt-7 font-body" style="font-size:11px; letter-spacing:0.14em; color:#666666;">
+        Call us directly:&nbsp;
+        <a href="tel:8322058178" style="color:#C89B5A;" class="hover:text-[#D4AF6E] transition-colors">(832) 205-8178</a>
       </p>
     </div>
   </div>
 
-  <!-- Scroll indicator — right side -->
-  <div class="absolute right-8 bottom-12 hidden md:flex flex-col items-center gap-3 animate-fade-in-up-delay-3">
-    <div class="h-12 w-px bg-gradient-to-b from-transparent to-white/20"></div>
-    <span class="font-body text-[9px] tracking-[0.3em] text-white/25 uppercase" style="writing-mode: vertical-rl;">Scroll</span>
+  <!-- Scroll cue -->
+  <div class="absolute bottom-10 right-10 hidden md:flex flex-col items-center gap-3 animate-fade-in-up-delay-3">
+    <span class="font-body uppercase" style="font-size:9px; letter-spacing:0.3em; color:#666666; writing-mode:vertical-rl;">Scroll</span>
+    <div class="h-12 w-px" style="background: linear-gradient(to bottom, rgba(200,155,90,0.4), transparent);"></div>
+  </div>
+
+  <!-- Diagonal bottom cut -->
+  <div class="absolute bottom-0 left-0 right-0 pointer-events-none" style="height:60px; overflow:hidden;">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="width:100%; height:100%;" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,60 1440,0 1440,60" fill="#050505"/>
+    </svg>
   </div>
 </section>

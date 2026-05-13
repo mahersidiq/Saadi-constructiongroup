@@ -2,22 +2,27 @@
 import { serviceAreas } from '@/data/serviceAreas';
 ---
 
-<section class="bg-cream py-20 md:py-28 px-6 border-t border-stone">
-  <div class="container-main">
-    <div class="flex flex-col md:flex-row md:items-baseline gap-6 md:gap-16 mb-12">
-      <h2 class="animate-on-scroll font-heading font-light text-warm-black text-3xl md:text-4xl flex-shrink-0">
-        Where We Build
+<section class="grain relative" style="background:#050505; padding:5rem 0 6rem;">
+  <div class="gold-divider"></div>
+  <div class="container-main px-6 pt-14">
+
+    <div class="flex flex-col md:flex-row md:items-end gap-8 mb-12">
+      <h2 class="animate-on-scroll font-heading font-light" style="font-size:clamp(2rem,3.5vw,3rem); color:#F5F5F5; line-height:1.1;">
+        Serving Houston and Surrounding Areas
       </h2>
-      <p class="animate-on-scroll font-body text-sm text-warm-mid font-light leading-relaxed">
-        Greater Houston metro — Harris, Fort Bend, Montgomery, Brazoria &amp; Galveston Counties.
+      <p class="animate-on-scroll font-body font-light" style="font-size:0.85rem; color:#666666; max-width:260px; line-height:1.7;">
+        Custom home builder serving the Greater Houston metropolitan area.
       </p>
     </div>
 
-    <div class="flex flex-wrap gap-3">
+    <div class="flex flex-wrap gap-2">
       {serviceAreas.map((area) => (
         <a
           href={`/service-areas/${area.slug}`}
-          class="animate-on-scroll font-body text-xs tracking-[0.1em] text-warm-mid hover:text-warm-black hover:bg-stone px-4 py-2.5 border border-stone hover:border-warm-black/20 transition-all duration-200"
+          class="animate-on-scroll font-body transition-all duration-300"
+          style="font-size:11px; letter-spacing:0.12em; color:#666666; padding:10px 18px; border:1px solid rgba(200,155,90,0.2); background:transparent;"
+          onmouseover="this.style.borderColor='rgba(200,155,90,0.5)'; this.style.color='#C89B5A'; this.style.background='rgba(200,155,90,0.04)';"
+          onmouseout="this.style.borderColor='rgba(200,155,90,0.2)'; this.style.color='#666666'; this.style.background='transparent';"
         >
           {area.name}
         </a>

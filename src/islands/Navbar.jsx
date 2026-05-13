@@ -33,20 +33,17 @@ export default function Navbar({ pathname = '/' }) {
     return () => document.removeEventListener('mousedown', handleClick);
   }, []);
 
-  const isActive = (href) => {
-    if (href === '/') return pathname === '/';
-    return pathname.startsWith(href);
+  const isActive = (href) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
+
+  const navStyle = {
+    background: scrolled ? 'rgba(5,5,5,0.96)' : 'transparent',
+    borderBottom: scrolled ? '1px solid rgba(200,155,90,0.15)' : 'none',
+    backdropFilter: scrolled ? 'blur(12px)' : 'none',
   };
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-warm-black/97 backdrop-blur-md shadow-lg'
-            : 'bg-transparent'
-        }`}
-      >
+      <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style={navStyle}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-24">
 
@@ -55,45 +52,48 @@ export default function Navbar({ pathname = '/' }) {
               <img
                 src="/images/logo.svg"
                 alt="Saadi Construction Group"
-                className="h-14 w-auto group-hover:opacity-80 transition-opacity duration-300"
+                className="h-14 w-auto transition-opacity duration-300 group-hover:opacity-75"
                 onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'flex';
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling.style.display = 'block';
                 }}
               />
-              {/* Fallback text logo shown until logo.svg is uploaded */}
-              <div className="hidden flex-col leading-none" aria-hidden="true">
-                <span className="text-white font-heading text-xl tracking-[0.25em] font-light" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>SAADI</span>
-                <span className="text-white/50 text-[9px] tracking-[0.28em] font-light mt-0.5" style={{ fontFamily: "'Lato', sans-serif" }}>CONSTRUCTION GROUP</span>
+              <div style={{ display: 'none' }}>
+                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.4rem', letterSpacing: '0.25em', fontWeight: 300, color: '#F5F5F5' }}>
+                  SAADI<span style={{ display: 'block', fontSize: '0.55rem', letterSpacing: '0.35em', color: '#B8B8B8', marginTop: '2px' }}>CONSTRUCTION GROUP</span>
+                </span>
               </div>
             </a>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) =>
                 link.hasMega ? (
                   <div key={link.label} ref={megaRef} className="relative">
                     <button
                       onClick={() => setMegaOpen(!megaOpen)}
-                      className={`flex items-center gap-1.5 px-4 py-2 font-body text-xs tracking-[0.15em] uppercase font-medium transition-colors duration-200 ${
-                        isActive(link.href) ? 'text-gold' : 'text-white/70 hover:text-white'
-                      }`}
+                      className={`nav-link flex items-center gap-1.5 font-body text-[11px] tracking-[0.18em] uppercase transition-colors duration-200 ${isActive(link.href) ? 'text-[#C89B5A]' : 'text-[#B8B8B8] hover:text-[#F5F5F5]'}`}
                     >
                       {link.label}
-                      <svg className={`w-3 h-3 transition-transform duration-200 ${megaOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <svg className={`w-3 h-3 transition-transform duration-200 ${megaOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
                     {megaOpen && (
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[680px] bg-charcoal border border-gold/20 shadow-2xl p-8" style={{ animationDuration: '0.2s' }}>
+                      <div style={{ background: '#0A0A0A', border: '1px solid rgba(200,155,90,0.25)', boxShadow: '0 20px 60px rgba(0,0,0,0.8)' }}
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[680px] p-8">
                         <div className="grid grid-cols-3 gap-8">
                           {serviceCategories.map((cat) => (
                             <div key={cat.slug}>
-                              <h4 className="font-body text-[10px] font-semibold text-gold uppercase tracking-[0.2em] mb-4 pb-2 border-b border-gold/20">{cat.name}</h4>
-                              <ul className="space-y-2">
+                              <h4 style={{ borderBottom: '1px solid rgba(200,155,90,0.2)', color: '#C89B5A', fontFamily: "'Inter', sans-serif", fontSize: '9px', letterSpacing: '0.22em' }} className="uppercase font-medium mb-4 pb-2">
+                                {cat.name}
+                              </h4>
+                              <ul className="space-y-2.5">
                                 {cat.services.map((s) => (
                                   <li key={s.slug}>
-                                    <a href={`/services/${s.slug}`} className="font-body text-xs text-white/60 hover:text-gold transition-colors duration-200 block py-0.5 tracking-wide" onClick={() => setMegaOpen(false)}>
+                                    <a href={`/services/${s.slug}`} style={{ color: '#B8B8B8', fontFamily: "'Inter', sans-serif", fontSize: '12px' }}
+                                      className="hover:text-[#C89B5A] transition-colors duration-200 block tracking-wide"
+                                      onClick={() => setMegaOpen(false)}>
                                       {s.name}
                                     </a>
                                   </li>
@@ -102,8 +102,9 @@ export default function Navbar({ pathname = '/' }) {
                             </div>
                           ))}
                         </div>
-                        <div className="mt-6 pt-5 border-t border-gold/20 text-center">
-                          <a href="/services" className="font-body text-xs font-semibold text-gold hover:text-gold-light transition-colors tracking-[0.15em] uppercase" onClick={() => setMegaOpen(false)}>
+                        <div style={{ borderTop: '1px solid rgba(200,155,90,0.15)' }} className="mt-6 pt-5 text-center">
+                          <a href="/services" style={{ color: '#C89B5A', fontSize: '10px', letterSpacing: '0.18em' }}
+                            className="font-body uppercase font-medium hover:text-[#D4AF6E] transition-colors" onClick={() => setMegaOpen(false)}>
                             View All Services &rarr;
                           </a>
                         </div>
@@ -111,29 +112,26 @@ export default function Navbar({ pathname = '/' }) {
                     )}
                   </div>
                 ) : (
-                  <a key={link.label} href={link.href} className={`px-4 py-2 font-body text-xs tracking-[0.15em] uppercase font-medium transition-colors duration-200 ${isActive(link.href) ? 'text-gold' : 'text-white/70 hover:text-white'}`}>
+                  <a key={link.label} href={link.href}
+                    className={`nav-link font-body text-[11px] tracking-[0.18em] uppercase transition-colors duration-200 ${isActive(link.href) ? 'text-[#C89B5A]' : 'text-[#B8B8B8] hover:text-[#F5F5F5]'}`}>
                     {link.label}
                   </a>
                 )
               )}
             </nav>
 
-            <div className="flex items-center gap-4">
-              <a href="tel:8322058178" className="hidden xl:flex items-center gap-2 text-white/50 hover:text-gold transition-colors duration-200">
-                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                </svg>
-                <span className="font-body text-xs tracking-wide">(832) 205-8178</span>
+            <div className="flex items-center gap-5">
+              <a href="tel:8322058178" className="hidden xl:block font-body text-[11px] tracking-[0.12em] text-[#666666] hover:text-[#C89B5A] transition-colors duration-300">
+                (832) 205-8178
               </a>
-              <a href="/contact" className="hidden lg:inline-flex items-center px-6 py-2.5 bg-gold text-white font-body text-xs tracking-[0.2em] uppercase font-semibold hover:bg-gold-light hover:text-charcoal transition-all duration-300">
-                Free Consultation
+              <a href="/contact" className="hidden lg:inline-flex btn-luxe py-3 px-6 text-[10px]">
+                Request a Quote
               </a>
-              <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden text-white p-2" aria-label="Toggle menu">
-                {mobileOpen ? (
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-                ) : (
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
-                )}
+              <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden text-[#B8B8B8] p-2" aria-label="Toggle menu">
+                {mobileOpen
+                  ? <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                  : <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                }
               </button>
             </div>
           </div>
@@ -143,35 +141,34 @@ export default function Navbar({ pathname = '/' }) {
       {/* Mobile Drawer */}
       {mobileOpen && (
         <>
-          <div className="fixed inset-0 bg-black/70 z-40 lg:hidden backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
-          <div className="fixed top-0 right-0 bottom-0 w-80 max-w-[90vw] bg-charcoal border-l border-gold/20 z-50 lg:hidden overflow-y-auto" style={{ animation: 'slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}>
+          <div className="fixed inset-0 bg-black/80 z-40 lg:hidden backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
+          <div style={{ background: '#0A0A0A', borderLeft: '1px solid rgba(200,155,90,0.2)', animation: 'slideInRight 0.35s cubic-bezier(0.16,1,0.3,1)' }}
+            className="fixed top-0 right-0 bottom-0 w-80 max-w-[90vw] z-50 lg:hidden overflow-y-auto">
             <div className="p-8">
               <div className="flex justify-between items-center mb-10">
-                <img
-                  src="/images/logo.svg"
-                  alt="Saadi Construction Group"
-                  className="h-10 w-auto"
-                />
-                <button onClick={() => setMobileOpen(false)} className="text-white/60 hover:text-white p-1">
+                <img src="/images/logo.svg" alt="Saadi Construction Group" className="h-10 w-auto"
+                  onError={(e) => { e.currentTarget.style.display='none'; }} />
+                <button onClick={() => setMobileOpen(false)} className="text-[#666666] hover:text-[#F5F5F5] p-1 transition-colors">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
               </div>
 
-              <nav className="space-y-1">
+              <nav className="space-y-0" style={{ borderTop: '1px solid rgba(200,155,90,0.1)' }}>
                 {navLinks.map((link) =>
                   link.hasMega ? (
-                    <div key={link.label}>
-                      <button onClick={() => setMobileServicesOpen(!mobileServicesOpen)} className={`flex items-center justify-between w-full px-3 py-3 font-body text-xs tracking-[0.2em] uppercase font-medium ${isActive(link.href) ? 'text-gold' : 'text-white/70'}`}>
+                    <div key={link.label} style={{ borderBottom: '1px solid rgba(200,155,90,0.1)' }}>
+                      <button onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                        className={`flex items-center justify-between w-full py-4 font-body text-[11px] tracking-[0.18em] uppercase ${isActive(link.href) ? 'text-[#C89B5A]' : 'text-[#B8B8B8]'}`}>
                         {link.label}
                         <svg className={`w-3.5 h-3.5 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
                       </button>
                       {mobileServicesOpen && (
-                        <div className="pl-3 border-l border-gold/20 ml-3 mb-3">
+                        <div className="pb-4 pl-3" style={{ borderLeft: '1px solid rgba(200,155,90,0.2)', marginLeft: '4px', marginBottom: '8px' }}>
                           {serviceCategories.map((cat) => (
                             <div key={cat.slug} className="mb-4">
-                              <p className="text-[10px] font-semibold text-gold uppercase tracking-[0.2em] px-3 py-1">{cat.name}</p>
+                              <p style={{ color: '#C89B5A', fontSize: '9px', letterSpacing: '0.2em' }} className="uppercase font-body px-3 py-1">{cat.name}</p>
                               {cat.services.map((s) => (
-                                <a key={s.slug} href={`/services/${s.slug}`} className="block px-3 py-1.5 font-body text-xs text-white/50 hover:text-white tracking-wide">{s.name}</a>
+                                <a key={s.slug} href={`/services/${s.slug}`} style={{ color: '#666666', fontSize: '12px' }} className="block px-3 py-1.5 hover:text-[#F5F5F5] transition-colors tracking-wide">{s.name}</a>
                               ))}
                             </div>
                           ))}
@@ -179,31 +176,30 @@ export default function Navbar({ pathname = '/' }) {
                       )}
                     </div>
                   ) : link.label === 'Service Areas' ? (
-                    <div key={link.label}>
-                      <button onClick={() => setMobileAreasOpen(!mobileAreasOpen)} className={`flex items-center justify-between w-full px-3 py-3 font-body text-xs tracking-[0.2em] uppercase font-medium ${isActive(link.href) ? 'text-gold' : 'text-white/70'}`}>
+                    <div key={link.label} style={{ borderBottom: '1px solid rgba(200,155,90,0.1)' }}>
+                      <button onClick={() => setMobileAreasOpen(!mobileAreasOpen)}
+                        className={`flex items-center justify-between w-full py-4 font-body text-[11px] tracking-[0.18em] uppercase ${isActive(link.href) ? 'text-[#C89B5A]' : 'text-[#B8B8B8]'}`}>
                         {link.label}
                         <svg className={`w-3.5 h-3.5 transition-transform ${mobileAreasOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
                       </button>
                       {mobileAreasOpen && (
-                        <div className="pl-3 border-l border-gold/20 ml-3 mb-3">
+                        <div className="pb-4 grid grid-cols-2 gap-x-4 gap-y-1 pl-2">
                           {serviceAreas.map((area) => (
-                            <a key={area.slug} href={`/service-areas/${area.slug}`} className="block px-3 py-1.5 font-body text-xs text-white/50 hover:text-white tracking-wide">{area.name}</a>
+                            <a key={area.slug} href={`/service-areas/${area.slug}`} style={{ color: '#666666', fontSize: '11px' }} className="py-1 hover:text-[#F5F5F5] transition-colors tracking-wide">{area.name}</a>
                           ))}
                         </div>
                       )}
                     </div>
                   ) : (
-                    <a key={link.label} href={link.href} className={`block px-3 py-3 font-body text-xs tracking-[0.2em] uppercase font-medium ${isActive(link.href) ? 'text-gold' : 'text-white/70 hover:text-white'}`}>{link.label}</a>
+                    <a key={link.label} href={link.href} style={{ borderBottom: '1px solid rgba(200,155,90,0.1)', display: 'block' }}
+                      className={`py-4 font-body text-[11px] tracking-[0.18em] uppercase ${isActive(link.href) ? 'text-[#C89B5A]' : 'text-[#B8B8B8]'}`}>{link.label}</a>
                   )
                 )}
               </nav>
 
-              <div className="mt-10 space-y-4 pt-8 border-t border-gold/20">
-                <a href="/contact" className="block w-full text-center px-6 py-4 bg-gold text-white font-body text-xs tracking-[0.2em] uppercase font-semibold">Free Consultation</a>
-                <a href="tel:8322058178" className="flex items-center justify-center gap-2 text-white/40 font-body text-xs tracking-wide">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
-                  (832) 205-8178
-                </a>
+              <div className="mt-8 space-y-4">
+                <a href="/contact" className="btn-luxe w-full justify-center py-4">Request a Quote</a>
+                <a href="tel:8322058178" style={{ color: '#666666', fontSize: '11px', letterSpacing: '0.1em' }} className="flex justify-center font-body hover:text-[#C89B5A] transition-colors">(832) 205-8178</a>
               </div>
             </div>
           </div>
