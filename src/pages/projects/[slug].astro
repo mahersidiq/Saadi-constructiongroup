@@ -1,19 +1,17 @@
 ---
-export const prerender = false;
+export const prerender = true;
+import Layout from '@/layouts/Layout.astro';
+import { projects } from '@/data/projects';
+export function getStaticPaths() { return projects.map((project) => ({ params: { slug: project.slug }, props: { project } })); }
+const { project } = Astro.props;
 ---
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Project Coming Soon | Saadi Construction Group</title>
-  <script>setTimeout(() => location.href = '/projects', 4000)</script>
-</head>
-<body style="margin:0;background:#1b3a5c;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:sans-serif;color:#fff;text-align:center;padding:2rem">
-  <div>
-    <p style="color:#c9952a;font-size:1.1rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem">Project Details</p>
-    <h1 style="font-size:2.5rem;font-weight:800;margin:0 0 1.5rem">Coming Soon</h1>
-    <p style="color:#9ca3af;font-size:1.1rem;max-width:480px">We're adding full project details shortly. Redirecting you back to all projects…</p>
-    <a href="/projects" style="display:inline-block;margin-top:2rem;padding:.9rem 2rem;background:#c9952a;color:#fff;text-decoration:none;border-radius:8px;font-weight:600">View All Projects</a>
-  </div>
-</body>
-</html>
+<Layout title={`${project.title} | Saadi Construction Group Portfolio`} description={`${project.title} custom home project in ${project.location}. View available project imagery and scope details from Saadi Construction Group.`} canonicalUrl={`https://www.saadiconstructiongroup.com/projects/${project.slug}`}>
+  <section class="relative min-h-[78vh] overflow-hidden bg-[#142232] text-[#fff8ed]">
+    <img src={project.coverImage} alt={project.coverAlt} class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-r from-[#111d2a]/88 via-[#111d2a]/48 to-transparent"></div>
+    <div class="relative container-main flex min-h-[78vh] items-end pb-16 pt-36">
+      <div class="max-w-4xl"><p class="eyebrow">{project.style} · {project.location}</p><h1 class="display-heading mt-4 text-5xl text-[#fff8ed] md:text-7xl">{project.title}</h1><p class="mt-5 text-lg text-[#fff8ed]/80">{project.sqft} · {project.tags.join(' · ')}</p></div>
+    </div>
+  </section>
+  <section class="stone-section"><div class="container-main section-padding"><div class="grid gap-10 lg:grid-cols-[.8fr_1.2fr]"><div><p class="eyebrow">Project Summary</p><h2 class="display-heading mt-4 text-4xl md:text-5xl">A polished portfolio view using verified details.</h2><p class="body-large mt-6">Available facts include the project style, location, square footage, tags, and photography currently present in the codebase. Additional specifications should be added when confirmed by Saadi Construction Group.</p><a href="/contact" class="btn-luxe-fill mt-8">Schedule Consultation</a></div><div class="grid gap-4 sm:grid-cols-2">{project.images.map((image, i) => <figure class={i === 0 ? 'sm:col-span-2' : ''}><img src={image.src} alt={image.alt} class="aspect-[4/3] h-full w-full object-cover" loading="lazy" /><figcaption class="mt-2 text-xs uppercase tracking-[0.16em] text-[#6f563f]">{image.type}</figcaption></figure>)}</div></div></div></section>
+</Layout>

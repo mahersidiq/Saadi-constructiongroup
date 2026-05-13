@@ -1,112 +1,27 @@
 ---
-const phases = [
-  {
-    number: 'Phase 1',
-    title: 'Consultation & Quote',
-    text: 'Site visit, design discussion, and a detailed fixed-price quote delivered within 5 business days.',
-    deliverables: ['Site evaluation', 'Design consultation', 'Detailed scope', 'Fixed-price quote'],
-    photo: '/images/p1-exterior-front.png',
-    photoAlt: 'Saadi Construction Group — completed custom home exterior phase 1',
-    bg: '#050505',
-  },
-  {
-    number: 'Phase 2',
-    title: 'Plans, Engineering & Permits',
-    text: 'Architectural drawings, structural engineering, and city permit submission — all coordinated and included.',
-    deliverables: ['Architectural drawings', 'Structural engineering', 'Permit submission', 'HOA coordination'],
-    photo: '/images/p2-exterior-front.png',
-    photoAlt: 'Saadi Construction Group — completed custom home exterior phase 2',
-    bg: '#0A0A0A',
-  },
-  {
-    number: 'Phase 3',
-    title: 'Construction',
-    text: 'Weekly owner updates, milestone-based billing, and full trade management from groundbreak to close-in.',
-    deliverables: ['Foundation & framing', 'Mechanical / electrical / plumbing', 'Exterior finishes', 'Interior finishes'],
-    photo: '/images/p3-exterior-front.png',
-    photoAlt: 'Saadi Construction Group — completed custom home exterior phase 3',
-    bg: '#050505',
-  },
-  {
-    number: 'Phase 4',
-    title: 'Final Walkthrough & Handoff',
-    text: 'Full punch walkthrough, photo documentation of every system, and your complete warranty packet at handoff.',
-    deliverables: ['Punch list walkthrough', 'System documentation', 'Warranty packet', 'Move-in ready handoff'],
-    photo: '/images/p4-exterior-front.png',
-    photoAlt: 'Saadi Construction Group — completed custom home exterior phase 4',
-    bg: '#0A0A0A',
-  },
+const steps = [
+  ['01', 'Consultation & Site Evaluation', 'Lot conditions, goals, budget, timeline, and the current stage of your project are reviewed before scope is defined.'],
+  ['02', 'Plans, Engineering & Permits', 'Architectural plans, structural engineering, soil considerations, and jurisdiction requirements are coordinated into a permit-ready path.'],
+  ['03', 'Preconstruction & Fixed Scope', 'Selections, allowances, trade pricing, milestone billing, and schedule expectations are clarified before construction begins.'],
+  ['04', 'Construction', 'Trades are coordinated around the approved plans with owner updates, inspections, and field quality control at key milestones.'],
+  ['05', 'Selections, Finishes & Quality Control', 'Finish details are tracked against the scope so craftsmanship, schedule, and budget discipline stay connected.'],
+  ['06', 'Final Walkthrough & Handoff', 'Punch list, closeout documentation, warranty information, and final handoff complete the construction journey.'],
 ];
 ---
-
-<div class="relative">
-  {phases.map((phase, i) => (
-    <section class="grain relative overflow-hidden" style={`background:${phase.bg};`}>
-
-      <!-- Desktop: side-by-side; Mobile: stacked -->
-      <div class="flex flex-col md:flex-row min-h-[500px]">
-
-        <!-- Left: dark content panel -->
-        <div class="relative z-10 flex flex-col justify-center px-8 py-16 md:py-20 md:px-14 lg:px-20"
-          style="flex: 0 0 60%; background: inherit;">
-
-          <!-- Phase label + gold rule -->
-          <div class="animate-on-scroll mb-6">
-            <span class="font-body font-semibold uppercase" style="font-size:9px; letter-spacing:0.28em; color:#C89B5A;">{phase.number}</span>
-            <div class="mt-2" style="width:36px; height:1px; background:#C89B5A;"></div>
-          </div>
-
-          <!-- Bold headline -->
-          <h2 class="animate-on-scroll font-display uppercase mb-5"
-            style="font-size:clamp(2rem,4vw,3.2rem); color:#F5F5F5; line-height:1.0; letter-spacing:-0.01em;">
-            {phase.title}
-          </h2>
-
-          <!-- Body text -->
-          <p class="animate-on-scroll font-body font-light leading-relaxed mb-8"
-            style="font-size:0.9rem; color:#B8B8B8; max-width:420px; line-height:1.75;">
-            {phase.text}
-          </p>
-
-          <!-- Deliverables list -->
-          <ul class="animate-on-scroll space-y-2">
-            {phase.deliverables.map((d) => (
-              <li class="flex items-start gap-3 font-body" style="font-size:0.82rem; color:#B8B8B8;">
-                <span style="color:#C89B5A; font-weight:700; flex-shrink:0; margin-top:0.05em;">&mdash;</span>
-                <span>{d}</span>
-              </li>
-            ))}
-          </ul>
+<section class="dark-section">
+  <div class="container-main section-padding">
+    <div class="mb-14 max-w-3xl animate-on-scroll">
+      <p class="eyebrow">Controlled Builder Timeline</p>
+      <h2 class="display-heading mt-4 text-4xl text-[#fff8ed] md:text-6xl">A clear path from first consultation to final walkthrough.</h2>
+    </div>
+    <div class="border-t border-white/12">
+      {steps.map(([num, title, text]) => (
+        <div class="animate-on-scroll grid gap-5 border-b border-white/12 py-8 md:grid-cols-[120px_.8fr_1.2fr] md:items-start">
+          <p class="font-heading text-4xl text-[#b88a4a]">{num}</p>
+          <h3 class="font-heading text-3xl text-[#fff8ed]">{title}</h3>
+          <p class="leading-8 text-[#fff8ed]/70">{text}</p>
         </div>
-
-        <!-- Right: photo with diagonal clip edge -->
-        <div class="relative flex-1 overflow-hidden" style="min-height:280px;">
-          <!-- Diagonal left edge on desktop -->
-          <div class="absolute top-0 bottom-0 left-0 z-10 hidden md:block" style="width:80px;">
-            <svg viewBox="0 0 80 600" preserveAspectRatio="none" style="width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg">
-              <polygon points={`0,0 80,0 0,600`} fill={phase.bg}/>
-            </svg>
-          </div>
-          <img
-            src={phase.photo}
-            alt={phase.photoAlt}
-            class="absolute inset-0 w-full h-full object-cover"
-            loading="lazy"
-          />
-          <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(5,5,5,0.3) 0%, transparent 50%);"></div>
-          <!-- Phase number watermark -->
-          <div class="absolute top-8 right-8 font-display uppercase hidden md:block"
-            style="font-size:clamp(5rem,9vw,8rem); color:rgba(200,155,90,0.08); line-height:1; pointer-events:none; user-select:none;">
-            {phase.number.split(' ')[1]}
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Divider line between phases -->
-      {i < phases.length - 1 && (
-        <div style="height:1px; background: linear-gradient(90deg, transparent, rgba(200,155,90,0.2), transparent);"></div>
-      )}
-    </section>
-  ))}
-</div>
+      ))}
+    </div>
+  </div>
+</section>

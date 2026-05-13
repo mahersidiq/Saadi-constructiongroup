@@ -2,145 +2,45 @@
 export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
 import { projects } from '@/data/projects';
-
-const title = 'Custom Home Portfolio | Saadi Construction Group Houston';
-const description = 'Browse our portfolio of luxury custom homes built across Houston, Katy, Sugar Land, The Woodlands, and surrounding areas. Every home designed and built under one contract.';
+const filters = ['Modern', 'Transitional', 'French Country', 'Farmhouse', 'Luxury Estate', 'New Construction'];
 ---
-
-<Layout
-  title={title}
-  description={description}
-  keywords="custom home projects Houston, custom home builder portfolio Houston TX, design-build projects Houston"
-  canonicalUrl="https://www.saadiconstructiongroup.com/projects"
->
-  <!-- Page Header -->
-  <section class="bg-navy pt-32 pb-16 px-4">
-    <div class="container-main text-center">
-      <h1 class="font-heading text-4xl md:text-5xl font-bold text-white">
-        Our Work
-      </h1>
-      <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
-        Every home is built under one contract — plans, permits, engineering, and full construction. Here's what that looks like.
-      </p>
+<Layout title="Custom Home Portfolio | Saadi Construction Group Houston" description="Browse luxury custom homes in Houston and surrounding areas by Saadi Construction Group. Plans, permits, engineering, and construction under one contract." keywords="custom home projects Houston, custom home builder portfolio Houston TX, luxury custom homes Houston" canonicalUrl="https://www.saadiconstructiongroup.com/projects">
+  <section class="relative min-h-[72vh] overflow-hidden bg-[#142232] text-[#fff8ed]">
+    <img src="/images/p8-interior-bath.png" alt="Ultra-modern Houston custom home front exterior at dusk" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-r from-[#111d2a]/88 via-[#111d2a]/58 to-transparent"></div>
+    <div class="relative container-main flex min-h-[72vh] items-end pb-20 pt-36">
+      <div class="max-w-4xl"><p class="eyebrow">Portfolio</p><h1 class="display-heading mt-5 text-5xl text-[#fff8ed] md:text-7xl">A custom-home portfolio built around Houston living.</h1><p class="mt-6 max-w-2xl text-lg leading-8 text-[#fff8ed]/80">Large photography, real project imagery, and the details available in the current portfolio—without invented claims.</p></div>
     </div>
   </section>
 
-  <!-- Stats Bar -->
-  <div class="bg-charcoal border-b border-white/10 px-4 py-4">
-    <div class="container-main flex flex-wrap items-center justify-center gap-x-10 gap-y-2 text-sm text-gray-300">
-      <span class="flex items-center gap-2">
-        <svg class="w-4 h-4 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        8 Completed Projects Shown
-      </span>
-      <span class="flex items-center gap-2">
-        <svg class="w-4 h-4 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        Greater Houston Area
-      </span>
-      <span class="flex items-center gap-2">
-        <svg class="w-4 h-4 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        Design-Build | One Contract
-      </span>
+  <section class="bg-[#fbf6ed] py-8 border-b border-[rgba(71,57,40,.14)]">
+    <div class="container-main flex flex-wrap gap-3">
+      {filters.map((filter) => <span class="border border-[rgba(184,138,74,.35)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#6f563f]">{filter}</span>)}
     </div>
-  </div>
+  </section>
 
-  <!-- Projects Grid -->
-  <section class="section-padding bg-white px-4">
-    <div class="container-main">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-        {projects.map((project) => (
-          <div class="group rounded-2xl overflow-hidden border border-gray-200 hover:border-gold hover:shadow-xl transition-all duration-300" data-project-card>
-            <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
-              <img
-                src={project.coverImage}
-                alt={project.coverAlt}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                data-cover
-              />
-              <span class="absolute top-4 left-4 px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full bg-navy/80 text-gold border border-gold/30 backdrop-blur-sm">
-                {project.style}
-              </span>
+  <section class="stone-section">
+    <div class="container-main section-padding">
+      <div class="grid gap-10 md:grid-cols-2">
+        {projects.map((project, index) => (
+          <article class={`group ${index === 0 || index === 7 ? 'md:col-span-2' : ''}`}>
+            <a href={`/projects/${project.slug}`} class="image-zoom block aspect-[16/11] bg-[#e8dece]">
+              <img src={project.coverImage} alt={project.coverAlt} class="h-full w-full object-cover" loading={index < 2 ? 'eager' : 'lazy'} />
+            </a>
+            <div class="mt-5 flex flex-col gap-4 border-t border-[rgba(71,57,40,.18)] pt-5 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <p class="eyebrow">{project.style}</p>
+                <h2 class="mt-2 font-heading text-4xl text-[#17202a]">{project.title}</h2>
+                <p class="mt-2 text-sm text-[#17202a]/68">{project.location} · {project.sqft}</p>
+                <div class="mt-4 flex flex-wrap gap-2">{project.tags.map((tag) => <span class="bg-white/70 px-3 py-1 text-xs text-[#6f563f] ring-1 ring-[rgba(71,57,40,.12)]">{tag}</span>)}</div>
+              </div>
+              <a href={`/projects/${project.slug}`} class="btn-luxe shrink-0">View Project</a>
             </div>
-
-            <div class="p-6">
-              <div class="flex items-start justify-between gap-4">
-                <div>
-                  <h2 class="font-heading text-xl font-bold text-charcoal">{project.title}</h2>
-                  <p class="text-sm text-gray-500 mt-1">{project.location} · {project.sqft}</p>
-                </div>
-              </div>
-
-              <div class="mt-3 flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span class="px-2 py-0.5 text-xs font-medium rounded bg-gold/10 text-gold border border-gold/20">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div class={`mt-4 grid gap-1.5 ${project.images.length >= 5 ? 'grid-cols-5' : 'grid-cols-4'}`}>
-                {project.images.map((img, i) => (
-                  <button
-                    type="button"
-                    class={`aspect-square rounded overflow-hidden bg-gray-100 cursor-pointer transition-all ring-offset-1 ${i === 0 ? 'ring-2 ring-gold' : 'ring-0 ring-transparent hover:ring-2 hover:ring-gold/40'}`}
-                    data-thumb
-                    data-src={img.src}
-                    data-alt={img.alt}
-                    aria-label={`Show ${img.alt}`}
-                  >
-                    <img
-                      src={img.src}
-                      alt={img.alt}
-                      class="w-full h-full object-cover hover:opacity-80 transition-opacity"
-                      loading="lazy"
-                    />
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+          </article>
         ))}
       </div>
-
-      <script>
-        document.querySelectorAll('[data-project-card]').forEach((card) => {
-          const cover = card.querySelector('[data-cover]') as HTMLImageElement | null;
-          const thumbs = card.querySelectorAll<HTMLButtonElement>('[data-thumb]');
-          if (!cover) return;
-          thumbs.forEach((thumb) => {
-            thumb.addEventListener('click', () => {
-              const src = thumb.dataset.src;
-              const alt = thumb.dataset.alt;
-              if (src) cover.src = src;
-              if (alt) cover.alt = alt;
-              thumbs.forEach((t) => {
-                t.classList.remove('ring-2', 'ring-gold');
-                t.classList.add('ring-0', 'ring-transparent', 'hover:ring-2', 'hover:ring-gold/40');
-              });
-              thumb.classList.remove('ring-0', 'ring-transparent', 'hover:ring-2', 'hover:ring-gold/40');
-              thumb.classList.add('ring-2', 'ring-gold');
-            });
-          });
-        });
-      </script>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="relative bg-navy overflow-hidden">
-    <div class="absolute top-0 left-0 right-0 h-1 bg-gold"></div>
-    <div class="section-padding px-4">
-      <div class="container-main text-center">
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">
-          Ready to Start Your Custom Home?
-        </h2>
-        <p class="mt-4 text-lg text-gray-300 max-w-xl mx-auto">
-          Plans, permits, engineering, and construction — all under one contract. Detailed quote within 5 business days.
-        </p>
-        <div class="mt-8">
-          <a href="/contact" class="btn-primary text-lg px-8 py-4">Request a Quote</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <section class="bg-[#142232] text-[#fff8ed]"><div class="container-main py-20 text-center"><h2 class="font-heading text-5xl text-[#fff8ed]">Ready to discuss your lot, plans, or build scope?</h2><p class="mx-auto mt-4 max-w-2xl text-[#fff8ed]/76">Plans, permits, engineering, and construction — all under one contract.</p><a href="/contact" class="btn-luxe-fill mt-8">Request a Quote</a></div></section>
 </Layout>

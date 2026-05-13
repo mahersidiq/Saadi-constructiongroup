@@ -1,77 +1,21 @@
 ---
-const values = [
-  {
-    title: 'Truly One-Stop',
-    text: 'Plans, engineering, permits, and construction — all under one contract. You never chase down a separate architect, engineer, or permit runner.',
-  },
-  {
-    title: 'Owner on Every Project',
-    text: "You work directly with the owner from first call to final walkthrough. No handoffs to a project manager you've never met.",
-  },
-  {
-    title: 'Fixed-Price Contracts',
-    text: 'We scope your project completely before we start. Your contract price is your build price — no surprise change orders mid-construction.',
-  },
-  {
-    title: 'Built for Houston',
-    text: "Every home is designed and built for Houston's climate, soil conditions, flood zone requirements, and city permitting process.",
-  },
-];
+const reasons = ['One contract, one accountable team', 'Owner-led communication', 'Houston-specific building knowledge', 'Plan, permit, and construction coordination', 'Fixed-price scope discipline', 'Clear process from concept to walkthrough'];
 ---
-
-<section class="relative overflow-hidden grain" style="background:#050505; padding:7rem 0;">
-  <div class="container-main px-6">
-    <div class="grid lg:grid-cols-2 gap-0 items-stretch">
-
-      <!-- Left: full-height photo with diagonal clip -->
-      <div class="animate-on-scroll relative overflow-hidden" style="min-height:600px;">
-        <img
-          src="/images/p1-interior-living.png"
-          alt="Saadi Construction Group luxury interior craftsmanship"
-          class="absolute inset-0 w-full h-full object-cover"
-          loading="lazy"
-        />
-        <!-- Diagonal right edge -->
-        <div class="absolute inset-0" style="background: linear-gradient(to right, transparent 70%, #050505 100%);"></div>
-        <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0.4) 100%);"></div>
-
-        <!-- Floating stat -->
-        <div class="absolute bottom-10 left-10" style="background:rgba(200,155,90,0.12); border:1px solid rgba(200,155,90,0.35); padding:1.5rem 2rem; backdrop-filter:blur(8px);">
-          <div class="font-body font-bold" style="font-size:3rem; color:#C89B5A; line-height:1;">50+</div>
-          <div class="font-body uppercase mt-1" style="font-size:9px; letter-spacing:0.2em; color:#B8B8B8;">Homes Built</div>
-        </div>
+<section class="bg-[#fbf6ed]">
+  <div class="container-main section-padding">
+    <div class="grid gap-12 lg:grid-cols-[.85fr_1.15fr] lg:items-start">
+      <div class="animate-on-scroll lg:sticky lg:top-36">
+        <p class="eyebrow">Why Choose Saadi</p>
+        <h2 class="display-heading mt-4 text-4xl md:text-6xl">Trust is built before the slab is poured.</h2>
+        <p class="body-large mt-6">Serious custom-home decisions require a builder who can explain the details, coordinate the right people, and keep responsibility clear.</p>
       </div>
-
-      <!-- Right: content -->
-      <div class="animate-on-scroll flex flex-col justify-center lg:pl-16 xl:pl-20 pt-12 lg:pt-0">
-        <div class="mb-4">
-          <span class="font-body font-semibold uppercase" style="font-size:9px; letter-spacing:0.25em; color:#C89B5A;">Why Houston Chooses Saadi</span>
-        </div>
-        <h2 class="font-display uppercase mb-10" style="font-size:clamp(2.4rem,4vw,3.8rem); color:#F5F5F5; line-height:1.0;">
-          Why Houston Homeowners<br/>
-          <span style="color:#C89B5A;">Choose Saadi</span>
-        </h2>
-
-        <div style="border-top: 1px solid rgba(200,155,90,0.2);">
-          {values.map((item, i) => (
-            <div
-              class="animate-on-scroll group py-7"
-              style={`border-bottom: 1px solid rgba(200,155,90,0.12); transition-delay:${i * 0.1}s;`}
-            >
-              <h3 class="font-body font-bold mb-3 transition-colors duration-300 group-hover:text-[#C89B5A]"
-                style="font-size:1.1rem; color:#F5F5F5; letter-spacing:0.01em;">
-                {item.title}
-              </h3>
-              <p class="font-body font-light leading-relaxed" style="font-size:0.85rem; color:#666666; line-height:1.75;">
-                {item.text}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div class="mt-10">
-          <a href="/about" class="btn-luxe">About Saadi Construction</a>
-        </div>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {reasons.map((reason, i) => (
+          <div class="animate-on-scroll border border-[rgba(71,57,40,.14)] bg-white/70 p-7">
+            <p class="text-sm text-[#b88a4a]">0{i + 1}</p>
+            <h3 class="mt-4 font-heading text-2xl text-[#17202a]">{reason}</h3>
+          </div>
+        ))}
       </div>
     </div>
   </div>
