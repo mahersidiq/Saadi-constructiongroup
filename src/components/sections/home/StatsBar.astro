@@ -1,29 +1,22 @@
 ---
 const stats = [
   { number: '50+', label: 'Homes Built' },
-  { number: '5-Day', label: 'Quote Turnaround' },
-  { number: '15+', label: 'Years Experience' },
+  { number: '5 Days', label: 'Quote Turnaround' },
+  { number: '15+', label: 'Years of Experience' },
   { number: '100%', label: 'Owner-Led Projects' },
 ];
 ---
 
-<section class="bg-warm-black py-20 px-6 relative overflow-hidden">
-  <!-- Gold accent lines -->
-  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent"></div>
-  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent"></div>
-
+<section class="bg-cream border-y border-stone py-20 px-6">
   <div class="container-main">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
+    <div class="grid grid-cols-2 md:grid-cols-4">
       {stats.map((stat, i) => (
-        <div class="animate-on-scroll text-center relative">
-          {i < stats.length - 1 && (
-            <div class="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-12 bg-gold/15"></div>
-          )}
-          <div class="font-heading text-4xl md:text-5xl lg:text-6xl font-light text-gold leading-none mb-3">
+        <div class={`animate-on-scroll text-center py-8 ${i < stats.length - 1 ? 'md:border-r border-stone' : ''} ${i % 2 === 0 ? 'border-r border-stone md:border-r-0' : ''} first:border-r border-stone`}>
+          <div class="font-heading text-5xl md:text-6xl font-light text-warm-black leading-none mb-3" style="letter-spacing: -0.01em;">
             {stat.number}
           </div>
-          <div class="gold-line mb-3"></div>
-          <div class="font-body text-[10px] tracking-[0.2em] uppercase text-white/40 font-light">
+          <div class="w-6 h-px bg-gold mx-auto mb-3"></div>
+          <div class="font-body text-xs tracking-[0.15em] uppercase text-warm-mid font-light">
             {stat.label}
           </div>
         </div>

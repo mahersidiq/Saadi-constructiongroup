@@ -2,56 +2,42 @@
 import { allServices } from '@/data/services';
 ---
 
-<section class="py-24 md:py-36" style="background-color: #0F0D0A;">
-  <div class="container-main px-6">
+<section class="bg-cream-dark py-24 md:py-36 px-6">
+  <div class="container-main">
 
-    <div class="max-w-xl mb-16">
-      <h2 class="animate-on-scroll font-heading font-light text-white text-4xl md:text-5xl lg:text-6xl leading-tight">
-        Custom Home Builder
-        <span class="block italic text-gold mt-1">Services</span>
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+      <h2 class="animate-on-scroll font-heading font-light text-warm-black leading-tight" style="font-size: clamp(2.5rem, 5vw, 4.5rem);">
+        What We Build
       </h2>
-      <div class="w-10 h-px bg-gold mt-8 mb-6 animate-on-scroll"></div>
-      <p class="animate-on-scroll font-body text-sm text-white/40 leading-relaxed font-light">
-        Every service includes plan coordination, permitting, and construction — handled by one team under one contract.
+      <p class="animate-on-scroll font-body text-sm text-warm-mid font-light max-w-sm leading-relaxed">
+        Every service includes plan coordination, permitting, and construction under one contract.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Service list — editorial, not cards -->
+    <div class="border-t border-stone">
       {allServices.map((service) => (
         <a
           href={`/services/${service.slug}`}
-          class="animate-on-scroll group block p-8 border border-white/6 hover:border-gold/30 transition-all duration-500"
-          style="background-color: #1A1714;"
+          class="animate-on-scroll group flex items-center justify-between py-7 border-b border-stone hover:border-gold/40 transition-colors duration-300"
         >
-          <!-- Category label -->
-          <p class="font-body text-[9px] tracking-[0.22em] uppercase text-gold/50 mb-6 group-hover:text-gold/70 transition-colors duration-300">
-            {service.slug === 'construction-management' ? 'Management' : service.category}
-          </p>
-
-          <!-- Service name -->
-          <h3 class="font-heading text-xl md:text-2xl font-light text-white/80 group-hover:text-white leading-snug mb-4 transition-colors duration-300">
-            {service.name}
-          </h3>
-
-          <!-- Description -->
-          <p class="font-body text-xs text-white/30 leading-relaxed font-light group-hover:text-white/45 transition-colors duration-300 mb-8">
-            {service.description}
-          </p>
-
-          <!-- Arrow -->
-          <div class="flex items-center gap-2 text-gold/0 group-hover:text-gold transition-all duration-400">
-            <span class="w-6 h-px bg-gold"></span>
-            <span class="font-body text-[10px] tracking-[0.2em] uppercase">Learn More</span>
+          <div class="flex items-baseline gap-6 md:gap-10">
+            <span class="font-body text-xs text-warm-light font-light tracking-[0.15em] uppercase hidden md:block w-24 flex-shrink-0">
+              {service.slug === 'construction-management' ? 'Management' : service.category}
+            </span>
+            <h3 class="font-heading text-xl md:text-2xl font-light text-warm-dark group-hover:text-warm-black transition-colors duration-300" style="letter-spacing: 0.01em;">
+              {service.name}
+            </h3>
+          </div>
+          <div class="flex items-center gap-3 text-warm-light group-hover:text-gold transition-colors duration-300 flex-shrink-0">
+            <span class="font-body text-xs tracking-[0.15em] uppercase hidden sm:block">Explore</span>
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </div>
         </a>
       ))}
     </div>
 
-    <div class="animate-on-scroll mt-12">
-      <a href="/services" class="inline-flex items-center gap-3 font-body text-xs tracking-[0.2em] uppercase text-white/40 hover:text-gold transition-colors duration-300 group">
-        <span class="w-8 h-px bg-current"></span>
-        View All Services
-      </a>
-    </div>
   </div>
 </section>
