@@ -1,163 +1,22 @@
 ---
 import { serviceCategories } from '@/data/services';
 import { serviceAreas } from '@/data/serviceAreas';
-
-const designBuildServices = serviceCategories.find((c) => c.slug === 'design-build')?.services || [];
-const constructionServices = serviceCategories.find((c) => c.slug === 'construction')?.services || [];
-const planningServices = serviceCategories.find((c) => c.slug === 'planning-permits')?.services || [];
+const designBuildServices = serviceCategories.find((cat) => cat.slug === 'design-build')?.services || [];
+const constructionServices = serviceCategories.find((cat) => cat.slug === 'construction')?.services || [];
+const planningServices = serviceCategories.find((cat) => cat.slug === 'planning-permits')?.services || [];
 ---
-
-<footer style="background:#050505; border-top:1px solid rgba(200,155,90,0.12);">
-
-  <div class="gold-divider"></div>
-
-  <div class="container-main px-6 py-20">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
-
-      <!-- Brand column -->
-      <div class="lg:col-span-2">
-        <a href="/" class="inline-block mb-7 group">
-          <img
-            src="/images/logo.png"
-            alt="Saadi Construction Group"
-            style="height:100px; width:auto;"
-            class="transition-opacity duration-300 group-hover:opacity-70"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-          />
-          <div style="display:none;">
-            <div class="font-heading font-light" style="font-size:1.1rem; color:#F5F5F5; letter-spacing:0.12em; text-transform:uppercase;">Saadi</div>
-            <div class="font-body" style="font-size:7px; letter-spacing:0.28em; color:#C89B5A; text-transform:uppercase; margin-top:2px;">Construction Group</div>
-          </div>
-        </a>
-
-        <div class="mb-6">
-          <span style="font-family:'Great Vibes',cursive; font-size:1.5rem; color:rgba(200,155,90,0.7); line-height:1.4; display:block;">
-            Building Vision. Creating Value.
-          </span>
-        </div>
-
-        <p class="font-body font-light leading-relaxed mb-8" style="font-size:0.78rem; color:#444444; max-width:280px; line-height:1.8;">
-          Houston's one-stop custom home builder. Plans, engineering, permits, and construction — all under one contract.
-        </p>
-
-        <div class="space-y-3">
-          <a href="tel:8322058178"
-            class="font-body transition-colors duration-300"
-            style="font-size:0.78rem; letter-spacing:0.05em; color:#444444; display:block;"
-            onmouseover="this.style.color='#C89B5A'"
-            onmouseout="this.style.color='#444444'">
-            (832) 205-8178
-          </a>
-          <a href="mailto:info@saadiconstructiongroup.com"
-            class="font-body transition-colors duration-300"
-            style="font-size:0.78rem; letter-spacing:0.02em; color:#444444; display:block;"
-            onmouseover="this.style.color='#C89B5A'"
-            onmouseout="this.style.color='#444444'">
-            info@saadiconstructiongroup.com
-          </a>
-          <p class="font-body" style="font-size:0.75rem; color:#333333; line-height:1.7;">
-            801 Travis St Suite 2101<br/>Houston, TX 77002
-          </p>
-        </div>
-      </div>
-
-      <!-- Design & Build -->
+<footer class="border-t border-white/10 bg-[#111d2a] text-[#fff8ed]">
+  <div class="container-main py-16">
+    <div class="grid gap-12 lg:grid-cols-[1.1fr_.8fr_.8fr_1fr]">
       <div>
-        <h4 class="font-body uppercase mb-5" style="font-size:9px; letter-spacing:0.22em; color:rgba(200,155,90,0.45);">Design &amp; Build</h4>
-        <ul class="space-y-3">
-          {designBuildServices.map((s) => (
-            <li>
-              <a href={`/services/${s.slug}`}
-                class="font-body transition-colors duration-200"
-                style="font-size:0.78rem; color:#444444; letter-spacing:0.03em;"
-                onmouseover="this.style.color='#C89B5A'"
-                onmouseout="this.style.color='#444444'">
-                {s.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <a href="/" class="inline-flex" aria-label="Saadi Construction Group home"><img src="/images/saadi-logo-stacked.svg" alt="Saadi Construction Group" class="w-48 max-w-full object-contain" loading="lazy" /></a>
+        <p class="mt-6 max-w-xs leading-8 text-[#fff8ed]/70">Houston’s one-stop custom home builder. Plans, engineering, permits, and construction — all under one contract.</p>
+        <div class="mt-6 space-y-2 text-sm"><a href="tel:+18322058178" class="block hover:text-[#e7c797]">(832) 205-8178</a><a href="mailto:info@saadiconstructiongroup.com" class="block break-all hover:text-[#e7c797]">info@saadiconstructiongroup.com</a><p>801 Travis St Suite 2101<br />Houston, TX 77002</p></div>
       </div>
-
-      <!-- Construction + Planning -->
-      <div>
-        <h4 class="font-body uppercase mb-5" style="font-size:9px; letter-spacing:0.22em; color:rgba(200,155,90,0.45);">Construction</h4>
-        <ul class="space-y-3 mb-8">
-          {constructionServices.map((s) => (
-            <li>
-              <a href={`/services/${s.slug}`}
-                class="font-body transition-colors duration-200"
-                style="font-size:0.78rem; color:#444444; letter-spacing:0.03em;"
-                onmouseover="this.style.color='#C89B5A'"
-                onmouseout="this.style.color='#444444'">
-                {s.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <h4 class="font-body uppercase mb-5" style="font-size:9px; letter-spacing:0.22em; color:rgba(200,155,90,0.45);">Planning &amp; Permits</h4>
-        <ul class="space-y-3">
-          {planningServices.map((s) => (
-            <li>
-              <a href={`/services/${s.slug}`}
-                class="font-body transition-colors duration-200"
-                style="font-size:0.78rem; color:#444444; letter-spacing:0.03em;"
-                onmouseover="this.style.color='#C89B5A'"
-                onmouseout="this.style.color='#444444'">
-                {s.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Service Areas + Company -->
-      <div>
-        <h4 class="font-body uppercase mb-5" style="font-size:9px; letter-spacing:0.22em; color:rgba(200,155,90,0.45);">Service Areas</h4>
-        <ul class="grid grid-cols-2 gap-x-4 gap-y-2.5 mb-8">
-          {serviceAreas.map((area) => (
-            <li>
-              <a href={`/service-areas/${area.slug}`}
-                class="font-body transition-colors duration-200"
-                style="font-size:0.75rem; color:#444444;"
-                onmouseover="this.style.color='#C89B5A'"
-                onmouseout="this.style.color='#444444'">
-                {area.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <h4 class="font-body uppercase mb-5" style="font-size:9px; letter-spacing:0.22em; color:rgba(200,155,90,0.45);">Company</h4>
-        <ul class="space-y-3">
-          {[
-            { href: '/about', label: 'About' },
-            { href: '/projects', label: 'Projects' },
-            { href: '/contact', label: 'Contact' },
-          ].map((link) => (
-            <li>
-              <a href={link.href}
-                class="font-body transition-colors duration-200"
-                style="font-size:0.78rem; color:#444444;"
-                onmouseover="this.style.color='#C89B5A'"
-                onmouseout="this.style.color='#444444'">
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
+      <div><p class="eyebrow mb-5">Design & Build</p><ul class="space-y-3">{designBuildServices.map((s) => <li><a href={`/services/${s.slug}`} class="text-sm text-[#fff8ed]/72 hover:text-[#e7c797]">{s.name}</a></li>)}</ul></div>
+      <div><p class="eyebrow mb-5">Construction</p><ul class="space-y-3 mb-8">{constructionServices.map((s) => <li><a href={`/services/${s.slug}`} class="text-sm text-[#fff8ed]/72 hover:text-[#e7c797]">{s.name}</a></li>)}</ul><p class="eyebrow mb-5">Planning</p><ul class="space-y-3">{planningServices.map((s) => <li><a href={`/services/${s.slug}`} class="text-sm text-[#fff8ed]/72 hover:text-[#e7c797]">{s.name}</a></li>)}</ul></div>
+      <div><p class="eyebrow mb-5">Service Areas</p><ul class="grid grid-cols-2 gap-2">{serviceAreas.slice(0, 12).map((area) => <li><a href={`/service-areas/${area.slug}`} class="text-sm text-[#fff8ed]/72 hover:text-[#e7c797]">{area.name}</a></li>)}</ul><div class="mt-8 flex gap-5 text-sm"><a href="/about" class="hover:text-[#e7c797]">About</a><a href="/projects" class="hover:text-[#e7c797]">Projects</a><a href="/contact" class="hover:text-[#e7c797]">Contact</a></div></div>
     </div>
   </div>
-
-  <!-- Bottom bar -->
-  <div style="border-top:1px solid rgba(200,155,90,0.08);">
-    <div class="container-main px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-3">
-      <p class="font-body" style="font-size:10px; letter-spacing:0.05em; color:#2A2A2A;">
-        Licensed &amp; Insured &nbsp;&middot;&nbsp; Houston, TX &nbsp;&middot;&nbsp; Harris, Fort Bend, Montgomery, Brazoria &amp; Galveston Counties
-      </p>
-      <p class="font-body" style="font-size:10px; color:#2A2A2A;">&copy; 2026 Saadi Construction Group</p>
-    </div>
-  </div>
-
+  <div class="border-t border-white/10"><div class="container-main flex flex-col gap-3 py-5 text-xs text-[#fff8ed]/62 md:flex-row md:items-center md:justify-between"><p>Licensed &amp; Insured · Houston, TX · Harris, Fort Bend, Montgomery, Brazoria &amp; Galveston Counties</p><p>&copy; 2026 Saadi Construction Group · saadiconstructiongroup.com</p></div></div>
 </footer>
