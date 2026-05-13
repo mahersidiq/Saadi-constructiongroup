@@ -1,34 +1,94 @@
 ---
 ---
 
-<section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background Image -->
   <img
     src="/images/p8-exterior-front.png"
     alt="Houston custom home builder — Saadi Construction Group luxury modern home"
-    class="absolute inset-0 w-full h-full object-cover"
+    class="absolute inset-0 w-full h-full object-cover scale-105"
     loading="eager"
     fetchpriority="high"
+    style="transform-origin: center center;"
   />
-  <div class="absolute inset-0 bg-black/65"></div>
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.08),transparent_60%)]"></div>
-  <div class="relative z-10 container-main text-center px-4">
-    <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight max-w-4xl mx-auto">
-      Houston's One-Stop Custom Home Builder
-    </h1>
 
-    <p class="animate-fade-in-up-delay hero-description mt-6 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-      Plans. Engineering. Permits. Construction. One contract, one team — we handle everything from blank lot to move-in ready.
-    </p>
+  <!-- Multi-layer dark overlay for luxury depth -->
+  <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/50"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+  <!-- Subtle gold radial glow -->
+  <div class="absolute inset-0" style="background: radial-gradient(ellipse at 15% 60%, rgba(201,149,42,0.06) 0%, transparent 60%)"></div>
 
-    <div class="animate-fade-in-up-delay-2 mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="/contact" class="btn-primary text-lg px-8 py-4">Request a Quote</a>
-      <a href="/services" class="btn-outline text-lg px-8 py-4">Our Services</a>
+  <!-- Content -->
+  <div class="relative z-10 container-main w-full px-6 lg:px-8">
+    <div class="max-w-4xl">
+
+      <!-- Logo Mark + Brand Name -->
+      <div class="animate-fade-in flex items-center gap-4 mb-12">
+        <svg width="40" height="46" viewBox="0 0 48 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M36 6C44 6 46 13 46 19C46 27 38 30 30 32C22 34 14 37 14 45C14 51 18 52 24 52" stroke="#C9952A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M12 50C4 50 2 43 2 37C2 29 10 26 18 24C26 22 34 19 34 11C34 5 30 4 24 4" stroke="#C9952A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M24 52C30 52 36 49 36 43" stroke="#C9952A" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.5"/>
+          <path d="M24 4C18 4 12 7 12 13" stroke="#C9952A" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.5"/>
+        </svg>
+        <div>
+          <div class="text-white font-heading text-lg tracking-[0.3em] font-light leading-none">SAADI</div>
+          <div class="text-white/50 font-body text-[9px] tracking-[0.35em] font-light mt-1">CONSTRUCTION GROUP</div>
+        </div>
+      </div>
+
+      <!-- Gold separator -->
+      <div class="animate-fade-in-up w-12 h-px bg-gold mb-10"></div>
+
+      <!-- Main Headline -->
+      <h1 class="animate-fade-in-up font-heading font-light text-white leading-[1.05]">
+        <span class="block text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-wide">Ready to Build</span>
+        <span class="block text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-wide text-gold mt-1">Something</span>
+        <span class="block text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-wide mt-1">Extraordinary?</span>
+      </h1>
+
+      <!-- Subheading -->
+      <p class="animate-fade-in-up-delay mt-8 text-base md:text-lg text-white/60 max-w-xl font-body font-light leading-relaxed tracking-wide">
+        If you're ready to bring your vision to life, we're here to help.
+        Plans. Engineering. Permits. Construction — one contract, one team, zero compromise.
+      </p>
+
+      <!-- CTAs -->
+      <div class="animate-fade-in-up-delay-2 mt-10 flex flex-col sm:flex-row items-start gap-4">
+        <a href="/contact" class="btn-primary">
+          Schedule Free Consultation
+        </a>
+        <a href="/projects" class="btn-outline">
+          View Our Work
+        </a>
+      </div>
+
+      <!-- Phone -->
+      <p class="animate-fade-in-up-delay-2 mt-8 font-body text-sm text-white/40 tracking-[0.15em]">
+        CALL / TEXT &nbsp;
+        <a href="tel:8322058178" class="text-gold hover:text-gold-light transition-colors font-medium">
+          (832) 205-8178
+        </a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span>Houston, TX &amp; Surrounding Areas</span>
+      </p>
     </div>
-    <p class="animate-fade-in-up-delay-2 mt-6 text-gray-400 text-sm">
-      Call us directly:
-      <a href="tel:8322058178" class="text-gold font-semibold hover:underline">
-        (832) 205-8178
-      </a>
-    </p>
+  </div>
+
+  <!-- Bottom scroll indicator -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-fade-in-up-delay-3 flex flex-col items-center gap-2">
+    <span class="font-body text-[9px] tracking-[0.3em] text-white/30 uppercase">Scroll</span>
+    <div class="w-px h-12 bg-gradient-to-b from-white/30 to-transparent"></div>
+  </div>
+
+  <!-- Right side vertical text (desktop only) -->
+  <div class="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col items-center gap-4 animate-fade-in">
+    <div class="w-px h-16 bg-gradient-to-b from-transparent via-gold/40 to-transparent"></div>
+    <span
+      class="font-body text-[9px] tracking-[0.25em] text-white/30 uppercase"
+      style="writing-mode: vertical-rl; text-orientation: mixed;"
+    >
+      Houston, Texas &amp; Greater Area
+    </span>
+    <div class="w-px h-16 bg-gradient-to-b from-transparent via-gold/40 to-transparent"></div>
   </div>
 </section>

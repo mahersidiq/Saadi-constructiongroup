@@ -11,36 +11,65 @@ const icons: Record<string, string> = {
 };
 ---
 
-<section class="section-padding bg-white">
-  <div class="container-main">
-    <h2 class="animate-on-scroll section-heading font-heading text-3xl md:text-4xl font-bold text-charcoal text-center">
-      Custom Home Builder Services
-    </h2>
-    <p class="animate-on-scroll mt-4 text-gray-600 text-center max-w-2xl mx-auto">
-      Every service includes plan coordination, permitting, and construction — handled by one team.
-    </p>
+<section class="section-padding bg-charcoal relative overflow-hidden">
+  <!-- Subtle texture -->
+  <div class="absolute inset-0" style="background: radial-gradient(ellipse at 20% 80%, rgba(201,149,42,0.03) 0%, transparent 50%)"></div>
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent"></div>
 
-    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div class="container-main px-6 relative z-10">
+
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <div class="animate-on-scroll mb-4">
+        <span class="section-label">What We Build</span>
+      </div>
+      <h2 class="animate-on-scroll font-heading font-light text-white text-4xl md:text-5xl lg:text-6xl leading-tight">
+        Custom Home Builder <span class="italic text-gold">Services</span>
+      </h2>
+      <div class="animate-on-scroll gold-line mt-8"></div>
+      <p class="animate-on-scroll mt-6 font-body text-sm text-white/40 max-w-xl mx-auto font-light tracking-wide leading-relaxed">
+        Every service includes plan coordination, permitting, and construction — handled by one team under one contract.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gold/10">
       {allServices.map((service) => (
         <a
           href={`/services/${service.slug}`}
-          class="animate-on-scroll group flex flex-col rounded-2xl border border-gray-200 p-7 hover:border-gold hover:shadow-lg transition-all duration-200"
+          class="animate-on-scroll group relative flex flex-col bg-charcoal p-8 md:p-10 hover:bg-dark-card transition-all duration-500 overflow-hidden"
         >
-          <span class="inline-block self-start mb-4 px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full bg-gold/10 text-gold border border-gold/20">
-            {service.slug === 'construction-management' ? 'Management' : service.category}
-          </span>
-          <svg class="w-6 h-6 text-gold mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" set:html={icons[service.slug]} />
-          <h3 class="font-heading text-lg font-bold text-charcoal group-hover:text-navy transition-colors mb-3">
+          <!-- Gold corner accent on hover -->
+          <div class="absolute top-0 left-0 w-0 h-px bg-gold transition-all duration-500 group-hover:w-full"></div>
+
+          <div class="flex items-center justify-between mb-8">
+            <svg class="w-6 h-6 text-gold/60 group-hover:text-gold transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2" set:html={icons[service.slug]} />
+            <span class="font-body text-[9px] tracking-[0.2em] uppercase text-white/20 group-hover:text-gold/40 transition-colors duration-300">
+              {service.slug === 'construction-management' ? 'Management' : service.category}
+            </span>
+          </div>
+
+          <h3 class="font-heading text-xl md:text-2xl font-light text-white/80 group-hover:text-white transition-colors duration-300 mb-4 leading-snug">
             {service.name}
           </h3>
-          <p class="text-sm text-gray-600 leading-relaxed flex-1">
+
+          <p class="font-body text-xs text-white/30 leading-relaxed font-light flex-1 group-hover:text-white/50 transition-colors duration-300">
             {service.description}
           </p>
-          <span class="mt-5 text-sm font-semibold text-gold group-hover:underline">
-            Learn more →
-          </span>
+
+          <div class="mt-6 flex items-center gap-2 text-gold/0 group-hover:text-gold transition-all duration-300">
+            <span class="font-body text-[10px] tracking-[0.2em] uppercase font-medium">Learn More</span>
+            <svg class="w-3.5 h-3.5 translate-x-0 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </div>
         </a>
       ))}
+    </div>
+
+    <div class="animate-on-scroll text-center mt-12">
+      <a href="/services" class="btn-outline-gold">
+        View All Services
+      </a>
     </div>
   </div>
 </section>
