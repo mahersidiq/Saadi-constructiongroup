@@ -5,18 +5,18 @@ const designBuildServices = serviceCategories.find((cat) => cat.slug === 'design
 const constructionServices = serviceCategories.find((cat) => cat.slug === 'construction')?.services || [];
 const planningServices = serviceCategories.find((cat) => cat.slug === 'planning-permits')?.services || [];
 ---
-<footer class="border-t border-[rgba(71,57,40,.14)] bg-[#f1e7d8] text-[#17202a]">
+<footer class="border-t border-[rgba(255,248,237,.12)] bg-[#111d2a] text-[#fff8ed]">
   <div class="container-main py-16">
     <div class="grid gap-12 lg:grid-cols-[1.1fr_.8fr_.8fr_1fr]">
       <div>
-        <a href="/" class="inline-flex bg-[#fbf6ed] p-3 shadow-[0_16px_38px_rgba(36,27,18,.12)]" aria-label="Saadi Construction Group home"><img src="/images/logo.png" alt="Saadi Construction Group" class="h-24 w-24 object-contain" loading="lazy" /></a>
-        <p class="mt-6 max-w-xs leading-8 text-[#17202a]/70">Houston’s one-stop custom home builder. Plans, engineering, permits, and construction — all under one contract.</p>
-        <div class="mt-6 space-y-2 text-sm"><a href="tel:+18322058178" class="block hover:text-[#b88a4a]">(832) 205-8178</a><a href="mailto:info@saadiconstructiongroup.com" class="block break-all hover:text-[#b88a4a]">info@saadiconstructiongroup.com</a><p>801 Travis St Suite 2101<br />Houston, TX 77002</p></div>
+        <a href="/" class="inline-flex" aria-label="Saadi Construction Group home"><img src="/images/saadi-logo-stacked.svg" alt="Saadi Construction Group" class="h-auto w-56 max-w-full object-contain" loading="lazy" /></a>
+        <p class="mt-6 max-w-xs leading-8 text-[#fff8ed]/70">Houston’s one-stop custom home builder. Plans, engineering, permits, and construction — all under one contract.</p>
+        <div class="mt-6 space-y-2 text-sm"><a href="tel:+18322058178" class="block hover:text-[#e7c797]">(832) 205-8178</a><a href="mailto:info@saadiconstructiongroup.com" class="block break-all hover:text-[#e7c797]">info@saadiconstructiongroup.com</a><p>801 Travis St Suite 2101<br />Houston, TX 77002</p></div>
       </div>
-      <div><p class="eyebrow mb-5">Design & Build</p><ul class="space-y-3">{designBuildServices.map((s) => <li><a href={`/services/${s.slug}`} class="text-sm text-[#17202a]/72 hover:text-[#b88a4a]">{s.name}</a></li>)}</ul></div>
-      <div><p class="eyebrow mb-5">Construction</p><ul class="space-y-3 mb-8">{constructionServices.map((s) => <li><a href={`/services/${s.slug}`} class="text-sm text-[#17202a]/72 hover:text-[#b88a4a]">{s.name}</a></li>)}</ul><p class="eyebrow mb-5">Planning</p><ul class="space-y-3">{planningServices.map((s) => <li><a href={`/services/${s.slug}`} class="text-sm text-[#17202a]/72 hover:text-[#b88a4a]">{s.name}</a></li>)}</ul></div>
-      <div><p class="eyebrow mb-5">Service Areas</p><ul class="grid grid-cols-2 gap-2">{serviceAreas.slice(0, 12).map((area) => <li><a href={`/service-areas/${area.slug}`} class="text-sm text-[#17202a]/72 hover:text-[#b88a4a]">{area.name}</a></li>)}</ul><div class="mt-8 flex gap-5 text-sm"><a href="/about" class="hover:text-[#b88a4a]">About</a><a href="/projects" class="hover:text-[#b88a4a]">Projects</a><a href="/contact" class="hover:text-[#b88a4a]">Contact</a></div></div>
+      <div><p class="eyebrow mb-5">Design & Build</p><ul class="space-y-3">{designBuildServices.map((s) => <li><a href={`/services/${s.slug}`} class="text-sm text-[#fff8ed]/72 hover:text-[#e7c797]">{s.name}</a></li>)}</ul></div>
+      <div><p class="eyebrow mb-5">Construction</p><ul class="space-y-3 mb-8">{constructionServices.map((s) => <li><a href={`/services/${s.slug}`} class="text-sm text-[#fff8ed]/72 hover:text-[#e7c797]">{s.name}</a></li>)}</ul><p class="eyebrow mb-5">Planning</p><ul class="space-y-3">{planningServices.map((s) => <li><a href={`/services/${s.slug}`} class="text-sm text-[#fff8ed]/72 hover:text-[#e7c797]">{s.name}</a></li>)}</ul></div>
+      <div><p class="eyebrow mb-5">Service Areas</p><ul class="grid grid-cols-2 gap-2">{serviceAreas.slice(0, 12).map((area) => <li><a href={`/service-areas/${area.slug}`} class="text-sm text-[#fff8ed]/72 hover:text-[#e7c797]">{area.name}</a></li>)}</ul><div class="mt-8 flex gap-5 text-sm"><a href="/about" class="hover:text-[#e7c797]">About</a><a href="/projects" class="hover:text-[#e7c797]">Projects</a><a href="/contact" class="hover:text-[#e7c797]">Contact</a></div></div>
     </div>
   </div>
-  <div class="border-t border-[rgba(71,57,40,.14)]"><div class="container-main flex flex-col gap-3 py-5 text-xs text-[#17202a]/62 md:flex-row md:items-center md:justify-between"><p>Licensed &amp; Insured · Houston, TX · Harris, Fort Bend, Montgomery, Brazoria &amp; Galveston Counties</p><p>&copy; 2026 Saadi Construction Group · saadiconstructiongroup.com</p></div></div>
+  <div class="border-t border-[rgba(255,248,237,.12)]"><div class="container-main flex flex-col gap-3 py-5 text-xs text-[#fff8ed]/62 md:flex-row md:items-center md:justify-between"><p>Licensed &amp; Insured · Houston, TX · Harris, Fort Bend, Montgomery, Brazoria &amp; Galveston Counties</p><p>&copy; 2026 Saadi Construction Group · saadiconstructiongroup.com</p></div></div>
 </footer>

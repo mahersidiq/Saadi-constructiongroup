@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Saadi Construction Group monogram</title>
+  <desc id="desc">Interlocking gold S monogram recreated as clean vector strokes.</desc>
+  <defs>
+    <linearGradient id="saadiGold" x1="22" y1="22" x2="138" y2="138" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f8d79a"/>
+      <stop offset="0.48" stop-color="#c89345"/>
+      <stop offset="1" stop-color="#f1bd72"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#saadiGold)" stroke-width="7.5" stroke-linecap="butt" stroke-linejoin="round">
+    <path d="M117 51v-14c0-18-15-32-37-32S43 19 43 40c0 17 9 27 27 36l35 17c17 8 26 20 26 36 0 18-15 31-37 31-23 0-38-14-38-33v-14"/>
+    <path d="M43 47c-19 4-31 18-31 37 0 16 9 27 27 36l50 25c8 4 17 6 26 3 10-3 17-9 22-18"/>
+    <path d="M117 47c-10-5-22-10-37-10-22 0-37 13-37 31 0 15 9 25 27 34l38 19c14 7 22 18 22 33"/>
+    <path d="M43 113v34c0 5-4 9-9 9H18c-5 0-9-4-9-9v-27"/>
+    <path d="M117 51l28 14c5 3 8 7 8 13v31"/>
+  </g>
+</svg>
