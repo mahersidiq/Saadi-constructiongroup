@@ -44,9 +44,12 @@ const values = [
 
       <!-- Right: content -->
       <div class="animate-on-scroll flex flex-col justify-center lg:pl-16 xl:pl-20 pt-12 lg:pt-0">
-        <h2 class="font-heading font-light mb-10" style="font-size:clamp(2.4rem,4vw,3.8rem); color:#F5F5F5; line-height:1.1;">
+        <div class="mb-4">
+          <span class="font-body font-semibold uppercase" style="font-size:9px; letter-spacing:0.25em; color:#C89B5A;">Why Houston Chooses Saadi</span>
+        </div>
+        <h2 class="font-body font-extrabold uppercase mb-10" style="font-size:clamp(2.4rem,4vw,3.8rem); color:#F5F5F5; line-height:1.0;">
           Why Houston Homeowners<br/>
-          <em style="color:#C89B5A; font-style:italic;">Choose Saadi</em>
+          <span style="color:#C89B5A;">Choose Saadi</span>
         </h2>
 
         <div style="border-top: 1px solid rgba(200,155,90,0.2);">
@@ -55,8 +58,8 @@ const values = [
               class="animate-on-scroll group py-7"
               style={`border-bottom: 1px solid rgba(200,155,90,0.12); transition-delay:${i * 0.1}s;`}
             >
-              <h3 class="font-heading font-light mb-3 transition-colors duration-300 group-hover:text-[#C89B5A]"
-                style="font-size:1.3rem; color:#F5F5F5; letter-spacing:0.01em;">
+              <h3 class="font-body font-bold mb-3 transition-colors duration-300 group-hover:text-[#C89B5A]"
+                style="font-size:1.1rem; color:#F5F5F5; letter-spacing:0.01em;">
                 {item.title}
               </h3>
               <p class="font-body font-light leading-relaxed" style="font-size:0.85rem; color:#666666; line-height:1.75;">

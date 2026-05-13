@@ -8,9 +8,14 @@ const featured = [projects[7], projects[2], projects[1]];
   <div class="container-main px-6 pt-16">
 
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
-      <h2 class="animate-on-scroll font-heading font-light" style="font-size:clamp(2.4rem,4.5vw,4rem); color:#F5F5F5; line-height:1.1;">
-        Featured Projects
-      </h2>
+      <div>
+        <div class="animate-on-scroll mb-3">
+          <span class="font-body font-semibold uppercase" style="font-size:9px; letter-spacing:0.25em; color:#C89B5A;">Our Work</span>
+        </div>
+        <h2 class="animate-on-scroll font-body font-extrabold uppercase" style="font-size:clamp(2.4rem,4.5vw,4rem); color:#F5F5F5; line-height:1.0;">
+          Featured Projects
+        </h2>
+      </div>
       <p class="animate-on-scroll font-body font-light" style="color:#B8B8B8; font-size:0.85rem; max-width:300px; line-height:1.7;">
         Every home designed and built under one contract — plans through construction.
       </p>
@@ -37,7 +42,7 @@ const featured = [projects[7], projects[2], projects[1]];
         </div>
         <div class="absolute bottom-0 left-0 right-0 p-8">
           <span class="font-body uppercase" style="font-size:9px; letter-spacing:0.2em; color:#C89B5A;">{featured[0].style}</span>
-          <h3 class="font-heading font-light mt-1" style="font-size:1.6rem; color:#F5F5F5;">{featured[0].title}</h3>
+          <h3 class="font-body font-bold mt-1" style="font-size:1.4rem; color:#F5F5F5;">{featured[0].title}</h3>
           <p class="font-body mt-1" style="font-size:11px; letter-spacing:0.06em; color:#B8B8B8;">{featured[0].location} &nbsp;·&nbsp; {featured[0].sqft}</p>
         </div>
       </a>
@@ -54,7 +59,7 @@ const featured = [projects[7], projects[2], projects[1]];
             </div>
             <div class="absolute bottom-0 left-0 right-0 p-6">
               <span class="font-body uppercase" style="font-size:9px; letter-spacing:0.2em; color:#C89B5A;">{project.style}</span>
-              <h3 class="font-heading font-light mt-1" style="font-size:1.25rem; color:#F5F5F5;">{project.title}</h3>
+              <h3 class="font-body font-bold mt-1" style="font-size:1.15rem; color:#F5F5F5;">{project.title}</h3>
               <p class="font-body mt-0.5" style="font-size:11px; letter-spacing:0.06em; color:#B8B8B8;">{project.location} &nbsp;·&nbsp; {project.sqft}</p>
             </div>
           </a>
