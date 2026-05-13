@@ -3,37 +3,59 @@ const items = [
   {
     label: 'Plans & Design',
     text: 'Architectural drawings coordinated and delivered — no separate architect to hire or manage.',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />`,
   },
   {
     label: 'Engineering & Permits',
-    text: 'Structural engineering and permit submission handled in-house. We run the process.',
+    text: 'Structural engineering and permit submission handled in-house. We run the process start to finish.',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z" />`,
   },
   {
     label: 'Full Construction',
     text: 'Ground-up build executed by our licensed team and vetted Houston subcontractor network.',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />`,
   },
 ];
 ---
 
-<section class="relative bg-charcoal overflow-hidden">
-  <div class="absolute top-0 left-0 right-0 h-1 bg-gold"></div>
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.1),transparent_60%)]"></div>
+<section class="relative bg-obsidian overflow-hidden">
+  <!-- Gold top accent -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent"></div>
+
+  <!-- Background texture -->
+  <div class="absolute inset-0" style="background: radial-gradient(ellipse at 80% 20%, rgba(201,149,42,0.04) 0%, transparent 60%)"></div>
+
   <div class="section-padding relative z-10">
-    <div class="container-main px-4">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="animate-on-scroll font-heading text-3xl md:text-4xl font-bold text-white">
-          One Contract. Everything Included.
+    <div class="container-main px-6">
+
+      <!-- Section label -->
+      <div class="animate-on-scroll text-center mb-6">
+        <span class="section-label">The Saadi Difference</span>
+      </div>
+
+      <div class="animate-on-scroll max-w-3xl mx-auto text-center">
+        <h2 class="font-heading font-light text-white text-4xl md:text-5xl lg:text-6xl leading-tight">
+          One Contract.<br/>
+          <span class="italic text-gold">Everything Included.</span>
         </h2>
-        <p class="animate-on-scroll mt-6 text-lg text-gray-300 leading-relaxed">
-          Most contractors hand you a blueprint and tell you to figure out permits yourself. We don't. Saadi Construction Group manages your architectural plans, structural engineering, city permits, and full construction under a single contract — so you deal with one phone number, one schedule, and one point of accountability from start to finish.
+        <div class="gold-line mt-8 mb-8"></div>
+        <p class="font-body text-sm md:text-base text-white/50 leading-relaxed font-light max-w-2xl mx-auto">
+          Most contractors hand you a blueprint and tell you to figure out permits yourself. We don't.
+          Saadi Construction Group manages your architectural plans, structural engineering, city permits,
+          and full construction under a single contract — one phone number, one schedule, one point of
+          accountability from start to finish.
         </p>
       </div>
 
-      <div class="mt-14 grid gap-6 md:grid-cols-3">
+      <div class="mt-16 grid gap-6 md:grid-cols-3">
         {items.map((item) => (
-          <div class="animate-on-scroll bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7">
-            <h3 class="font-heading text-lg md:text-xl font-bold text-gold mb-3">{item.label}</h3>
-            <p class="text-gray-300 leading-relaxed">{item.text}</p>
+          <div class="animate-on-scroll luxury-card bg-dark-card p-8 md:p-10 group">
+            <div class="w-10 h-10 flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2" set:html={item.icon} />
+            </div>
+            <div class="w-8 h-px bg-gold/40 mb-5"></div>
+            <h3 class="font-heading text-xl md:text-2xl font-light text-gold mb-4 tracking-wide">{item.label}</h3>
+            <p class="font-body text-sm text-white/50 leading-relaxed font-light">{item.text}</p>
           </div>
         ))}
       </div>
