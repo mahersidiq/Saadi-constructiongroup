@@ -45,14 +45,15 @@ export default function Navbar({ pathname = '/' }) {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style={navStyle}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24">
+          <div className="flex items-center justify-between h-32">
 
             {/* Logo */}
             <a href="/" className="flex-shrink-0 group">
               <img
                 src="/images/logo.png"
                 alt="Saadi Construction Group"
-                className="h-20 w-auto transition-opacity duration-300 group-hover:opacity-75"
+                style={{ height: '110px', width: 'auto' }}
+                className="transition-opacity duration-300 group-hover:opacity-75"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   e.currentTarget.nextElementSibling.style.display = 'block';
