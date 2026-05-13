@@ -43,7 +43,7 @@ export default function Navbar({ pathname = '/' }) {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-charcoal/98 backdrop-blur-md border-b border-gold/10 shadow-2xl'
+            ? 'bg-warm-black/97 backdrop-blur-md shadow-lg'
             : 'bg-transparent'
         }`}
       >
@@ -61,12 +61,10 @@ export default function Navbar({ pathname = '/' }) {
                   e.target.nextSibling.style.display = 'flex';
                 }}
               />
-              {/* Fallback text logo if SVG not found */}
-              <div className="hidden items-center gap-3" aria-hidden="true">
-                <div className="flex flex-col leading-none">
-                  <span className="text-white font-heading text-xl tracking-[0.25em] font-light">SAADI</span>
-                  <span className="text-white/50 font-body text-[9px] tracking-[0.3em] font-light mt-0.5">CONSTRUCTION GROUP</span>
-                </div>
+              {/* Fallback text logo shown until logo.svg is uploaded */}
+              <div className="hidden flex-col leading-none" aria-hidden="true">
+                <span className="text-white font-heading text-xl tracking-[0.25em] font-light" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>SAADI</span>
+                <span className="text-white/50 text-[9px] tracking-[0.28em] font-light mt-0.5" style={{ fontFamily: "'Lato', sans-serif" }}>CONSTRUCTION GROUP</span>
               </div>
             </a>
 
