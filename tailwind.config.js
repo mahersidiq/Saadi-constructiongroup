@@ -28,6 +28,7 @@ export default {
         'dark-card':    '#0D0D0D',
       },
       fontFamily: {
+        display: ['Bebas Neue', 'Impact', 'sans-serif'],
         heading: ['Cormorant Garamond', 'Georgia', 'serif'],
         body:    ['Inter', 'sans-serif'],
         script:  ['Great Vibes', 'cursive'],
