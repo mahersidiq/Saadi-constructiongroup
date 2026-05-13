@@ -11,8 +11,10 @@ export default {
         'mid-gray': '#E5E5E5',
       },
       fontFamily: {
+        display: ['Bebas Neue', 'Impact', 'sans-serif'],
         heading: ['Plus Jakarta Sans', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
+        script: ['Great Vibes', 'cursive'],
       },
     },
   },

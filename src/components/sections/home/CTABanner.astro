@@ -1,19 +1,94 @@
 ---
+const items = [
+  {
+    label: 'Transparent Pricing',
+    text: 'Fixed-price contracts with no surprise change orders mid-build.',
+  },
+  {
+    label: 'Plans to Keys',
+    text: 'Architecture, engineering, permits, and construction under one contract.',
+  },
+  {
+    label: '5-Day Quote',
+    text: 'Detailed written quote delivered within 5 business days of site visit.',
+  },
+];
 ---
 
-<section class="relative bg-navy overflow-hidden">
-  <div class="absolute top-0 left-0 right-0 h-1 bg-gold"></div>
-  <div class="section-padding">
-    <div class="container-main text-center">
-      <h2 class="animate-on-scroll section-heading font-heading text-3xl md:text-4xl font-bold text-white">
-        Ready to Build Your Custom Home?
-      </h2>
-      <p class="animate-on-scroll mt-4 text-lg text-gray-300 max-w-xl mx-auto">
-        Plans, permits, engineering, and construction — all under one contract. Detailed quote within 5 business days.
+<!-- Flyer-style diagonal split CTA -->
+<section class="relative overflow-hidden bg-navy min-h-[480px] flex items-stretch">
+
+  <!-- Left dark panel -->
+  <div class="relative z-10 flex flex-col justify-center w-full lg:w-[52%] px-8 md:px-12 lg:px-16 py-16 lg:py-20">
+
+    <!-- Logo mark / brand accent -->
+    <div class="mb-6">
+      <span class="inline-block w-10 h-1 bg-gold rounded-full"></span>
+    </div>
+
+    <!-- Big headline — Bebas Neue display font -->
+    <h2 class="animate-on-scroll font-display text-5xl md:text-6xl xl:text-7xl text-white leading-none tracking-[0.03em]">
+      Ready to Build Something <span class="text-gold">Extraordinary?</span>
+    </h2>
+
+    <!-- Script + display sub-headline — matches flyer formula -->
+    <p class="animate-on-scroll mt-5 text-lg md:text-xl text-gray-300 leading-snug">
+      <span class="font-script text-2xl md:text-3xl text-gold/90 block mb-1">We build more than homes,</span>
+      <span class="font-display text-3xl md:text-4xl text-white tracking-[0.03em]">WE BUILD LEGACIES.</span>
+    </p>
+
+    <!-- Gold separator line -->
+    <div class="mt-6 mb-6 w-16 h-px bg-gold/60"></div>
+
+    <!-- Icon list items -->
+    <ul class="animate-on-scroll space-y-4">
+      {items.map((item) => (
+        <li class="flex items-start gap-3">
+          <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-gold flex items-center justify-center">
+            <svg class="w-3.5 h-3.5 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
+          </span>
+          <span>
+            <strong class="font-heading font-bold text-gold text-sm">{item.label}</strong>
+            <span class="text-gray-300 text-sm"> — {item.text}</span>
+          </span>
+        </li>
+      ))}
+    </ul>
+
+    <!-- CTA button -->
+    <div class="animate-on-scroll mt-10">
+      <a href="/contact" class="inline-block bg-gold text-navy font-heading font-bold text-base px-8 py-4 rounded hover:brightness-110 transition-all duration-200 tracking-wide">
+        Request a Free Quote
+      </a>
+      <p class="mt-3 text-gray-400 text-sm">
+        Or call us: <a href="tel:8322058178" class="text-gold font-semibold hover:underline">(832) 205-8178</a>
       </p>
-      <div class="animate-on-scroll mt-8">
-        <a href="/contact" class="btn-primary text-lg px-8 py-4">Request a Quote</a>
-      </div>
     </div>
   </div>
+
+  <!-- Diagonal clip mask for desktop -->
+  <!-- Right photo panel with diagonal cut edge -->
+  <div class="hidden lg:block absolute inset-y-0 right-0 w-[55%]" style="clip-path: polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%);">
+    <img
+      src="/images/p8-exterior-front.png"
+      alt="Saadi Construction Group — custom home exterior Houston"
+      class="w-full h-full object-cover object-center"
+      loading="lazy"
+    />
+    <!-- Slight dark overlay to keep it readable -->
+    <div class="absolute inset-0 bg-navy/20"></div>
+  </div>
+
+  <!-- Mobile: full-width photo below on small screens -->
+  <div class="lg:hidden absolute bottom-0 left-0 right-0 h-40 opacity-20 pointer-events-none">
+    <img
+      src="/images/p8-exterior-front.png"
+      alt=""
+      class="w-full h-full object-cover object-top"
+      loading="lazy"
+    />
+  </div>
+
 </section>

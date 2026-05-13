@@ -7,7 +7,7 @@ const whatIsItParas = Array.isArray(whatIsIt) ? whatIsIt : whatIsIt ? [whatIsIt]
   <div class="container-main px-4">
     {whatIsItParas.length > 0 && (
       <div class="animate-on-scroll mb-14 max-w-3xl what-is-it">
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-6">What Is It</h2>
+        <h2 class="font-display text-3xl md:text-5xl text-charcoal mb-6 tracking-[0.03em]">What Is It</h2>
         {whatIsItParas.map((para) => (
           <p class="text-lg text-gray-700 leading-relaxed mb-4 last:mb-0">{para}</p>
         ))}
@@ -16,7 +16,7 @@ const whatIsItParas = Array.isArray(whatIsIt) ? whatIsIt : whatIsIt ? [whatIsIt]
 
     {includes && includes.length > 0 && (
       <div class="animate-on-scroll mb-14 max-w-3xl">
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-6">What's Included</h2>
+        <h2 class="font-display text-3xl md:text-5xl text-charcoal mb-6 tracking-[0.03em]">What's Included</h2>
         <ul class="grid gap-3 sm:grid-cols-2">
           {includes.map((item) => (
             <li class="flex items-start gap-3">
