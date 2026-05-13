@@ -1,94 +1,66 @@
 ---
 ---
 
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+<section class="relative min-h-screen flex items-end overflow-hidden">
   <!-- Background Image -->
   <img
     src="/images/p8-exterior-front.png"
     alt="Houston custom home builder — Saadi Construction Group luxury modern home"
-    class="absolute inset-0 w-full h-full object-cover scale-105"
+    class="absolute inset-0 w-full h-full object-cover"
     loading="eager"
     fetchpriority="high"
-    style="transform-origin: center center;"
   />
 
-  <!-- Multi-layer dark overlay for luxury depth -->
-  <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/50"></div>
-  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
-  <!-- Subtle gold radial glow -->
-  <div class="absolute inset-0" style="background: radial-gradient(ellipse at 15% 60%, rgba(201,149,42,0.06) 0%, transparent 60%)"></div>
+  <!-- Warm dark overlay — heavier at bottom where text lives -->
+  <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20"></div>
+  <!-- Warm left-side gradient so text pops -->
+  <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent"></div>
 
-  <!-- Content -->
-  <div class="relative z-10 container-main w-full px-6 lg:px-8">
-    <div class="max-w-4xl">
+  <!-- Content — sits at the bottom of the viewport -->
+  <div class="relative z-10 w-full container-main px-6 lg:px-8 pb-24 md:pb-32">
+    <div class="max-w-3xl">
 
-      <!-- Logo Mark + Brand Name -->
-      <div class="animate-fade-in flex items-center gap-4 mb-12">
-        <svg width="40" height="46" viewBox="0 0 48 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M36 6C44 6 46 13 46 19C46 27 38 30 30 32C22 34 14 37 14 45C14 51 18 52 24 52" stroke="#C9952A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-          <path d="M12 50C4 50 2 43 2 37C2 29 10 26 18 24C26 22 34 19 34 11C34 5 30 4 24 4" stroke="#C9952A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-          <path d="M24 52C30 52 36 49 36 43" stroke="#C9952A" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.5"/>
-          <path d="M24 4C18 4 12 7 12 13" stroke="#C9952A" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.5"/>
-        </svg>
-        <div>
-          <div class="text-white font-heading text-lg tracking-[0.3em] font-light leading-none">SAADI</div>
-          <div class="text-white/50 font-body text-[9px] tracking-[0.35em] font-light mt-1">CONSTRUCTION GROUP</div>
-        </div>
-      </div>
-
-      <!-- Gold separator -->
-      <div class="animate-fade-in-up w-12 h-px bg-gold mb-10"></div>
+      <!-- Thin gold rule -->
+      <div class="w-10 h-px bg-gold mb-10 animate-fade-in"></div>
 
       <!-- Main Headline -->
-      <h1 class="animate-fade-in-up font-heading font-light text-white leading-[1.05]">
-        <span class="block text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-wide">Ready to Build</span>
-        <span class="block text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-wide text-gold mt-1">Something</span>
-        <span class="block text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-wide mt-1">Extraordinary?</span>
+      <h1 class="animate-fade-in font-heading font-light text-white leading-[1.08]">
+        <span class="block text-5xl md:text-6xl lg:text-[5.5rem] xl:text-[6.5rem]">Ready to Build</span>
+        <span class="block text-5xl md:text-6xl lg:text-[5.5rem] xl:text-[6.5rem] text-gold italic">Something</span>
+        <span class="block text-5xl md:text-6xl lg:text-[5.5rem] xl:text-[6.5rem]">Extraordinary?</span>
       </h1>
 
-      <!-- Subheading -->
-      <p class="animate-fade-in-up-delay mt-8 text-base md:text-lg text-white/60 max-w-xl font-body font-light leading-relaxed tracking-wide">
+      <!-- Body -->
+      <p class="animate-fade-in-up-delay mt-8 text-base md:text-lg text-white/55 max-w-lg font-body font-light leading-relaxed">
         If you're ready to bring your vision to life, we're here to help.
-        Plans. Engineering. Permits. Construction — one contract, one team, zero compromise.
+        Plans. Engineering. Permits. Construction — one contract, one team.
       </p>
 
       <!-- CTAs -->
-      <div class="animate-fade-in-up-delay-2 mt-10 flex flex-col sm:flex-row items-start gap-4">
-        <a href="/contact" class="btn-primary">
+      <div class="animate-fade-in-up-delay-2 mt-10 flex flex-wrap items-center gap-4">
+        <a href="/contact" class="inline-flex items-center px-8 py-4 bg-gold text-white font-body text-xs tracking-[0.2em] uppercase font-semibold hover:bg-gold-light hover:text-charcoal transition-all duration-300">
           Schedule Free Consultation
         </a>
-        <a href="/projects" class="btn-outline">
+        <a href="/projects" class="inline-flex items-center px-8 py-4 border border-white/30 text-white font-body text-xs tracking-[0.2em] uppercase font-semibold hover:border-white hover:bg-white/5 transition-all duration-300">
           View Our Work
         </a>
       </div>
 
       <!-- Phone -->
-      <p class="animate-fade-in-up-delay-2 mt-8 font-body text-sm text-white/40 tracking-[0.15em]">
+      <p class="animate-fade-in-up-delay-2 mt-8 font-body text-xs text-white/35 tracking-[0.12em]">
         CALL / TEXT &nbsp;
         <a href="tel:8322058178" class="text-gold hover:text-gold-light transition-colors font-medium">
           (832) 205-8178
         </a>
-        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span class="text-white/20 mx-3">|</span>
         <span>Houston, TX &amp; Surrounding Areas</span>
       </p>
     </div>
   </div>
 
-  <!-- Bottom scroll indicator -->
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-fade-in-up-delay-3 flex flex-col items-center gap-2">
-    <span class="font-body text-[9px] tracking-[0.3em] text-white/30 uppercase">Scroll</span>
-    <div class="w-px h-12 bg-gradient-to-b from-white/30 to-transparent"></div>
-  </div>
-
-  <!-- Right side vertical text (desktop only) -->
-  <div class="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col items-center gap-4 animate-fade-in">
-    <div class="w-px h-16 bg-gradient-to-b from-transparent via-gold/40 to-transparent"></div>
-    <span
-      class="font-body text-[9px] tracking-[0.25em] text-white/30 uppercase"
-      style="writing-mode: vertical-rl; text-orientation: mixed;"
-    >
-      Houston, Texas &amp; Greater Area
-    </span>
-    <div class="w-px h-16 bg-gradient-to-b from-transparent via-gold/40 to-transparent"></div>
+  <!-- Scroll indicator — right side -->
+  <div class="absolute right-8 bottom-12 hidden md:flex flex-col items-center gap-3 animate-fade-in-up-delay-3">
+    <div class="h-12 w-px bg-gradient-to-b from-transparent to-white/20"></div>
+    <span class="font-body text-[9px] tracking-[0.3em] text-white/25 uppercase" style="writing-mode: vertical-rl;">Scroll</span>
   </div>
 </section>
