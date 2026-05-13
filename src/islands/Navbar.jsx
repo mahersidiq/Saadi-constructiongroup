@@ -40,17 +40,19 @@ export default function Navbar({ pathname = '/' }) {
       <header
         className="fixed left-0 right-0 top-0 z-50 transition-all duration-500"
         style={{
-          background: scrolled || mobileOpen ? 'rgba(251,246,237,.96)' : 'linear-gradient(180deg, rgba(20,34,50,.78), rgba(20,34,50,0))',
-          borderBottom: scrolled || mobileOpen ? '1px solid rgba(71,57,40,.13)' : '1px solid transparent',
+          background: scrolled || mobileOpen ? 'rgba(17,29,42,.96)' : 'linear-gradient(180deg, rgba(20,34,50,.84), rgba(20,34,50,0))',
+          borderBottom: scrolled || mobileOpen ? '1px solid rgba(255,248,237,.12)' : '1px solid transparent',
           backdropFilter: scrolled || mobileOpen ? 'blur(16px)' : 'none',
         }}
       >
         <div className="container-main">
           <div className="flex h-24 md:h-28 items-center justify-between gap-5">
             <a href="/" className="flex min-w-0 items-center" aria-label="Saadi Construction Group home">
-              <span className="inline-flex bg-[#fbf6ed]/94 px-3 py-2 shadow-[0_12px_32px_rgba(17,24,39,.12)]">
-                <img src="/images/logo.png" alt="Saadi Construction Group" className="h-16 w-16 md:h-[76px] md:w-[76px] object-contain" />
-              </span>
+              <img
+                src="/images/saadi-logo-horizontal.svg"
+                alt="Saadi Construction Group"
+                className="h-auto w-[150px] shrink-0 object-contain sm:w-[170px] md:w-[190px]"
+              />
             </a>
 
             <nav className="hidden lg:flex items-center gap-8" aria-label="Primary navigation">
@@ -60,7 +62,7 @@ export default function Navbar({ pathname = '/' }) {
                     <button
                       type="button"
                       onClick={() => setMegaOpen(!megaOpen)}
-                      className={`nav-link font-body text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors ${isActive(link.href) ? 'active text-[#b88a4a]' : scrolled ? 'text-[#17202a] hover:text-[#b88a4a]' : 'text-[#fff8ed] hover:text-[#e7c797]'}`}
+                      className={`nav-link font-body text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors ${isActive(link.href) ? 'active text-[#e7c797]' : 'text-[#fff8ed] hover:text-[#e7c797]'}`}
                     >
                       {link.label}
                     </button>
@@ -87,17 +89,17 @@ export default function Navbar({ pathname = '/' }) {
                     )}
                   </div>
                 ) : (
-                  <a key={link.label} href={link.href} className={`nav-link font-body text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors ${isActive(link.href) ? 'active text-[#b88a4a]' : scrolled ? 'text-[#17202a] hover:text-[#b88a4a]' : 'text-[#fff8ed] hover:text-[#e7c797]'}`}>{link.label}</a>
+                  <a key={link.label} href={link.href} className={`nav-link font-body text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors ${isActive(link.href) ? 'active text-[#e7c797]' : 'text-[#fff8ed] hover:text-[#e7c797]'}`}>{link.label}</a>
                 )
               )}
             </nav>
 
             <div className="hidden items-center gap-5 lg:flex">
-              <a href="tel:+18322058178" className={`text-[12px] font-semibold tracking-[0.12em] transition-colors ${scrolled ? 'text-[#17202a] hover:text-[#b88a4a]' : 'text-[#fff8ed] hover:text-[#e7c797]'}`}>(832) 205-8178</a>
+              <a href="tel:+18322058178" className="text-[12px] font-semibold tracking-[0.12em] text-[#fff8ed] transition-colors hover:text-[#e7c797]">(832) 205-8178</a>
               <a href="/contact" className="btn-luxe-fill px-5 py-3 text-[10px]">Request a Quote</a>
             </div>
 
-            <button type="button" onClick={() => setMobileOpen(!mobileOpen)} className={`lg:hidden p-3 ${scrolled || mobileOpen ? 'text-[#17202a]' : 'text-[#fff8ed]'}`} aria-label="Toggle navigation" aria-expanded={mobileOpen}>
+            <button type="button" onClick={() => setMobileOpen(!mobileOpen)} className="p-3 text-[#fff8ed] lg:hidden" aria-label="Toggle navigation" aria-expanded={mobileOpen}>
               {mobileOpen ? 'Close' : 'Menu'}
             </button>
           </div>

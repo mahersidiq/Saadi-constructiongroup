@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 208 277" role="img" aria-labelledby="title desc">
+  <title id="title">Saadi Construction Group monogram</title>
+  <desc id="desc">Transparent gold monogram cropped from the existing Saadi Construction Group source artwork.</desc>
+  <defs>
+    <clipPath id="markClip"><rect width="208" height="277"/></clipPath>
+    <mask id="markMask" maskUnits="userSpaceOnUse" x="0" y="0" width="208" height="277" style="mask-type:luminance">
+      <image href="logo.png" x="-408" y="-205" width="1024" height="1024"/>
+    </mask>
+  </defs>
+  <g clip-path="url(#markClip)" mask="url(#markMask)">
+    <image href="logo.png" x="-408" y="-205" width="1024" height="1024"/>
+  </g>
+</svg>
