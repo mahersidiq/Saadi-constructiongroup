@@ -3,17 +3,17 @@ const reasons = ['One contract, one accountable team', 'Owner-led communication'
 ---
 <section class="bg-[#fbf6ed]">
   <div class="container-main section-padding">
-    <div class="grid gap-12 lg:grid-cols-[.85fr_1.15fr] lg:items-start">
+    <div class="grid gap-14 lg:grid-cols-[.85fr_1.15fr] lg:items-start">
       <div class="animate-on-scroll lg:sticky lg:top-36">
         <p class="eyebrow">Why Choose Saadi</p>
         <h2 class="display-heading mt-4 text-4xl md:text-6xl">Trust is built before the slab is poured.</h2>
         <p class="body-large mt-6">Serious custom-home decisions require a builder who can explain the details, coordinate the right people, and keep responsibility clear.</p>
       </div>
-      <div class="grid gap-4 sm:grid-cols-2">
+      <div class="grid gap-5 sm:grid-cols-2">
         {reasons.map((reason, i) => (
-          <div class="animate-on-scroll border border-[rgba(71,57,40,.14)] bg-white/70 p-7">
-            <p class="text-sm text-[#b88a4a]">0{i + 1}</p>
-            <h3 class="mt-4 font-heading text-2xl text-[#17202a]">{reason}</h3>
+          <div class="luxe-card animate-on-scroll p-7 md:p-8">
+            <p class="font-heading text-4xl leading-none text-[#b88a4a]/70">0{i + 1}</p>
+            <h3 class="mt-6 font-heading text-3xl leading-tight text-[#17140f]">{reason}</h3>
           </div>
         ))}
       </div>

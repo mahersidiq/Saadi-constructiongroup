@@ -9,16 +9,16 @@ const steps = [
 ];
 ---
 <section class="dark-section">
-  <div class="container-main section-padding">
-    <div class="mb-14 max-w-3xl animate-on-scroll">
+  <div class="container-main section-padding relative">
+    <div class="mb-16 max-w-3xl animate-on-scroll">
       <p class="eyebrow">Controlled Builder Timeline</p>
       <h2 class="display-heading mt-4 text-4xl text-[#fff8ed] md:text-6xl">A clear path from first consultation to final walkthrough.</h2>
     </div>
-    <div class="border-t border-white/12">
+    <div class="border-t border-[#e7c797]/18">
       {steps.map(([num, title, text]) => (
-        <div class="animate-on-scroll grid gap-5 border-b border-white/12 py-8 md:grid-cols-[120px_.8fr_1.2fr] md:items-start">
-          <p class="font-heading text-4xl text-[#b88a4a]">{num}</p>
-          <h3 class="font-heading text-3xl text-[#fff8ed]">{title}</h3>
+        <div class="animate-on-scroll group grid gap-5 border-b border-[#e7c797]/14 py-9 transition-colors hover:bg-[#fff8ed]/[.035] md:grid-cols-[120px_.8fr_1.2fr] md:items-start md:px-5">
+          <p class="font-heading text-5xl leading-none text-[#b88a4a]">{num}</p>
+          <h3 class="font-heading text-3xl leading-tight text-[#fff8ed]">{title}</h3>
           <p class="leading-8 text-[#fff8ed]/70">{text}</p>
         </div>
       ))}
