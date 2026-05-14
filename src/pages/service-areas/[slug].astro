@@ -57,7 +57,32 @@ const breadcrumbSchema = {
   ],
 };
 
-const jsonLd = [localBusinessSchema, breadcrumbSchema];
+const areaFaqs = [
+  { question: `Do you build custom homes in ${area.name}?`, answer: `Yes. Saadi Construction Group serves ${area.name} homeowners with custom home design-build, plans, structural engineering, permitting, and full construction coordination.` },
+  { question: `Can you help evaluate a lot in ${area.name}?`, answer: 'Yes. We review practical feasibility items such as setbacks, utilities, drainage, floodplain considerations, access, easements, soil and foundation planning, and permitting path before construction planning moves forward.' },
+  { question: `Do you handle plans and permits for ${area.name} projects?`, answer: 'Yes. We coordinate architectural plans, structural engineering, permit packages, city or county submission, review comments, and construction inspections as part of the design-build process.' },
+];
+
+const areaResourceLinks = [
+  { href: '/services/custom-home-design-build', anchor: `${area.name} custom home design-build` },
+  { href: '/services/plans-permits-engineering', anchor: 'plans, permits, and engineering' },
+  { href: '/blog/houston-permitting-process-custom-homes', anchor: 'Houston permitting guide' },
+  { href: '/tools/lot-feasibility-checklist', anchor: 'lot feasibility checklist' },
+  { href: '/projects', anchor: 'custom home portfolio' },
+  { href: '/contact', anchor: 'schedule a consultation' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: areaFaqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+
+const jsonLd = [localBusinessSchema, breadcrumbSchema, faqSchema];
 ---
 
 <Layout
@@ -76,6 +101,37 @@ const jsonLd = [localBusinessSchema, breadcrumbSchema];
     </section>
   )}
   <AreaServices name={area.name} />
+  <section class="py-16 bg-light-gray border-y border-gray-200">
+    <div class="container-main px-4 max-w-4xl">
+      <p class="text-sm font-semibold uppercase tracking-widest text-gold mb-3">Local Planning Resources</p>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-6">Helpful links for building in {area.name}.</h2>
+      <div class="flex flex-wrap gap-3">
+        {areaResourceLinks.map((link) => (
+          <a href={link.href} class="inline-block px-4 py-2 rounded-full bg-white border border-gray-300 text-sm font-medium text-charcoal hover:border-gold hover:text-gold transition-colors duration-200">{link.anchor}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container-main px-4 max-w-3xl">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-8">{area.name} Custom Home FAQs</h2>
+      <div class="divide-y divide-gray-200">
+        {areaFaqs.map((faq) => (
+          <details class="group py-6 cursor-pointer">
+            <summary class="flex items-center justify-between gap-4 list-none font-heading font-semibold text-lg text-charcoal">
+              {faq.question}
+              <svg class="h-5 w-5 flex-shrink-0 text-gold transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <p class="mt-4 text-gray-700 leading-relaxed">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <NearbyAreas nearbyAreas={nearbyAreas} />
   <CTABanner />
 </Layout>
