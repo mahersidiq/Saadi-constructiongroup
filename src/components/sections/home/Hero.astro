@@ -1,11 +1,11 @@
 <section class="relative min-h-screen overflow-hidden bg-[#142232] text-[#fff8ed]">
   <img src="/images/p8-interior-bath.png" alt="Ultra-modern Houston custom home exterior at dusk" class="absolute inset-0 h-full w-full object-cover" fetchpriority="high" />
-  <div class="absolute inset-0 bg-gradient-to-r from-[#111d2a]/88 via-[#111d2a]/58 to-[#111d2a]/18"></div>
+  <div class="hero-cinematic-overlay absolute inset-0" aria-hidden="true"></div>
   <div class="relative z-10 container-main flex min-h-screen items-center pt-28">
-    <div class="max-w-3xl py-20">
-      <p class="eyebrow animate-fade-in-up">Houston Custom Home Builder</p>
-      <h1 class="display-heading mt-6 text-5xl text-[#fff8ed] md:text-7xl lg:text-8xl animate-fade-in-up-delay">Houston Custom Homes, Built Under One Accountable Team</h1>
-      <p class="hero-description mt-7 max-w-2xl text-lg leading-8 text-[#fff8ed]/86 md:text-xl animate-fade-in-up-delay-2">Saadi Construction Group coordinates architectural plans, structural engineering, permitting, and construction under one contract—so your home has one accountable team from concept to final walkthrough.</p>
+    <div class="hero-copy max-w-3xl py-20">
+      <p class="hero-eyebrow eyebrow animate-fade-in-up">Houston Custom Home Builder</p>
+      <h1 class="hero-headline display-heading mt-6 text-5xl text-[#fffdf8] md:text-7xl lg:text-8xl animate-fade-in-up-delay">Houston Custom Homes, Built Under One Accountable Team</h1>
+      <p class="hero-description mt-7 max-w-2xl text-lg leading-8 text-[#fff8ed]/92 md:text-xl animate-fade-in-up-delay-2">Saadi Construction Group coordinates architectural plans, structural engineering, permitting, and construction under one contract—so your home has one accountable team from concept to final walkthrough.</p>
       <div class="mt-10 flex flex-col gap-4 sm:flex-row animate-fade-in-up-delay-2">
         <a href="/contact" class="btn-luxe-fill">Request a Quote</a>
         <a href="/projects" class="btn-ghost">View Projects</a>
@@ -14,3 +14,39 @@
     </div>
   </div>
 </section>
+
+
+<style>
+  .hero-cinematic-overlay {
+    background:
+      radial-gradient(ellipse at 8% 50%, rgba(6, 12, 20, 0.42) 0%, rgba(8, 15, 24, 0.18) 34%, transparent 62%),
+      radial-gradient(ellipse at center, transparent 38%, rgba(4, 9, 15, 0.32) 100%),
+      linear-gradient(90deg, rgba(8, 15, 24, 0.93) 0%, rgba(12, 21, 32, 0.82) 34%, rgba(15, 25, 37, 0.46) 62%, rgba(15, 25, 37, 0.2) 100%);
+  }
+
+  .hero-copy {
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.28);
+  }
+
+  .hero-eyebrow {
+    color: #e2bd82;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.32);
+  }
+
+  .hero-headline {
+    text-shadow: 0 3px 24px rgba(0, 0, 0, 0.34);
+  }
+
+  .hero-description {
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 767px) {
+    .hero-cinematic-overlay {
+      background:
+        radial-gradient(ellipse at 50% 46%, rgba(5, 11, 18, 0.5) 0%, rgba(8, 15, 24, 0.28) 40%, transparent 68%),
+        radial-gradient(ellipse at center, transparent 32%, rgba(4, 9, 15, 0.42) 100%),
+        linear-gradient(180deg, rgba(8, 15, 24, 0.78) 0%, rgba(8, 15, 24, 0.94) 44%, rgba(10, 18, 28, 0.82) 100%);
+    }
+  }
+</style>
