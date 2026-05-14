@@ -46,42 +46,42 @@ const jsonLd = [
   jsonLd={jsonLd}
 >
   <!-- Hero -->
-  <section class="relative min-h-[48vh] flex items-center bg-gradient-to-br from-navy via-[#14304d] to-charcoal overflow-hidden">
+  <section class="relative min-h-[48vh] flex items-center bg-gradient-to-br from-[#2a2018] via-[#2a2018] to-[#171512] overflow-hidden">
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.08),transparent_60%)]"></div>
     <div class="relative z-10 container-main px-4 pt-36 pb-20 md:pt-44 md:pb-28 text-center">
-      <span class="animate-fade-in-up inline-block mb-4 px-4 py-1.5 text-sm font-semibold tracking-wide uppercase rounded-full bg-gold/15 text-gold border border-gold/30">
+      <span class="animate-fade-in-up inline-block mb-4 px-4 py-1.5 text-sm font-semibold tracking-wide uppercase rounded-full bg-[#b88a4a]/15 text-[#b88a4a] border border-[#b88a4a]/30">
         Custom Home Insights
       </span>
-      <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+      <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#fffaf1] leading-tight">
         Custom Home Builder Insights — Houston, TX
       </h1>
-      <p class="animate-fade-in-up-delay mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
+      <p class="animate-fade-in-up-delay mt-6 text-lg text-[#d7c8b3] max-w-2xl mx-auto">
         Cost guides, design-build explainers, and permitting insights for homeowners building across the Greater Houston metro.
       </p>
     </div>
   </section>
 
   <!-- Post Grid -->
-  <section class="section-padding bg-white">
+  <section class="section-padding bg-[#fffaf2]">
     <div class="container-main px-4">
       {published.length > 0 ? (
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {published.map((post) => (
-            <article class="animate-on-scroll group flex flex-col rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200">
+            <article class="animate-on-scroll group flex flex-col rounded-xl overflow-hidden border border-[rgba(71,57,40,.16)] shadow-sm hover:shadow-md transition-shadow duration-200">
               <div class="flex flex-col flex-1 p-6">
                 <div class="flex items-center gap-3 mb-3">
-                  <span class="text-xs font-semibold uppercase tracking-widest text-gold">{post.category}</span>
-                  <span class="text-xs text-gray-400">{post.readTime}</span>
+                  <span class="text-xs font-semibold uppercase tracking-widest text-[#b88a4a]">{post.category}</span>
+                  <span class="text-xs text-[#a89478]">{post.readTime}</span>
                 </div>
-                <h2 class="font-heading text-xl font-bold text-charcoal leading-snug mb-3 group-hover:text-navy transition-colors duration-200">
+                <h2 class="font-heading text-xl font-bold text-[#17140f] leading-snug mb-3 group-hover:text-[#6f563f] transition-colors duration-200">
                   <a href={`/blog/${post.slug}`}>{post.title}</a>
                 </h2>
-                <p class="text-gray-600 text-sm leading-relaxed flex-1 mb-5">{post.excerpt}</p>
-                <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                  <time class="text-xs text-gray-400" datetime={post.publishDate}>
+                <p class="text-[#17140f]/68 text-sm leading-relaxed flex-1 mb-5">{post.excerpt}</p>
+                <div class="flex items-center justify-between mt-auto pt-4 border-t border-[rgba(71,57,40,.12)]">
+                  <time class="text-xs text-[#a89478]" datetime={post.publishDate}>
                     {new Date(post.publishDate + 'T00:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                   </time>
-                  <a href={`/blog/${post.slug}`} class="text-sm font-semibold text-gold hover:underline">
+                  <a href={`/blog/${post.slug}`} class="text-sm font-semibold text-[#b88a4a] hover:underline">
                     Read more &rarr;
                   </a>
                 </div>
@@ -91,9 +91,9 @@ const jsonLd = [
         </div>
       ) : (
         <div class="text-center py-16">
-          <p class="text-gold font-semibold uppercase tracking-widest text-sm mb-4">Coming Soon</p>
-          <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-6">Articles & Custom Home Insights</h2>
-          <p class="text-lg text-gray-600 max-w-xl mx-auto mb-10">We're publishing guides on custom home design-build, plans and permits, engineering, and Houston market insights. Check back soon.</p>
+          <p class="text-[#b88a4a] font-semibold uppercase tracking-widest text-sm mb-4">Coming Soon</p>
+          <h2 class="font-heading text-3xl md:text-4xl font-bold text-[#17140f] mb-6">Articles & Custom Home Insights</h2>
+          <p class="text-lg text-[#17140f]/68 max-w-xl mx-auto mb-10">We're publishing guides on custom home design-build, plans and permits, engineering, and Houston market insights. Check back soon.</p>
           <a href="/contact" class="btn-primary text-lg px-8 py-4">Request a Quote</a>
         </div>
       )}
@@ -101,10 +101,10 @@ const jsonLd = [
   </section>
 
   <!-- CTA -->
-  <section class="section-padding bg-light-gray border-t border-gray-200">
+  <section class="section-padding bg-[#eee5d8] border-t border-[rgba(71,57,40,.16)]">
     <div class="container-main px-4 text-center max-w-2xl mx-auto">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-4">Ready to Build Your Custom Home?</h2>
-      <p class="text-lg text-gray-600 mb-8">Plans, permits, engineering, and construction — all under one contract. Detailed quote within 5 business days.</p>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-[#17140f] mb-4">Ready to Build Your Custom Home?</h2>
+      <p class="text-lg text-[#17140f]/68 mb-8">Plans, permits, engineering, and construction — all under one contract. Detailed quote within 5 business days.</p>
       <a href="/contact" class="btn-primary text-lg px-8 py-4">Request a Quote</a>
     </div>
   </section>

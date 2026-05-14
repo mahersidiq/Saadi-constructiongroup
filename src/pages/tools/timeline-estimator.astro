@@ -8,15 +8,15 @@ const breadcrumbSchema = { '@context': 'https://schema.org', '@type': 'Breadcrum
   { '@type': 'ListItem', position: 3, name: 'Timeline Estimator', item: canonical },
 ] };
 const softwareSchema = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Custom Home Timeline Estimator', applicationCategory: 'BusinessApplication', operatingSystem: 'Web', url: canonical, publisher: { '@type': 'Organization', name: 'Saadi Construction Group' } };
-const inputClass = 'mt-2 w-full border border-[rgba(71,57,40,.2)] bg-[#fffaf2] px-4 py-4 text-[#17202a] outline-none focus:border-[#b88a4a]';
+const inputClass = 'mt-2 w-full border border-[rgba(71,57,40,.2)] bg-[#fffaf2] px-4 py-4 text-[#17140f] outline-none focus:border-[#b88a4a]';
 ---
 <Layout title="Custom Home Timeline Estimator | Houston" description="Estimate Houston custom home preconstruction, permitting, and construction duration based on project type, design status, permit status, size, and complexity." canonicalUrl={canonical} jsonLd={[breadcrumbSchema, softwareSchema]}>
-  <section class="relative min-h-[48vh] flex items-center bg-gradient-to-br from-navy via-[#14304d] to-charcoal overflow-hidden">
+  <section class="relative min-h-[48vh] flex items-center bg-gradient-to-br from-[#2a2018] via-[#2a2018] to-[#171512] overflow-hidden">
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.08),transparent_60%)]"></div>
     <div class="relative z-10 container-main px-4 pt-36 pb-20 md:pt-44 md:pb-28">
-      <p class="eyebrow text-gold">Houston Planning Tool</p>
-      <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mt-4">Custom Home Timeline Estimator</h1>
-      <p class="mt-6 text-lg text-gray-300 max-w-2xl">Estimate planning, design, permit, and construction duration before requesting a detailed project schedule.</p>
+      <p class="eyebrow text-[#b88a4a]">Houston Planning Tool</p>
+      <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#fffaf1] leading-tight mt-4">Custom Home Timeline Estimator</h1>
+      <p class="mt-6 text-lg text-[#d7c8b3] max-w-2xl">Estimate planning, design, permit, and construction duration before requesting a detailed project schedule.</p>
     </div>
   </section>
 
@@ -25,21 +25,21 @@ const inputClass = 'mt-2 w-full border border-[rgba(71,57,40,.2)] bg-[#fffaf2] p
       <div class="grid gap-10 lg:grid-cols-[1fr_0.8fr]">
         <div class="editorial-card p-6 md:p-8">
           <p class="eyebrow">Project Inputs</p>
-          <h2 class="mt-4 font-heading text-4xl text-[#17202a]">Tell us where the project stands.</h2>
+          <h2 class="mt-4 font-heading text-4xl text-[#17140f]">Tell us where the project stands.</h2>
           <div class="mt-8 grid gap-6 md:grid-cols-2">
-            <label class="block text-sm font-semibold text-[#17202a]">Project type<select id="type" class={inputClass}><option value="8">Custom home</option><option value="5">Addition or major remodel</option></select></label>
-            <label class="block text-sm font-semibold text-[#17202a]">Design status<select id="designStatus" class={inputClass}><option value="10">No plans yet</option><option value="5">Concept only</option><option value="1">Permit-ready plans</option></select></label>
-            <label class="block text-sm font-semibold text-[#17202a]">Permit status<select id="permit" class={inputClass}><option value="10">Not submitted</option><option value="5">Submitted / in review</option><option value="0">Approved</option></select></label>
-            <label class="block text-sm font-semibold text-[#17202a]">Home size<select id="size" class={inputClass}><option value="0">Under 3,000 sq ft</option><option value="2">3,000–5,000 sq ft</option><option value="4">Over 5,000 sq ft</option></select></label>
-            <label class="block text-sm font-semibold text-[#17202a] md:col-span-2">Complexity<select id="complexity" class={inputClass}><option value="0">Standard lot and scope</option><option value="3">Moderate design/site complexity</option><option value="6">Complex site, drainage, floodplain, or luxury scope</option></select></label>
+            <label class="block text-sm font-semibold text-[#17140f]">Project type<select id="type" class={inputClass}><option value="8">Custom home</option><option value="5">Addition or major remodel</option></select></label>
+            <label class="block text-sm font-semibold text-[#17140f]">Design status<select id="designStatus" class={inputClass}><option value="10">No plans yet</option><option value="5">Concept only</option><option value="1">Permit-ready plans</option></select></label>
+            <label class="block text-sm font-semibold text-[#17140f]">Permit status<select id="permit" class={inputClass}><option value="10">Not submitted</option><option value="5">Submitted / in review</option><option value="0">Approved</option></select></label>
+            <label class="block text-sm font-semibold text-[#17140f]">Home size<select id="size" class={inputClass}><option value="0">Under 3,000 sq ft</option><option value="2">3,000–5,000 sq ft</option><option value="4">Over 5,000 sq ft</option></select></label>
+            <label class="block text-sm font-semibold text-[#17140f] md:col-span-2">Complexity<select id="complexity" class={inputClass}><option value="0">Standard lot and scope</option><option value="3">Moderate design/site complexity</option><option value="6">Complex site, drainage, floodplain, or luxury scope</option></select></label>
           </div>
         </div>
 
         <aside class="editorial-card p-6 md:p-8 self-start">
           <p class="eyebrow">Estimated Range</p>
-          <h2 class="mt-4 font-heading text-4xl text-[#17202a]">Timeline output</h2>
-          <p id="timeline-output" class="mt-6 text-xl font-semibold leading-8 text-[#142232]"></p>
-          <p class="mt-5 text-sm leading-7 text-[#17202a]/68">Planning range only. Actual schedules depend on jurisdiction review, revisions, owner selections, procurement, weather, inspections, and site conditions.</p>
+          <h2 class="mt-4 font-heading text-4xl text-[#17140f]">Timeline output</h2>
+          <p id="timeline-output" class="mt-6 text-xl font-semibold leading-8 text-[#2a2018]"></p>
+          <p class="mt-5 text-sm leading-7 text-[#17140f]/68">Planning range only. Actual schedules depend on jurisdiction review, revisions, owner selections, procurement, weather, inspections, and site conditions.</p>
           <div class="mt-7 flex flex-col gap-3">
             <a href="/blog/houston-custom-home-construction-timeline" class="btn-luxe">Read Timeline Guide</a>
             <a href="/contact" class="btn-luxe-fill">Schedule Consultation</a>

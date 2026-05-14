@@ -92,30 +92,30 @@ const jsonLd = faqSchema
   jsonLd={jsonLd}
 >
   <!-- Hero -->
-  <section class="relative bg-gradient-to-br from-navy via-[#14304d] to-charcoal overflow-hidden">
+  <section class="relative bg-gradient-to-br from-[#2a2018] via-[#2a2018] to-[#171512] overflow-hidden">
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.08),transparent_60%)]"></div>
     <div class="relative z-10 container-main px-4 pt-36 pb-20 md:pt-44 md:pb-28">
       <div class="max-w-3xl">
-        <nav class="animate-fade-in-up mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
-          <a href="/" class="hover:text-gold">Home</a>
+        <nav class="animate-fade-in-up mb-6 text-sm text-[#a89478]" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-[#b88a4a]">Home</a>
           <span class="mx-2">/</span>
-          <a href="/blog" class="hover:text-gold">Blog</a>
+          <a href="/blog" class="hover:text-[#b88a4a]">Blog</a>
           <span class="mx-2">/</span>
           <span>{post.title}</span>
         </nav>
         <div class="animate-fade-in-up flex flex-wrap items-center gap-4 mb-6">
-          <span class="inline-block px-3 py-1 rounded-full bg-gold/15 border border-gold/30 text-gold text-sm font-semibold uppercase tracking-wide">
+          <span class="inline-block px-3 py-1 rounded-full bg-[#b88a4a]/15 border border-[#b88a4a]/30 text-[#b88a4a] text-sm font-semibold uppercase tracking-wide">
             {post.category}
           </span>
-          <span class="text-gray-400 text-sm">{post.readTime}</span>
-          <time class="text-gray-400 text-sm" datetime={post.publishDate}>
+          <span class="text-[#a89478] text-sm">{post.readTime}</span>
+          <time class="text-[#a89478] text-sm" datetime={post.publishDate}>
             {new Date(post.publishDate + 'T00:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
         </div>
-        <h1 class="animate-fade-in-up font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+        <h1 class="animate-fade-in-up font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#fffaf1] leading-tight">
           {post.title}
         </h1>
-        <p class="animate-fade-in-up-delay mt-6 text-lg text-gray-300 leading-relaxed max-w-2xl">
+        <p class="animate-fade-in-up-delay mt-6 text-lg text-[#d7c8b3] leading-relaxed max-w-2xl">
           {post.excerpt}
         </p>
       </div>
@@ -137,32 +137,32 @@ const jsonLd = faqSchema
   )}
 
   <!-- Article Body -->
-  <article class="py-16 md:py-24 bg-white">
+  <article class="py-16 md:py-24 bg-[#fffaf2]">
     <div class="container-main px-4">
       <div class="max-w-3xl mx-auto">
 
         {post.sections.map((section) => (
           <div class="animate-on-scroll mb-12">
             {section.heading && (
-              <h2 class="font-heading text-2xl md:text-3xl font-bold text-charcoal mb-5">{section.heading}</h2>
+              <h2 class="font-heading text-2xl md:text-3xl font-bold text-[#17140f] mb-5">{section.heading}</h2>
             )}
             {section.body && section.body.map((para) => (
-              <p class="text-lg text-gray-700 leading-relaxed mb-4">{para}</p>
+              <p class="text-lg text-[#17140f]/74 leading-relaxed mb-4">{para}</p>
             ))}
             {section.table && (
-              <div class="overflow-x-auto my-6 rounded-lg border border-gray-200 shadow-sm">
+              <div class="overflow-x-auto my-6 rounded-lg border border-[rgba(71,57,40,.16)] shadow-sm">
                 <table class="w-full text-sm">
                   <thead>
-                    <tr class="bg-navy text-white">
+                    <tr class="bg-[#2a2018] text-[#fffaf1]">
                       <th class="text-left px-5 py-3 font-semibold">Renovation Scope</th>
                       <th class="text-left px-5 py-3 font-semibold">Cost Range</th>
                     </tr>
                   </thead>
                   <tbody>
                     {section.table.map((row, i) => (
-                      <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                        <td class="px-5 py-3 text-charcoal">{row.scope}</td>
-                        <td class="px-5 py-3 font-semibold text-navy">{row.costRange}</td>
+                      <tr class={i % 2 === 0 ? 'bg-[#fffaf2]' : 'bg-[#f7efe4]'}>
+                        <td class="px-5 py-3 text-[#17140f]">{row.scope}</td>
+                        <td class="px-5 py-3 font-semibold text-[#6f563f]">{row.costRange}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -173,27 +173,27 @@ const jsonLd = faqSchema
               <ul class="my-5 space-y-2">
                 {section.list.map((item) => (
                   <li class="flex items-start gap-3">
-                    <svg class="mt-1 h-5 w-5 flex-shrink-0 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <svg class="mt-1 h-5 w-5 flex-shrink-0 text-[#b88a4a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
-                    <span class="text-gray-700">{item}</span>
+                    <span class="text-[#17140f]/74">{item}</span>
                   </li>
                 ))}
               </ul>
             )}
             {section.footer && (
-              <p class="mt-4 text-gray-600 italic border-l-4 border-gold pl-4 leading-relaxed">{section.footer}</p>
+              <p class="mt-4 text-[#17140f]/68 italic border-l-4 border-[#b88a4a] pl-4 leading-relaxed">{section.footer}</p>
             )}
           </div>
         ))}
 
         <!-- Internal Links -->
         {post.relatedLinks && post.relatedLinks.length > 0 && (
-          <div class="animate-on-scroll my-12 rounded-lg bg-light-gray p-6 md:p-8 border border-gray-200">
-            <p class="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-4">Related Services & Pages</p>
+          <div class="animate-on-scroll my-12 rounded-lg bg-[#eee5d8] p-6 md:p-8 border border-[rgba(71,57,40,.16)]">
+            <p class="text-sm font-semibold uppercase tracking-widest text-[#6f563f]/70 mb-4">Related Services & Pages</p>
             <div class="flex flex-wrap gap-3">
               {post.relatedLinks.map((link) => (
-                <a href={link.href} class="inline-block px-4 py-2 rounded-full bg-white border border-gray-300 text-sm font-medium text-charcoal hover:border-gold hover:text-gold transition-colors duration-200">
+                <a href={link.href} class="inline-block px-4 py-2 rounded-full bg-[#fffaf2] border border-[rgba(71,57,40,.24)] text-sm font-medium text-[#17140f] hover:border-[#b88a4a] hover:text-[#b88a4a] transition-colors duration-200">
                   {link.anchor}
                 </a>
               ))}
@@ -204,17 +204,17 @@ const jsonLd = faqSchema
         <!-- FAQs -->
         {post.faqs && post.faqs.length > 0 && (
           <div class="animate-on-scroll mt-14">
-            <h2 class="font-heading text-2xl md:text-3xl font-bold text-charcoal mb-8">Frequently Asked Questions</h2>
-            <div class="divide-y divide-gray-200">
+            <h2 class="font-heading text-2xl md:text-3xl font-bold text-[#17140f] mb-8">Frequently Asked Questions</h2>
+            <div class="divide-y divide-[rgba(71,57,40,.16)]">
               {post.faqs.map((faq) => (
                 <details class="group py-6 cursor-pointer">
-                  <summary class="flex items-center justify-between gap-4 list-none font-heading font-semibold text-lg text-charcoal">
+                  <summary class="flex items-center justify-between gap-4 list-none font-heading font-semibold text-lg text-[#17140f]">
                     {faq.question}
-                    <svg class="h-5 w-5 flex-shrink-0 text-gold transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <svg class="h-5 w-5 flex-shrink-0 text-[#b88a4a] transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
                   </summary>
-                  <p class="mt-4 text-gray-700 leading-relaxed">{faq.answer}</p>
+                  <p class="mt-4 text-[#17140f]/74 leading-relaxed">{faq.answer}</p>
                 </details>
               ))}
             </div>
@@ -223,14 +223,14 @@ const jsonLd = faqSchema
 
         <!-- Related Articles -->
         {relatedArticles.length > 0 && (
-          <div class="animate-on-scroll mt-14 pt-8 border-t border-gray-200">
-            <h2 class="font-heading text-2xl md:text-3xl font-bold text-charcoal mb-6">Related Articles</h2>
+          <div class="animate-on-scroll mt-14 pt-8 border-t border-[rgba(71,57,40,.16)]">
+            <h2 class="font-heading text-2xl md:text-3xl font-bold text-[#17140f] mb-6">Related Articles</h2>
             <div class="grid gap-4 md:grid-cols-3">
               {relatedArticles.map((article) => (
-                <a href={`/blog/${article.slug}`} class="block rounded-lg border border-gray-200 bg-white p-5 hover:border-gold transition-colors duration-200">
-                  <p class="text-xs font-semibold uppercase tracking-widest text-gold mb-2">{article.category}</p>
-                  <h3 class="font-heading text-xl font-bold text-charcoal leading-snug">{article.title}</h3>
-                  <p class="mt-3 text-sm text-gray-600">{article.readTime}</p>
+                <a href={`/blog/${article.slug}`} class="block rounded-lg border border-[rgba(71,57,40,.16)] bg-[#fffaf2] p-5 hover:border-[#b88a4a] transition-colors duration-200">
+                  <p class="text-xs font-semibold uppercase tracking-widest text-[#b88a4a] mb-2">{article.category}</p>
+                  <h3 class="font-heading text-xl font-bold text-[#17140f] leading-snug">{article.title}</h3>
+                  <p class="mt-3 text-sm text-[#17140f]/68">{article.readTime}</p>
                 </a>
               ))}
             </div>
@@ -238,15 +238,15 @@ const jsonLd = faqSchema
         )}
 
         <!-- Author / E-E-A-T signal -->
-        <div class="animate-on-scroll mt-14 pt-8 border-t border-gray-200 flex items-start gap-4">
-          <div class="flex-shrink-0 h-12 w-12 rounded-full bg-navy flex items-center justify-center">
-            <svg class="h-6 w-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <div class="animate-on-scroll mt-14 pt-8 border-t border-[rgba(71,57,40,.16)] flex items-start gap-4">
+          <div class="flex-shrink-0 h-12 w-12 rounded-full bg-[#2a2018] flex items-center justify-center">
+            <svg class="h-6 w-6 text-[#b88a4a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>
           </div>
           <div>
-            <p class="font-semibold text-charcoal">{post.author}</p>
-            <p class="text-sm text-gray-500 mt-1">Houston-based custom home builder specializing in design-build, plans, permits, engineering, and full custom home construction across the Greater Houston metro. <a href="/about" class="text-gold hover:underline">Learn more about us.</a></p>
+            <p class="font-semibold text-[#17140f]">{post.author}</p>
+            <p class="text-sm text-[#6f563f]/70 mt-1">Houston-based custom home builder specializing in design-build, plans, permits, engineering, and full custom home construction across the Greater Houston metro. <a href="/about" class="text-[#b88a4a] hover:underline">Learn more about us.</a></p>
           </div>
         </div>
       </div>

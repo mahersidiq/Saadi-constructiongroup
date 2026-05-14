@@ -2,9 +2,9 @@
 const { title, subheadline, category } = Astro.props;
 const heroImage = title?.includes('Luxury') ? '/images/p2-interior-bath.png' : '/images/p1-interior-bath.png';
 ---
-<section class="relative min-h-[68vh] overflow-hidden bg-[#142232] text-[#fff8ed]">
+<section class="relative min-h-[68vh] overflow-hidden bg-[#2a2018] text-[#fff8ed]">
   <img src={heroImage} alt="Houston luxury custom home exterior at dusk" class="absolute inset-0 h-full w-full object-cover" />
-  <div class="absolute inset-0 bg-gradient-to-r from-[#111d2a]/88 via-[#111d2a]/56 to-transparent"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-[#171512]/88 via-[#171512]/56 to-transparent"></div>
   <div class="relative container-main flex min-h-[68vh] items-end pb-16 pt-36">
     <div class="max-w-4xl"><p class="eyebrow">{category || 'Custom Home Service'}</p><h1 class="display-heading mt-4 text-5xl text-[#fff8ed] md:text-7xl">{title}</h1>{subheadline && <p class="mt-6 max-w-2xl text-lg leading-8 text-[#fff8ed]/80">{subheadline}</p>}</div>
   </div>

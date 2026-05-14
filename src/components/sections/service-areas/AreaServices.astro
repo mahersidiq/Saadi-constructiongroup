@@ -3,23 +3,23 @@ import { serviceCategories } from '@/data/services';
 const { name } = Astro.props;
 ---
 
-<section class="py-16 md:py-24 bg-white">
+<section class="py-16 md:py-24 bg-[#fffaf2]">
   <div class="container-main px-4">
-    <h2 class="animate-on-scroll font-heading text-3xl md:text-4xl font-bold text-charcoal mb-4 text-center">
+    <h2 class="animate-on-scroll font-heading text-3xl md:text-4xl font-bold text-[#17140f] mb-4 text-center">
       Custom Home Services Available in {name}
     </h2>
-    <p class="animate-on-scroll text-gray-600 text-center max-w-2xl mx-auto mb-12">
+    <p class="animate-on-scroll text-[#17140f]/68 text-center max-w-2xl mx-auto mb-12">
       Plans, engineering, permits, and construction — handled by one team under one contract.
     </p>
     <div class="space-y-12 max-w-5xl mx-auto">
       {serviceCategories.map((category) => (
         <div class="animate-on-scroll">
-          <h3 class="font-heading text-xl font-bold text-navy mb-4">{category.name}</h3>
+          <h3 class="font-heading text-xl font-bold text-[#6f563f] mb-4">{category.name}</h3>
           <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {category.services.map((service) => (
-              <a href={`/services/${service.slug}`} class="flex items-center gap-3 rounded-lg bg-light-gray p-4 border border-gray-200 hover:border-gold/50 hover:shadow-md transition-all duration-300 group">
-                <svg class="h-5 w-5 flex-shrink-0 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-                <span class="text-charcoal font-medium group-hover:text-navy transition-colors">{service.name}</span>
+              <a href={`/services/${service.slug}`} class="flex items-center gap-3 rounded-lg bg-[#eee5d8] p-4 border border-[rgba(71,57,40,.16)] hover:border-[#b88a4a]/50 hover:shadow-md transition-all duration-300 group">
+                <svg class="h-5 w-5 flex-shrink-0 text-[#b88a4a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+                <span class="text-[#17140f] font-medium group-hover:text-[#6f563f] transition-colors">{service.name}</span>
               </a>
             ))}
           </div>
