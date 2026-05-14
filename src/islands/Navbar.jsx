@@ -7,6 +7,8 @@ const navLinks = [
   { label: 'Services', href: '/services', hasMega: true },
   { label: 'Projects', href: '/projects' },
   { label: 'Service Areas', href: '/service-areas', hasAreas: true },
+  { label: 'Guides', href: '/blog' },
+  { label: 'Tools', href: '/tools' },
   { label: 'About', href: '/about' },
 ];
 
