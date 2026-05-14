@@ -1,9 +1,9 @@
 ---
 export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
-import { blogPosts } from '@/data/blogPosts';
+import { publishedBlogPosts } from '@/data/blogPosts';
 
-const published = blogPosts.slice().sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+const published = publishedBlogPosts.slice().sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
 
 const jsonLd = [
   {
