@@ -60,12 +60,12 @@ const checklistSections = [
 ];
 ---
 <Layout title="Houston Lot Feasibility Checklist | Custom Homes" description="Interactive Houston lot feasibility checklist for zoning, setbacks, utilities, drainage, floodplain, easements, trees, access, soil, and HOA requirements." canonicalUrl={canonical} jsonLd={[breadcrumbSchema, checklistSchema]}>
-  <section class="relative min-h-[48vh] flex items-center bg-gradient-to-br from-navy via-[#14304d] to-charcoal overflow-hidden">
+  <section class="relative min-h-[48vh] flex items-center bg-gradient-to-br from-[#2a2018] via-[#2a2018] to-[#171512] overflow-hidden">
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.08),transparent_60%)]"></div>
     <div class="relative z-10 container-main px-4 pt-36 pb-20 md:pt-44 md:pb-28">
-      <p class="eyebrow text-gold">Houston Planning Tool</p>
-      <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mt-4">Lot Feasibility Checklist</h1>
-      <p class="mt-6 text-lg text-gray-300 max-w-2xl">Use this before buying land or starting plans. The goal is to identify Houston-area constraints that can affect the home footprint, permit path, engineering, drainage, and construction budget.</p>
+      <p class="eyebrow text-[#b88a4a]">Houston Planning Tool</p>
+      <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#fffaf1] leading-tight mt-4">Lot Feasibility Checklist</h1>
+      <p class="mt-6 text-lg text-[#d7c8b3] max-w-2xl">Use this before buying land or starting plans. The goal is to identify Houston-area constraints that can affect the home footprint, permit path, engineering, drainage, and construction budget.</p>
     </div>
   </section>
 
@@ -85,11 +85,11 @@ const checklistSections = [
             <p class="eyebrow">{section.group}</p>
             <div class="mt-6 space-y-4">
               {section.items.map((item) => (
-                <label class="flex gap-4 border border-[rgba(71,57,40,.14)] bg-[#fffaf2] p-5 text-[#17202a]">
+                <label class="flex gap-4 border border-[rgba(71,57,40,.14)] bg-[#fffaf2] p-5 text-[#17140f]">
                   <input type="checkbox" class="mt-1 h-5 w-5 shrink-0 accent-[#b88a4a]" />
                   <span>
-                    <strong class="block font-heading text-2xl font-semibold text-[#17202a]">{item.title}</strong>
-                    <span class="mt-2 block text-sm leading-6 text-[#17202a]/68">{item.help}</span>
+                    <strong class="block font-heading text-2xl font-semibold text-[#17140f]">{item.title}</strong>
+                    <span class="mt-2 block text-sm leading-6 text-[#17140f]/68">{item.help}</span>
                   </span>
                 </label>
               ))}
@@ -100,8 +100,8 @@ const checklistSections = [
 
       <div class="mt-12 editorial-card p-6 md:p-8">
         <p class="eyebrow">What To Do Next</p>
-        <h2 class="mt-4 font-heading text-3xl md:text-4xl text-[#17202a]">Bring the lot details into preconstruction.</h2>
-        <p class="mt-4 leading-7 text-[#17202a]/72">If any checklist item is unclear, verify it before final design or fixed pricing. Saadi Construction Group can review your lot, desired scope, design status, and permit path to identify the next responsible step.</p>
+        <h2 class="mt-4 font-heading text-3xl md:text-4xl text-[#17140f]">Bring the lot details into preconstruction.</h2>
+        <p class="mt-4 leading-7 text-[#17140f]/72">If any checklist item is unclear, verify it before final design or fixed pricing. Saadi Construction Group can review your lot, desired scope, design status, and permit path to identify the next responsible step.</p>
         <div class="mt-7 flex flex-wrap gap-3">
           <a href="/services/custom-home-design-build" class="btn-luxe">Custom Home Design-Build</a>
           <a href="/services/plans-permits-engineering" class="btn-luxe">Plans, Permits & Engineering</a>

@@ -23,8 +23,8 @@ const servicesNeededOptions = [
 ];
 const timelineOptions = ['Immediately', '1-3 months', '3-6 months', '6+ months'];
 
-const inputClasses = 'w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-charcoal placeholder:text-gray-400 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-colors';
-const labelClasses = 'block text-sm font-semibold text-charcoal mb-1.5';
+const inputClasses = 'w-full rounded-lg border border-[rgba(71,57,40,.24)] bg-[#fffaf2] px-4 py-3 text-sm text-[#17140f] placeholder:text-[#a89478] focus:border-[#b88a4a] focus:outline-none focus:ring-1 focus:ring-gold transition-colors';
+const labelClasses = 'block text-sm font-semibold text-[#17140f] mb-1.5';
 
 export default function ContactForm() {
   const [form, setForm] = useState({
@@ -78,8 +78,8 @@ export default function ContactForm() {
         <svg className="mx-auto h-16 w-16 text-green-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <h2 className="font-heading text-2xl font-bold text-charcoal mb-2">Quote Request Received</h2>
-        <p className="text-gray-600 mb-6">Thank you for reaching out. We will review your project details and respond within 24 hours.</p>
+        <h2 className="font-heading text-2xl font-bold text-[#17140f] mb-2">Quote Request Received</h2>
+        <p className="text-[#17140f]/68 mb-6">Thank you for reaching out. We will review your project details and respond within 24 hours.</p>
         <button type="button" onClick={() => setSubmitted(false)} className="btn-primary px-6 py-3">Submit Another Request</button>
       </div>
     );

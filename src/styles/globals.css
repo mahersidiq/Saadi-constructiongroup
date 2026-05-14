@@ -6,7 +6,7 @@
 
 :root {
   --ink: #17140f;
-  --navy: #142232;
+  --navy: #6f563f;
   --charcoal: #171512;
   --noir: #0d0c0a;
   --ivory: #fbf6ed;
@@ -80,7 +80,7 @@
     overflow: hidden;
     background:
       radial-gradient(circle at 82% 12%, rgba(184,138,74,.18), transparent 26rem),
-      linear-gradient(135deg, #0d0c0a, #171512 48%, #142232);
+      linear-gradient(135deg, #0d0c0a, #171512 52%, #2a2018);
     color: #fff8ed;
   }
   .dark-section::before { content:''; position:absolute; inset:0; pointer-events:none; background: radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,.3)); }
