@@ -2,16 +2,16 @@
 export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
 import CTABanner from '@/components/sections/home/CTABanner.astro';
-import { blogPosts } from '@/data/blogPosts';
+import { publishedBlogPosts } from '@/data/blogPosts';
 
 export function getStaticPaths() {
-  return blogPosts.map((post) => ({
+  return publishedBlogPosts.map((post) => ({
     params: { slug: post.slug },
   }));
 }
 
 const { slug } = Astro.params;
-const post = blogPosts.find((p) => p.slug === slug);
+const post = publishedBlogPosts.find((p) => p.slug === slug);
 if (!post) return Astro.redirect('/404');
 
 const articleSchema = {
@@ -66,9 +66,21 @@ const speakableSchema = {
   url: `https://saadiconstructiongroup.com/blog/${post.slug}`,
 };
 
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: post.author,
+  url: 'https://saadiconstructiongroup.com/about',
+};
+
+const relatedArticles = publishedBlogPosts
+  .filter((candidate) => candidate.slug !== post.slug && candidate.category === post.category)
+  .concat(publishedBlogPosts.filter((candidate) => candidate.slug !== post.slug && candidate.category !== post.category))
+  .slice(0, 3);
+
 const jsonLd = faqSchema
-  ? [articleSchema, faqSchema, breadcrumbSchema, speakableSchema]
-  : [articleSchema, breadcrumbSchema, speakableSchema];
+  ? [articleSchema, faqSchema, breadcrumbSchema, speakableSchema, personSchema]
+  : [articleSchema, breadcrumbSchema, speakableSchema, personSchema];
 ---
 
 <Layout
@@ -84,6 +96,13 @@ const jsonLd = faqSchema
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.08),transparent_60%)]"></div>
     <div class="relative z-10 container-main px-4 py-20 md:py-28">
       <div class="max-w-3xl">
+        <nav class="animate-fade-in-up mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-gold">Home</a>
+          <span class="mx-2">/</span>
+          <a href="/blog" class="hover:text-gold">Blog</a>
+          <span class="mx-2">/</span>
+          <span>{post.title}</span>
+        </nav>
         <div class="animate-fade-in-up flex flex-wrap items-center gap-4 mb-6">
           <span class="inline-block px-3 py-1 rounded-full bg-gold/15 border border-gold/30 text-gold text-sm font-semibold uppercase tracking-wide">
             {post.category}
@@ -197,6 +216,22 @@ const jsonLd = faqSchema
                   </summary>
                   <p class="mt-4 text-gray-700 leading-relaxed">{faq.answer}</p>
                 </details>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Related Articles -->
+        {relatedArticles.length > 0 && (
+          <div class="animate-on-scroll mt-14 pt-8 border-t border-gray-200">
+            <h2 class="font-heading text-2xl md:text-3xl font-bold text-charcoal mb-6">Related Articles</h2>
+            <div class="grid gap-4 md:grid-cols-3">
+              {relatedArticles.map((article) => (
+                <a href={`/blog/${article.slug}`} class="block rounded-lg border border-gray-200 bg-white p-5 hover:border-gold transition-colors duration-200">
+                  <p class="text-xs font-semibold uppercase tracking-widest text-gold mb-2">{article.category}</p>
+                  <h3 class="font-heading text-xl font-bold text-charcoal leading-snug">{article.title}</h3>
+                  <p class="mt-3 text-sm text-gray-600">{article.readTime}</p>
+                </a>
               ))}
             </div>
           </div>

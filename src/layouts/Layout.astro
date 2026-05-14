@@ -24,6 +24,35 @@ const {
 } = Astro.props;
 
 const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow';
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['Organization', 'LocalBusiness', 'GeneralContractor'],
+  name: 'Saadi Construction Group',
+  url: 'https://www.saadiconstructiongroup.com',
+  logo: 'https://www.saadiconstructiongroup.com/images/saadi-logo-horizontal.svg',
+  image: 'https://www.saadiconstructiongroup.com/images/Emblem.png',
+  telephone: '+18322058178',
+  email: 'info@saadiconstructiongroup.com',
+  priceRange: '$$$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '801 Travis St Suite 2101',
+    addressLocality: 'Houston',
+    addressRegion: 'TX',
+    postalCode: '77002',
+    addressCountry: 'US',
+  },
+  areaServed: ['Houston', 'Katy', 'Sugar Land', 'Pearland', 'The Woodlands', 'Spring', 'Cypress', 'League City', 'Missouri City', 'Conroe', 'Baytown', 'Richmond', 'Friendswood', 'Humble', 'Pasadena'],
+};
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Saadi Construction Group',
+  url: 'https://www.saadiconstructiongroup.com',
+  publisher: { '@type': 'Organization', name: 'Saadi Construction Group' },
+};
+const pageSchemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const allJsonLd = [organizationSchema, websiteSchema, ...pageSchemas];
 ---
 
 <!doctype html>
@@ -55,13 +84,9 @@ const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow';
     {description && <meta name="twitter:description" content={description} />}
     <meta name="twitter:image" content={ogImage} />
 
-    {jsonLd && Array.isArray(jsonLd) ? (
-      jsonLd.map((schema) => (
-        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-      ))
-    ) : jsonLd ? (
-      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-    ) : null}
+    {allJsonLd.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
   </head>
   <body>
     <Navbar client:load pathname={Astro.url.pathname} />
