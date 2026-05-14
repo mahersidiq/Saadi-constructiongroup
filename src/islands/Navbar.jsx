@@ -37,6 +37,10 @@ export default function Navbar({ pathname = '/' }) {
 
   return (
     <>
+      {(scrolled || mobileOpen) && (
+        <div aria-hidden="true" className="fixed left-0 right-0 top-0 z-[49] h-28 bg-[#0d0c0a] lg:hidden" />
+      )}
+
       <header
         className="fixed left-0 right-0 top-0 z-50 transition-all duration-500"
         style={{
@@ -49,7 +53,7 @@ export default function Navbar({ pathname = '/' }) {
           <div className="flex h-[5.5rem] items-center justify-between gap-5 md:h-24">
             <a href="/" className="group flex min-w-0 items-center gap-3" aria-label="Saadi Construction Group home">
               <img
-                src="/images/saadi-emblem.svg"
+                src="/images/Emblem.PNG"
                 alt="Saadi Construction Group Emblem"
                 className="h-11 w-auto shrink-0 object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,.28)] transition-transform duration-300 group-hover:scale-[1.03] md:h-14"
               />
