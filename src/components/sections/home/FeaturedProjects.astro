@@ -4,23 +4,25 @@ const featured = [projects[7], projects[2], projects[1]];
 ---
 <section class="bg-[#fbf6ed]">
   <div class="container-main section-padding">
-    <div class="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+    <div class="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
       <div class="max-w-3xl animate-on-scroll">
         <p class="eyebrow">Featured Portfolio</p>
         <h2 class="display-heading mt-4 text-4xl md:text-6xl">Homes with the presence your decision deserves.</h2>
       </div>
       <a href="/projects" class="btn-luxe animate-on-scroll">View All Projects</a>
     </div>
-    <div class="grid gap-6 lg:grid-cols-12">
-      <a href={`/projects/${featured[0].slug}`} class="image-zoom group relative block aspect-[16/10] lg:col-span-7 lg:aspect-[4/5]">
+    <div class="grid gap-7 lg:grid-cols-12">
+      <a href={`/projects/${featured[0].slug}`} class="image-zoom group relative block aspect-[16/10] border border-[rgba(71,57,40,.14)] shadow-[0_28px_80px_rgba(36,27,18,.16)] lg:col-span-7 lg:aspect-[4/5]">
         <img src={featured[0].coverImage} alt={featured[0].coverAlt} class="h-full w-full object-cover" loading="lazy" />
-        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#111d2a]/86 to-transparent p-7 text-[#fff8ed]"><p class="eyebrow">{featured[0].style}</p><h3 class="mt-2 font-heading text-4xl">{featured[0].title}</h3><p class="mt-2 text-sm">{featured[0].location} · {featured[0].sqft}</p></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0d0c0a]/88 via-[#0d0c0a]/18 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 p-7 text-[#fff8ed] md:p-9"><p class="eyebrow">{featured[0].style}</p><h3 class="mt-2 font-heading text-4xl leading-none md:text-5xl">{featured[0].title}</h3><p class="mt-3 text-sm text-[#fff8ed]/76">{featured[0].location} · {featured[0].sqft}</p></div>
       </a>
-      <div class="grid gap-6 lg:col-span-5">
+      <div class="grid gap-7 lg:col-span-5">
         {featured.slice(1).map((project) => (
-          <a href={`/projects/${project.slug}`} class="image-zoom group relative block aspect-[16/10]">
+          <a href={`/projects/${project.slug}`} class="image-zoom group relative block aspect-[16/10] border border-[rgba(71,57,40,.14)] shadow-[0_20px_55px_rgba(36,27,18,.12)]">
             <img src={project.coverImage} alt={project.coverAlt} class="h-full w-full object-cover" loading="lazy" />
-            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#111d2a]/82 to-transparent p-6 text-[#fff8ed]"><p class="eyebrow">{project.style}</p><h3 class="mt-1 font-heading text-3xl">{project.title}</h3><p class="mt-1 text-sm">{project.location} · {project.sqft}</p></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0d0c0a]/84 via-[#0d0c0a]/14 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 p-6 text-[#fff8ed]"><p class="eyebrow">{project.style}</p><h3 class="mt-1 font-heading text-3xl leading-none md:text-4xl">{project.title}</h3><p class="mt-2 text-sm text-[#fff8ed]/74">{project.location} · {project.sqft}</p></div>
           </a>
         ))}
       </div>

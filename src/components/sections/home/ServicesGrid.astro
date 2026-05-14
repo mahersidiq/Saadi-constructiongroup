@@ -11,18 +11,22 @@ const bestFor = {
 ---
 <section class="stone-section">
   <div class="container-main section-padding">
-    <div class="mb-12 max-w-3xl animate-on-scroll">
-      <p class="eyebrow">Service Pillars</p>
-      <h2 class="display-heading mt-4 text-4xl md:text-6xl">Residential building services with one accountable path.</h2>
+    <div class="mb-14 grid gap-6 md:grid-cols-[.9fr_1fr] md:items-end">
+      <div class="max-w-3xl animate-on-scroll">
+        <p class="eyebrow">Service Pillars</p>
+        <h2 class="display-heading mt-4 text-4xl md:text-6xl">Residential building services with one accountable path.</h2>
+      </div>
+      <p class="body-large animate-on-scroll md:pb-2">Each service is framed as part of a complete builder-led path, not a disconnected handoff between vendors.</p>
     </div>
-    <div class="grid gap-px overflow-hidden border border-[rgba(71,57,40,.14)] md:grid-cols-2 lg:grid-cols-3">
-      {allServices.map((service) => (
-        <a href={`/services/${service.slug}`} class="group bg-[#fffaf2] p-7 transition-colors hover:bg-[#142232] md:p-9">
-          <p class="eyebrow">{service.category}</p>
-          <h3 class="mt-5 font-heading text-3xl leading-tight text-[#17202a] transition-colors group-hover:text-[#fff8ed]">{service.name}</h3>
-          <p class="mt-5 text-sm leading-7 text-[#17202a]/70 transition-colors group-hover:text-[#fff8ed]/74">{service.description}</p>
-          <p class="mt-5 text-xs font-medium leading-6 text-[#6f563f] transition-colors group-hover:text-[#e7c797]">{bestFor[service.slug]}</p>
-          <span class="mt-7 inline-flex text-[11px] font-semibold uppercase tracking-[0.18em] text-[#b88a4a]">Learn more →</span>
+    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {allServices.map((service, index) => (
+        <a href={`/services/${service.slug}`} class="luxe-card group relative flex min-h-[360px] flex-col p-8 md:p-9">
+          <span class="absolute right-7 top-7 font-heading text-5xl leading-none text-[#b88a4a]/16">0{index + 1}</span>
+          <p class="eyebrow pr-14">{service.category}</p>
+          <h3 class="mt-8 font-heading text-4xl leading-[1.02] text-[#17140f] transition-colors group-hover:text-[#6f563f]">{service.name}</h3>
+          <p class="mt-6 text-sm leading-7 text-[#17140f]/68">{service.description}</p>
+          <p class="mt-6 text-xs font-medium leading-6 text-[#6f563f]">{bestFor[service.slug]}</p>
+          <span class="mt-auto pt-9 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#b88a4a] transition-colors group-hover:text-[#17140f]">Learn more →</span>
         </a>
       ))}
     </div>

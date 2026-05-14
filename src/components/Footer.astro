@@ -5,12 +5,12 @@ const designBuildServices = serviceCategories.find((cat) => cat.slug === 'design
 const constructionServices = serviceCategories.find((cat) => cat.slug === 'construction')?.services || [];
 const planningServices = serviceCategories.find((cat) => cat.slug === 'planning-permits')?.services || [];
 ---
-<footer class="border-t border-[rgba(255,248,237,.12)] bg-[#111d2a] text-[#fff8ed]">
-  <div class="container-main py-16">
+<footer class="border-t border-[rgba(231,199,151,.16)] bg-[#0d0c0a] text-[#fff8ed]">
+  <div class="container-main py-20">
     <div class="grid gap-12 lg:grid-cols-[1.1fr_.8fr_.8fr_1fr]">
       <div>
-        <a href="/" class="inline-flex" aria-label="Saadi Construction Group home"><span class="saadi-logo-crop saadi-logo-crop--footer"><img src="/images/logo.png" alt="Saadi Construction Group" loading="lazy" /></span></a>
-        <p class="mt-6 max-w-xs leading-8 text-[#fff8ed]/70">Houston’s one-stop custom home builder. Plans, engineering, permits, and construction — all under one contract.</p>
+        <a href="/" class="inline-flex items-center border border-[#e7c797]/18 bg-[#fff8ed]/[.03] px-5 py-4" aria-label="Saadi Construction Group home"><span class="saadi-logo-crop saadi-logo-crop--footer"><img src="/images/logo.png" alt="Saadi Construction Group" loading="lazy" /></span></a>
+        <p class="mt-7 max-w-xs leading-8 text-[#fff8ed]/70">Houston’s one-stop custom home builder. Plans, engineering, permits, and construction — all under one contract.</p>
         <div class="mt-6 space-y-2 text-sm"><a href="tel:+18322058178" class="block hover:text-[#e7c797]">(832) 205-8178</a><a href="mailto:info@saadiconstructiongroup.com" class="block break-all hover:text-[#e7c797]">info@saadiconstructiongroup.com</a><p>801 Travis St Suite 2101<br />Houston, TX 77002</p></div>
       </div>
       <div><p class="eyebrow mb-5">Design & Build</p><ul class="space-y-3">{designBuildServices.map((s) => <li><a href={`/services/${s.slug}`} class="text-sm text-[#fff8ed]/72 hover:text-[#e7c797]">{s.name}</a></li>)}</ul></div>
@@ -18,5 +18,5 @@ const planningServices = serviceCategories.find((cat) => cat.slug === 'planning-
       <div><p class="eyebrow mb-5">Service Areas</p><ul class="grid grid-cols-2 gap-2">{serviceAreas.slice(0, 12).map((area) => <li><a href={`/service-areas/${area.slug}`} class="text-sm text-[#fff8ed]/72 hover:text-[#e7c797]">{area.name}</a></li>)}</ul><div class="mt-8 flex gap-5 text-sm"><a href="/about" class="hover:text-[#e7c797]">About</a><a href="/projects" class="hover:text-[#e7c797]">Projects</a><a href="/contact" class="hover:text-[#e7c797]">Contact</a></div></div>
     </div>
   </div>
-  <div class="border-t border-[rgba(255,248,237,.12)]"><div class="container-main flex flex-col gap-3 py-5 text-xs text-[#fff8ed]/62 md:flex-row md:items-center md:justify-between"><p>Licensed &amp; Insured · Houston, TX · Harris, Fort Bend, Montgomery, Brazoria &amp; Galveston Counties</p><p>&copy; 2026 Saadi Construction Group · saadiconstructiongroup.com</p></div></div>
+  <div class="border-t border-[rgba(231,199,151,.14)] bg-black/12"><div class="container-main flex flex-col gap-3 py-5 text-xs text-[#fff8ed]/62 md:flex-row md:items-center md:justify-between"><p>Licensed &amp; Insured · Houston, TX · Harris, Fort Bend, Montgomery, Brazoria &amp; Galveston Counties</p><p>&copy; 2026 Saadi Construction Group · saadiconstructiongroup.com</p></div></div>
 </footer>

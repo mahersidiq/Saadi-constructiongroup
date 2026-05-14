@@ -40,26 +40,26 @@ export default function Navbar({ pathname = '/' }) {
       <header
         className="fixed left-0 right-0 top-0 z-50 transition-all duration-500"
         style={{
-          background: scrolled || mobileOpen ? 'rgba(17,29,42,.96)' : 'linear-gradient(180deg, rgba(20,34,50,.84), rgba(20,34,50,0))',
-          borderBottom: scrolled || mobileOpen ? '1px solid rgba(255,248,237,.12)' : '1px solid transparent',
-          backdropFilter: scrolled || mobileOpen ? 'blur(16px)' : 'none',
+          background: scrolled || mobileOpen ? 'rgba(13,12,10,.92)' : 'linear-gradient(180deg, rgba(10,10,8,.78), rgba(10,10,8,.18) 58%, rgba(10,10,8,0))',
+          borderBottom: scrolled || mobileOpen ? '1px solid rgba(231,199,151,.16)' : '1px solid rgba(255,248,237,.08)',
+          backdropFilter: scrolled || mobileOpen ? 'blur(18px)' : 'blur(2px)',
         }}
       >
         <div className="container-main">
-          <div className="flex h-24 md:h-28 items-center justify-between gap-5">
-            <a href="/" className="flex min-w-0 items-center gap-3" aria-label="Saadi Construction Group home">
+          <div className="flex h-[5.5rem] items-center justify-between gap-5 md:h-24">
+            <a href="/" className="group flex min-w-0 items-center gap-3" aria-label="Saadi Construction Group home">
               <img
                 src="/images/saadi-emblem.svg"
                 alt="Saadi Construction Group Emblem"
-                className="h-10 w-auto shrink-0 object-contain md:h-12"
+                className="h-11 w-auto shrink-0 object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,.28)] transition-transform duration-300 group-hover:scale-[1.03] md:h-14"
               />
-              <span className="flex flex-col leading-none text-[#fff8ed]">
-                <span className="font-heading text-2xl font-medium uppercase tracking-[0.22em] md:text-3xl">Saadi</span>
+              <span className="flex flex-col border-l border-[#e7c797]/35 pl-3 leading-none text-[#fff8ed]">
+                <span className="font-heading text-2xl font-semibold uppercase tracking-[0.24em] md:text-3xl">Saadi</span>
                 <span className="mt-1 font-body text-[8px] font-semibold uppercase tracking-[0.28em] md:text-[9px]">Construction Group</span>
               </span>
             </a>
 
-            <nav className="hidden lg:flex items-center gap-8" aria-label="Primary navigation">
+            <nav className="hidden items-center gap-9 lg:flex" aria-label="Primary navigation">
               {navLinks.map((link) =>
                 link.hasMega ? (
                   <div key={link.label} ref={megaRef} className="relative">
@@ -100,10 +100,10 @@ export default function Navbar({ pathname = '/' }) {
 
             <div className="hidden items-center gap-5 lg:flex">
               <a href="tel:+18322058178" className="text-[12px] font-semibold tracking-[0.12em] text-[#fff8ed] transition-colors hover:text-[#e7c797]">(832) 205-8178</a>
-              <a href="/contact" className="btn-luxe-fill px-5 py-3 text-[10px]">Request a Quote</a>
+              <a href="/contact" className="btn-luxe-fill px-5 py-3 text-[10px] shadow-none">Request a Quote</a>
             </div>
 
-            <button type="button" onClick={() => setMobileOpen(!mobileOpen)} className="p-3 text-[#fff8ed] lg:hidden" aria-label="Toggle navigation" aria-expanded={mobileOpen}>
+            <button type="button" onClick={() => setMobileOpen(!mobileOpen)} className="border border-[#fff8ed]/20 px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#fff8ed] lg:hidden" aria-label="Toggle navigation" aria-expanded={mobileOpen}>
               {mobileOpen ? 'Close' : 'Menu'}
             </button>
           </div>

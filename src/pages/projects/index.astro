@@ -5,15 +5,15 @@ import { projects } from '@/data/projects';
 const filters = ['Modern', 'Transitional', 'French Country', 'Farmhouse', 'Luxury Estate', 'New Construction'];
 ---
 <Layout title="Custom Home Portfolio | Saadi Construction Group Houston" description="Browse luxury custom homes in Houston and surrounding areas by Saadi Construction Group. Plans, permits, engineering, and construction under one contract." keywords="custom home projects Houston, custom home builder portfolio Houston TX, luxury custom homes Houston" canonicalUrl="https://www.saadiconstructiongroup.com/projects">
-  <section class="relative min-h-[72vh] overflow-hidden bg-[#142232] text-[#fff8ed]">
+  <section class="relative min-h-[72vh] overflow-hidden bg-[#0d0c0a] text-[#fff8ed]">
     <img src="/images/p8-interior-bath.png" alt="Ultra-modern Houston custom home front exterior at dusk" class="absolute inset-0 h-full w-full object-cover" />
-    <div class="absolute inset-0 bg-gradient-to-r from-[#111d2a]/88 via-[#111d2a]/58 to-transparent"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_16%_56%,rgba(0,0,0,.88),rgba(13,12,10,.62)_42%,rgba(13,12,10,.18)_74%),linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.18))]"></div>
     <div class="relative container-main flex min-h-[72vh] items-end pb-20 pt-36">
       <div class="max-w-4xl"><p class="eyebrow">Portfolio</p><h1 class="display-heading mt-5 text-5xl text-[#fff8ed] md:text-7xl">A custom-home portfolio built around Houston living.</h1><p class="mt-6 max-w-2xl text-lg leading-8 text-[#fff8ed]/80">Large photography, real project imagery, and the details available in the current portfolio—without invented claims.</p></div>
     </div>
   </section>
 
-  <section class="bg-[#fbf6ed] py-8 border-b border-[rgba(71,57,40,.14)]">
+  <section class="bg-[#fffaf2] py-8 border-b border-[rgba(71,57,40,.14)]">
     <div class="container-main flex flex-wrap gap-3">
       {filters.map((filter) => <span class="border border-[rgba(184,138,74,.35)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#6f563f]">{filter}</span>)}
     </div>
@@ -21,13 +21,13 @@ const filters = ['Modern', 'Transitional', 'French Country', 'Farmhouse', 'Luxur
 
   <section class="stone-section">
     <div class="container-main section-padding">
-      <div class="grid gap-10 md:grid-cols-2">
+      <div class="grid gap-12 md:grid-cols-2">
         {projects.map((project, index) => (
           <article class={`group ${index === 0 || index === 7 ? 'md:col-span-2' : ''}`}>
-            <a href={`/projects/${project.slug}`} class="image-zoom block aspect-[16/11] bg-[#e8dece]">
+            <a href={`/projects/${project.slug}`} class="image-zoom block aspect-[16/11] border border-[rgba(71,57,40,.14)] bg-[#e8dece] shadow-[0_24px_70px_rgba(36,27,18,.12)]">
               <img src={project.coverImage} alt={project.coverAlt} class="h-full w-full object-cover" loading={index < 2 ? 'eager' : 'lazy'} />
             </a>
-            <div class="mt-5 flex flex-col gap-4 border-t border-[rgba(71,57,40,.18)] pt-5 sm:flex-row sm:items-start sm:justify-between">
+            <div class="mt-6 flex flex-col gap-4 border-t border-[rgba(71,57,40,.18)] pt-6 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <p class="eyebrow">{project.style}</p>
                 <h2 class="mt-2 font-heading text-4xl text-[#17202a]">{project.title}</h2>
@@ -42,5 +42,5 @@ const filters = ['Modern', 'Transitional', 'French Country', 'Farmhouse', 'Luxur
     </div>
   </section>
 
-  <section class="bg-[#142232] text-[#fff8ed]"><div class="container-main py-20 text-center"><h2 class="font-heading text-5xl text-[#fff8ed]">Ready to discuss your lot, plans, or build scope?</h2><p class="mx-auto mt-4 max-w-2xl text-[#fff8ed]/76">Plans, permits, engineering, and construction — all under one contract.</p><a href="/contact" class="btn-luxe-fill mt-8">Request a Quote</a></div></section>
+  <section class="dark-section text-[#fff8ed]"><div class="container-main py-20 text-center"><h2 class="font-heading text-5xl text-[#fff8ed]">Ready to discuss your lot, plans, or build scope?</h2><p class="mx-auto mt-4 max-w-2xl text-[#fff8ed]/76">Plans, permits, engineering, and construction — all under one contract.</p><a href="/contact" class="btn-luxe-fill mt-8">Request a Quote</a></div></section>
 </Layout>
