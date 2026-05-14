@@ -1,0 +1,113 @@
+---
+export const prerender = true;
+import Layout from '@/layouts/Layout.astro';
+const canonical = 'https://www.saadiconstructiongroup.com/tools/lot-feasibility-checklist';
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.saadiconstructiongroup.com' },
+    { '@type': 'ListItem', position: 2, name: 'Tools', item: 'https://www.saadiconstructiongroup.com/tools' },
+    { '@type': 'ListItem', position: 3, name: 'Lot Feasibility Checklist', item: canonical },
+  ],
+};
+const checklistSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Houston Custom Home Lot Feasibility Checklist',
+  description: 'Checklist for Houston-area custom home lot feasibility review, including zoning, setbacks, utilities, drainage, floodplain, easements, trees, access, soil, and HOA considerations.',
+  itemListElement: [
+    'Jurisdiction and deed restrictions',
+    'Setbacks and buildable area',
+    'Utilities and access',
+    'Drainage and floodplain',
+    'Easements, trees, soil, and HOA review',
+  ].map((name, index) => ({ '@type': 'ListItem', position: index + 1, name })),
+};
+const checklistSections = [
+  {
+    group: 'Legal and site controls',
+    items: [
+      { title: 'Jurisdiction', help: 'Confirm whether the lot is reviewed by City of Houston, another municipality, a county, or a special district.' },
+      { title: 'Deed restrictions or HOA', help: 'Check architectural controls, minimum size rules, exterior material restrictions, and approval timing.' },
+      { title: 'Setbacks and buildable area', help: 'Verify front, side, rear, garage, utility, and easement setbacks before assuming the home footprint will fit.' },
+    ],
+  },
+  {
+    group: 'Utilities and access',
+    items: [
+      { title: 'Water, sewer, and power', help: 'Confirm service availability, tap requirements, meter location, and whether utility extensions may be needed.' },
+      { title: 'Driveway and street access', help: 'Review curb cuts, shared drives, alley access, fire access, and construction staging limitations.' },
+      { title: 'Easements', help: 'Identify utility, drainage, access, pipeline, or shared-use easements that reduce usable building area.' },
+    ],
+  },
+  {
+    group: 'Houston-specific site risk',
+    items: [
+      { title: 'Drainage path', help: 'Look for how water enters, crosses, and leaves the lot. Drainage can affect grading, foundation height, and site cost.' },
+      { title: 'Floodplain status', help: 'Check whether the lot is in or near a mapped floodplain and whether elevation or detention requirements may apply.' },
+      { title: 'Soil and foundation considerations', help: 'Houston-area soil movement can affect foundation design, engineering assumptions, and site preparation.' },
+    ],
+  },
+  {
+    group: 'Design and construction readiness',
+    items: [
+      { title: 'Trees and protected landscape', help: 'Review tree preservation rules, removal restrictions, root zones, and impacts on driveway or foundation placement.' },
+      { title: 'Home size and orientation', help: 'Confirm the desired home size, garage approach, outdoor living, and privacy goals fit the lot constraints.' },
+      { title: 'Preconstruction budget assumptions', help: 'Separate land price from sitework, engineering, utility, drainage, permit, and construction allowances.' },
+    ],
+  },
+];
+---
+<Layout title="Houston Lot Feasibility Checklist | Custom Homes" description="Interactive Houston lot feasibility checklist for zoning, setbacks, utilities, drainage, floodplain, easements, trees, access, soil, and HOA requirements." canonicalUrl={canonical} jsonLd={[breadcrumbSchema, checklistSchema]}>
+  <section class="relative min-h-[48vh] flex items-center bg-gradient-to-br from-navy via-[#14304d] to-charcoal overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.08),transparent_60%)]"></div>
+    <div class="relative z-10 container-main px-4 pt-36 pb-20 md:pt-44 md:pb-28">
+      <p class="eyebrow text-gold">Houston Planning Tool</p>
+      <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mt-4">Lot Feasibility Checklist</h1>
+      <p class="mt-6 text-lg text-gray-300 max-w-2xl">Use this before buying land or starting plans. The goal is to identify Houston-area constraints that can affect the home footprint, permit path, engineering, drainage, and construction budget.</p>
+    </div>
+  </section>
+
+  <section class="stone-section">
+    <div class="container-main section-padding">
+      <div class="mb-12 grid gap-6 md:grid-cols-[0.9fr_1fr] md:items-end">
+        <div>
+          <p class="eyebrow">Lot Review</p>
+          <h2 class="display-heading mt-4 text-4xl md:text-6xl">A practical checklist before plans or pricing.</h2>
+        </div>
+        <p class="body-large">Check items as you confirm them. A checked item does not mean the lot is approved; it means the question has been reviewed and should be documented before moving forward.</p>
+      </div>
+
+      <div class="grid gap-6 lg:grid-cols-2">
+        {checklistSections.map((section) => (
+          <article class="editorial-card p-6 md:p-8">
+            <p class="eyebrow">{section.group}</p>
+            <div class="mt-6 space-y-4">
+              {section.items.map((item) => (
+                <label class="flex gap-4 border border-[rgba(71,57,40,.14)] bg-[#fffaf2] p-5 text-[#17202a]">
+                  <input type="checkbox" class="mt-1 h-5 w-5 shrink-0 accent-[#b88a4a]" />
+                  <span>
+                    <strong class="block font-heading text-2xl font-semibold text-[#17202a]">{item.title}</strong>
+                    <span class="mt-2 block text-sm leading-6 text-[#17202a]/68">{item.help}</span>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-12 editorial-card p-6 md:p-8">
+        <p class="eyebrow">What To Do Next</p>
+        <h2 class="mt-4 font-heading text-3xl md:text-4xl text-[#17202a]">Bring the lot details into preconstruction.</h2>
+        <p class="mt-4 leading-7 text-[#17202a]/72">If any checklist item is unclear, verify it before final design or fixed pricing. Saadi Construction Group can review your lot, desired scope, design status, and permit path to identify the next responsible step.</p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="/services/custom-home-design-build" class="btn-luxe">Custom Home Design-Build</a>
+          <a href="/services/plans-permits-engineering" class="btn-luxe">Plans, Permits & Engineering</a>
+          <a href="/contact" class="btn-luxe-fill">Schedule Consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
