@@ -51,6 +51,16 @@
       "source": "/new-home-construction",
       "destination": "/services/new-home-construction",
       "permanent": true
+    },
+    {
+      "source": "/blogs",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/:slug*",
+      "destination": "/blog/:slug*",
+      "permanent": true
     }
   ]
 }
