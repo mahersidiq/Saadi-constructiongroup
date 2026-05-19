@@ -5,39 +5,42 @@ import { serviceAreas } from '@/data/serviceAreas';
 import { publishedBlogPosts } from '@/data/blogPosts';
 
 const SITE = 'https://www.saadiconstructiongroup.com';
-const LASTMOD = new Date().toISOString().split('T')[0];
 
-const staticPages = [
-  { url: '/', priority: '1.0', changefreq: 'weekly' },
-  { url: '/about', priority: '0.8', changefreq: 'monthly' },
-  { url: '/contact', priority: '0.8', changefreq: 'monthly' },
-  { url: '/services', priority: '0.9', changefreq: 'monthly' },
-  { url: '/service-areas', priority: '0.9', changefreq: 'monthly' },
-  { url: '/projects', priority: '0.8', changefreq: 'weekly' },
-  { url: '/blog', priority: '0.8', changefreq: 'weekly' },
-  { url: '/tools', priority: '0.7', changefreq: 'monthly' },
-  { url: '/tools/build-cost-calculator', priority: '0.7', changefreq: 'monthly' },
-  { url: '/tools/timeline-estimator', priority: '0.7', changefreq: 'monthly' },
-  { url: '/tools/houston-permit-guide', priority: '0.7', changefreq: 'monthly' },
-  { url: '/tools/lot-feasibility-checklist', priority: '0.7', changefreq: 'monthly' },
+// Stable dates — update when you meaningfully change a page.
+// Using new Date() here would mark every page as "just changed" on every
+// build, which erodes crawl-budget trust and confuses Google's freshness
+// signals. Only flip these when content actually changes.
+
+const LAUNCH_DATE = '2025-10-01'; // site launch / last significant overhaul
+
+const staticPages: { url: string; lastmod: string }[] = [
+  { url: '/',               lastmod: '2026-03-01' },
+  { url: '/about',          lastmod: LAUNCH_DATE },
+  { url: '/contact',        lastmod: LAUNCH_DATE },
+  { url: '/services',       lastmod: '2025-12-01' },
+  { url: '/service-areas',  lastmod: LAUNCH_DATE },
+  { url: '/projects',       lastmod: '2026-01-15' },
+  { url: '/blog',           lastmod: '2026-04-01' },
+  { url: '/tools',                           lastmod: LAUNCH_DATE },
+  { url: '/tools/build-cost-calculator',     lastmod: LAUNCH_DATE },
+  { url: '/tools/timeline-estimator',        lastmod: LAUNCH_DATE },
+  { url: '/tools/houston-permit-guide',      lastmod: LAUNCH_DATE },
+  { url: '/tools/lot-feasibility-checklist', lastmod: LAUNCH_DATE },
 ];
 
 const servicePages = allServices.map((s) => ({
   url: `/services/${s.slug}`,
-  priority: '0.8',
-  changefreq: 'monthly',
+  lastmod: '2025-12-01',
 }));
 
 const areaPages = serviceAreas.map((a) => ({
   url: `/service-areas/${a.slug}`,
-  priority: '0.8',
-  changefreq: 'monthly',
+  lastmod: LAUNCH_DATE,
 }));
 
 const blogPages = publishedBlogPosts.map((p) => ({
   url: `/blog/${p.slug}`,
-  priority: '0.7',
-  changefreq: 'yearly',
+  lastmod: p.publishDate, // stable: the actual publish date from the data
 }));
 
 const allPages = [...staticPages, ...servicePages, ...areaPages, ...blogPages];
@@ -48,9 +51,7 @@ ${allPages
   .map(
     (page) => `  <url>
     <loc>${SITE}${page.url}</loc>
-    <lastmod>${LASTMOD}</lastmod>
-    <changefreq>${page.changefreq}</changefreq>
-    <priority>${page.priority}</priority>
+    <lastmod>${page.lastmod}</lastmod>
   </url>`
   )
   .join('\n')}
