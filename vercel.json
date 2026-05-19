@@ -1,3 +1,56 @@
 {
-  "framework": "astro"
+  "framework": "astro",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "saadiconstructiongroup.com" }],
+      "destination": "https://www.saadiconstructiongroup.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/custom-homes",
+      "destination": "/services/custom-home-design-build",
+      "permanent": true
+    },
+    {
+      "source": "/affordable-homes",
+      "destination": "/services/new-home-construction",
+      "permanent": true
+    },
+    {
+      "source": "/plans-%26-permits",
+      "destination": "/services/plans-permits-engineering",
+      "permanent": true
+    },
+    {
+      "source": "/plans-&-permits",
+      "destination": "/services/plans-permits-engineering",
+      "permanent": true
+    },
+    {
+      "source": "/industrial-construction",
+      "destination": "/services/construction-management",
+      "permanent": true
+    },
+    {
+      "source": "/restaurants",
+      "destination": "/services/construction-management",
+      "permanent": true
+    },
+    {
+      "source": "/retail-%26-offices",
+      "destination": "/services/construction-management",
+      "permanent": true
+    },
+    {
+      "source": "/retail-&-offices",
+      "destination": "/services/construction-management",
+      "permanent": true
+    },
+    {
+      "source": "/new-home-construction",
+      "destination": "/services/new-home-construction",
+      "permanent": true
+    }
+  ]
 }
