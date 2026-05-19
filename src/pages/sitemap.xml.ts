@@ -4,7 +4,7 @@ import { allServices } from '@/data/services';
 import { serviceAreas } from '@/data/serviceAreas';
 import { publishedBlogPosts } from '@/data/blogPosts';
 
-const SITE = 'https://saadiconstructiongroup.com';
+const SITE = 'https://www.saadiconstructiongroup.com';
 const LASTMOD = new Date().toISOString().split('T')[0];
 
 const staticPages = [
