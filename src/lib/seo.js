@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://saadiconstructiongroup.com';
+export const SITE_URL = 'https://www.saadiconstructiongroup.com';
 export const SITE_NAME = 'Saadi Construction Group';
 
 export function getPageTitle(topic) {

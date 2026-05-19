@@ -9,7 +9,7 @@ const projectSchema = {
   '@context': 'https://schema.org',
   '@type': 'CreativeWork',
   name: project.title,
-  description: `${project.title} custom home portfolio entry in ${project.location} with verified style, square footage, tags, and imagery currently available from Saadi Construction Group.`,
+  description: project.summary,
   url: canonical,
   image: project.images.map((image) => `https://www.saadiconstructiongroup.com${image.src}`),
   creator: { '@type': 'Organization', name: 'Saadi Construction Group', url: 'https://www.saadiconstructiongroup.com' },
@@ -30,11 +30,13 @@ const details = [
   ['Construction Type', project.tags.join(', ')],
   ['Design Intent', project.style],
   ['Known Size', project.sqft],
-  ['Verified Materials / Challenges / Timeline', 'Add when confirmed by Saadi Construction Group.'],
+  ['Materials & Finishes', project.materials],
+  ['Construction Timeline', project.timeline],
+  ['Site & Design Notes', project.siteNotes],
 ];
 const progressStages = ['Planning', 'Permitting', 'Site prep', 'Foundation', 'Framing', 'MEP rough-in', 'Insulation', 'Drywall', 'Exterior finishes', 'Interior finishes', 'Final walkthrough'];
 ---
-<Layout title={`${project.title} | Saadi Construction Group Portfolio`} description={`${project.title} custom home project in ${project.location}. View available project imagery and scope details from Saadi Construction Group.`} canonicalUrl={canonical} jsonLd={[projectSchema, breadcrumbSchema]}>
+<Layout title={`${project.title} Custom Home in ${project.location} | Saadi Construction Group`} description={`${project.title} — a ${project.sqft} ${project.style.toLowerCase()} custom home built in ${project.location} by Saadi Construction Group. Materials, timeline, and design-build scope.`} canonicalUrl={canonical} jsonLd={[projectSchema, breadcrumbSchema]}>
   <section class="relative min-h-[78vh] overflow-hidden bg-[#2a2018] text-[#fff8ed]">
     <img src={project.coverImage} alt={project.coverAlt} class="absolute inset-0 h-full w-full object-cover" />
     <div class="absolute inset-0 bg-gradient-to-r from-[#171512]/88 via-[#171512]/48 to-transparent"></div>
@@ -42,14 +44,14 @@ const progressStages = ['Planning', 'Permitting', 'Site prep', 'Foundation', 'Fr
       <div class="max-w-4xl"><p class="eyebrow">{project.style} · {project.location}</p><h1 class="display-heading mt-4 text-5xl text-[#fff8ed] md:text-7xl">{project.title}</h1><p class="mt-5 text-lg text-[#fff8ed]/80">{project.sqft} · {project.tags.join(' · ')}</p></div>
     </div>
   </section>
-  <section class="stone-section"><div class="container-main section-padding"><div class="grid gap-10 lg:grid-cols-[.8fr_1.2fr]"><div><p class="eyebrow">Project Summary</p><h2 class="display-heading mt-4 text-4xl md:text-5xl">A polished portfolio view using verified details.</h2><p class="body-large mt-6">Available facts include the project style, location, square footage, tags, and photography currently present in the codebase. Additional specifications should be added when confirmed by Saadi Construction Group.</p><a href="/contact" class="btn-luxe-fill mt-8">Schedule Consultation</a></div><div class="grid gap-4 sm:grid-cols-2">{project.images.map((image, i) => <figure class={i === 0 ? 'sm:col-span-2' : ''}><img src={image.src} alt={image.alt} class="aspect-[4/3] h-full w-full object-cover" loading="lazy" /><figcaption class="mt-2 text-xs uppercase tracking-[0.16em] text-[#6f563f]">{image.type}</figcaption></figure>)}</div></div></div></section>
+  <section class="stone-section"><div class="container-main section-padding"><div class="grid gap-10 lg:grid-cols-[.8fr_1.2fr]"><div><p class="eyebrow">Project Summary</p><h2 class="display-heading mt-4 text-4xl md:text-5xl">{project.title} · {project.location}</h2><p class="body-large mt-6">{project.summary}</p><a href="/contact" class="btn-luxe-fill mt-8">Schedule Consultation</a></div><div class="grid gap-4 sm:grid-cols-2">{project.images.map((image, i) => <figure class={i === 0 ? 'sm:col-span-2' : ''}><img src={image.src} alt={image.alt} class="aspect-[4/3] h-full w-full object-cover" loading="lazy" /><figcaption class="mt-2 text-xs uppercase tracking-[0.16em] text-[#6f563f]">{image.type}</figcaption></figure>)}</div></div></div></section>
   <section class="bg-[#fffaf2] py-16 md:py-24">
     <div class="container-main px-4">
       <div class="grid gap-10 lg:grid-cols-[.9fr_1.1fr]">
         <div>
-          <p class="eyebrow">Case Study Structure</p>
-          <h2 class="display-heading mt-4 text-4xl md:text-5xl">Verified project details and next-step context.</h2>
-          <p class="body-large mt-6">This structure is ready for deeper project facts without adding unverified claims about budget, materials, awards, or timeline.</p>
+          <p class="eyebrow">Case Study</p>
+          <h2 class="display-heading mt-4 text-4xl md:text-5xl">Verified project details and construction scope.</h2>
+          <p class="body-large mt-6">Materials, timeline, and site conditions for this {project.style.toLowerCase()} custom home in {project.location}. Saadi Construction Group delivered architectural plans, structural engineering, permitting, and full construction under a single design-build contract.</p>
         </div>
         <div class="grid gap-4 sm:grid-cols-2">
           {details.map(([label, value]) => (

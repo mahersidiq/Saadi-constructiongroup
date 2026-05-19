@@ -57,7 +57,7 @@ const breadcrumbSchema = {
   ],
 };
 
-const areaFaqs = [
+const areaFaqs = area.faqs && area.faqs.length > 0 ? area.faqs : [
   { question: `Do you build custom homes in ${area.name}?`, answer: `Yes. Saadi Construction Group serves ${area.name} homeowners with custom home design-build, plans, structural engineering, permitting, and full construction coordination.` },
   { question: `Can you help evaluate a lot in ${area.name}?`, answer: 'Yes. We review practical feasibility items such as setbacks, utilities, drainage, floodplain considerations, access, easements, soil and foundation planning, and permitting path before construction planning moves forward.' },
   { question: `Do you handle plans and permits for ${area.name} projects?`, answer: 'Yes. We coordinate architectural plans, structural engineering, permit packages, city or county submission, review comments, and construction inspections as part of the design-build process.' },
