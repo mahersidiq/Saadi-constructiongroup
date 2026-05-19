@@ -61,6 +61,11 @@
       "source": "/blogs/:slug*",
       "destination": "/blog/:slug*",
       "permanent": true
+    },
+    {
+      "source": "/services/exterior-curb-appeal",
+      "destination": "/services",
+      "permanent": true
     }
   ]
 }
