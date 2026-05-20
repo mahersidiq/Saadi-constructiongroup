@@ -1428,7 +1428,7 @@ export const blogPosts = [
         body: [
           'Beyond mandatory city inspections, owners can hire a private inspector at critical milestones. The most valuable stage for an owner-hired inspection is pre-drywall — the window between MEP rough-in and insulation when all systems are visible and accessible.',
           'A pre-drywall inspection by a licensed Texas inspector covers framing quality and connections, plumbing rough-in for correct sizing and support, electrical panel location and rough-in quality, HVAC duct routing and insulation, window flashing and weather barrier installation, and any deviations from the approved plans.',
-          'A second owner inspection at substantial completion — before the final punch list walk with the builder — catches finish defects, incomplete items, and any functional issues with appliances, HVAC, and plumbing fixtures while the builder's crew is still mobilized and motivated.',
+          'A second owner inspection at substantial completion — before the final punch list walk with the builder — catches finish defects, incomplete items, and any functional issues with appliances, HVAC, and plumbing fixtures while the builder\'s crew is still mobilized and motivated.',
         ],
       },
       {
