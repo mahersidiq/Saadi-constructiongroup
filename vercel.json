@@ -3,8 +3,8 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.saadiconstructiongroup.com" }],
-      "destination": "https://saadiconstructiongroup.com/:path*",
+      "has": [{ "type": "host", "value": "saadiconstructiongroup.com" }],
+      "destination": "https://www.saadiconstructiongroup.com/:path*",
       "permanent": true
     },
     {
