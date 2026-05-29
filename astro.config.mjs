@@ -5,7 +5,7 @@ import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://saadiconstructiongroup.com',
+  site: 'https://www.saadiconstructiongroup.com',
   integrations: [
     react(),
     tailwind(),
