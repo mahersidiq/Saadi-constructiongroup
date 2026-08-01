@@ -17,7 +17,7 @@ const planningServices = serviceCategories.find((cat) => cat.slug === 'planning-
           </span>
         </a>
         <p class="mt-7 max-w-xs leading-8 text-[#fff8ed]/70">Houston’s one-stop custom home builder. Plans, engineering, permits, and construction — all under one contract.</p>
-        <div class="mt-6 space-y-2 text-sm"><a href="tel:+18322058178" class="block hover:text-[#e7c797]">(832) 205-8178</a><a href="mailto:info@saadiconstructiongroup.com" class="block break-all hover:text-[#e7c797]">info@saadiconstructiongroup.com</a><p>801 Travis St Suite 2101<br />Houston, TX 77002</p></div>
+        <div class="mt-6 space-y-2 text-sm"><a href="tel:+12816255350" class="block hover:text-[#e7c797]">(281) 625-5350</a><a href="mailto:info@saadiconstructiongroup.com" class="block break-all hover:text-[#e7c797]">info@saadiconstructiongroup.com</a><p>801 Travis St Suite 2101<br />Houston, TX 77002</p></div>
       </div>
       <div><p class="eyebrow mb-5">Design & Build</p><ul class="space-y-3">{designBuildServices.map((s) => <li><a href={`/services/${s.slug}`} class="text-sm text-[#fff8ed]/72 hover:text-[#e7c797]">{s.name}</a></li>)}</ul></div>
       <div><p class="eyebrow mb-5">Construction</p><ul class="space-y-3 mb-8">{constructionServices.map((s) => <li><a href={`/services/${s.slug}`} class="text-sm text-[#fff8ed]/72 hover:text-[#e7c797]">{s.name}</a></li>)}</ul><p class="eyebrow mb-5">Planning</p><ul class="space-y-3">{planningServices.map((s) => <li><a href={`/services/${s.slug}`} class="text-sm text-[#fff8ed]/72 hover:text-[#e7c797]">{s.name}</a></li>)}</ul></div>

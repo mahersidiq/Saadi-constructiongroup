@@ -106,7 +106,7 @@ export default function Navbar({ pathname = '/' }) {
             </nav>
 
             <div className="hidden flex-none items-center xl:flex">
-              <a href="tel:+18322058178" className="whitespace-nowrap text-[12px] font-semibold tracking-[0.12em] text-[#fff8ed] transition-colors hover:text-[#e7c797]">(832) 205-8178</a>
+              <a href="tel:+12816255350" className="whitespace-nowrap text-[12px] font-semibold tracking-[0.12em] text-[#fff8ed] transition-colors hover:text-[#e7c797]">(281) 625-5350</a>
             </div>
 
             <button type="button" onClick={() => setMobileOpen(!mobileOpen)} className="border border-[#fff8ed]/20 px-3 py-3 sm:px-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#fff8ed] xl:hidden" aria-label="Toggle navigation" aria-expanded={mobileOpen}>
@@ -136,7 +136,7 @@ export default function Navbar({ pathname = '/' }) {
             </nav>
             <div className="mt-8 grid gap-4">
               <a href="/contact" className="btn-luxe-fill w-full">Request a Quote</a>
-              <a href="tel:+18322058178" className="btn-luxe w-full">Call (832) 205-8178</a>
+              <a href="tel:+12816255350" className="btn-luxe w-full">Call (281) 625-5350</a>
             </div>
           </div>
         </div>
