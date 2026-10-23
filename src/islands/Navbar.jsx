@@ -70,7 +70,7 @@ export default function Navbar({ pathname = '/' }) {
                     <button
                       type="button"
                       onClick={() => setDropdownOpen(!dropdownOpen)}
-                      className={`whitespace-nowrap transition-colors py-2 flex items-center gap-1.5 ${
+                      className={`uppercase whitespace-nowrap transition-colors py-2 flex items-center gap-1.5 ${
                         isActive(link.href) ? 'text-[#dfc8a7]' : 'text-[#fffdf8]/85 hover:text-[#dfc8a7]'
                       }`}
                     >

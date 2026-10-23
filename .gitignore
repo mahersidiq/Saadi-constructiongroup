@@ -25,3 +25,6 @@ yarn-debug.log*
 
 # claude code internal
 .claude/
+
+# AI Studio workspace files
+.aistudio/

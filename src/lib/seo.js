@@ -14,7 +14,7 @@ export const DEFAULT_DESCRIPTION =
 export const DEFAULT_KEYWORDS =
   'custom home builder Houston, luxury custom home builder Houston TX, design build contractor Houston, Memorial custom home builder, River Oaks custom homes, West University Place builder';
 
-export const DEFAULT_OG_IMAGE = '/images/hero-memorial-residence.jpg';
+export const DEFAULT_OG_IMAGE = '/images/saadi-custom-home-exterior.jpg';
 export const DEFAULT_OG_IMAGE_ALT =
   'Architectural luxury custom residence in Memorial Houston built by Saadi Construction Group';
 
