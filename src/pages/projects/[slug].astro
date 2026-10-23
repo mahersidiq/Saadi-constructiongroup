@@ -2,9 +2,14 @@
 export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
 import { projects } from '@/data/projects';
-export function getStaticPaths() { return projects.map((project) => ({ params: { slug: project.slug }, props: { project } })); }
+
+export function getStaticPaths() {
+  return projects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
+}
+
 const { project } = Astro.props;
 const canonical = `https://www.saadiconstructiongroup.com/projects/${project.slug}`;
+
 const projectSchema = {
   '@context': 'https://schema.org',
   '@type': 'CreativeWork',
@@ -16,68 +21,163 @@ const projectSchema = {
   contentLocation: { '@type': 'Place', name: project.location },
   about: project.tags,
 };
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.saadiconstructiongroup.com' },
-    { '@type': 'ListItem', position: 2, name: 'Projects', item: 'https://www.saadiconstructiongroup.com/projects' },
-    { '@type': 'ListItem', position: 3, name: project.title, item: canonical },
-  ],
-};
+
 const details = [
-  ['Location / Area', project.location],
-  ['Construction Type', project.tags.join(', ')],
-  ['Design Intent', project.style],
-  ['Known Size', project.sqft],
-  ['Materials & Finishes', project.materials],
-  ['Construction Timeline', project.timeline],
-  ['Site & Design Notes', project.siteNotes],
+  ['Location / Submarket', project.location],
+  ['Construction Scope', project.tags.join(' · ')],
+  ['Architectural Style', project.style],
+  ['Conditioned Area', project.sqft],
+  ['Structural Materials', project.materials],
+  ['Project Timeline', project.timeline],
+  ['Geotechnical & Site Notes', project.siteNotes],
 ];
-const progressStages = ['Planning', 'Permitting', 'Site prep', 'Foundation', 'Framing', 'MEP rough-in', 'Insulation', 'Drywall', 'Exterior finishes', 'Interior finishes', 'Final walkthrough'];
+
+const progressStages = [
+  '01. Soil Borings & Feasibility',
+  '02. Architectural Drafting',
+  '03. Structural Engineering',
+  '04. Municipal Permitting',
+  '05. Stiffened Foundation Pour',
+  '06. Timber & Steel Framing',
+  '07. ZIP System Weatherization',
+  '08. Mechanical & Plumbing Rough-In',
+  '09. Level 5 Drywall & Millwork',
+  '10. Masonry & Metal Roofing',
+  '11. Commissioning & Handover',
+];
 ---
-<Layout title={`${project.title} Custom Home in ${project.location} | Saadi Construction Group`} description={`${project.title} — a ${project.sqft} ${project.style.toLowerCase()} custom home built in ${project.location} by Saadi Construction Group. Materials, timeline, and design-build scope.`} canonicalUrl={canonical} jsonLd={[projectSchema, breadcrumbSchema]}>
-  <section class="relative min-h-[78vh] overflow-hidden bg-[#2a2018] text-[#fff8ed]">
-    <img src={project.coverImage} alt={project.coverAlt} class="absolute inset-0 h-full w-full object-cover" />
-    <div class="absolute inset-0 bg-gradient-to-r from-[#171512]/88 via-[#171512]/48 to-transparent"></div>
-    <div class="relative container-main flex min-h-[78vh] items-end pb-16 pt-36">
-      <div class="max-w-4xl"><p class="eyebrow">{project.style} · {project.location}</p><h1 class="display-heading mt-4 text-5xl text-[#fff8ed] md:text-7xl">{project.title}</h1><p class="mt-5 text-lg text-[#fff8ed]/80">{project.sqft} · {project.tags.join(' · ')}</p></div>
+
+<Layout
+  title={`${project.title} | Houston Luxury Custom Home | Saadi Construction Group`}
+  description={`${project.title} — a ${project.sqft} ${project.style.toLowerCase()} custom residence built in ${project.location} by Saadi Construction Group. Structural engineering, materials, and design-build timeline.`}
+  keywords={`${project.title}, ${project.location} custom home builder, ${project.style} custom home Houston, ${project.tags.join(', ')}`}
+  canonicalUrl={canonical}
+  ogImage={project.coverImage}
+  ogImageAlt={project.coverAlt}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Projects', href: '/projects' },
+    { name: project.title, href: `/projects/${project.slug}` },
+  ]}
+  jsonLd={projectSchema}
+>
+  {/* Project Hero */}
+  <section class="relative min-h-[75vh] overflow-hidden bg-[#1c1917] text-[#fffdf8]">
+    <img 
+      src={project.coverImage} 
+      alt={project.coverAlt} 
+      class="absolute inset-0 h-full w-full object-cover opacity-85" 
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-[#1c1917] via-[#1c1917]/50 to-transparent"></div>
+    <div class="relative container-main flex min-h-[75vh] items-end pb-16 pt-36">
+      <div class="max-w-4xl">
+        <p class="font-mono text-xs uppercase tracking-[0.24em] text-[#dfc8a7]">
+          {project.style} · {project.location}
+        </p>
+        <h1 class="font-heading mt-4 text-4xl sm:text-6xl md:text-7xl font-medium tracking-tight text-[#fffdf8]">
+          {project.title}
+        </h1>
+        <div class="mt-4 flex items-center gap-3 font-mono text-xs text-[#dfd7ca]">
+          <span>{project.sqft}</span>
+          <span aria-hidden="true">/</span>
+          <span>Turnkey Design-Build</span>
+          <span aria-hidden="true">/</span>
+          <span>Single-Contract Accountability</span>
+        </div>
+      </div>
     </div>
   </section>
-  <section class="stone-section"><div class="container-main section-padding"><div class="grid gap-10 lg:grid-cols-[.8fr_1.2fr]"><div><p class="eyebrow">Project Summary</p><h2 class="display-heading mt-4 text-4xl md:text-5xl">{project.title} · {project.location}</h2><p class="body-large mt-6">{project.summary}</p><a href="/contact" class="btn-luxe-fill mt-8">Schedule Consultation</a></div><div class="grid gap-4 sm:grid-cols-2">{project.images.map((image, i) => <figure class={i === 0 ? 'sm:col-span-2' : ''}><img src={image.src} alt={image.alt} class="aspect-[4/3] h-full w-full object-cover" loading="lazy" /><figcaption class="mt-2 text-xs uppercase tracking-[0.16em] text-[#6f563f]">{image.type}</figcaption></figure>)}</div></div></div></section>
-  <section class="bg-[#fffaf2] py-16 md:py-24">
-    <div class="container-main px-4">
-      <div class="grid gap-10 lg:grid-cols-[.9fr_1.1fr]">
-        <div>
-          <p class="eyebrow">Case Study</p>
-          <h2 class="display-heading mt-4 text-4xl md:text-5xl">Verified project details and construction scope.</h2>
-          <p class="body-large mt-6">Materials, timeline, and site conditions for this {project.style.toLowerCase()} custom home in {project.location}. Saadi Construction Group delivered architectural plans, structural engineering, permitting, and full construction under a single design-build contract.</p>
+
+  {/* Project Summary & Photo Gallery */}
+  <section class="bg-[#fbf9f5] py-24 md:py-32">
+    <div class="container-main">
+      <div class="grid gap-16 lg:grid-cols-12 lg:items-start">
+        {/* Narrative */}
+        <div class="lg:col-span-5 lg:sticky lg:top-32 space-y-6">
+          <p class="font-mono text-xs uppercase tracking-[0.24em] text-[#8c6d46]">Architectural Monograph</p>
+          <h2 class="font-heading text-3xl sm:text-4xl font-medium text-[#1c1917]">
+            Design-Build Execution
+          </h2>
+          <p class="text-base sm:text-lg leading-relaxed text-[#1c1917]/80">
+            {project.summary}
+          </p>
+          <div class="pt-6 border-t border-[rgba(28,25,23,0.1)]">
+            <a 
+              href="/contact" 
+              class="inline-flex items-center justify-center bg-[#8c6d46] px-8 py-4 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#fffdf8] transition hover:bg-[#a68254]"
+            >
+              Consult On This Style
+            </a>
+          </div>
         </div>
-        <div class="grid gap-4 sm:grid-cols-2">
-          {details.map(([label, value]) => (
-            <div class="border border-[rgba(71,57,40,.14)] bg-[#fffaf2] p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#6f563f]">{label}</p>
-              <p class="mt-3 text-[#17140f]/75">{value}</p>
-            </div>
+
+        {/* Gallery */}
+        <div class="lg:col-span-7 grid gap-6 sm:grid-cols-2">
+          {project.images.map((image, i) => (
+            <figure class={`border border-[rgba(28,25,23,0.1)] bg-[#ebe5db] overflow-hidden ${i === 0 ? 'sm:col-span-2' : ''}`}>
+              <img 
+                src={image.src} 
+                alt={image.alt} 
+                class="aspect-[4/3] h-full w-full object-cover transition-transform duration-700 hover:scale-105" 
+                loading="lazy" 
+              />
+              <figcaption class="p-3 bg-[#f6f3ec] font-mono text-[10px] uppercase tracking-[0.2em] text-[#8c6d46]">
+                {image.type} Study
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>
-      <div class="mt-12 border-t border-[rgba(71,57,40,.16)] pt-10">
-        <h3 class="font-heading text-3xl text-[#17140f]">Related services</h3>
-        <div class="mt-5 flex flex-wrap gap-3">
-          <a href="/services/custom-home-design-build" class="inline-block px-4 py-2 rounded-full bg-[#fffaf2] border border-[rgba(71,57,40,.24)] text-sm font-medium text-[#17140f] hover:border-[#b88a4a] hover:text-[#b88a4a] transition-colors duration-200">custom home design-build</a>
-          <a href="/services/new-home-construction" class="inline-block px-4 py-2 rounded-full bg-[#fffaf2] border border-[rgba(71,57,40,.24)] text-sm font-medium text-[#17140f] hover:border-[#b88a4a] hover:text-[#b88a4a] transition-colors duration-200">new home construction</a>
-          <a href="/services/plans-permits-engineering" class="inline-block px-4 py-2 rounded-full bg-[#fffaf2] border border-[rgba(71,57,40,.24)] text-sm font-medium text-[#17140f] hover:border-[#b88a4a] hover:text-[#b88a4a] transition-colors duration-200">plans, permits, and engineering</a>
+    </div>
+  </section>
+
+  {/* Technical Case Study Specifications */}
+  <section class="bg-[#f6f3ec] py-24 border-t border-[rgba(28,25,23,0.08)]">
+    <div class="container-main">
+      <div class="max-w-2xl">
+        <p class="font-mono text-xs uppercase tracking-[0.24em] text-[#8c6d46]">Building Science & Field Data</p>
+        <h2 class="font-heading mt-3 text-3xl sm:text-4xl font-medium text-[#1c1917]">
+          Verified Engineering Specifications
+        </h2>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {details.map(([label, value]) => (
+          <div class="border border-[rgba(28,25,23,0.08)] bg-[#fbf9f5] p-6 shadow-sm">
+            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#8c6d46]">{label}</p>
+            <p class="mt-2.5 text-sm leading-relaxed text-[#1c1917]/80">{value}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Clean Unboxed Links */}
+      <div class="mt-16 pt-10 border-t border-[rgba(28,25,23,0.1)]">
+        <h3 class="font-heading text-2xl text-[#1c1917]">Related Capabilities</h3>
+        <div class="mt-4 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs font-mono uppercase tracking-[0.16em] text-[#1c1917]/75">
+          <a href="/services/custom-home-design-build" class="hover:text-[#8c6d46] transition-colors">Custom Home Design-Build</a>
+          <span aria-hidden="true" class="text-[#8c6d46]">·</span>
+          <a href="/services/plans-permits-engineering" class="hover:text-[#8c6d46] transition-colors">Plans, Permits & Engineering</a>
+          <span aria-hidden="true" class="text-[#8c6d46]">·</span>
+          <a href="/tools/lot-feasibility-checklist" class="hover:text-[#8c6d46] transition-colors">Lot Feasibility Checklist</a>
         </div>
       </div>
     </div>
   </section>
-  <section class="stone-section">
-    <div class="container-main section-padding">
-      <p class="eyebrow">Progress Documentation Framework</p>
-      <h2 class="display-heading mt-4 text-4xl md:text-5xl">Construction stages ready for verified updates.</h2>
-      <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        {progressStages.map((stage) => <div class="border border-[rgba(71,57,40,.14)] bg-[#fffaf2]/70 p-5 text-sm font-medium text-[#17140f]/75">{stage}</div>)}
+
+  {/* Construction Stages */}
+  <section class="bg-[#1c1917] text-[#fffdf8] py-24 border-t border-[rgba(255,255,255,0.08)]">
+    <div class="container-main">
+      <p class="font-mono text-xs uppercase tracking-[0.24em] text-[#dfc8a7]">Houston Milestone Verification</p>
+      <h2 class="font-heading mt-3 text-3xl sm:text-4xl font-medium text-[#fffdf8]">
+        The 11-Stage Construction Sequence
+      </h2>
+      <div class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {progressStages.map((stage) => (
+          <div class="border border-white/10 bg-black/20 p-5 font-mono text-xs text-[#dfd7ca]">
+            {stage}
+          </div>
+        ))}
       </div>
     </div>
   </section>

@@ -1,35 +1,122 @@
 ---
 export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
+import CTABanner from '@/components/sections/home/CTABanner.astro';
+
 const tools = [
-  { href: '/tools/build-cost-calculator', title: 'Build Cost Calculator', text: 'Estimate planning ranges for Houston custom home construction.' },
-  { href: '/tools/timeline-estimator', title: 'Custom Home Timeline Estimator', text: 'Understand preconstruction, permitting, and construction duration.' },
-  { href: '/tools/houston-permit-guide', title: 'Houston Permit Guide', text: 'Review drawings, engineering, city or county review, revisions, approvals, and inspections.' },
-  { href: '/tools/lot-feasibility-checklist', title: 'Lot Feasibility Checklist', text: 'Check zoning, setbacks, utilities, drainage, floodplain, easements, access, soil, and HOA items.' },
+  {
+    href: '/tools/build-cost-calculator',
+    category: 'Financial Modeling',
+    title: 'Build Cost Calculator',
+    text: 'Estimate 2026 planning ranges for Houston custom home construction based on conditioned square footage, architectural tier, foundation complexity, and site engineering.',
+  },
+  {
+    href: '/tools/timeline-estimator',
+    category: 'Schedule Modeling',
+    title: 'Custom Home Timeline Estimator',
+    text: 'Model pre-construction drafting, structural engineering, municipal permitting, and on-site construction duration across Houston jurisdictions.',
+  },
+  {
+    href: '/tools/houston-permit-guide',
+    category: 'Municipal Compliance',
+    title: 'Houston Permit Guide',
+    text: 'Step-by-step roadmap covering architectural plan sets, post-tension slab engineering, Chapter 19 flood compliance, city/county submittal, and field inspections.',
+  },
+  {
+    href: '/tools/lot-feasibility-checklist',
+    category: 'Pre-Acquisition Due Diligence',
+    title: 'Lot Feasibility Checklist',
+    text: 'Interactive 12-point site evaluation checklist for setbacks, deed restrictions, expansive clay soils, detention, floodplain status, and root-zone tree ordinances.',
+  },
 ];
-const breadcrumbSchema = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
-  { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.saadiconstructiongroup.com' },
-  { '@type': 'ListItem', position: 2, name: 'Tools', item: 'https://www.saadiconstructiongroup.com/tools' },
-] };
+
+const toolsListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Houston Custom Home Planning Tools',
+  description: 'Interactive calculators and due-diligence tools for Houston custom home construction cost, timeline, permitting, and lot feasibility.',
+  itemListElement: tools.map((tool, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: tool.title,
+    description: tool.text,
+    url: `https://www.saadiconstructiongroup.com${tool.href}`,
+  })),
+};
 ---
-<Layout title="Custom Home Planning Tools | Saadi Construction Group" description="Houston custom home planning tools for cost, timeline, permitting, and lot feasibility. Planning ranges only; request a consultation for project-specific guidance." canonicalUrl="https://www.saadiconstructiongroup.com/tools" jsonLd={breadcrumbSchema}>
-  <section class="relative min-h-[48vh] flex items-center bg-gradient-to-br from-[#2a2018] via-[#2a2018] to-[#171512] overflow-hidden">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.08),transparent_60%)]"></div>
-    <div class="relative z-10 container-main px-4 pt-36 pb-20 md:pt-44 md:pb-28 text-center">
-      <p class="eyebrow text-[#b88a4a]">Planning Resources</p>
-      <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#fffaf1] leading-tight mt-4">Custom Home Planning Tools</h1>
-      <p class="mt-6 text-lg text-[#d7c8b3] max-w-2xl mx-auto">Educational tools for Houston homeowners evaluating cost, schedule, permits, and lot readiness.</p>
+
+<Layout
+  title="Custom Home Planning Tools | Saadi Construction Group Houston"
+  description="Interactive Houston custom home planning tools for cost modeling, schedule estimation, municipal permitting, and lot feasibility due diligence."
+  keywords="custom home planning tools Houston, Houston build cost calculator, custom home timeline estimator, Houston lot feasibility checklist, Houston building permit guide"
+  canonicalUrl="https://www.saadiconstructiongroup.com/tools"
+  pageType="CollectionPage"
+  ogImage="/images/p6-exterior-front.png"
+  ogImageAlt="Houston custom home planning and feasibility tools"
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Planning Tools', href: '/tools' },
+  ]}
+  jsonLd={toolsListSchema}
+>
+  <section class="relative min-h-[52vh] flex items-end bg-[#1c1917] text-[#fffdf8] pt-36 pb-16 overflow-hidden">
+    <img
+      src="/images/p6-exterior-front.png"
+      alt="Houston custom home planning and feasibility tools"
+      class="absolute inset-0 h-full w-full object-cover opacity-30"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-[#1c1917] via-[#1c1917]/75 to-[#1c1917]/40"></div>
+    <div class="relative z-10 container-main">
+      <div class="max-w-4xl">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-8 bg-[#dfc8a7]"></span>
+          <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#dfc8a7]">
+            Pre-Construction Advisory Instruments
+          </p>
+        </div>
+        <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-medium text-[#fffdf8] leading-[1.05]">
+          Custom Home Planning Tools
+        </h1>
+        <p class="mt-5 font-sans text-base md:text-lg text-[#dfd7ca]/85 max-w-2xl leading-relaxed">
+          Interactive planning instruments for Houston homeowners evaluating construction budgets, project schedules, municipal permits, and lot acquisition due diligence.
+        </p>
+      </div>
     </div>
   </section>
-  <section class="section-padding bg-[#fffaf2]">
-    <div class="container-main px-4 grid gap-6 md:grid-cols-2">
-      {tools.map((tool) => (
-        <a href={tool.href} class="block rounded-xl border border-[rgba(71,57,40,.16)] bg-[#fffaf2] p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
-          <h2 class="font-heading text-2xl font-bold text-[#17140f]">{tool.title}</h2>
-          <p class="mt-3 text-[#17140f]/68 leading-relaxed">{tool.text}</p>
-          <span class="mt-5 inline-block text-sm font-semibold text-[#b88a4a]">Open tool →</span>
-        </a>
-      ))}
+
+  <section class="py-20 md:py-28 bg-[#fbf9f5]">
+    <div class="container-main">
+      <div class="grid gap-8 md:grid-cols-2">
+        {tools.map((tool, index) => (
+          <a
+            href={tool.href}
+            class="group relative flex flex-col justify-between border border-[rgba(28,25,23,0.1)] bg-[#f6f3ec] p-8 md:p-10 transition-colors hover:border-[#8c6d46] hover:bg-white"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[#8c6d46]">
+                  {tool.category}
+                </p>
+                <span class="font-heading text-3xl text-[#8c6d46]/30 tabular-nums">0{index + 1}</span>
+              </div>
+              <h2 class="font-heading text-3xl md:text-4xl font-medium text-[#1c1917] group-hover:text-[#8c6d46] transition-colors">
+                {tool.title}
+              </h2>
+              <p class="mt-4 font-sans text-sm md:text-base text-[#1c1917]/75 leading-7">
+                {tool.text}
+              </p>
+            </div>
+            <div class="mt-8 pt-5 border-t border-[rgba(28,25,23,0.08)] flex items-center justify-between">
+              <span class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-[#8c6d46] group-hover:text-[#1c1917]">
+                Launch Instrument
+              </span>
+              <span class="text-[#8c6d46] group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
+
+  <CTABanner />
 </Layout>

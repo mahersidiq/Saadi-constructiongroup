@@ -2,19 +2,32 @@
 const { name, county, headline } = Astro.props;
 ---
 
-<section class="relative min-h-[55vh] flex items-center bg-gradient-to-br from-[#2a2018] via-[#2a2018] to-[#171512] overflow-hidden">
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(201,149,42,0.08),transparent_60%)]"></div>
-  <div class="relative z-10 container-main px-4 pt-36 pb-20 md:pt-44 md:pb-28">
-    {county && (
-      <span class="animate-fade-in-up inline-block mb-4 px-4 py-1.5 text-sm font-semibold tracking-wide uppercase rounded-full bg-[#fffaf2]/10 text-[#d7c8b3] border border-[#fff8ed]/20">
-        {county} County
-      </span>
-    )}
-    <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#fffaf1] leading-tight max-w-3xl">
-      {headline || `Custom Home Builder in ${name}`}
-    </h1>
-    <div class="animate-fade-in-up-delay mt-10">
-      <a href="/contact" class="btn-primary inline-block text-lg px-8 py-4">Request a Quote</a>
+<section class="relative min-h-[54vh] flex items-end bg-[#1c1917] text-[#fffdf8] pt-36 pb-16 overflow-hidden">
+  <img
+    src="/images/p3-exterior-front.png"
+    alt={`Custom home architecture in ${name}, TX`}
+    class="absolute inset-0 h-full w-full object-cover opacity-35"
+  />
+  <div class="absolute inset-0 bg-gradient-to-t from-[#1c1917] via-[#1c1917]/70 to-[#1c1917]/40"></div>
+  <div class="relative z-10 container-main">
+    <div class="max-w-4xl">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="h-px w-8 bg-[#dfc8a7]"></span>
+        <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#dfc8a7]">
+          {county ? `${county} County Jurisdiction` : 'Greater Houston Enclave'}
+        </p>
+      </div>
+      <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-medium text-[#fffdf8] leading-[1.05]">
+        {headline || `Custom Home Builder in ${name}`}
+      </h1>
+      <div class="mt-8">
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center bg-[#8c6d46] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#fffdf8] transition hover:bg-[#a68254]"
+        >
+          Schedule {name} Site Evaluation →
+        </a>
+      </div>
     </div>
   </div>
 </section>

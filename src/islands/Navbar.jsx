@@ -1,27 +1,23 @@
 import { useState, useEffect, useRef } from 'react';
 import { serviceCategories } from '@/data/services';
-import { serviceAreas } from '@/data/serviceAreas';
 
-const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Services', href: '/services', hasMega: true },
-  { label: 'Projects', href: '/projects' },
-  { label: 'Service Areas', href: '/service-areas', hasAreas: true },
+const primaryLinks = [
+  { label: 'Services', href: '/services', hasDropdown: true },
+  { label: 'Portfolio', href: '/projects' },
+  { label: 'Neighborhoods', href: '/service-areas' },
   { label: 'Guides', href: '/blog' },
-  { label: 'Tools', href: '/tools' },
+  { label: 'Planning Tools', href: '/tools' },
   { label: 'About', href: '/about' },
 ];
 
 export default function Navbar({ pathname = '/' }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [megaOpen, setMegaOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [mobileAreasOpen, setMobileAreasOpen] = useState(false);
-  const megaRef = useRef(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 30);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -29,7 +25,9 @@ export default function Navbar({ pathname = '/' }) {
 
   useEffect(() => {
     const handleClick = (e) => {
-      if (megaRef.current && !megaRef.current.contains(e.target)) setMegaOpen(false);
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdownOpen(false);
+      }
     };
     document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedown', handleClick);
@@ -39,104 +37,153 @@ export default function Navbar({ pathname = '/' }) {
 
   return (
     <>
-      {(scrolled || mobileOpen) && (
-        <div aria-hidden="true" className="fixed left-0 right-0 top-0 z-[49] h-28 bg-[#0d0c0a] xl:hidden" />
-      )}
-
       <header
-        className="fixed left-0 right-0 top-0 z-50 transition-all duration-500"
-        style={{
-          background: scrolled || mobileOpen ? 'rgba(13,12,10,.92)' : 'linear-gradient(180deg, rgba(10,10,8,.78), rgba(10,10,8,.18) 58%, rgba(10,10,8,0))',
-          borderBottom: scrolled || mobileOpen ? '1px solid rgba(231,199,151,.16)' : '1px solid rgba(255,248,237,.08)',
-          backdropFilter: scrolled || mobileOpen ? 'blur(18px)' : 'blur(2px)',
-        }}
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
+          scrolled || mobileOpen
+            ? 'bg-[#1c1917]/95 backdrop-blur-md border-b border-[rgba(255,255,255,0.08)] py-3 shadow-md'
+            : 'bg-gradient-to-b from-[#1c1917]/90 to-transparent py-5'
+        }`}
       >
         <div className="container-main">
-          <div className="flex h-[5.5rem] items-center justify-between gap-4 md:h-24 xl:gap-6">
-            <a href="/" className="group flex flex-none items-center gap-3 md:gap-4" aria-label="Saadi Construction Group home">
+          <div className="flex items-center justify-between gap-6">
+            {/* Brand Wordmark */}
+            <a
+              href="/"
+              className="flex items-center gap-3 shrink-0 group focus:outline-none"
+              aria-label="Saadi Construction Group Home"
+            >
               <img
                 src="/images/Emblem.png"
-                alt="Saadi Construction Group Emblem"
-                className="h-10 w-10 flex-none object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,.28)] transition-transform duration-300 group-hover:scale-[1.03] md:h-14 md:w-14"
+                alt="SCG Emblem"
+                className="h-9 w-9 object-contain transition-transform group-hover:scale-105"
               />
-              <span aria-hidden="true" className="h-11 w-px flex-none bg-[#e7c797]/35 md:h-14"></span>
-              <span className="flex min-w-[9.75rem] flex-none flex-col leading-none text-[#fff8ed] md:min-w-[13.5rem]">
-                <span className="font-heading text-2xl font-semibold uppercase leading-[.86] tracking-[0.24em] md:text-3xl">Saadi</span>
-                <span className="mt-1.5 block whitespace-nowrap font-body text-[7px] font-semibold uppercase leading-none tracking-[0.28em] md:text-[9px]">Construction Group</span>
+              <span className="font-heading text-xl font-semibold tracking-[0.16em] uppercase text-[#fffdf8] md:text-2xl whitespace-nowrap">
+                Saadi <span className="font-sans font-light text-xs tracking-[0.22em] text-[#dfc8a7] hidden sm:inline">Construction Group</span>
               </span>
             </a>
 
-            <nav className="hidden min-w-0 flex-1 items-center justify-center gap-[clamp(.875rem,1.8vw,2.25rem)] xl:flex" aria-label="Primary navigation">
-              {navLinks.map((link) =>
-                link.hasMega ? (
-                  <div key={link.label} ref={megaRef} className="relative">
+            {/* Primary Navigation Links */}
+            <nav className="hidden lg:flex items-center gap-6 text-[11px] font-sans font-semibold uppercase tracking-[0.18em]" aria-label="Primary navigation">
+              {primaryLinks.map((link) =>
+                link.hasDropdown ? (
+                  <div key={link.label} ref={dropdownRef} className="relative">
                     <button
                       type="button"
-                      onClick={() => setMegaOpen(!megaOpen)}
-                      className={`nav-link text-center font-body text-[10px] font-semibold uppercase leading-tight tracking-[0.18em] transition-colors ${isActive(link.href) ? 'active text-[#e7c797]' : 'text-[#fff8ed] hover:text-[#e7c797]'}`}
+                      onClick={() => setDropdownOpen(!dropdownOpen)}
+                      className={`whitespace-nowrap transition-colors py-2 flex items-center gap-1.5 ${
+                        isActive(link.href) ? 'text-[#dfc8a7]' : 'text-[#fffdf8]/85 hover:text-[#dfc8a7]'
+                      }`}
                     >
                       {link.label}
+                      <span className="text-[9px] opacity-60">▾</span>
                     </button>
-                    {megaOpen && (
-                      <div className="absolute left-1/2 top-full mt-7 w-[720px] -translate-x-1/2 border border-[rgba(71,57,40,.15)] bg-[#fbf6ed] p-8 shadow-[0_28px_80px_rgba(36,27,18,.18)]">
-                        <div className="grid grid-cols-3 gap-8">
-                          {serviceCategories.map((cat) => (
-                            <div key={cat.slug}>
-                              <p className="eyebrow mb-4 border-b border-[rgba(71,57,40,.12)] pb-3">{cat.name}</p>
-                              <ul className="space-y-3">
-                                {cat.services.map((s) => (
-                                  <li key={s.slug}>
-                                    <a href={`/services/${s.slug}`} onClick={() => setMegaOpen(false)} className="block text-sm leading-6 text-[#6f563f] transition-colors hover:text-[#b88a4a]">
-                                      {s.name}
-                                    </a>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
+                    {dropdownOpen && (
+                      <div className="absolute left-0 top-full mt-2 w-80 border border-[rgba(28,25,23,0.12)] bg-[#fbf9f5] p-6 shadow-xl text-[#1c1917]">
+                        <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[#8c6d46] pb-2 border-b border-[rgba(28,25,23,0.08)] mb-3">
+                          Design-Build Capabilities
+                        </p>
+                        <ul className="space-y-2.5">
+                          {serviceCategories[0]?.services.map((s) => (
+                            <li key={s.slug}>
+                              <a
+                                href={`/services/${s.slug}`}
+                                onClick={() => setDropdownOpen(false)}
+                                className="block text-xs font-sans font-normal normal-case tracking-normal text-[#1c1917]/80 hover:text-[#8c6d46] transition-colors"
+                              >
+                                {s.name}
+                              </a>
+                            </li>
                           ))}
+                        </ul>
+                        <div className="mt-4 pt-3 border-t border-[rgba(28,25,23,0.08)]">
+                          <a
+                            href="/services"
+                            onClick={() => setDropdownOpen(false)}
+                            className="block font-sans text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8c6d46] hover:underline"
+                          >
+                            All 21 Services →
+                          </a>
                         </div>
-                        <a href="/services" onClick={() => setMegaOpen(false)} className="mt-7 inline-flex text-[11px] font-semibold uppercase tracking-[0.2em] text-[#b88a4a] hover:text-[#17140f]">View all services →</a>
                       </div>
                     )}
                   </div>
                 ) : (
-                  <a key={link.label} href={link.href} className={`nav-link text-center font-body text-[10px] font-semibold uppercase leading-tight tracking-[0.18em] transition-colors ${isActive(link.href) ? 'active text-[#e7c797]' : 'text-[#fff8ed] hover:text-[#e7c797]'}`}>{link.label}</a>
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className={`whitespace-nowrap transition-colors py-2 relative ${
+                      isActive(link.href)
+                        ? 'text-[#dfc8a7] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-[#dfc8a7]'
+                        : 'text-[#fffdf8]/85 hover:text-[#dfc8a7]'
+                    }`}
+                  >
+                    {link.label}
+                  </a>
                 )
               )}
             </nav>
 
-            <div className="hidden flex-none items-center xl:flex">
-              <a href="tel:+18323603804" className="whitespace-nowrap text-[12px] font-semibold tracking-[0.12em] text-[#fff8ed] transition-colors hover:text-[#e7c797]">(832) 360-3804</a>
+            {/* Primary Action */}
+            <div className="hidden sm:flex items-center gap-5 shrink-0">
+              <a
+                href="tel:+18323603804"
+                className="hidden xl:inline text-xs font-sans font-medium text-[#dfc8a7] hover:text-[#fffdf8] transition-colors tracking-wider tabular-nums"
+              >
+                (832) 360-3804
+              </a>
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center bg-[#8c6d46] px-5 py-2.5 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-[#fffdf8] transition hover:bg-[#a68254] whitespace-nowrap"
+              >
+                Consultation
+              </a>
             </div>
 
-            <button type="button" onClick={() => setMobileOpen(!mobileOpen)} className="border border-[#fff8ed]/20 px-3 py-3 sm:px-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#fff8ed] xl:hidden" aria-label="Toggle navigation" aria-expanded={mobileOpen}>
+            {/* Mobile Menu Trigger */}
+            <button
+              type="button"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="lg:hidden text-[11px] font-sans font-semibold uppercase tracking-[0.2em] text-[#fffdf8] border border-white/20 px-3.5 py-2"
+              aria-label="Toggle navigation menu"
+              aria-expanded={mobileOpen}
+            >
               {mobileOpen ? 'Close' : 'Menu'}
             </button>
           </div>
         </div>
       </header>
 
+      {/* Clean Mobile Drawer */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-[#fbf6ed] pt-28 xl:hidden">
-          <div className="container-main h-full overflow-y-auto pb-10">
-            <nav className="divide-y divide-[rgba(71,57,40,.13)]" aria-label="Mobile navigation">
-              {navLinks.map((link) => link.hasMega ? (
-                <div key={link.label}>
-                  <button type="button" onClick={() => setMobileServicesOpen(!mobileServicesOpen)} className="flex w-full items-center justify-between py-5 text-left text-sm font-semibold uppercase tracking-[0.18em] text-[#17140f]">Services <span>{mobileServicesOpen ? '−' : '+'}</span></button>
-                  {mobileServicesOpen && <div className="grid gap-5 pb-5">
-                    {serviceCategories.map((cat) => <div key={cat.slug}><p className="eyebrow mb-2">{cat.name}</p>{cat.services.map((s) => <a key={s.slug} href={`/services/${s.slug}`} className="block py-1.5 text-sm text-[#6f563f]">{s.name}</a>)}</div>)}
-                  </div>}
-                </div>
-              ) : link.hasAreas ? (
-                <div key={link.label}>
-                  <button type="button" onClick={() => setMobileAreasOpen(!mobileAreasOpen)} className="flex w-full items-center justify-between py-5 text-left text-sm font-semibold uppercase tracking-[0.18em] text-[#17140f]">Service Areas <span>{mobileAreasOpen ? '−' : '+'}</span></button>
-                  {mobileAreasOpen && <div className="grid grid-cols-2 gap-x-4 gap-y-2 pb-5">{serviceAreas.map((area) => <a key={area.slug} href={`/service-areas/${area.slug}`} className="text-sm text-[#6f563f]">{area.name}</a>)}</div>}
-                </div>
-              ) : <a key={link.label} href={link.href} className="block py-5 text-sm font-semibold uppercase tracking-[0.18em] text-[#17140f]">{link.label}</a>)}
+        <div className="fixed inset-0 z-40 bg-[#fbf9f5] pt-24 lg:hidden">
+          <div className="container-main py-6 flex flex-col justify-between h-[calc(100vh-6rem)] overflow-y-auto">
+            <nav className="divide-y divide-[rgba(28,25,23,0.08)]">
+              {primaryLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="block py-4 font-heading text-2xl font-medium text-[#1c1917] hover:text-[#8c6d46]"
+                >
+                  {link.label}
+                </a>
+              ))}
             </nav>
-            <div className="mt-8 grid gap-4">
-              <a href="/contact" className="btn-luxe-fill w-full">Request a Quote</a>
-              <a href="tel:+18323603804" className="btn-luxe w-full">Call (832) 360-3804</a>
+
+            <div className="space-y-4 pt-6 border-t border-[rgba(28,25,23,0.1)]">
+              <a
+                href="/contact"
+                onClick={() => setMobileOpen(false)}
+                className="block w-full text-center bg-[#8c6d46] py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#fffdf8]"
+              >
+                Request Feasibility Consultation
+              </a>
+              <a
+                href="tel:+18323603804"
+                className="block w-full text-center border border-[rgba(28,25,23,0.2)] py-3 font-sans text-xs font-semibold uppercase tracking-wider text-[#1c1917] tabular-nums"
+              >
+                Call (832) 360-3804
+              </a>
             </div>
           </div>
         </div>

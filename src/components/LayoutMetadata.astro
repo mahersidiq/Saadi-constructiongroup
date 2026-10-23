@@ -1,0 +1,122 @@
+---
+import { SITE_NAME, BUSINESS_INFO, resolvePageMetadata } from '@/lib/seo';
+
+export interface BreadcrumbItem {
+  name: string;
+  href?: string;
+  item?: string;
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface ArticleMeta {
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  section?: string;
+  tags?: string[];
+}
+
+export interface Props {
+  title: string;
+  description?: string;
+  keywords?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: 'website' | 'article';
+  canonicalUrl?: string;
+  pathname?: string;
+  noindex?: boolean;
+  pageType?: 'WebPage' | 'AboutPage' | 'ContactPage' | 'CollectionPage';
+  speakableSelectors?: string[];
+  breadcrumbs?: BreadcrumbItem[];
+  faqs?: FaqItem[];
+  articleMeta?: ArticleMeta;
+  jsonLd?: object | object[];
+}
+
+const meta = resolvePageMetadata({
+  ...Astro.props,
+  pathname: Astro.props.pathname || Astro.url.pathname,
+});
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#1c1917" />
+<link rel="icon" type="image/svg+xml" href="/images/saadi-emblem.svg" />
+<link rel="apple-touch-icon" href="/images/Emblem.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Primary SEO Meta Tags -->
+<title>{meta.title}</title>
+<meta name="description" content={meta.description} />
+{meta.keywords && <meta name="keywords" content={meta.keywords} />}
+<meta name="author" content={SITE_NAME} />
+<meta name="robots" content={meta.robotsContent} />
+<meta name="googlebot" content={meta.robotsContent} />
+
+<!-- Geo / Local Houston SEO Meta Tags -->
+<meta name="geo.region" content="US-TX" />
+<meta name="geo.placename" content="Houston" />
+<meta
+  name="geo.position"
+  content={`${BUSINESS_INFO.geo.latitude};${BUSINESS_INFO.geo.longitude}`}
+/>
+<meta
+  name="ICBM"
+  content={`${BUSINESS_INFO.geo.latitude}, ${BUSINESS_INFO.geo.longitude}`}
+/>
+
+<!-- Canonical URL & AI Answer Engine Context -->
+{!meta.noindex && <link rel="canonical" href={meta.canonicalUrl} />}
+<link rel="alternate" type="text/plain" href="/llms.txt" title="Saadi Construction Group AI & Answer Engine Context" />
+
+<!-- Open Graph / Social Sharing Meta Tags -->
+<meta property="og:type" content={meta.ogType} />
+<meta property="og:site_name" content={SITE_NAME} />
+<meta property="og:locale" content="en_US" />
+<meta property="og:title" content={meta.title} />
+<meta property="og:description" content={meta.description} />
+<meta property="og:url" content={meta.canonicalUrl} />
+<meta property="og:image" content={meta.ogImage} />
+<meta property="og:image:secure_url" content={meta.ogImage} />
+<meta property="og:image:alt" content={meta.ogImageAlt} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+{meta.ogType === 'article' && meta.articleMeta?.publishedTime && (
+  <meta property="article:published_time" content={meta.articleMeta.publishedTime} />
+)}
+{meta.ogType === 'article' && meta.articleMeta?.modifiedTime && (
+  <meta property="article:modified_time" content={meta.articleMeta.modifiedTime} />
+)}
+{meta.ogType === 'article' && meta.articleMeta?.author && (
+  <meta property="article:author" content={meta.articleMeta.author} />
+)}
+{meta.ogType === 'article' && meta.articleMeta?.section && (
+  <meta property="article:section" content={meta.articleMeta.section} />
+)}
+{meta.ogType === 'article' &&
+  meta.articleMeta?.tags?.map((tag) => <meta property="article:tag" content={tag} />)}
+
+<!-- Twitter / X Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={meta.title} />
+<meta name="twitter:description" content={meta.description} />
+<meta name="twitter:image" content={meta.ogImage} />
+<meta name="twitter:image:alt" content={meta.ogImageAlt} />
+
+<!-- Schema.org Structured Data (JSON-LD) -->
+{meta.allJsonLd.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

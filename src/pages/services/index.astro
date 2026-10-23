@@ -1,10 +1,140 @@
 ---
 export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
-import { allServices } from '@/data/services';
+import { allServices, serviceCategories } from '@/data/services';
+import CTABanner from '@/components/sections/home/CTABanner.astro';
+const servicesListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Houston Custom Home Design-Build Services',
+  description: 'Single-contract architectural drafting, structural engineering, municipal permitting, and luxury custom home construction in Greater Houston.',
+  itemListElement: allServices.map((service, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: service.name,
+    description: service.description,
+    url: `https://www.saadiconstructiongroup.com/services/${service.slug}`,
+  })),
+};
 ---
-<Layout title="Custom Home Builder Services Houston TX | Saadi Construction Group" description="Premium custom home design-build, luxury custom homes, new construction, additions, plans, permits, engineering, and construction management in Houston TX." keywords="custom home builder services Houston, custom home design-build Houston, new home construction Houston TX" canonicalUrl="https://www.saadiconstructiongroup.com/services">
-  <section class="relative min-h-[68vh] overflow-hidden bg-[#0d0c0a] text-[#fff8ed]"><img src="/images/p2-interior-bath.png" alt="Luxury custom home exterior in Houston at dusk" class="absolute inset-0 h-full w-full object-cover" /><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_54%,rgba(0,0,0,.86),rgba(13,12,10,.62)_42%,rgba(13,12,10,.18)_72%),linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.2))]"></div><div class="relative container-main flex min-h-[68vh] items-end pb-16 pt-36"><div class="max-w-4xl"><p class="eyebrow">Services</p><h1 class="display-heading mt-4 text-5xl text-[#fff8ed] md:text-7xl">Plans, permits, engineering, and construction under one contract.</h1><p class="mt-6 max-w-2xl text-lg leading-8 text-[#fff8ed]/80">A polished design-build path for Houston homeowners who want accountability before, during, and after construction.</p></div></div></section>
-  <section class="stone-section"><div class="container-main section-padding"><div class="mb-14 max-w-3xl"><p class="eyebrow">Service Pillars</p><h2 class="display-heading mt-4 text-4xl md:text-6xl">Builder services that stay connected from concept to handoff.</h2></div><div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{allServices.map((service) => <a href={`/services/${service.slug}`} class="luxe-card group flex min-h-[320px] flex-col p-8"><p class="eyebrow">{service.category}</p><h2 class="mt-5 font-heading text-3xl text-[#17140f] group-hover:text-[#6f563f]">{service.name}</h2><p class="mt-5 text-sm leading-7 text-[#17140f]/70 group-hover:text-[#6f563f]/74">{service.description}</p><span class="mt-auto pt-8 inline-flex text-[11px] font-semibold uppercase tracking-[0.18em] text-[#b88a4a]">Learn more →</span></a>)}</div></div></section>
-  <section class="dark-section text-[#fff8ed]"><div class="container-main py-20 text-center"><h2 class="font-heading text-5xl text-[#fff8ed]">Not sure which service fits your stage?</h2><p class="mx-auto mt-4 max-w-xl text-[#fff8ed]/76">Tell us about your lot, plans, budget, timeline, or current stage. We’ll help determine the right path.</p><a href="/contact" class="btn-luxe-fill mt-8">Schedule Free Consultation</a></div></section>
+
+<Layout
+  title="Custom Home Builder Services Houston TX | Saadi Construction Group"
+  description="Single-contract custom home design-build, luxury custom homes, architectural plans, structural engineering, city permitting, and construction management in Houston TX."
+  keywords="custom home builder services Houston, custom home design-build Houston, new home construction Houston TX, architectural plans permits Houston"
+  canonicalUrl="https://www.saadiconstructiongroup.com/services"
+  pageType="CollectionPage"
+  ogImage="/images/p2-exterior-front.png"
+  ogImageAlt="Completed Houston custom home front elevation at dusk"
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Services', href: '/services' },
+  ]}
+  jsonLd={servicesListSchema}
+>
+  <!-- Hero Section with authentic exterior elevation -->
+  <section class="relative min-h-[62vh] flex items-end overflow-hidden bg-[#1c1917] text-[#fffdf8] pt-36 pb-16">
+    <img
+      src="/images/p2-exterior-front.png"
+      alt="Completed Houston custom home front elevation at dusk"
+      class="absolute inset-0 h-full w-full object-cover opacity-40"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-[#1c1917] via-[#1c1917]/65 to-[#1c1917]/35"></div>
+    <div class="relative z-10 container-main">
+      <div class="max-w-4xl">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-8 bg-[#dfc8a7]"></span>
+          <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#dfc8a7]">
+            Design-Build Capabilities
+          </p>
+        </div>
+        <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-medium text-[#fffdf8] leading-[1.05]">
+          Architecture, engineering, permitting, and construction under one contract.
+        </h1>
+        <p class="mt-5 max-w-2xl font-sans text-base md:text-lg leading-relaxed text-[#dfd7ca]/85">
+          A unified design-build methodology for Houston homeowners who demand single-point accountability before, during, and after ground-up construction.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Primary 6 Service Pillars -->
+  <section class="bg-[#fbf9f5] py-20 md:py-28 border-b border-[rgba(28,25,23,0.08)]">
+    <div class="container-main">
+      <div class="mb-14 max-w-3xl">
+        <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#8c6d46] mb-3">
+          Core Practice Pillars
+        </p>
+        <h2 class="font-heading text-3xl md:text-5xl font-medium text-[#1c1917] leading-[1.08]">
+          Builder-led services that stay connected from concept to turnkey handoff.
+        </h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {allServices.map((service, index) => (
+          <a
+            href={`/services/${service.slug}`}
+            class="group relative flex min-h-[320px] flex-col border border-[rgba(28,25,23,0.1)] bg-[#f6f3ec] p-8 transition-colors hover:border-[#8c6d46] hover:bg-white"
+          >
+            <span class="absolute right-7 top-7 font-heading text-3xl text-[#8c6d46]/30 tabular-nums">
+              0{index + 1}
+            </span>
+            <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[#8c6d46]">
+              {service.category}
+            </p>
+            <h3 class="mt-5 font-heading text-3xl font-medium text-[#1c1917] group-hover:text-[#8c6d46] transition-colors">
+              {service.name}
+            </h3>
+            <p class="mt-4 font-sans text-sm leading-7 text-[#1c1917]/75">
+              {service.description}
+            </p>
+            <span class="mt-auto pt-8 inline-flex font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8c6d46] group-hover:text-[#1c1917]">
+              View Scope &amp; Deliverables →
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Complete Technical Service Matrix by Category -->
+  <section class="bg-[#f6f3ec] py-20 md:py-24 border-b border-[rgba(28,25,23,0.08)]">
+    <div class="container-main">
+      <div class="mb-12 max-w-3xl">
+        <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#8c6d46] mb-3">
+          Specialized Divisions
+        </p>
+        <h2 class="font-heading text-3xl md:text-4xl font-medium text-[#1c1917]">
+          Full-Spectrum Pre-Construction &amp; Field Capabilities
+        </h2>
+      </div>
+      <div class="grid gap-8 lg:grid-cols-3">
+        {serviceCategories.map((cat) => (
+          <div class="border border-[rgba(28,25,23,0.1)] bg-[#fbf9f5] p-8">
+            <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[#8c6d46] mb-2">
+              Division
+            </p>
+            <h3 class="font-heading text-2xl font-medium text-[#1c1917] pb-4 border-b border-[rgba(28,25,23,0.08)]">
+              {cat.name}
+            </h3>
+            <ul class="mt-5 space-y-3">
+              {cat.services.map((s) => (
+                <li>
+                  <a
+                    href={`/services/${s.slug}`}
+                    class="flex items-center justify-between font-sans text-sm text-[#1c1917]/80 hover:text-[#8c6d46] transition-colors py-1"
+                  >
+                    <span>{s.name}</span>
+                    <span class="text-xs text-[#8c6d46]">→</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner />
 </Layout>

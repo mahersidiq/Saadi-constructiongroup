@@ -2,34 +2,43 @@
 const { faqs = [], heading = 'Frequently Asked Questions' } = Astro.props;
 ---
 
-<section class="dark-section relative py-24 md:py-32">
+<section class="bg-[#1c1917] text-[#fffdf8] py-24 md:py-32 border-t border-[rgba(255,253,248,0.08)]">
   <div class="container-main">
-    <div class="grid gap-12 md:grid-cols-12 md:gap-20">
+    <div class="grid gap-12 md:grid-cols-12 md:gap-16">
       <div class="md:col-span-4">
-        <p class="eyebrow animate-on-scroll">Details</p>
-        <h2 class="animate-on-scroll display-heading sticky top-32 mt-4 text-4xl text-[#fff8ed] md:text-6xl">{heading}</h2>
-        <div class="gold-rule mt-7"></div>
+        <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#dfc8a7] mb-3">
+          Architectural Advisory
+        </p>
+        <h2 class="font-heading sticky top-32 text-4xl md:text-5xl font-medium text-[#fffdf8] leading-[1.08]">
+          {heading}
+        </h2>
+        <div class="mt-6 h-px w-14 bg-[#8c6d46]"></div>
       </div>
       <div class="md:col-span-8">
-        <div class="border-t border-[#e7c797]/18">
+        <div class="border-t border-[rgba(255,253,248,0.12)]">
           {faqs.map((faq) => (
-            <details class="animate-on-scroll group cursor-pointer border-b border-[#e7c797]/14 py-7">
+            <details class="group cursor-pointer border-b border-[rgba(255,253,248,0.12)] py-7">
               <summary class="flex list-none items-start justify-between gap-6">
-                <span class="pr-4 font-heading text-2xl leading-snug text-[#fff8ed] transition-colors duration-300 group-open:text-[#e7c797]">
+                <span class="pr-4 font-heading text-2xl font-medium leading-snug text-[#fffdf8] transition-colors duration-200 group-open:text-[#dfc8a7]">
                   {faq.question}
                 </span>
-                <span class="mt-0.5 flex-shrink-0 select-none font-heading text-3xl leading-none text-[#e7c797]/58 transition-transform duration-300 group-open:rotate-45 group-open:text-[#e7c797]">
+                <span class="mt-0.5 flex-shrink-0 select-none font-sans text-2xl font-light leading-none text-[#dfc8a7]/70 transition-transform duration-200 group-open:rotate-45 group-open:text-[#dfc8a7]">
                   +
                 </span>
               </summary>
-              <p class="mt-5 max-w-3xl pr-10 text-sm leading-8 text-[#fff8ed]/68">
+              <p class="mt-4 max-w-3xl pr-8 font-sans text-sm leading-7 text-[#dfd7ca]/80">
                 {faq.answer}
               </p>
             </details>
           ))}
         </div>
-        <div class="animate-on-scroll mt-12">
-          <a href="/contact" class="btn-ghost">Ask Us Directly</a>
+        <div class="mt-10">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center border border-[rgba(255,253,248,0.3)] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#fffdf8] transition hover:border-[#dfc8a7] hover:bg-[#8c6d46]"
+          >
+            Request Direct Principal Advisory →
+          </a>
         </div>
       </div>
     </div>

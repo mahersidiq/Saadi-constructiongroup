@@ -28,39 +28,32 @@ if (area.nearbyAreas && area.nearbyAreas.length > 0) {
 
 const canonical = `https://www.saadiconstructiongroup.com/service-areas/${area.slug}`;
 
-const localBusinessSchema = {
+const localServiceSchema = {
   '@context': 'https://schema.org',
-  '@type': 'GeneralContractor',
-  name: 'Saadi Construction Group',
+  '@type': 'Service',
+  '@id': `${canonical}#service`,
+  name: `Custom Home Builder & Design-Build in ${area.name}, TX`,
+  serviceType: 'Luxury Custom Home Design-Build & General Contracting',
   description: area.metaDescription || `Custom home builder serving ${area.name}, TX.`,
   url: canonical,
-  telephone: '(832) 360-3804',
-  email: 'info@saadiconstructiongroup.com',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '801 Travis St Suite 2101',
-    addressLocality: 'Houston',
-    addressRegion: 'TX',
-    postalCode: '77002',
-    addressCountry: 'US',
+  provider: {
+    '@type': 'GeneralContractor',
+    '@id': 'https://www.saadiconstructiongroup.com/#organization',
+    name: 'Saadi Construction Group',
+    telephone: '+18323603804',
+    url: 'https://www.saadiconstructiongroup.com',
   },
-  areaServed: { '@type': 'City', name: area.name, containedInPlace: { '@type': 'State', name: 'Texas' } },
-};
-
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.saadiconstructiongroup.com' },
-    { '@type': 'ListItem', position: 2, name: 'Service Areas', item: 'https://www.saadiconstructiongroup.com/service-areas' },
-    { '@type': 'ListItem', position: 3, name: area.name, item: canonical },
-  ],
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: `${area.name}, TX`,
+    containedInPlace: { '@type': 'State', name: 'Texas' },
+  },
 };
 
 const areaFaqs = area.faqs && area.faqs.length > 0 ? area.faqs : [
-  { question: `Do you build custom homes in ${area.name}?`, answer: `Yes. Saadi Construction Group serves ${area.name} homeowners with custom home design-build, plans, structural engineering, permitting, and full construction coordination.` },
+  { question: `Do you build custom homes in ${area.name}?`, answer: `Yes. Saadi Construction Group serves ${area.name} homeowners with custom home design-build, architectural plans, structural engineering, permitting, and full construction coordination.` },
   { question: `Can you help evaluate a lot in ${area.name}?`, answer: 'Yes. We review practical feasibility items such as setbacks, utilities, drainage, floodplain considerations, access, easements, soil and foundation planning, and permitting path before construction planning moves forward.' },
-  { question: `Do you handle plans and permits for ${area.name} projects?`, answer: 'Yes. We coordinate architectural plans, structural engineering, permit packages, city or county submission, review comments, and construction inspections as part of the design-build process.' },
+  { question: `Do you handle plans and permits for ${area.name} projects?`, answer: 'Yes. We coordinate architectural plans, structural engineering, permit packages, city or county submission, review comments, and construction inspections as part of our single-contract design-build process.' },
 ];
 
 const areaResourceLinks = [
@@ -71,61 +64,74 @@ const areaResourceLinks = [
   { href: '/projects', anchor: 'custom home portfolio' },
   { href: '/contact', anchor: 'schedule a consultation' },
 ];
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: areaFaqs.map((faq) => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-  })),
-};
-
-const jsonLd = [localBusinessSchema, breadcrumbSchema, faqSchema];
 ---
 
 <Layout
   title={area.metaTitle || `Custom Home Builder ${area.name} TX | Saadi Construction Group`}
   description={area.metaDescription || `Custom home builder serving ${area.name}, Texas. Plans, engineering, permits, and full custom home construction under one contract.`}
-  keywords={`custom home builder ${area.name}, ${area.name} TX home construction, design-build ${area.name}`}
+  keywords={`custom home builder ${area.name} TX, ${area.name} luxury custom home builder, design-build contractor ${area.name}, build on your lot ${area.name}`}
   canonicalUrl={canonical}
-  jsonLd={jsonLd}
+  ogImage="/images/p4-exterior-aerial.png"
+  ogImageAlt={`Custom Home Builder in ${area.name}, TX — Saadi Construction Group`}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Service Areas', href: '/service-areas' },
+    { name: area.name, href: `/service-areas/${area.slug}` },
+  ]}
+  faqs={areaFaqs}
+  speakableSelectors={['h1', '.local-aeo-summary', 'details summary', 'details p']}
+  jsonLd={localServiceSchema}
 >
-  <AreaHero name={area.name} county={area.county} headline={`Custom Home Builder in ${area.name} TX`} />
+  <AreaHero name={area.name} county={area.county} headline={`Custom Home Builder in ${area.name}, TX`} />
+
   {area.localContent && (
-    <section class="bg-[#fffaf2] py-12">
-      <div class="container-main px-4 max-w-3xl">
-        <p class="text-lg text-[#17140f]/74 leading-relaxed">{area.localContent}</p>
+    <section class="bg-[#fbf9f5] py-16 border-b border-[rgba(28,25,23,0.08)]">
+      <div class="container-main max-w-4xl">
+        <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#8c6d46] mb-3">
+          Local Site, Soil &amp; Permitting Context — {area.name}, TX
+        </p>
+        <p class="local-aeo-summary font-sans text-base md:text-lg text-[#1c1917]/80 leading-8">{area.localContent}</p>
       </div>
     </section>
   )}
+
   <AreaServices name={area.name} />
-  <section class="py-16 bg-[#eee5d8] border-y border-[rgba(71,57,40,.16)]">
-    <div class="container-main px-4 max-w-4xl">
-      <p class="text-sm font-semibold uppercase tracking-widest text-[#b88a4a] mb-3">Local Planning Resources</p>
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-[#17140f] mb-6">Helpful links for building in {area.name}.</h2>
-      <div class="flex flex-wrap gap-3">
-        {areaResourceLinks.map((link) => (
-          <a href={link.href} class="inline-block px-4 py-2 rounded-full bg-[#fffaf2] border border-[rgba(71,57,40,.24)] text-sm font-medium text-[#17140f] hover:border-[#b88a4a] hover:text-[#b88a4a] transition-colors duration-200">{link.anchor}</a>
+
+  <section class="py-16 bg-[#f6f3ec] border-y border-[rgba(28,25,23,0.08)]">
+    <div class="container-main max-w-4xl">
+      <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#8c6d46] mb-2">
+        Local Planning Resources
+      </p>
+      <h2 class="font-heading text-3xl font-medium text-[#1c1917] mb-5">
+        Essential references for building in {area.name}.
+      </h2>
+      <div class="flex flex-wrap items-center gap-y-2 gap-x-4 font-sans text-xs font-semibold uppercase tracking-[0.16em] text-[#1c1917]/75">
+        {areaResourceLinks.map((link, idx) => (
+          <>
+            <a href={link.href} class="hover:text-[#8c6d46] transition-colors">{link.anchor}</a>
+            {idx < areaResourceLinks.length - 1 && <span aria-hidden="true" class="text-[#8c6d46]">·</span>}
+          </>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="py-16 md:py-24 bg-[#fffaf2]">
-    <div class="container-main px-4 max-w-3xl">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-[#17140f] mb-8">{area.name} Custom Home FAQs</h2>
-      <div class="divide-y divide-[rgba(71,57,40,.16)]">
+  <section class="py-20 md:py-24 bg-[#fbf9f5]">
+    <div class="container-main max-w-4xl">
+      <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#8c6d46] mb-2">
+        Municipality Advisory
+      </p>
+      <h2 class="font-heading text-3xl md:text-4xl font-medium text-[#1c1917] mb-8">
+        {area.name} Custom Home FAQs
+      </h2>
+      <div class="divide-y divide-[rgba(28,25,23,0.1)] border-y border-[rgba(28,25,23,0.1)]">
         {areaFaqs.map((faq) => (
           <details class="group py-6 cursor-pointer">
-            <summary class="flex items-center justify-between gap-4 list-none font-heading font-semibold text-lg text-[#17140f]">
+            <summary class="flex items-center justify-between gap-4 list-none font-heading font-medium text-xl text-[#1c1917] group-open:text-[#8c6d46]">
               {faq.question}
-              <svg class="h-5 w-5 flex-shrink-0 text-[#b88a4a] transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
+              <span class="font-sans text-xl text-[#8c6d46] transition-transform duration-200 group-open:rotate-45">+</span>
             </summary>
-            <p class="mt-4 text-[#17140f]/74 leading-relaxed">{faq.answer}</p>
+            <p class="mt-4 font-sans text-sm text-[#1c1917]/75 leading-7">{faq.answer}</p>
           </details>
         ))}
       </div>

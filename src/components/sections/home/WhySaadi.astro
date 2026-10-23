@@ -1,19 +1,71 @@
 ---
-const reasons = ['One contract, one accountable team', 'Owner-led communication', 'Houston-specific building knowledge', 'Plan, permit, and construction coordination', 'Fixed-price scope discipline', 'Clear process from concept to walkthrough'];
+const pillars = [
+  {
+    num: '01',
+    title: 'Single-Point Accountability',
+    text: 'We eliminate the traditional conflict between external architectural draftsmen and general contractors. By coordinating plans, structural calculations, and field trades under one contract, budget targets and design intent never drift apart.',
+  },
+  {
+    num: '02',
+    title: 'Houston Soils & Coastal Science',
+    text: 'Building in Greater Houston requires geotechnical mastery over high-plasticity Beaumont clay, seasonal moisture shifts, and hurricane wind loads. Every foundation we engineer is designed for site-specific borings, grade-beam depth, and long-term structural integrity.',
+  },
+  {
+    num: '03',
+    title: 'Transparent Preconstruction',
+    text: 'Before moving a single shovel of earth, every mechanical schedule, plumbing specification, appliance model, and finish allowance is itemized in a transparent fixed-price agreement. No hidden fee markups and no surprise change orders.',
+  },
+  {
+    num: '04',
+    title: 'Owner-Led Jobsite Supervision',
+    text: 'We do not delegate critical structural milestones to remote brokers or unvetted subcontractors. Maher Sidiq and SCG superintendents personally inspect every rebar tie, shear wall hold-down, and MEP rough-in alongside municipal building inspectors.',
+  },
+  {
+    num: '05',
+    title: 'Neighborhood ARC Expertise',
+    text: 'Mastering the architectural review committees across Memorial, River Oaks, West U, and The Woodlands is essential. We manage all HOA deed restrictions, setback envelopes, tree preservation permits, and storm drainage calculations.',
+  },
+  {
+    num: '06',
+    title: 'Comprehensive As-Built Digital Record',
+    text: 'Upon completion, homeowners receive full digital as-built documentation including mechanical schematics, paint formulations, structural warranties, and equipment serials, safeguarding your long-term real estate asset.',
+  },
+];
 ---
-<section class="bg-[#fbf6ed]">
-  <div class="container-main section-padding">
-    <div class="grid gap-14 lg:grid-cols-[.85fr_1.15fr] lg:items-start">
-      <div class="animate-on-scroll lg:sticky lg:top-36">
-        <p class="eyebrow">Why Choose Saadi</p>
-        <h2 class="display-heading mt-4 text-4xl md:text-6xl">Trust is built before the slab is poured.</h2>
-        <p class="body-large mt-6">Serious custom-home decisions require a builder who can explain the details, coordinate the right people, and keep responsibility clear.</p>
+
+<section class="bg-[#f6f3ec] py-28 md:py-36 border-t border-[rgba(28,25,23,0.08)]">
+  <div class="container-main">
+    <div class="grid gap-16 lg:grid-cols-12 lg:items-start">
+      {/* Sticky Column */}
+      <div class="lg:col-span-5 lg:sticky lg:top-32">
+        <p class="font-mono text-xs uppercase tracking-[0.24em] text-[#8c6d46]">The Builder Standard</p>
+        <h2 class="font-heading mt-3 text-4xl sm:text-5xl md:text-6xl font-medium text-[#1c1917] leading-tight">
+          Trust is built before the slab is poured.
+        </h2>
+        <p class="mt-6 text-base sm:text-lg leading-relaxed text-[#1c1917]/75">
+          A luxury residence requires an accountable partner who understands structural physics, zoning codes, and honest budget governance as deeply as architectural aesthetics.
+        </p>
+        <div class="mt-8 pt-8 border-t border-[rgba(28,25,23,0.1)]">
+          <p class="font-mono text-xs uppercase text-[#8c6d46]">Direct Consultation Line</p>
+          <a href="tel:+18323603804" class="font-heading text-2xl text-[#1c1917] hover:text-[#8c6d46] transition-colors mt-1 block">
+            (832) 360-3804
+          </a>
+        </div>
       </div>
-      <div class="grid gap-5 sm:grid-cols-2">
-        {reasons.map((reason, i) => (
-          <div class="luxe-card animate-on-scroll p-7 md:p-8">
-            <p class="font-heading text-4xl leading-none text-[#b88a4a]/70">0{i + 1}</p>
-            <h3 class="mt-6 font-heading text-3xl leading-tight text-[#17140f]">{reason}</h3>
+
+      {/* Grid of Substantive Pillars */}
+      <div class="grid gap-6 sm:grid-cols-2 lg:col-span-7">
+        {pillars.map((pillar) => (
+          <div class="border border-[rgba(28,25,23,0.08)] bg-[#fbf9f5] p-8 shadow-sm transition-all hover:shadow-md hover:border-[#8c6d46]/40">
+            <span class="font-mono text-xs font-semibold uppercase tracking-widest text-[#8c6d46]">
+              {pillar.num}
+            </span>
+            <h3 class="font-heading mt-3 text-2xl font-medium text-[#1c1917]">
+              {pillar.title}
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-[#1c1917]/70">
+              {pillar.text}
+            </p>
           </div>
         ))}
       </div>

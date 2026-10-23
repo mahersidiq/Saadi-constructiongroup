@@ -28,7 +28,7 @@ export const serviceDetails = {
       },
       {
         question: 'How much does a design-build custom home cost in Houston?',
-        answer: 'Design-build custom home costs in Houston typically range from $175 to $350 per square foot depending on finish level and design complexity. This includes plan production, engineering, permitting fees, and all construction costs. We provide a detailed fixed-price quote within 5 business days of a site consultation.',
+        answer: 'In 2026, design-build custom home construction in Houston ranges from $250–$350 per square foot for Entry Luxury Custom, $350–$500 per square foot for Architectural Luxury Custom, and $500–$900+ per square foot for Bespoke Estates on Inner-Loop tear-down lots. Our single-contract scope includes architectural plans, geotechnical soil borings, structural engineering, permitting, and full construction.',
       },
       {
         question: 'How is design-build different from hiring an architect and contractor separately?',
@@ -46,7 +46,7 @@ export const serviceDetails = {
     metaDescription: 'Saadi Construction Group builds luxury custom homes in Houston — plans, engineering, permits, and high-specification construction under one contract. Owner-led on every project.',
     keywords: 'luxury custom home builder Houston TX, luxury home construction Houston, high-end custom homes Houston',
     whatIsIt: [
-      'Saadi Construction Group builds luxury custom homes across the Greater Houston metropolitan area — from Missouri City and Sugar Land to The Woodlands and Katy. Every luxury build begins with architectural plan coordination and structural engineering, moves through city permitting, and is delivered by our licensed team with a vetted network of Houston finish trades. The owner is on every project from first meeting to final walkthrough.',
+      'Saadi Construction Group builds luxury custom homes across the Greater Houston metropolitan area — from Memorial Villages, River Oaks, and West University Place to The Woodlands, Sugar Land, and Katy. Every luxury build begins with architectural plan coordination and geotechnical/structural engineering, moves through municipal and ARC permitting, and is delivered by our team with a vetted network of Houston master finish trades.',
       'Luxury home construction requires precision at every phase — in the plans, in the structural details, in the trade coordination, and in the finish work. We manage all of it under one contract so the level of specification you agreed to on paper is what you receive in the field.',
     ],
     includes: [
@@ -72,7 +72,7 @@ export const serviceDetails = {
       },
       {
         question: 'How long does it take to build a luxury custom home in Houston?',
-        answer: 'A luxury custom home in Houston typically takes 12–18 months from signed contract to final walkthrough, depending on size, design complexity, and city permit timelines. We provide a full project schedule before construction begins.',
+        answer: 'A luxury custom home in Houston typically takes 14–22 months from signed design-build contract to final walkthrough (4–7 months for architectural plans, engineering, ARC, and permitting; 10–15 months for on-site construction), depending on size, design complexity, and municipal permit timelines.',
       },
     ],
     relatedSlugs: ['custom-home-design-build', 'new-home-construction', 'plans-permits-engineering'],
@@ -109,7 +109,7 @@ export const serviceDetails = {
       },
       {
         question: 'How much does new home construction cost per square foot in Houston TX?',
-        answer: 'New home construction in Houston typically ranges from $150 to $300 per square foot depending on finish level, foundation type, and site conditions. A 2,000 sq ft home at standard finishes generally runs $300,000–$450,000 in construction costs. We provide a detailed fixed-price quote within 5 business days.',
+        answer: 'In 2026, ground-up custom home construction in Houston ranges from $250 to $350 per square foot for entry-luxury custom builds and $350 to $500+ per square foot for architectural luxury specifications, depending on foundation engineering, finish tier, and site drainage requirements. We provide a written scope and fixed-price proposal after preconstruction engineering.',
       },
       {
         question: 'Do I need to pull my own permits for a new home build in Houston?',
@@ -146,8 +146,8 @@ export const serviceDetails = {
         answer: 'Yes. Every addition we build includes structural engineering to design the connection between the new structure and your existing home — foundation tie-ins, load bearing modifications, and roof structure changes are all engineered before construction begins.',
       },
       {
-        question: 'How much does a room addition cost in Houston TX?',
-        answer: 'Room additions in Houston typically range from $125 to $275 per square foot depending on scope, finish level, and structural complexity. A 400 sq ft bedroom addition generally runs $50,000–$110,000. Second-story additions and kitchen expansions run higher due to structural and MEP scope. We provide a detailed quote within 5 business days.',
+        question: 'How much does a structural home addition cost in Houston TX?',
+        answer: 'Major structural additions, second-story expansions, and primary suite wings in Houston typically range from $250 to $425 per square foot depending on foundation tie-in engineering, roofline integration, and MEP complexity. We provide a detailed scope review within 5 business days of a site evaluation.',
       },
       {
         question: 'Do I need a permit for a home addition in Houston?',

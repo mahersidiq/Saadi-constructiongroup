@@ -1,69 +1,169 @@
 ---
 export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
+import CTABanner from '@/components/sections/home/CTABanner.astro';
+
 const canonical = 'https://www.saadiconstructiongroup.com/tools/build-cost-calculator';
-const breadcrumbSchema = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
-  { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.saadiconstructiongroup.com' },
-  { '@type': 'ListItem', position: 2, name: 'Tools', item: 'https://www.saadiconstructiongroup.com/tools' },
-  { '@type': 'ListItem', position: 3, name: 'Build Cost Calculator', item: canonical },
-] };
-const softwareSchema = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Build Cost Calculator', applicationCategory: 'BusinessApplication', operatingSystem: 'Web', url: canonical, publisher: { '@type': 'Organization', name: 'Saadi Construction Group' } };
-const inputClass = 'mt-2 w-full border border-[rgba(71,57,40,.2)] bg-[#fffaf2] px-4 py-4 text-[#17140f] outline-none focus:border-[#b88a4a]';
+const softwareSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Houston Custom Home Build Cost Calculator',
+  description: 'Interactive financial planning calculator estimating 2026 Houston custom home construction cost ranges by square footage, architectural tier, stories, and site complexity.',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'All',
+  url: canonical,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  publisher: { '@type': 'Organization', name: 'Saadi Construction Group', url: 'https://www.saadiconstructiongroup.com' },
+};
+const inputClass =
+  'mt-2 w-full border border-[rgba(28,25,23,0.18)] bg-[#fbf9f5] px-4 py-3.5 font-sans text-sm text-[#1c1917] outline-none focus:border-[#8c6d46] tabular-nums';
 ---
-<Layout title="Build Cost Calculator | Houston Custom Homes" description="Estimate planning ranges for a Houston custom home based on square footage, finish level, stories, site complexity, garage, outdoor living, and design scope." canonicalUrl={canonical} jsonLd={[breadcrumbSchema, softwareSchema]}>
-  <section class="relative min-h-[48vh] flex items-center bg-gradient-to-br from-[#2a2018] via-[#2a2018] to-[#171512] overflow-hidden">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.08),transparent_60%)]"></div>
-    <div class="relative z-10 container-main px-4 pt-36 pb-20 md:pt-44 md:pb-28">
-      <p class="eyebrow text-[#b88a4a]">Houston Planning Tool</p>
-      <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#fffaf1] leading-tight mt-4">Build Cost Calculator</h1>
-      <p class="mt-6 text-lg text-[#d7c8b3] max-w-2xl">Estimate a planning range before requesting a detailed proposal. Final pricing requires plans, engineering, site review, selections, and scope confirmation.</p>
+
+<Layout
+  title="Build Cost Calculator | Houston Custom Homes | Saadi Construction Group"
+  description="Estimate 2026 planning ranges for a Houston custom home based on conditioned square footage, finish tier, stories, site complexity, garage, and design-build scope."
+  keywords="Houston custom home cost calculator, cost to build a house in Houston 2026, custom home price per square foot Houston, luxury home budget estimator"
+  canonicalUrl={canonical}
+  ogImage="/images/p6-exterior-front.png"
+  ogImageAlt="Houston Custom Home Build Cost Calculator — Saadi Construction Group"
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Planning Tools', href: '/tools' },
+    { name: 'Build Cost Calculator', href: '/tools/build-cost-calculator' },
+  ]}
+  jsonLd={softwareSchema}
+>
+  <section class="bg-[#1c1917] text-[#fffdf8] pt-36 pb-16 border-b border-[rgba(255,253,248,0.08)]">
+    <div class="container-main">
+      <div class="max-w-4xl">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-8 bg-[#dfc8a7]"></span>
+          <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#dfc8a7]">
+            Houston Financial Planning Instrument
+          </p>
+        </div>
+        <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-medium text-[#fffdf8] leading-[1.05]">
+          Custom Home Build Cost Calculator
+        </h1>
+        <p class="mt-5 font-sans text-base md:text-lg text-[#dfd7ca]/85 max-w-2xl leading-relaxed">
+          Model preliminary 2026 Houston construction ranges before commissioning architectural plans. Final fixed-price proposals require soil testing, engineered foundation drawings, and signed material selections.
+        </p>
+      </div>
     </div>
   </section>
 
-  <section class="stone-section">
-    <div class="container-main section-padding">
-      <div class="grid gap-10 lg:grid-cols-[1fr_0.8fr]">
-        <div class="editorial-card p-6 md:p-8">
-          <p class="eyebrow">Cost Inputs</p>
-          <h2 class="mt-4 font-heading text-4xl text-[#17140f]">Adjust the major cost drivers.</h2>
+  <section class="py-20 md:py-28 bg-[#fbf9f5]">
+    <div class="container-main">
+      <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+        <div class="border border-[rgba(28,25,23,0.1)] bg-[#f6f3ec] p-7 md:p-10">
+          <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#8c6d46]">
+             architectural &amp; Site Parameters
+          </p>
+          <h2 class="mt-2 font-heading text-3xl md:text-4xl font-medium text-[#1c1917]">
+            Configure your residence parameters.
+          </h2>
           <div class="mt-8 grid gap-6 md:grid-cols-2">
-            <label class="block text-sm font-semibold text-[#17140f]">Square footage<input id="sqft" type="number" value="3000" min="500" class={inputClass} /></label>
-            <label class="block text-sm font-semibold text-[#17140f]">Finish level<select id="finish" class={inputClass}><option value="170">Essential</option><option value="230" selected>Custom</option><option value="325">Luxury</option></select></label>
-            <label class="block text-sm font-semibold text-[#17140f]">Stories<select id="stories" class={inputClass}><option value="1">1 story</option><option value="1.06">2 stories</option><option value="1.12">3 stories</option></select></label>
-            <label class="block text-sm font-semibold text-[#17140f]">Site complexity<select id="site" class={inputClass}><option value="1">Standard</option><option value="1.08">Moderate</option><option value="1.18">Complex drainage/floodplain/access</option></select></label>
+            <label class="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[#1c1917]/80">
+              Conditioned Square Footage
+              <input id="sqft" type="number" value="4200" min="1500" step="100" class={inputClass} />
+            </label>
+            <label class="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[#1c1917]/80">
+              Architectural Finish Tier
+              <select id="finish" class={inputClass}>
+                <option value="260">Entry Custom ($260/SF base)</option>
+                <option value="360" selected>Architectural Luxury ($360/SF base)</option>
+                <option value="520">Bespoke Estate ($520/SF base)</option>
+              </select>
+            </label>
+            <label class="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[#1c1917]/80">
+              Structural Elevation / Stories
+              <select id="stories" class={inputClass}>
+                <option value="1">Single-Story Footprint</option>
+                <option value="1.06" selected>Two-Story Residence</option>
+                <option value="1.12">Three-Story / Elevator Ready</option>
+              </select>
+            </label>
+            <label class="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[#1c1917]/80">
+              Site &amp; Drainage Complexity
+              <select id="site" class={inputClass}>
+                <option value="1">Standard Cleared Lot</option>
+                <option value="1.08" selected>Inner-Loop / Mature Oak Protection</option>
+                <option value="1.18">Complex Floodplain / Pier-Supplemented Slab</option>
+              </select>
+            </label>
           </div>
           <div class="mt-8 grid gap-4 md:grid-cols-3">
-            <label class="flex gap-3 border border-[rgba(71,57,40,.14)] bg-[#fffaf2] p-4 text-sm font-semibold text-[#17140f]"><input id="garage" type="checkbox" checked class="mt-1 h-5 w-5 accent-[#b88a4a]" /> Garage included</label>
-            <label class="flex gap-3 border border-[rgba(71,57,40,.14)] bg-[#fffaf2] p-4 text-sm font-semibold text-[#17140f]"><input id="outdoor" type="checkbox" class="mt-1 h-5 w-5 accent-[#b88a4a]" /> Outdoor living</label>
-            <label class="flex gap-3 border border-[rgba(71,57,40,.14)] bg-[#fffaf2] p-4 text-sm font-semibold text-[#17140f]"><input id="design" type="checkbox" checked class="mt-1 h-5 w-5 accent-[#b88a4a]" /> Design/engineering</label>
+            <label class="flex items-center gap-3 border border-[rgba(28,25,23,0.12)] bg-[#fbf9f5] p-4 font-sans text-xs font-semibold uppercase tracking-[0.12em] text-[#1c1917] cursor-pointer">
+              <input id="garage" type="checkbox" checked class="h-4 w-4 accent-[#8c6d46]" />
+              <span>3-Car Garage</span>
+            </label>
+            <label class="flex items-center gap-3 border border-[rgba(28,25,23,0.12)] bg-[#fbf9f5] p-4 font-sans text-xs font-semibold uppercase tracking-[0.12em] text-[#1c1917] cursor-pointer">
+              <input id="outdoor" type="checkbox" checked class="h-4 w-4 accent-[#8c6d46]" />
+              <span>Loggia &amp; Summer Kitchen</span>
+            </label>
+            <label class="flex items-center gap-3 border border-[rgba(28,25,23,0.12)] bg-[#fbf9f5] p-4 font-sans text-xs font-semibold uppercase tracking-[0.12em] text-[#1c1917] cursor-pointer">
+              <input id="design" type="checkbox" checked class="h-4 w-4 accent-[#8c6d46]" />
+              <span>Plans, Engineering &amp; Permits</span>
+            </label>
           </div>
         </div>
 
-        <aside class="editorial-card p-6 md:p-8 self-start">
-          <p class="eyebrow">Planning Range</p>
-          <h2 class="mt-4 font-heading text-4xl text-[#17140f]">Estimated cost</h2>
-          <p id="cost-output" class="mt-6 text-2xl font-semibold leading-8 text-[#2a2018]"></p>
-          <p class="mt-5 text-sm leading-7 text-[#17140f]/68">This is a planning tool, not a bid. A fixed proposal needs project-specific drawings, engineering, permit path, selections, and site verification.</p>
-          <ul id="drivers" class="mt-6 space-y-3 text-sm leading-6 text-[#17140f]/72"></ul>
-          <a href="/contact" class="btn-luxe-fill mt-7">Request Project Review</a>
+        <aside class="border border-[rgba(28,25,23,0.12)] bg-[#1c1917] text-[#fffdf8] p-7 md:p-10 self-start">
+          <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#dfc8a7]">
+            Preliminary Feasibility Estimate
+          </p>
+          <h2 class="mt-2 font-heading text-3xl md:text-4xl font-medium text-[#fffdf8]">
+            Estimated Construction Range
+          </h2>
+          <p id="cost-output" class="mt-6 font-heading text-4xl md:text-5xl font-medium text-[#dfc8a7] tabular-nums"></p>
+          <p class="mt-4 font-sans text-sm leading-7 text-[#dfd7ca]/75">
+            For preliminary planning only (excludes land acquisition and swimming pool). Fixed-price design-build proposals are issued after geotechnical soil borings, structural slab engineering, and specification sign-off.
+          </p>
+          <ul id="drivers" class="mt-6 space-y-2.5 font-sans text-xs leading-6 text-[#dfd7ca]/80 border-t border-[rgba(255,253,248,0.1)] pt-5"></ul>
+          <a
+            href="/contact"
+            class="mt-8 inline-flex w-full items-center justify-center bg-[#8c6d46] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#fffdf8] transition hover:bg-[#a68254]"
+          >
+            Request Site-Specific Feasibility Review →
+          </a>
         </aside>
       </div>
     </div>
   </section>
+
+  <CTABanner />
+
   <script>
     function calc() {
-      const sqft = Number(document.getElementById('sqft').value || 0);
-      const finish = Number(document.getElementById('finish').value);
-      const stories = Number(document.getElementById('stories').value);
-      const site = Number(document.getElementById('site').value);
+      const sqft = Number((document.getElementById('sqft') as HTMLInputElement)?.value || 0);
+      const finish = Number((document.getElementById('finish') as HTMLSelectElement)?.value || 360);
+      const stories = Number((document.getElementById('stories') as HTMLSelectElement)?.value || 1);
+      const site = Number((document.getElementById('site') as HTMLSelectElement)?.value || 1);
       let base = sqft * finish * stories * site;
-      if (document.getElementById('garage').checked) base += 45000;
-      if (document.getElementById('outdoor').checked) base += 55000;
-      if (document.getElementById('design').checked) base += 35000;
-      const low = Math.round(base * 0.9 / 1000) * 1000;
-      const high = Math.round(base * 1.18 / 1000) * 1000;
-      document.getElementById('cost-output').textContent = '$' + low.toLocaleString() + ' – $' + high.toLocaleString();
-      document.getElementById('drivers').innerHTML = ['Finish level and selections', 'Site complexity, drainage, and floodplain considerations', 'Foundation, engineering, and number of stories', 'Garage, outdoor living, design, and permit scope'].map((x) => '<li class="border-l-2 border-[#b88a4a] pl-3">' + x + '</li>').join('');
+      if ((document.getElementById('garage') as HTMLInputElement)?.checked) base += 65000;
+      if ((document.getElementById('outdoor') as HTMLInputElement)?.checked) base += 75000;
+      if ((document.getElementById('design') as HTMLInputElement)?.checked) base += 48000;
+      const low = Math.round((base * 0.92) / 5000) * 5000;
+      const high = Math.round((base * 1.15) / 5000) * 5000;
+      const outputEl = document.getElementById('cost-output');
+      if (outputEl) {
+        outputEl.textContent = '$' + low.toLocaleString() + ' – $' + high.toLocaleString();
+      }
+      const driversEl = document.getElementById('drivers');
+      if (driversEl) {
+        driversEl.innerHTML = [
+          'Post-tensioned foundation slab or bell-bottom pier engineering',
+          'Houston Chapter 19 drainage, detention, and finished-floor elevation',
+          'Fenestration package, exterior limestone/brick masonry, and roof assembly',
+          'Custom millwork, mechanical zoning, and architectural finish selections',
+        ]
+          .map((x) => '<li class="border-l-2 border-[#8c6d46] pl-3">' + x + '</li>')
+          .join('');
+      }
     }
     document.querySelectorAll('input,select').forEach((el) => el.addEventListener('input', calc));
     calc();

@@ -1,60 +1,88 @@
-<section class="relative min-h-screen overflow-hidden bg-[#0d0c0a] text-[#fff8ed]">
-  <img src="/images/p8-interior-bath.png" alt="Ultra-modern Houston custom home exterior at dusk" class="absolute inset-0 h-full w-full object-cover hero-image" fetchpriority="high" />
-  <div class="hero-cinematic-overlay absolute inset-0" aria-hidden="true"></div>
-  <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0d0c0a] to-transparent" aria-hidden="true"></div>
-  <div class="relative z-10 container-main flex min-h-screen items-center pt-28">
-    <div class="hero-copy max-w-4xl py-24 md:py-32">
-      <div class="animate-fade-in-up flex items-center gap-4">
-        <span class="h-px w-12 bg-[#e7c797]/75"></span>
-        <p class="hero-eyebrow eyebrow">Houston Custom Home Builder</p>
+---
+// Hero.astro - Architectural Stillness Hero
+// High-performance architectural photography presentation with optimal Core Web Vitals
+---
+
+<section class="relative min-h-[92vh] lg:min-h-screen overflow-hidden bg-[#1c1917] text-[#fff8ed] flex items-center">
+  {/* High-Resolution Architectural Photography (LCP Optimized) */}
+  <img 
+    src="/images/hero-memorial-residence.jpg" 
+    alt="Architectural modern custom residence in Memorial Houston built by Saadi Construction Group" 
+    class="hero-photo absolute inset-0 h-full w-full object-cover object-center scale-[1.02] transition-transform duration-1000" 
+    fetchpriority="high"
+    loading="eager"
+  />
+
+  {/* Contrast Scrims ensuring WCAG AA (4.5:1+) readability over photography */}
+  <div class="absolute inset-0 bg-gradient-to-t from-[#1c1917] via-[#1c1917]/55 to-black/30 pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-radial-vignette pointer-events-none" aria-hidden="true"></div>
+
+  {/* Content Container */}
+  <div class="relative z-10 container-main pt-32 pb-20 md:py-36 w-full">
+    <div class="max-w-4xl">
+      {/* Editorial Kicker */}
+      <div class="flex items-center gap-3">
+        <span class="h-px w-8 bg-[#dfc8a7]"></span>
+        <p class="font-mono text-xs uppercase tracking-[0.26em] text-[#dfc8a7]">
+          Houston Custom Home Builder &amp; Architectural Design-Build
+        </p>
       </div>
-      <h1 class="hero-headline display-heading mt-7 max-w-4xl text-[clamp(3.65rem,9vw,8.8rem)] text-[#fffdf8] animate-fade-in-up-delay">Houston Custom Homes, Built Under One Accountable Team</h1>
-      <p class="hero-description mt-8 max-w-2xl text-lg leading-8 text-[#fff8ed]/92 md:text-xl md:leading-9 animate-fade-in-up-delay-2">Saadi Construction Group coordinates architectural plans, structural engineering, permitting, and construction under one contract—so your home has one accountable team from concept to final walkthrough.</p>
-      <div class="mt-8 flex flex-wrap gap-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#fff8ed]/78 animate-fade-in-up-delay-2" aria-label="Integrated builder services">
-        <span class="border border-[#fff8ed]/20 bg-[#fff8ed]/8 px-3 py-2 backdrop-blur">Plans</span>
-        <span class="border border-[#fff8ed]/20 bg-[#fff8ed]/8 px-3 py-2 backdrop-blur">Engineering</span>
-        <span class="border border-[#fff8ed]/20 bg-[#fff8ed]/8 px-3 py-2 backdrop-blur">Permits</span>
-        <span class="border border-[#fff8ed]/20 bg-[#fff8ed]/8 px-3 py-2 backdrop-blur">Construction</span>
+
+      {/* Primary Headline */}
+      <h1 class="font-heading mt-6 text-4xl sm:text-6xl lg:text-7xl xl:text-[5rem] font-medium leading-[1.02] tracking-tight text-[#fffdf8]">
+        Architectural Precision.<br />
+        Built Under One Accountable Contract.
+      </h1>
+
+      {/* Grounded Sub-paragraph */}
+      <p class="hero-description mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-[#dfd7ca]">
+        Saadi Construction Group is a Houston luxury custom home builder directing architectural plans, post-tension structural engineering, municipal permitting, and turnkey construction in Memorial, River Oaks, West University Place, and The Woodlands.
+      </p>
+
+      {/* Unboxed Metadata (Zero-Pill Discipline) */}
+      <div class="mt-8 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs font-mono uppercase tracking-[0.18em] text-[#dfc8a7]/90" aria-label="Core Capabilities">
+        <span>Architectural Plans</span>
+        <span aria-hidden="true" class="text-[#dfc8a7]/40">/</span>
+        <span>Structural Engineering</span>
+        <span aria-hidden="true" class="text-[#dfc8a7]/40">/</span>
+        <span>City of Houston Permits</span>
+        <span aria-hidden="true" class="text-[#dfc8a7]/40">/</span>
+        <span>Turnkey Construction</span>
       </div>
-      <div class="mt-11 flex flex-col gap-4 sm:flex-row animate-fade-in-up-delay-2">
-        <a href="/contact" class="btn-luxe-fill lg:hidden">REQUEST A QUOTE</a>
-        <a href="/projects" class="btn-ghost">View Projects</a>
+
+      {/* Action Buttons */}
+      <div class="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+        <a 
+          href="/contact" 
+          class="inline-flex items-center justify-center bg-[#8c6d46] px-8 py-4 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#fffdf8] transition hover:bg-[#a68254] shadow-lg shadow-black/20"
+        >
+          Schedule Feasibility Consultation
+        </a>
+        <a 
+          href="/projects" 
+          class="inline-flex items-center justify-center border border-[rgba(255,253,248,0.25)] bg-black/20 px-8 py-4 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#fffdf8] backdrop-blur transition hover:bg-white/10"
+        >
+          Explore Selected Works
+        </a>
       </div>
-      <a href="tel:+18323603804" class="mt-8 inline-flex text-sm font-semibold tracking-[0.16em] text-[#e7c797] transition-colors hover:text-[#fffaf1]">Call (832) 360-3804</a>
-    </div>
-    <div class="pointer-events-none absolute bottom-12 right-5 hidden lg:block xl:right-8">
-      <a href="/contact" class="btn-luxe-fill pointer-events-auto shadow-[0_22px_54px_rgba(20,14,8,.34)]">REQUEST A QUOTE</a>
+
+      {/* Direct Verified Contact Marker */}
+      <div class="mt-8 flex flex-wrap items-center gap-6 text-xs font-mono text-[#dfc8a7]">
+        <a href="tel:+18323603804" class="hover:text-[#fffdf8] transition-colors tracking-wider">
+          Direct Line: (832) 360-3804
+        </a>
+        <span aria-hidden="true" class="opacity-30">|</span>
+        <span class="tracking-wider">Office: 801 Travis St, Suite 2101, Houston</span>
+      </div>
     </div>
   </div>
+
+  {/* Subtle Lower Gradient Transition */}
+  <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#fbf9f5] to-transparent pointer-events-none" aria-hidden="true"></div>
 </section>
 
 <style>
-  .hero-image {
-    filter: saturate(.96) contrast(1.04) brightness(.98) sepia(.06);
-    transform: scale(1.015);
-  }
-
-  .hero-cinematic-overlay {
-    background:
-      linear-gradient(180deg, rgba(5, 5, 4, 0.46) 0%, rgba(5, 5, 4, 0.06) 22%, rgba(5, 5, 4, 0.1) 62%, rgba(5, 5, 4, 0.58) 100%),
-      radial-gradient(ellipse at 10% 48%, rgba(0, 0, 0, 0.68) 0%, rgba(6, 10, 14, 0.46) 32%, rgba(14, 13, 11, 0.12) 58%, transparent 78%),
-      radial-gradient(ellipse at 68% 28%, rgba(184, 138, 74, 0.16) 0%, transparent 34%),
-      radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.34) 100%),
-      linear-gradient(90deg, rgba(6, 9, 11, 0.76) 0%, rgba(11, 16, 19, 0.58) 36%, rgba(18, 19, 17, 0.26) 64%, rgba(18, 19, 17, 0.14) 100%);
-  }
-
-  .hero-copy { text-shadow: 0 4px 26px rgba(0, 0, 0, 0.45); }
-  .hero-eyebrow { color: #e7c797; text-shadow: 0 2px 14px rgba(0, 0, 0, 0.44); }
-  .hero-headline { letter-spacing: -0.055em; text-shadow: 0 6px 34px rgba(0, 0, 0, 0.58); }
-  .hero-description { text-shadow: 0 3px 24px rgba(0, 0, 0, 0.48); }
-
-  @media (max-width: 767px) {
-    .hero-image { object-position: 58% center; }
-    .hero-cinematic-overlay {
-      background:
-        linear-gradient(180deg, rgba(5, 5, 4, 0.5) 0%, rgba(5, 5, 4, 0.14) 22%, rgba(5, 5, 4, 0.42) 100%),
-        radial-gradient(ellipse at 50% 50%, rgba(4, 6, 8, 0.46) 0%, rgba(7, 11, 14, 0.42) 46%, rgba(0, 0, 0, 0.5) 100%),
-        linear-gradient(180deg, rgba(13, 12, 10, 0.5) 0%, rgba(23, 21, 18, 0.62) 58%, rgba(23, 21, 18, 0.54) 100%);
-    }
+  .bg-radial-vignette {
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(20, 18, 16, 0.45) 100%);
   }
 </style>

@@ -1,95 +1,38 @@
 ---
 import Navbar from '@/islands/Navbar.jsx';
 import Footer from '@/components/Footer.astro';
+import LayoutMetadata, {
+  type BreadcrumbItem,
+  type FaqItem,
+  type ArticleMeta,
+} from '@/components/LayoutMetadata.astro';
 import '@/styles/globals.css';
 
-interface Props {
+export interface Props {
   title: string;
   description?: string;
   keywords?: string;
   ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: 'website' | 'article';
   canonicalUrl?: string;
   noindex?: boolean;
+  pageType?: 'WebPage' | 'AboutPage' | 'ContactPage' | 'CollectionPage';
+  speakableSelectors?: string[];
+  breadcrumbs?: BreadcrumbItem[];
+  faqs?: FaqItem[];
+  articleMeta?: ArticleMeta;
   jsonLd?: object | object[];
 }
 
-const {
-  title,
-  description,
-  keywords,
-  ogImage = '/og-image.jpg',
-  canonicalUrl,
-  noindex = false,
-  jsonLd,
-} = Astro.props;
-
-const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow';
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': ['Organization', 'LocalBusiness', 'GeneralContractor'],
-  name: 'Saadi Construction Group',
-  url: 'https://www.saadiconstructiongroup.com',
-  logo: 'https://www.saadiconstructiongroup.com/images/saadi-logo-horizontal.svg',
-  image: 'https://www.saadiconstructiongroup.com/images/Emblem.png',
-  telephone: '+18323603804',
-  email: 'info@saadiconstructiongroup.com',
-  priceRange: '$$$$',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '801 Travis St Suite 2101',
-    addressLocality: 'Houston',
-    addressRegion: 'TX',
-    postalCode: '77002',
-    addressCountry: 'US',
-  },
-  areaServed: ['Houston', 'Katy', 'Sugar Land', 'Pearland', 'The Woodlands', 'Spring', 'Cypress', 'League City', 'Missouri City', 'Conroe', 'Baytown', 'Richmond', 'Friendswood', 'Humble', 'Pasadena'],
-  sameAs: [
-    'https://share.google/qfQoFjgBOz6d67e5a',
-  ],
-};
-const websiteSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'Saadi Construction Group',
-  url: 'https://www.saadiconstructiongroup.com',
-  publisher: { '@type': 'Organization', name: 'Saadi Construction Group' },
-};
-const pageSchemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
-const allJsonLd = [organizationSchema, websiteSchema, ...pageSchemas];
+const props = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#2a2018" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-    <title>{title}</title>
-    {description && <meta name="description" content={description} />}
-    {keywords && <meta name="keywords" content={keywords} />}
-    <meta name="robots" content={robotsContent} />
-
-    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Saadi Construction Group" />
-    {title && <meta property="og:title" content={title} />}
-    {description && <meta property="og:description" content={description} />}
-    <meta property="og:image" content={ogImage} />
-    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
-
-    <meta name="twitter:card" content="summary_large_image" />
-    {title && <meta name="twitter:title" content={title} />}
-    {description && <meta name="twitter:description" content={description} />}
-    <meta name="twitter:image" content={ogImage} />
-
-    {allJsonLd.map((schema) => (
-      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-    ))}
+    <LayoutMetadata {...props} pathname={Astro.url.pathname} />
+    <slot name="head" />
   </head>
   <body>
     <Navbar client:load pathname={Astro.url.pathname} />

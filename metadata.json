@@ -1,0 +1,6 @@
+{
+  "name": "Saadi Construction Group",
+  "description": "Houston's premier design-build general contractor specializing in luxury custom homes, commercial buildouts, and comprehensive construction management.",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

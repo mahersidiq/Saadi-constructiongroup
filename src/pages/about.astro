@@ -2,8 +2,164 @@
 export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
 ---
-<Layout title="About Saadi Construction Group | Houston Custom Home Builder" description="Saadi Construction Group is a Houston custom home builder coordinating plans, engineering, permits, and construction under one accountable contract." keywords="Houston custom home builder, custom home design-build Houston, Saadi Construction Group" canonicalUrl="https://www.saadiconstructiongroup.com/about">
-  <section class="relative min-h-[68vh] overflow-hidden bg-[#2a2018] text-[#fff8ed]"><img src="/images/p1-interior-bath.png" alt="Modern custom home exterior in Houston at dusk" class="absolute inset-0 h-full w-full object-cover" /><div class="absolute inset-0 bg-gradient-to-r from-[#171512]/88 via-[#171512]/55 to-transparent"></div><div class="relative container-main flex min-h-[68vh] items-end pb-16 pt-36"><div class="max-w-4xl"><p class="eyebrow">About Saadi</p><h1 class="display-heading mt-4 text-5xl text-[#fff8ed] md:text-7xl">Owner-led accountability from plans to final walkthrough.</h1><p class="mt-6 max-w-2xl text-lg leading-8 text-[#fff8ed]/80">Saadi Construction Group is built for homeowners who want the design, permitting, engineering, and construction path controlled by one responsible team.</p></div></div></section>
-  <section class="stone-section"><div class="container-main section-padding"><div class="grid gap-12 lg:grid-cols-[.9fr_1.1fr]"><div><p class="eyebrow">Who We Are</p><h2 class="display-heading mt-4 text-4xl md:text-6xl">A Houston builder focused on control, communication, and craft.</h2></div><div class="space-y-6 body-large"><p>Saadi Construction Group operates as a design-build general contractor for custom homes and major residential construction in Greater Houston.</p><p>The model is direct: one contract coordinates architectural plans, structural engineering, permit submission, preconstruction scope, trade coordination, construction, and handoff.</p><p>No fake awards, inflated promises, or stock team story—just a clearer way to manage a serious custom-home build.</p></div></div></div></section>
-  <section class="bg-[#fbf6ed]"><div class="container-main pb-24"><div class="grid gap-4 md:grid-cols-3">{['Accountability', 'Houston experience', 'Direct communication'].map((item) => <div class="border border-[rgba(71,57,40,.14)] bg-[#fffaf2]/70 p-8"><h3 class="font-heading text-3xl text-[#17140f]">{item}</h3><p class="mt-4 leading-7 text-[#17140f]/70">Construction control starts with clear responsibility, practical field knowledge, and communication that does not get buried between separate vendors.</p></div>)}</div></div></section>
+
+<Layout 
+  title="About Saadi Construction Group | Houston Architectural Design-Build General Contractor" 
+  description="Saadi Construction Group is an owner-led Houston luxury custom home builder coordinating architectural plans, structural engineering, permits, and construction under one accountable contract." 
+  keywords="About Saadi Construction Group, Maher Sidiq, Houston luxury custom home builder, Memorial design build, River Oaks general contractor" 
+  canonicalUrl="https://www.saadiconstructiongroup.com/about"
+  pageType="AboutPage"
+  ogImage="/images/hero-memorial-residence.jpg"
+  ogImageAlt="Architectural custom residence in Memorial Houston built by Saadi Construction Group"
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+  ]}
+  speakableSelectors={['h1', 'h2']}
+>
+  <!-- Architectural Hero -->
+  <section class="relative min-h-[72vh] overflow-hidden bg-[#1c1917] text-[#fff8ed]">
+    <img 
+      src="/images/hero-memorial-residence.jpg" 
+      alt="Architectural custom residence in Memorial Houston built by Saadi Construction Group" 
+      class="absolute inset-0 h-full w-full object-cover opacity-80" 
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-[#1c1917] via-[#1c1917]/50 to-transparent"></div>
+    <div class="relative container-main flex min-h-[72vh] items-end pb-16 pt-36">
+      <div class="max-w-4xl">
+        <p class="font-mono text-xs uppercase tracking-[0.28em] text-[#dfc8a7]">Founder & Philosophy</p>
+        <h1 class="font-heading mt-4 text-5xl font-medium tracking-tight text-[#fffdf8] md:text-7xl">
+          Architecture, Engineering & Field Craft Under One Accountability.
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-[#dfd7ca]">
+          Founded on the conviction that building a custom home should never be an adversarial dispute between an architect’s drawings and a contractor’s budget.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial Thesis -->
+  <section class="bg-[#fbf9f5] py-24 md:py-32">
+    <div class="container-main">
+      <div class="grid gap-16 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <p class="font-mono text-xs uppercase tracking-[0.24em] text-[#8c6d46]">The Design-Build Standard</p>
+          <h2 class="font-heading mt-4 text-3xl font-medium leading-tight text-[#1c1917] md:text-5xl">
+            Why traditional contracting fails luxury homeowners in Houston.
+          </h2>
+          <div class="mt-8 border-l-2 border-[#8c6d46] pl-6 text-[#1c1917]/80 italic font-heading text-xl">
+            "When plans and field construction operate in separate silos, the client pays for every discrepancy in lost time, change orders, and compromised details."
+            <span class="block mt-2 font-sans not-italic text-xs font-semibold uppercase tracking-wider text-[#8c6d46]">— Maher Sidiq, Founder</span>
+          </div>
+        </div>
+        <div class="space-y-6 text-base leading-relaxed text-[#1c1917]/80 lg:col-span-7 md:text-lg">
+          <p>
+            In the traditional building model, a homeowner hires an architect to draft a design, and subsequently bids those drawings out to general contractors. All too often, the contractor informs the owner that the architect’s drawings exceed their budget by 40%, or the architect faults the builder for failing to understand complex structural details.
+          </p>
+          <p>
+            <strong>Saadi Construction Group operates on the integrated design-build principle.</strong> From the moment we analyze your soils report and boundary survey, our architectural designers, structural engineers, and field superintendents collaborate at the same table.
+          </p>
+          <p>
+            Every wall dimension, steel lintel, and HVAC duct run is evaluated for constructability, energy efficiency, and cost before a permit application is submitted to the City of Houston or local Architectural Review Committee.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three Pillars of Execution -->
+  <section class="border-y border-[rgba(28,25,23,0.08)] bg-[#f6f3ec] py-24">
+    <div class="container-main">
+      <div class="max-w-2xl">
+        <p class="font-mono text-xs uppercase tracking-[0.24em] text-[#8c6d46]">The Discipline</p>
+        <h2 class="font-heading mt-3 text-3xl font-medium text-[#1c1917] md:text-5xl">
+          Three non-negotiable standards on every SCG build.
+        </h2>
+      </div>
+
+      <div class="mt-14 grid gap-8 md:grid-cols-3">
+        <!-- Pillar 1 -->
+        <div class="border border-[rgba(28,25,23,0.08)] bg-[#fbf9f5] p-8 md:p-10 shadow-sm transition hover:shadow-md">
+          <span class="font-mono text-sm font-semibold text-[#8c6d46]">01.</span>
+          <h3 class="font-heading mt-4 text-2xl font-medium text-[#1c1917]">Single-Point Contract</h3>
+          <p class="mt-4 text-sm leading-relaxed text-[#1c1917]/75">
+            One contract binds architectural drafting, structural engineering, permit expedition, trade procurement, and physical construction. There is no middleman and no finger-pointing—one team is entirely responsible for cost, code, and schedule.
+          </p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="border border-[rgba(28,25,23,0.08)] bg-[#fbf9f5] p-8 md:p-10 shadow-sm transition hover:shadow-md">
+          <span class="font-mono text-sm font-semibold text-[#8c6d46]">02.</span>
+          <h3 class="font-heading mt-4 text-2xl font-medium text-[#1c1917]">Houston Building Science</h3>
+          <p class="mt-4 text-sm leading-relaxed text-[#1c1917]/75">
+            Houston's climate is unforgiving: highly expansive Beaumont clay, high humidity, flash storm drainage, and hurricane wind zones. We engineer stiffened post-tension slabs, ZIP System air-water barriers, and dedicated dehumidification systems designed for the Gulf Coast.
+          </p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="border border-[rgba(28,25,23,0.08)] bg-[#fbf9f5] p-8 md:p-10 shadow-sm transition hover:shadow-md">
+          <span class="font-mono text-sm font-semibold text-[#8c6d46]">03.</span>
+          <h3 class="font-heading mt-4 text-2xl font-medium text-[#1c1917]">Radical Preconstruction</h3>
+          <p class="mt-4 text-sm leading-relaxed text-[#1c1917]/75">
+            Before pouring concrete, every finish, plumbing fixture, tile square footage, and electrical drop is itemized. We lock in supply chain orders and verify lead times during permitting, preventing the months of stalling that plague uncoordinated builds.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Competence & Field Verification -->
+  <section class="bg-[#fbf9f5] py-24 md:py-32">
+    <div class="container-main">
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div>
+          <p class="font-mono text-xs uppercase tracking-[0.24em] text-[#8c6d46]">Field Supervision</p>
+          <h2 class="font-heading mt-3 text-3xl font-medium text-[#1c1917] md:text-5xl">
+            Direct jobsite presence on every structural milestone.
+          </h2>
+          <p class="mt-6 text-base leading-relaxed text-[#1c1917]/80">
+            A luxury home cannot be built from an office desk. Maher Sidiq and SCG superintendents personally oversee every critical structural inspection: geotech soil verification, rebar placement and post-tension cable tensioning, shear wall hold-downs, mechanical rough-ins, and Level 5 drywall illumination checks.
+          </p>
+          <div class="mt-8 grid grid-cols-2 gap-6 border-t border-[rgba(28,25,23,0.1)] pt-8">
+            <div>
+              <p class="font-heading text-3xl font-medium text-[#1c1917]">100%</p>
+              <p class="mt-1 font-mono text-xs uppercase text-[#8c6d46]">Fixed-Price Contracts</p>
+            </div>
+            <div>
+              <p class="font-heading text-3xl font-medium text-[#1c1917]">14–16 mo</p>
+              <p class="mt-1 font-mono text-xs uppercase text-[#8c6d46]">Avg. Build Cycle</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative overflow-hidden border border-[rgba(28,25,23,0.1)] bg-[#ebe5db]">
+          <img 
+            src="/images/p8-exterior-front.png" 
+            alt="Completed luxury custom home construction in Memorial Houston by Saadi Construction Group" 
+            class="h-full w-full object-cover" 
+            loading="lazy" 
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="border-t border-[rgba(28,25,23,0.08)] bg-[#1c1917] py-20 text-[#fffdf8]">
+    <div class="container-main text-center">
+      <p class="font-mono text-xs uppercase tracking-[0.28em] text-[#dfc8a7]">Begin Your Build</p>
+      <h2 class="font-heading mt-4 text-4xl font-medium md:text-6xl">Have a lot in Memorial, River Oaks, or West U?</h2>
+      <p class="mx-auto mt-6 max-w-xl text-base text-[#dfd7ca]">
+        Schedule a complimentary lot feasibility consultation. We will evaluate setbacks, soil characteristics, deed restrictions, and provide preliminary budget parameters.
+      </p>
+      <div class="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+        <a href="/contact" class="inline-flex items-center justify-center bg-[#8c6d46] px-8 py-4 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#fffdf8] transition hover:bg-[#a68254]">
+          Request Lot Feasibility Review
+        </a>
+        <a href="/projects" class="inline-flex items-center justify-center border border-[rgba(255,255,255,0.2)] px-8 py-4 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#fffdf8] transition hover:bg-white/10">
+          Explore Portfolio
+        </a>
+      </div>
+    </div>
+  </section>
 </Layout>

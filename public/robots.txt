@@ -1,5 +1,33 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /api/
 
+# Explicitly allow AI Answer Engines & Search Crawlers (AEO Optimization)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://www.saadiconstructiongroup.com/sitemap.xml
 Sitemap: https://www.saadiconstructiongroup.com/sitemap-index.xml
+# AI / Answer Engine Index: https://www.saadiconstructiongroup.com/llms.txt

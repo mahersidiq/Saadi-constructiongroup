@@ -3,8 +3,10 @@ export const prerender = true;
 import { allServices } from '@/data/services';
 import { serviceAreas } from '@/data/serviceAreas';
 import { publishedBlogPosts } from '@/data/blogPosts';
+import { projects } from '@/data/projects';
+import { SITE_URL } from '@/lib/seo';
 
-const SITE = 'https://www.saadiconstructiongroup.com';
+const SITE = SITE_URL;
 
 // Stable dates — update when you meaningfully change a page.
 // Using new Date() here would mark every page as "just changed" on every
@@ -33,6 +35,11 @@ const servicePages = allServices.map((s) => ({
   lastmod: '2025-12-01',
 }));
 
+const projectPages = projects.map((p) => ({
+  url: `/projects/${p.slug}`,
+  lastmod: '2026-01-15',
+}));
+
 const areaPages = serviceAreas.map((a) => ({
   url: `/service-areas/${a.slug}`,
   lastmod: LAUNCH_DATE,
@@ -43,7 +50,7 @@ const blogPages = publishedBlogPosts.map((p) => ({
   lastmod: p.publishDate, // stable: the actual publish date from the data
 }));
 
-const allPages = [...staticPages, ...servicePages, ...areaPages, ...blogPages];
+const allPages = [...staticPages, ...servicePages, ...projectPages, ...areaPages, ...blogPages];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

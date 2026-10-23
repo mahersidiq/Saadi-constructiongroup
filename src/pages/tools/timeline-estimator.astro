@@ -1,59 +1,174 @@
 ---
 export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
+import CTABanner from '@/components/sections/home/CTABanner.astro';
+
 const canonical = 'https://www.saadiconstructiongroup.com/tools/timeline-estimator';
-const breadcrumbSchema = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
-  { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.saadiconstructiongroup.com' },
-  { '@type': 'ListItem', position: 2, name: 'Tools', item: 'https://www.saadiconstructiongroup.com/tools' },
-  { '@type': 'ListItem', position: 3, name: 'Timeline Estimator', item: canonical },
-] };
-const softwareSchema = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Custom Home Timeline Estimator', applicationCategory: 'BusinessApplication', operatingSystem: 'Web', url: canonical, publisher: { '@type': 'Organization', name: 'Saadi Construction Group' } };
-const inputClass = 'mt-2 w-full border border-[rgba(71,57,40,.2)] bg-[#fffaf2] px-4 py-4 text-[#17140f] outline-none focus:border-[#b88a4a]';
+const softwareSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Custom Home Timeline Estimator',
+  description: 'Interactive schedule modeling calculator for Houston custom home design-build, structural engineering, municipal permitting, and construction duration.',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'All',
+  url: canonical,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  publisher: { '@type': 'Organization', name: 'Saadi Construction Group', url: 'https://www.saadiconstructiongroup.com' },
+};
+const inputClass =
+  'mt-2 w-full border border-[rgba(28,25,23,0.18)] bg-[#fbf9f5] px-4 py-3.5 font-sans text-sm text-[#1c1917] outline-none focus:border-[#8c6d46]';
 ---
-<Layout title="Custom Home Timeline Estimator | Houston" description="Estimate Houston custom home preconstruction, permitting, and construction duration based on project type, design status, permit status, size, and complexity." canonicalUrl={canonical} jsonLd={[breadcrumbSchema, softwareSchema]}>
-  <section class="relative min-h-[48vh] flex items-center bg-gradient-to-br from-[#2a2018] via-[#2a2018] to-[#171512] overflow-hidden">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.08),transparent_60%)]"></div>
-    <div class="relative z-10 container-main px-4 pt-36 pb-20 md:pt-44 md:pb-28">
-      <p class="eyebrow text-[#b88a4a]">Houston Planning Tool</p>
-      <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#fffaf1] leading-tight mt-4">Custom Home Timeline Estimator</h1>
-      <p class="mt-6 text-lg text-[#d7c8b3] max-w-2xl">Estimate planning, design, permit, and construction duration before requesting a detailed project schedule.</p>
+
+<Layout
+  title="Custom Home Timeline Estimator | Houston | Saadi Construction Group"
+  description="Estimate Houston custom home pre-construction, permitting, and construction duration based on project type, design status, permit jurisdiction, size, and complexity."
+  keywords="custom home construction timeline Houston, how long to build a custom home in Houston, Houston permit review timeline, luxury home schedule estimator"
+  canonicalUrl={canonical}
+  ogImage="/images/p6-exterior-front.png"
+  ogImageAlt="Houston Custom Home Timeline Estimator — Saadi Construction Group"
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Planning Tools', href: '/tools' },
+    { name: 'Timeline Estimator', href: '/tools/timeline-estimator' },
+  ]}
+  jsonLd={softwareSchema}
+>
+  <section class="bg-[#1c1917] text-[#fffdf8] pt-36 pb-16 border-b border-[rgba(255,253,248,0.08)]">
+    <div class="container-main">
+      <div class="max-w-4xl">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-8 bg-[#dfc8a7]"></span>
+          <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#dfc8a7]">
+            Houston Schedule Modeling Instrument
+          </p>
+        </div>
+        <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-medium text-[#fffdf8] leading-[1.05]">
+          Custom Home Timeline Estimator
+        </h1>
+        <p class="mt-5 font-sans text-base md:text-lg text-[#dfd7ca]/85 max-w-2xl leading-relaxed">
+          Estimate architectural drafting, structural engineering, municipal permitting, and field construction duration across Greater Houston before commissioning a master schedule.
+        </p>
+      </div>
     </div>
   </section>
 
-  <section class="stone-section">
-    <div class="container-main section-padding">
-      <div class="grid gap-10 lg:grid-cols-[1fr_0.8fr]">
-        <div class="editorial-card p-6 md:p-8">
-          <p class="eyebrow">Project Inputs</p>
-          <h2 class="mt-4 font-heading text-4xl text-[#17140f]">Tell us where the project stands.</h2>
+  <section class="py-20 md:py-28 bg-[#fbf9f5]">
+    <div class="container-main">
+      <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+        <div class="border border-[rgba(28,25,23,0.1)] bg-[#f6f3ec] p-7 md:p-10">
+          <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#8c6d46]">
+            Project Readiness Inputs
+          </p>
+          <h2 class="mt-2 font-heading text-3xl md:text-4xl font-medium text-[#1c1917]">
+            Select your current project stage.
+          </h2>
           <div class="mt-8 grid gap-6 md:grid-cols-2">
-            <label class="block text-sm font-semibold text-[#17140f]">Project type<select id="type" class={inputClass}><option value="8">Custom home</option><option value="5">Addition or major remodel</option></select></label>
-            <label class="block text-sm font-semibold text-[#17140f]">Design status<select id="designStatus" class={inputClass}><option value="10">No plans yet</option><option value="5">Concept only</option><option value="1">Permit-ready plans</option></select></label>
-            <label class="block text-sm font-semibold text-[#17140f]">Permit status<select id="permit" class={inputClass}><option value="10">Not submitted</option><option value="5">Submitted / in review</option><option value="0">Approved</option></select></label>
-            <label class="block text-sm font-semibold text-[#17140f]">Home size<select id="size" class={inputClass}><option value="0">Under 3,000 sq ft</option><option value="2">3,000–5,000 sq ft</option><option value="4">Over 5,000 sq ft</option></select></label>
-            <label class="block text-sm font-semibold text-[#17140f] md:col-span-2">Complexity<select id="complexity" class={inputClass}><option value="0">Standard lot and scope</option><option value="3">Moderate design/site complexity</option><option value="6">Complex site, drainage, floodplain, or luxury scope</option></select></label>
+            <label class="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[#1c1917]/80">
+              Project Scope
+              <select id="type" class={inputClass}>
+                <option value="12">Ground-Up Custom Residence</option>
+                <option value="7">Major Structural Addition / Expansion</option>
+              </select>
+            </label>
+            <label class="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[#1c1917]/80">
+              Architectural Drawing Status
+              <select id="designStatus" class={inputClass}>
+                <option value="12">No Drawings Yet (Starting Design-Build)</option>
+                <option value="6">Schematic Concept Complete</option>
+                <option value="2">Permit-Ready Architectural Set</option>
+              </select>
+            </label>
+            <label class="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[#1c1917]/80">
+              Municipal Permit Status
+              <select id="permit" class={inputClass}>
+                <option value="10">Not Yet Submitted</option>
+                <option value="5">In Municipal / ARC Review</option>
+                <option value="0">Approved &amp; Ready to Mobilize</option>
+              </select>
+            </label>
+            <label class="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[#1c1917]/80">
+              Conditioned Residence Scale
+              <select id="size" class={inputClass}>
+                <option value="0">Under 3,500 sq ft</option>
+                <option value="4" selected>3,500–5,500 sq ft</option>
+                <option value="8">5,500+ sq ft Estate</option>
+              </select>
+            </label>
+            <label class="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[#1c1917]/80 md:col-span-2">
+              Site &amp; Engineering Complexity
+              <select id="complexity" class={inputClass}>
+                <option value="0">Standard Cleared Lot</option>
+                <option value="4" selected>Inner-Loop Tear-Down / Tree Preservation / HOA Review</option>
+                <option value="8">Floodplain Elevation / Pier-and-Beam or Deep Pier Foundation</option>
+              </select>
+            </label>
           </div>
         </div>
 
-        <aside class="editorial-card p-6 md:p-8 self-start">
-          <p class="eyebrow">Estimated Range</p>
-          <h2 class="mt-4 font-heading text-4xl text-[#17140f]">Timeline output</h2>
-          <p id="timeline-output" class="mt-6 text-xl font-semibold leading-8 text-[#2a2018]"></p>
-          <p class="mt-5 text-sm leading-7 text-[#17140f]/68">Planning range only. Actual schedules depend on jurisdiction review, revisions, owner selections, procurement, weather, inspections, and site conditions.</p>
+        <aside class="border border-[rgba(28,25,23,0.12)] bg-[#1c1917] text-[#fffdf8] p-7 md:p-10 self-start">
+          <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#dfc8a7]">
+            Projected Critical Path
+          </p>
+          <h2 class="mt-2 font-heading text-3xl md:text-4xl font-medium text-[#fffdf8]">
+            Estimated Duration
+          </h2>
+          <div id="timeline-output" class="mt-6 space-y-3 font-sans text-sm text-[#dfd7ca]"></div>
+          <p class="mt-6 font-sans text-xs leading-6 text-[#dfd7ca]/70 border-t border-[rgba(255,253,248,0.1)] pt-5">
+            Planning range only. Actual critical-path schedules depend on municipal reviewer turnaround, HOA architectural control committee cycles, long-lead window/stone procurement, and site conditions.
+          </p>
           <div class="mt-7 flex flex-col gap-3">
-            <a href="/blog/houston-custom-home-construction-timeline" class="btn-luxe">Read Timeline Guide</a>
-            <a href="/contact" class="btn-luxe-fill">Schedule Consultation</a>
+            <a
+              href="/contact"
+              class="inline-flex items-center justify-center bg-[#8c6d46] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#fffdf8] transition hover:bg-[#a68254]"
+            >
+              Request Project Critical-Path Review →
+            </a>
+            <a
+              href="/blog/houston-custom-home-construction-timeline"
+              class="inline-flex items-center justify-center border border-[rgba(255,253,248,0.28)] px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#fffdf8] transition hover:border-[#dfc8a7]"
+            >
+              Read 14–22 Month Schedule Guide
+            </a>
           </div>
         </aside>
       </div>
     </div>
   </section>
+
+  <CTABanner />
+
   <script>
     function calcTimeline() {
-      const vals = ['type', 'designStatus', 'permit', 'size', 'complexity'].map((id) => Number(document.getElementById(id).value));
-      const pre = vals[1] + vals[2] + 2;
-      const build = vals[0] + vals[3] + vals[4] + 18;
-      document.getElementById('timeline-output').textContent = 'Preconstruction: ' + pre + '–' + (pre + 6) + ' weeks · Construction: ' + build + '–' + (build + 10) + ' weeks · Total planning range: ' + Math.round((pre + build) / 4) + '–' + Math.round((pre + build + 16) / 4) + ' months';
+      const vals = ['type', 'designStatus', 'permit', 'size', 'complexity'].map((id) =>
+        Number((document.getElementById(id) as HTMLSelectElement)?.value || 0)
+      );
+      const pre = vals[1] + vals[2] + 3;
+      const build = vals[0] + vals[3] + vals[4] + 24;
+      const minMonths = Math.round((pre + build) / 4.2);
+      const maxMonths = Math.round((pre + build + 14) / 4.2);
+      const outputEl = document.getElementById('timeline-output');
+      if (outputEl) {
+        outputEl.innerHTML = `
+          <div class="border border-[rgba(255,253,248,0.12)] bg-[#24201d] p-4">
+            <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#dfc8a7]">Total Turnkey Horizon</p>
+            <p class="mt-1 font-heading text-3xl text-[#fffdf8] tabular-nums">${minMonths}–${maxMonths} Months</p>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="border border-[rgba(255,253,248,0.1)] p-4">
+              <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#dfc8a7]">Pre-Construction</p>
+              <p class="mt-1 font-heading text-2xl text-[#fffdf8] tabular-nums">${pre}–${pre + 6} Weeks</p>
+            </div>
+            <div class="border border-[rgba(255,253,248,0.1)] p-4">
+              <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#dfc8a7]">Field Build</p>
+              <p class="mt-1 font-heading text-2xl text-[#fffdf8] tabular-nums">${build}–${build + 8} Weeks</p>
+            </div>
+          </div>
+        `;
+      }
     }
     document.querySelectorAll('select').forEach((el) => el.addEventListener('input', calcTimeline));
     calcTimeline();

@@ -1,16 +1,72 @@
-<section class="stone-section">
-  <div class="container-main section-padding">
-    <div class="grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-      <div class="animate-on-scroll">
-        <p class="eyebrow">Built for Houston</p>
-        <h2 class="display-heading mt-4 text-4xl md:text-6xl">Built for Houston soil, climate, permitting, and lifestyle.</h2>
-        <p class="body-large mt-6">Houston custom homes require decisions that account for soil movement, drainage, flood considerations, heat, humidity, HOA requirements, and city or county permitting realities.</p>
+---
+const neighborhoods = [
+  {
+    name: 'Memorial & The Villages',
+    area: 'Piney Point · Bunker Hill · Hunters Creek',
+    description: 'Specializing in deep wooded parcels, mature oak preservation plans, Chapter 19 drainage criteria, and modern transitional estates.',
+    slug: 'memorial-villages',
+  },
+  {
+    name: 'River Oaks & Tanglewood',
+    area: 'Central Houston Inner Loop',
+    description: 'Expertise in ROPO architectural review guidelines, historic neighborhood proportions, custom cast-stone elevations, and luxury tear-down rebuilds.',
+    slug: 'river-oaks',
+  },
+  {
+    name: 'West University & Bellaire',
+    area: '77005 & 77001 Infill Lots',
+    description: 'Zero-lot-line setback navigation, strict City of West U residential zoning compliance, maximum lot-coverage engineering, and modern infill residences.',
+    slug: 'west-university-place',
+  },
+  {
+    name: 'The Woodlands & Carlton Woods',
+    area: 'Montgomery County Covenants',
+    description: 'Custom contemporary pavilions designed for natural forest topography, strict DSC architectural approval, and modified post-tension foundation slabs.',
+    slug: 'the-woodlands',
+  },
+];
+---
+
+<section class="bg-[#fbf9f5] py-28 md:py-36 border-t border-[rgba(28,25,23,0.08)]">
+  <div class="container-main">
+    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-16">
+      <div class="max-w-2xl">
+        <p class="font-mono text-xs uppercase tracking-[0.24em] text-[#8c6d46]">Regional Jurisdiction & Enclaves</p>
+        <h2 class="font-heading section-heading mt-3 text-4xl sm:text-5xl md:text-6xl font-medium text-[#1c1917] leading-tight">
+          Building in Houston’s Most Discerning Neighborhoods.
+        </h2>
+        <p class="mt-4 text-base text-[#1c1917]/75">
+          Each Houston submarket presents distinct municipal codes, deed restrictions, and geotechnical soil profiles. We navigate every approval process from day one.
+        </p>
       </div>
-      <div class="grid gap-5 sm:grid-cols-2">
-        {['Soil and foundation coordination', 'Drainage and flood awareness', 'City, county, and HOA permitting', 'Outdoor living for Houston weather'].map((item) => (
-          <div class="luxe-card p-8"><h3 class="font-heading text-3xl leading-tight text-[#17140f]">{item}</h3></div>
-        ))}
-      </div>
+      <a 
+        href="/service-areas" 
+        class="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#8c6d46] hover:text-[#1c1917] transition-colors border-b border-[#8c6d46] pb-1 w-fit"
+      >
+        Explore All 23 Service Areas →
+      </a>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {neighborhoods.map((n) => (
+        <a 
+          href={`/service-areas/${n.slug}`}
+          class="group border border-[rgba(28,25,23,0.08)] bg-[#f6f3ec] p-8 transition-all hover:border-[#8c6d46] hover:bg-white hover:shadow-md flex flex-col justify-between"
+        >
+          <div>
+            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#8c6d46] block mb-2">{n.area}</span>
+            <h3 class="font-heading text-2xl font-medium text-[#1c1917] group-hover:text-[#8c6d46] transition-colors">
+              {n.name}
+            </h3>
+            <p class="mt-4 text-xs leading-relaxed text-[#1c1917]/70">
+              {n.description}
+            </p>
+          </div>
+          <span class="mt-6 font-mono text-[11px] uppercase tracking-wider text-[#8c6d46] inline-flex items-center gap-1.5 pt-4 border-t border-[rgba(28,25,23,0.06)]">
+            Review Guidelines →
+          </span>
+        </a>
+      ))}
     </div>
   </div>
 </section>

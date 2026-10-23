@@ -1,32 +1,55 @@
 ---
 import { allServices } from '@/data/services';
-const bestFor = {
-  'custom-home-design-build': 'Best for clients who want one builder responsible for design coordination and construction.',
-  'luxury-custom-homes': 'Best for high-spec homes with detailed finishes, selections, and field control.',
-  'new-home-construction': 'Best for ground-up builds on your lot across Greater Houston.',
-  'home-additions-expansions': 'Best for major expansions that require structural and permit coordination.',
-  'plans-permits-engineering': 'Best for turning concepts into permit-ready construction documents.',
-  'construction-management': 'Best for owner-side oversight, scope discipline, and quality control.',
+const bestFor: Record<string, string> = {
+  'custom-home-design-build': 'Best for clients who want one builder responsible for architectural design coordination and construction.',
+  'luxury-custom-homes': 'Best for high-specification estates with bespoke millwork, stone selections, and tight field control.',
+  'new-home-construction': 'Best for ground-up residential builds on private lots across Greater Houston.',
+  'home-additions-expansions': 'Best for major structural expansions, second-story additions, and whole-home reconfigurations.',
+  'plans-permits-engineering': 'Best for turning architectural concepts into engineered, permit-ready construction documents.',
+  'construction-management': 'Best for owner-side representation, open-book budget discipline, and schedule control.',
 };
 ---
-<section class="stone-section">
-  <div class="container-main section-padding">
-    <div class="mb-14 grid gap-6 md:grid-cols-[.9fr_1fr] md:items-end">
-      <div class="max-w-3xl animate-on-scroll">
-        <p class="eyebrow">Service Pillars</p>
-        <h2 class="display-heading mt-4 text-4xl md:text-6xl">Residential building services with one accountable path.</h2>
+
+<section class="bg-[#fbf9f5] py-24 md:py-32 border-b border-[rgba(28,25,23,0.08)]">
+  <div class="container-main">
+    <div class="mb-14 grid gap-6 md:grid-cols-[0.9fr_1fr] md:items-end">
+      <div class="max-w-3xl">
+        <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#8c6d46] mb-3">Service Pillars</p>
+        <h2 class="font-heading text-4xl md:text-5xl font-medium text-[#1c1917] leading-[1.06]">
+          Residential building services with one accountable path.
+        </h2>
       </div>
-      <p class="body-large animate-on-scroll md:pb-2">Each service is framed as part of a complete builder-led path, not a disconnected handoff between vendors.</p>
+      <p class="font-sans text-base leading-8 text-[#1c1917]/75 md:pb-1">
+        Each capability is structured as part of a complete builder-led methodology—eliminating disconnected handoffs between outside architects, engineers, and contractors.
+      </p>
     </div>
-    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {allServices.map((service, index) => (
-        <a href={`/services/${service.slug}`} class="luxe-card group relative flex min-h-[360px] flex-col p-8 md:p-9">
-          <span class="absolute right-7 top-7 font-heading text-5xl leading-none text-[#b88a4a]/16">0{index + 1}</span>
-          <p class="eyebrow pr-14">{service.category}</p>
-          <h3 class="mt-8 font-heading text-4xl leading-[1.02] text-[#17140f] transition-colors group-hover:text-[#6f563f]">{service.name}</h3>
-          <p class="mt-6 text-sm leading-7 text-[#17140f]/68">{service.description}</p>
-          <p class="mt-6 text-xs font-medium leading-6 text-[#6f563f]">{bestFor[service.slug]}</p>
-          <span class="mt-auto pt-9 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#b88a4a] transition-colors group-hover:text-[#17140f]">Learn more →</span>
+        <a
+          href={`/services/${service.slug}`}
+          class="group relative flex min-h-[340px] flex-col border border-[rgba(28,25,23,0.1)] bg-[#f6f3ec] p-8 transition-colors hover:border-[#8c6d46] hover:bg-white"
+        >
+          <span class="absolute right-7 top-7 font-heading text-4xl leading-none text-[#8c6d46]/25 tabular-nums">
+            0{index + 1}
+          </span>
+          <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[#8c6d46] pr-12">
+            {service.category}
+          </p>
+          <h3 class="mt-6 font-heading text-3xl font-medium leading-[1.1] text-[#1c1917] transition-colors group-hover:text-[#8c6d46]">
+            {service.name}
+          </h3>
+          <p class="mt-4 font-sans text-sm leading-7 text-[#1c1917]/70">
+            {service.description}
+          </p>
+          {bestFor[service.slug] && (
+            <p class="mt-5 font-sans text-xs font-medium leading-6 text-[#1c1917]/80 border-t border-[rgba(28,25,23,0.08)] pt-4">
+              {bestFor[service.slug]}
+            </p>
+          )}
+          <span class="mt-auto pt-6 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-[#8c6d46] group-hover:text-[#1c1917] transition-colors">
+            Explore Capability →
+          </span>
         </a>
       ))}
     </div>

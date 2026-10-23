@@ -1,11 +1,32 @@
 ---
 const { title, subheadline, category } = Astro.props;
-const heroImage = title?.includes('Luxury') ? '/images/p2-interior-bath.png' : '/images/p1-interior-bath.png';
+const heroImage = title?.includes('Luxury') ? '/images/p2-exterior-front.png' : '/images/p1-exterior-front.png';
 ---
-<section class="relative min-h-[68vh] overflow-hidden bg-[#2a2018] text-[#fff8ed]">
-  <img src={heroImage} alt="Houston luxury custom home exterior at dusk" class="absolute inset-0 h-full w-full object-cover" />
-  <div class="absolute inset-0 bg-gradient-to-r from-[#171512]/88 via-[#171512]/56 to-transparent"></div>
-  <div class="relative container-main flex min-h-[68vh] items-end pb-16 pt-36">
-    <div class="max-w-4xl"><p class="eyebrow">{category || 'Custom Home Service'}</p><h1 class="display-heading mt-4 text-5xl text-[#fff8ed] md:text-7xl">{title}</h1>{subheadline && <p class="mt-6 max-w-2xl text-lg leading-8 text-[#fff8ed]/80">{subheadline}</p>}</div>
+
+<section class="relative min-h-[60vh] flex items-end overflow-hidden bg-[#1c1917] text-[#fffdf8] pt-36 pb-16">
+  <img
+    src={heroImage}
+    alt={`${title} — Saadi Construction Group Houston`}
+    class="absolute inset-0 h-full w-full object-cover opacity-40"
+    loading="eager"
+  />
+  <div class="absolute inset-0 bg-gradient-to-t from-[#1c1917] via-[#1c1917]/65 to-[#1c1917]/40"></div>
+  <div class="relative z-10 container-main">
+    <div class="max-w-4xl">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="h-px w-8 bg-[#dfc8a7]"></span>
+        <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#dfc8a7]">
+          {category || 'Custom Home Design-Build'}
+        </p>
+      </div>
+      <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-medium text-[#fffdf8] leading-[1.05]">
+        {title}
+      </h1>
+      {subheadline && (
+        <p class="mt-5 max-w-2xl font-sans text-base md:text-lg leading-relaxed text-[#dfd7ca]/85">
+          {subheadline}
+        </p>
+      )}
+    </div>
   </div>
 </section>

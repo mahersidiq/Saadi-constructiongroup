@@ -2,39 +2,139 @@
 export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
 import { projects } from '@/data/projects';
-const filters = ['Modern', 'Transitional', 'French Country', 'Farmhouse', 'Luxury Estate', 'New Construction'];
+import CTABanner from '@/components/sections/home/CTABanner.astro';
+
+const styles = ['All', ...Array.from(new Set(projects.map((p) => p.style)))];
+
+const portfolioListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Saadi Construction Group Custom Home Portfolio',
+  description: 'Completed luxury custom homes across Memorial, River Oaks, West University Place, and The Woodlands in Houston, TX.',
+  itemListElement: projects.map((project, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: project.title,
+    url: `https://www.saadiconstructiongroup.com/projects/${project.slug}`,
+  })),
+};
 ---
-<Layout title="Custom Home Portfolio | Saadi Construction Group Houston" description="Browse luxury custom homes in Houston and surrounding areas by Saadi Construction Group. Plans, permits, engineering, and construction under one contract." keywords="custom home projects Houston, custom home builder portfolio Houston TX, luxury custom homes Houston" canonicalUrl="https://www.saadiconstructiongroup.com/projects">
-  <section class="relative min-h-[72vh] overflow-hidden bg-[#0d0c0a] text-[#fff8ed]">
-    <img src="/images/p8-interior-bath.png" alt="Ultra-modern Houston custom home front exterior at dusk" class="absolute inset-0 h-full w-full object-cover" />
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_16%_56%,rgba(0,0,0,.88),rgba(13,12,10,.62)_42%,rgba(13,12,10,.18)_74%),linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.18))]"></div>
-    <div class="relative container-main flex min-h-[72vh] items-end pb-20 pt-36">
-      <div class="max-w-4xl"><p class="eyebrow">Portfolio</p><h1 class="display-heading mt-5 text-5xl text-[#fff8ed] md:text-7xl">A custom-home portfolio built around Houston living.</h1><p class="mt-6 max-w-2xl text-lg leading-8 text-[#fff8ed]/80">Large photography, real project imagery, and the details available in the current portfolio—without invented claims.</p></div>
+
+<Layout
+  title="Custom Home Portfolio | Saadi Construction Group Houston"
+  description="Browse luxury custom homes across Memorial, River Oaks, West University Place, and The Woodlands by Saadi Construction Group. Architecture, engineering, permitting, and construction under one contract."
+  keywords="custom home projects Houston, custom home builder portfolio Houston TX, luxury custom homes Houston, Memorial custom home builder"
+  canonicalUrl="https://www.saadiconstructiongroup.com/projects"
+  pageType="CollectionPage"
+  ogImage="/images/p8-exterior-front.png"
+  ogImageAlt="Contemporary Houston custom home front exterior elevation at dusk"
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Projects', href: '/projects' },
+  ]}
+  jsonLd={portfolioListSchema}
+>
+  <!-- Hero with verified exterior front elevation -->
+  <section class="relative min-h-[62vh] flex items-end overflow-hidden bg-[#1c1917] text-[#fffdf8] pt-36 pb-16">
+    <img
+      src="/images/p8-exterior-front.png"
+      alt="Contemporary Houston custom home front exterior elevation at dusk"
+      class="absolute inset-0 h-full w-full object-cover opacity-40"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-[#1c1917] via-[#1c1917]/65 to-[#1c1917]/35"></div>
+    <div class="relative z-10 container-main">
+      <div class="max-w-4xl">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-8 bg-[#dfc8a7]"></span>
+          <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-[#dfc8a7]">
+            Architectural Monograph
+          </p>
+        </div>
+        <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-medium text-[#fffdf8] leading-[1.05]">
+          Residences engineered and built for Houston living.
+        </h1>
+        <p class="mt-5 max-w-2xl font-sans text-base md:text-lg leading-relaxed text-[#dfd7ca]/85">
+          Every residence in our portfolio is documented with verified exterior elevations, aerial site context, interior living volumes, and structural specifications.
+        </p>
+      </div>
     </div>
   </section>
 
-  <section class="bg-[#fffaf2] py-8 border-b border-[rgba(71,57,40,.14)]">
-    <div class="container-main flex flex-wrap gap-3">
-      {filters.map((filter) => <span class="border border-[rgba(184,138,74,.35)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#6f563f]">{filter}</span>)}
+  <!-- Interactive Architectural Style Filter Bar -->
+  <section class="bg-[#f6f3ec] py-6 border-b border-[rgba(28,25,23,0.1)] sticky top-[60px] z-30 backdrop-blur-md">
+    <div class="container-main flex flex-wrap items-center justify-between gap-4">
+      <div class="flex flex-wrap gap-2" id="portfolio-filters" role="tablist" aria-label="Filter residences by architectural style">
+        {styles.map((style, idx) => (
+          <button
+            type="button"
+            data-filter={style}
+            class={`portfolio-filter-btn px-4 py-2 font-sans text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors border ${
+              idx === 0
+                ? 'bg-[#1c1917] text-[#fffdf8] border-[#1c1917]'
+                : 'bg-transparent text-[#1c1917]/75 border-[rgba(28,25,23,0.15)] hover:border-[#8c6d46] hover:text-[#8c6d46]'
+            }`}
+          >
+            {style}
+          </button>
+        ))}
+      </div>
+      <p class="font-sans text-xs text-[#1c1917]/60 tabular-nums" id="portfolio-count">
+        Showing all {projects.length} residences
+      </p>
     </div>
   </section>
 
-  <section class="stone-section">
-    <div class="container-main section-padding">
-      <div class="grid gap-12 md:grid-cols-2">
+  <!-- Portfolio Editorial Grid -->
+  <section class="bg-[#fbf9f5] py-20 md:py-28">
+    <div class="container-main">
+      <div class="grid gap-14 md:grid-cols-2" id="portfolio-grid">
         {projects.map((project, index) => (
-          <article class={`group ${index === 0 || index === 7 ? 'md:col-span-2' : ''}`}>
-            <a href={`/projects/${project.slug}`} class="image-zoom block aspect-[16/11] border border-[rgba(71,57,40,.14)] bg-[#e8dece] shadow-[0_24px_70px_rgba(36,27,18,.12)]">
-              <img src={project.coverImage} alt={project.coverAlt} class="h-full w-full object-cover" loading={index < 2 ? 'eager' : 'lazy'} />
+          <article
+            data-style={project.style}
+            class={`portfolio-item group ${index === 0 || index === 7 ? 'md:col-span-2' : ''}`}
+          >
+            <a
+              href={`/projects/${project.slug}`}
+              class="image-zoom block aspect-[16/10] border border-[rgba(28,25,23,0.12)] bg-[#ebe5db]"
+            >
+              <img
+                src={project.coverImage}
+                alt={project.coverAlt}
+                class="h-full w-full object-cover"
+                loading={index < 2 ? 'eager' : 'lazy'}
+              />
             </a>
-            <div class="mt-6 flex flex-col gap-4 border-t border-[rgba(71,57,40,.18)] pt-6 sm:flex-row sm:items-start sm:justify-between">
+            <div class="mt-6 flex flex-col gap-4 border-t border-[rgba(28,25,23,0.12)] pt-5 sm:flex-row sm:items-start sm:justify-between">
               <div>
-                <p class="eyebrow">{project.style}</p>
-                <h2 class="mt-2 font-heading text-4xl text-[#17140f]">{project.title}</h2>
-                <p class="mt-2 text-sm text-[#17140f]/68">{project.location} · {project.sqft}</p>
-                <div class="mt-4 flex flex-wrap gap-2">{project.tags.map((tag) => <span class="bg-[#fffaf2]/70 px-3 py-1 text-xs text-[#6f563f] ring-1 ring-[rgba(71,57,40,.12)]">{tag}</span>)}</div>
+                <div class="flex flex-wrap items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-[#8c6d46]">
+                  <span>{project.style}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>{project.location}</span>
+                  <span aria-hidden="true">·</span>
+                  <span class="tabular-nums">{project.sqft}</span>
+                </div>
+                <h2 class="mt-2 font-heading text-3xl md:text-4xl font-medium text-[#1c1917] group-hover:text-[#8c6d46] transition-colors">
+                  <a href={`/projects/${project.slug}`}>{project.title}</a>
+                </h2>
+                <p class="mt-2 max-w-2xl font-sans text-sm leading-7 text-[#1c1917]/70">
+                  {project.summary}
+                </p>
+                <div class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 font-sans text-xs text-[#1c1917]/60">
+                  {project.tags.map((tag, tIdx) => (
+                    <>
+                      <span>{tag}</span>
+                      {tIdx < project.tags.length - 1 && <span aria-hidden="true" class="text-[#8c6d46]">·</span>}
+                    </>
+                  ))}
+                </div>
               </div>
-              <a href={`/projects/${project.slug}`} class="btn-luxe shrink-0">View Project</a>
+              <a
+                href={`/projects/${project.slug}`}
+                class="inline-flex items-center justify-center border border-[rgba(140,109,70,0.55)] px-6 py-3.5 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-[#8c6d46] transition hover:bg-[#8c6d46] hover:text-[#fffdf8] shrink-0"
+              >
+                Examine Dossier →
+              </a>
             </div>
           </article>
         ))}
@@ -42,5 +142,42 @@ const filters = ['Modern', 'Transitional', 'French Country', 'Farmhouse', 'Luxur
     </div>
   </section>
 
-  <section class="dark-section text-[#fff8ed]"><div class="container-main py-20 text-center"><h2 class="font-heading text-5xl text-[#fff8ed]">Ready to discuss your lot, plans, or build scope?</h2><p class="mx-auto mt-4 max-w-2xl text-[#fff8ed]/76">Plans, permits, engineering, and construction — all under one contract.</p><a href="/contact" class="btn-luxe-fill mt-8">Request a Quote</a></div></section>
+  <CTABanner />
+
+  <script>
+    const buttons = document.querySelectorAll('.portfolio-filter-btn');
+    const items = document.querySelectorAll('.portfolio-item');
+    const countEl = document.getElementById('portfolio-count');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        buttons.forEach((b) => {
+          b.classList.remove('bg-[#1c1917]', 'text-[#fffdf8]', 'border-[#1c1917]');
+          b.classList.add('bg-transparent', 'text-[#1c1917]/75', 'border-[rgba(28,25,23,0.15)]');
+        });
+        btn.classList.remove('bg-transparent', 'text-[#1c1917]/75', 'border-[rgba(28,25,23,0.15)]');
+        btn.classList.add('bg-[#1c1917]', 'text-[#fffdf8]', 'border-[#1c1917]');
+
+        let visible = 0;
+        items.forEach((item) => {
+          const itemStyle = item.getAttribute('data-style');
+          if (filter === 'All' || itemStyle === filter) {
+            (item as HTMLElement).style.display = '';
+            visible++;
+          } else {
+            (item as HTMLElement).style.display = 'none';
+          }
+        });
+
+        if (countEl) {
+          countEl.textContent =
+            filter === 'All'
+              ? `Showing all ${visible} residences`
+              : `Showing ${visible} ${filter} ${visible === 1 ? 'residence' : 'residences'}`;
+        }
+      });
+    });
+  </script>
 </Layout>
